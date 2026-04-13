@@ -440,6 +440,39 @@
     .platform-name { min-width: auto; }
     .team-grid { grid-template-columns: 1fr 1fr; }
   }
+
+  /* Table of contents */
+  .toc {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 32px;
+    position: relative;
+    z-index: 1;
+  }
+  .toc a {
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-muted);
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    padding: 8px 18px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+  .toc a:hover {
+    color: var(--accent);
+    border-color: rgba(200,149,108,0.3);
+    background: rgba(200,149,108,0.06);
+    text-decoration: none;
+  }
+  .toc a span {
+    color: var(--accent);
+    margin-right: 6px;
+    font-size: 11px;
+  }
 </style>
 </head>
 <body>
@@ -455,12 +488,22 @@
     <span><strong>11</strong> pipeline items</span>
     <span>Last updated: April 12, 2026</span>
   </div>
+  <div class="toc">
+    <a href="#meetups"><span>01</span> In-Person Meetups</a>
+    <a href="#workshops"><span>02</span> Virtual Workshops</a>
+    <a href="#sunday-calls"><span>03</span> Sunday Calls</a>
+    <a href="#livestreams"><span>04</span> Livestreams</a>
+    <a href="#integration"><span>05</span> 6-Week Program</a>
+    <a href="#drip"><span>&bull;</span> Drip Email Process</a>
+    <a href="#resources"><span>&bull;</span> Resources &amp; Links</a>
+    <a href="#pipeline"><span>&bull;</span> Pipeline</a>
+  </div>
 </div>
 
 <div class="container">
 
 <!-- ==================== SOP 1: IN-PERSON MEETUPS ==================== -->
-<div class="section">
+<div class="section" id="meetups">
   <div class="section-number">SOP 01</div>
   <h2>In-Person Meetups</h2>
   <p class="section-subtitle">Community members host local meetups in their cities for past LaWayra guests. Monica coordinates pre/post calls with each host.</p>
@@ -498,8 +541,8 @@
   </details>
 </div>
 
-<!-- ==================== SECTION 4: VIRTUAL WORKSHOPS ==================== -->
-<div class="section">
+<!-- ==================== SOP 2: VIRTUAL WORKSHOPS ==================== -->
+<div class="section" id="workshops">
   <div class="section-number">SOP 02</div>
   <h2>Virtual Workshops</h2>
   <p class="section-subtitle">Community members and facilitators apply to host virtual workshops for the LaWayra community.</p>
@@ -546,8 +589,8 @@
   </details>
 </div>
 
-<!-- ==================== SECTION 5: SUNDAY COMMUNITY CALLS ==================== -->
-<div class="section">
+<!-- ==================== SOP 3: SUNDAY COMMUNITY CALLS ==================== -->
+<div class="section" id="sunday-calls">
   <div class="section-number">SOP 03</div>
   <h2>Sunday Community Calls</h2>
   <p class="section-subtitle">Weekly call for the LaWayra community to reconnect, share integration experiences, and support each other.</p>
@@ -600,8 +643,8 @@
   </div>
 </div>
 
-<!-- ==================== SECTION 6: LIVESTREAMS ==================== -->
-<div class="section">
+<!-- ==================== SOP 4: LIVESTREAMS ==================== -->
+<div class="section" id="livestreams">
   <div class="section-number">SOP 04</div>
   <h2>Livestreams</h2>
   <p class="section-subtitle">Live streaming Finca activities to Circle so remote members can participate in real time.</p>
@@ -648,8 +691,8 @@
   </details>
 </div>
 
-<!-- ==================== SECTION 7: SIX-WEEK INTEGRATION PROGRAM ==================== -->
-<div class="section">
+<!-- ==================== SOP 5: SIX-WEEK INTEGRATION PROGRAM ==================== -->
+<div class="section" id="integration">
   <div class="section-number">SOP 05</div>
   <h2>Six-Week Integration Program</h2>
   <p class="section-subtitle">Monica's structured post-retreat integration program. Small cohort-based, with weekly calls, private chat, 1-on-1 sessions, and homework.</p>
@@ -701,8 +744,8 @@
   </table>
 </div>
 
-<!-- ==================== SECTION 8: SENDING A DRIP EMAIL ==================== -->
-<div class="section">
+<!-- ==================== SHARED: SENDING A DRIP EMAIL ==================== -->
+<div class="section" id="drip">
   <div class="section-number">Shared Process</div>
   <h2>Sending a Drip Email</h2>
   <p class="section-subtitle">Used across meetups, workshops, and Sunday calls. Follow these steps every time.</p>
@@ -730,8 +773,8 @@
   </ol>
 </div>
 
-<!-- ==================== SECTION 9: KEY RESOURCES ==================== -->
-<div class="section">
+<!-- ==================== KEY RESOURCES ==================== -->
+<div class="section" id="resources">
   <div class="section-number">Reference</div>
   <h2>Key Resources &amp; Links</h2>
   <p class="section-subtitle">Everything in one place. Click to expand each category.</p>
@@ -781,8 +824,8 @@
   </details>
 </div>
 
-<!-- ==================== SECTION 10: PIPELINE ==================== -->
-<div class="section">
+<!-- ==================== PIPELINE ==================== -->
+<div class="section" id="pipeline">
   <div class="section-number">Pipeline</div>
   <h2>Coming Up</h2>
   <p class="section-subtitle">What is in the pipeline and who is responsible.</p>
