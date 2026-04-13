@@ -231,6 +231,55 @@
   .tag-pending { background: rgba(251,191,36,0.1); color: var(--warning); }
   .tag-info { background: rgba(96,165,250,0.1); color: var(--blue); }
 
+  /* Flow diagram */
+  .flow-diagram {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 32px;
+    margin: 30px 0;
+    overflow-x: auto;
+  }
+  .flow-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+    flex-wrap: wrap;
+  }
+  .flow-row:last-child { margin-bottom: 0; }
+  .flow-node {
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .flow-node-source {
+    background: rgba(96,165,250,0.1);
+    border: 1px solid rgba(96,165,250,0.2);
+    color: var(--blue);
+  }
+  .flow-node-tool {
+    background: rgba(167,139,250,0.1);
+    border: 1px solid rgba(167,139,250,0.2);
+    color: var(--purple);
+  }
+  .flow-node-dest {
+    background: rgba(74,222,128,0.1);
+    border: 1px solid rgba(74,222,128,0.2);
+    color: var(--success);
+  }
+  .flow-node-output {
+    background: rgba(200,149,108,0.1);
+    border: 1px solid rgba(200,149,108,0.2);
+    color: var(--accent);
+  }
+  .flow-arrow {
+    color: var(--text-dim);
+    font-size: 16px;
+  }
+
   /* Step lists */
   .step-list {
     list-style: none;
@@ -291,11 +340,6 @@
     border-left-color: var(--warning);
   }
   .callout-warning strong { color: var(--warning); }
-  .callout-success {
-    background: rgba(74,222,128,0.06);
-    border-left-color: var(--success);
-  }
-  .callout-success strong { color: var(--success); }
 
   /* Collapsible */
   details {
@@ -327,15 +371,13 @@
   details[open] summary::before { transform: rotate(90deg); }
   details[open] summary { border-bottom: 1px solid var(--border); }
   .details-body { padding: 24px 28px; }
-  .details-body h4 { margin-top: 0; }
-  .details-body h4:not(:first-child) { margin-top: 30px; }
 
-  /* Platform / resource list */
-  .resource-list {
+  /* Resource list */
+  .platform-list {
     list-style: none;
     margin: 20px 0;
   }
-  .resource-list li {
+  .platform-list li {
     padding: 14px 20px;
     border-bottom: 1px solid rgba(255,255,255,0.04);
     font-size: 14px;
@@ -343,48 +385,20 @@
     align-items: baseline;
     gap: 10px;
   }
-  .resource-list li:last-child { border-bottom: none; }
-  .resource-name {
+  .platform-list li:last-child { border-bottom: none; }
+  .platform-name {
     font-weight: 600;
     color: #fff;
     min-width: 200px;
   }
-  .resource-detail { color: var(--text-muted); }
-  .resource-detail a { color: var(--accent); text-decoration: none; }
-  .resource-detail a:hover { text-decoration: underline; }
-
-  /* Pipeline grid */
-  .pipeline-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-    margin: 24px 0;
-  }
-  .pipeline-item {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 20px 24px;
-    transition: all 0.3s ease;
-  }
-  .pipeline-item:hover {
-    border-color: rgba(200,149,108,0.3);
-  }
-  .pipeline-item-title {
-    font-size: 15px;
-    font-weight: 600;
-    color: #fff;
-    margin-bottom: 6px;
-  }
-  .pipeline-item-meta {
-    font-size: 12px;
-    color: var(--text-muted);
-  }
+  .platform-detail { color: var(--text-muted); }
+  .platform-detail a { color: var(--accent); text-decoration: none; }
+  .platform-detail a:hover { text-decoration: underline; }
 
   /* Team grid */
   .team-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
     gap: 16px;
     margin: 24px 0;
   }
@@ -393,17 +407,19 @@
     border: 1px solid var(--border);
     border-radius: 12px;
     padding: 20px 24px;
+    transition: all 0.3s ease;
   }
+  .team-card:hover { border-color: rgba(200,149,108,0.3); }
   .team-card-name {
     font-size: 16px;
     font-weight: 700;
     color: #fff;
-    margin-bottom: 6px;
+    margin-bottom: 8px;
   }
   .team-card-role {
     font-size: 12px;
     color: var(--text-muted);
-    line-height: 1.5;
+    line-height: 1.6;
   }
 
   /* Links */
@@ -417,22 +433,22 @@
     .container { padding: 0 20px; }
     .section { padding: 50px 0; }
     .section h2 { font-size: 28px; }
+    .flow-diagram { padding: 20px; }
     .info-card-header { padding: 16px 20px; }
     .info-card-body { padding: 18px 20px; }
-    .resource-list li { flex-direction: column; gap: 4px; }
-    .resource-name { min-width: auto; }
-    .pipeline-grid { grid-template-columns: 1fr; }
-    .team-grid { grid-template-columns: 1fr; }
+    .platform-list li { flex-direction: column; gap: 4px; }
+    .platform-name { min-width: auto; }
+    .team-grid { grid-template-columns: 1fr 1fr; }
   }
 </style>
 </head>
 <body>
 
-<!-- HERO -->
+<!-- ==================== HERO ==================== -->
 <div class="hero">
   <div class="hero-label">Community Operations Playbook</div>
   <h1>LaWayra <span>Community SOPs</span></h1>
-  <p class="hero-subtitle">Standard operating procedures for meetups, workshops, calls, livestreams, and the integration program &mdash; everything the community team needs to run.</p>
+  <p class="hero-subtitle">Standard operating procedures for meetups, workshops, calls, livestreams, and the integration program &mdash; updated April 2026</p>
   <div class="hero-meta">
     <span><strong>5</strong> SOPs</span>
     <span><strong>8</strong> team members</span>
@@ -441,11 +457,88 @@
   </div>
 </div>
 
-<!-- TEAM ROSTER -->
+<!-- ==================== SECTION 1: HOW IT ALL CONNECTS ==================== -->
 <div class="container">
 <div class="section">
-  <div class="section-number">Team</div>
-  <h2>Community Team Roster</h2>
+  <div class="section-number">Section 01</div>
+  <h2>How It All Connects</h2>
+  <p class="section-subtitle">A high-level view of how community activities flow through the team, from initial idea to post-event follow-up.</p>
+
+  <div class="flow-diagram">
+    <div class="flow-row">
+      <span class="flow-node flow-node-source">In-Person Meetup</span>
+      <span class="flow-arrow">&rarr;</span>
+      <span class="flow-node flow-node-tool">Monica (pre-call)</span>
+      <span class="flow-arrow">&rarr;</span>
+      <span class="flow-node flow-node-dest">Circle Event</span>
+      <span class="flow-arrow">&rarr;</span>
+      <span class="flow-node flow-node-output">Drip Email + IG Post</span>
+      <span class="flow-arrow">&rarr;</span>
+      <span class="flow-node flow-node-tool">Monica (debrief)</span>
+    </div>
+    <div class="flow-row">
+      <span class="flow-node flow-node-source">Virtual Workshop</span>
+      <span class="flow-arrow">&rarr;</span>
+      <span class="flow-node flow-node-tool">Google Form</span>
+      <span class="flow-arrow">&rarr;</span>
+      <span class="flow-node flow-node-output">WhatsApp Alert</span>
+      <span class="flow-arrow">&rarr;</span>
+      <span class="flow-node flow-node-tool">Monica (outreach)</span>
+      <span class="flow-arrow">&rarr;</span>
+      <span class="flow-node flow-node-dest">Circle + Email + IG</span>
+    </div>
+    <div class="flow-row">
+      <span class="flow-node flow-node-source">Sunday Call</span>
+      <span class="flow-arrow">&rarr;</span>
+      <span class="flow-node flow-node-dest">Circle Event</span>
+      <span class="flow-arrow">&rarr;</span>
+      <span class="flow-node flow-node-output">Drip + WA + IG</span>
+      <span class="flow-arrow">&rarr;</span>
+      <span class="flow-node flow-node-tool">Marcus (Zoom)</span>
+      <span class="flow-arrow">&rarr;</span>
+      <span class="flow-node flow-node-output">Fathom Recording</span>
+    </div>
+    <div class="flow-row">
+      <span class="flow-node flow-node-source">Livestream</span>
+      <span class="flow-arrow">&rarr;</span>
+      <span class="flow-node flow-node-tool">Kevin (Finca)</span>
+      <span class="flow-arrow">&rarr;</span>
+      <span class="flow-node flow-node-dest">Circle Live</span>
+      <span class="flow-arrow">&rarr;</span>
+      <span class="flow-node flow-node-output">Replay Saved</span>
+    </div>
+    <div class="flow-row" style="margin-top:20px; padding-top:14px; border-top:1px solid var(--border);">
+      <span class="flow-node flow-node-source">6-Week Program</span>
+      <span class="flow-arrow">&rarr;</span>
+      <span class="flow-node flow-node-tool">Payment (TBD)</span>
+      <span class="flow-arrow">&rarr;</span>
+      <span class="flow-node flow-node-dest">Private Circle Space</span>
+      <span class="flow-arrow">&rarr;</span>
+      <span class="flow-node flow-node-output">Weekly Calls + HW + 1:1s</span>
+    </div>
+  </div>
+
+  <h3>Common Promo Pipeline</h3>
+  <p>Every event (meetup, workshop, call, livestream) follows the same promotion pattern:</p>
+  <div class="flow-diagram">
+    <div class="flow-row">
+      <span class="flow-node flow-node-dest">Circle Event</span>
+      <span class="flow-arrow">&rarr;</span>
+      <span class="flow-node flow-node-output">Drip Email</span>
+      <span class="flow-arrow">&rarr;</span>
+      <span class="flow-node flow-node-output">Circle Post</span>
+      <span class="flow-arrow">&rarr;</span>
+      <span class="flow-node flow-node-output">IG Story</span>
+      <span class="flow-arrow">&rarr;</span>
+      <span class="flow-node flow-node-output">WhatsApp Groups</span>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SECTION 2: TEAM ROSTER ==================== -->
+<div class="section">
+  <div class="section-number">Section 02</div>
+  <h2>Team Roster</h2>
   <p class="section-subtitle">Who does what across all community activities.</p>
 
   <div class="team-grid">
@@ -455,15 +548,15 @@
     </div>
     <div class="team-card">
       <div class="team-card-name">Kevin</div>
-      <div class="team-card-role">On-site social media + ops. Circle events, Drip emails, IG posts, livestream camera setup at the Finca.</div>
+      <div class="team-card-role">On-site social media + ops. Circle events, Drip emails, IG posts, livestream camera at the Finca.</div>
     </div>
     <div class="team-card">
       <div class="team-card-name">Juli</div>
-      <div class="team-card-role">Admin/operations. Circle admin, built the virtual workshop + event forms, manages WhatsApp cohort groups.</div>
+      <div class="team-card-role">Admin/operations. Circle admin, built workshop + event forms, manages WhatsApp cohort groups.</div>
     </div>
     <div class="team-card">
       <div class="team-card-name">Dan</div>
-      <div class="team-card-role">Post-retreat integration support. Hosting somatic workshops, guided meditations, growth circle concept.</div>
+      <div class="team-card-role">Post-retreat integration. Hosting somatic workshops, guided meditations, growth circle concept.</div>
     </div>
     <div class="team-card">
       <div class="team-card-name">Marcus</div>
@@ -471,7 +564,7 @@
     </div>
     <div class="team-card">
       <div class="team-card-name">Aliyah</div>
-      <div class="team-card-role">Community engagement. Promoting calls more systematically, planning Dubai meetup.</div>
+      <div class="team-card-role">Community engagement. Promoting calls systematically, planning Dubai meetup.</div>
     </div>
     <div class="team-card">
       <div class="team-card-name">Sarah</div>
@@ -484,23 +577,22 @@
   </div>
 </div>
 
-<!-- SOP 1: IN-PERSON MEETUPS -->
+<!-- ==================== SECTION 3: IN-PERSON MEETUPS ==================== -->
 <div class="section">
   <div class="section-number">SOP 01</div>
   <h2>In-Person Meetups</h2>
   <p class="section-subtitle">Community members host local meetups in their cities for past LaWayra guests. Monica coordinates pre/post calls with each host.</p>
 
-  <h3>Process</h3>
   <ol class="step-list">
     <li><strong>Host expresses interest</strong> &mdash; Community member reaches out via WhatsApp or Circle. <span class="step-owner">Monica</span></li>
-    <li><strong>Pre-event call</strong> &mdash; Monica calls the host to discuss logistics (venue, date, time, RSVP method), share learnings from past meetups, and determine what promo support LW can provide. Key insight: more structure helps, and keep it exclusively for past LW guests. <span class="step-owner">Monica</span></li>
-    <li><strong>Create Circle event</strong> &mdash; Host creates the event in Circle with date, time, location, and description. Juli can assist if needed. <span class="step-owner">Host / Juli</span></li>
-    <li><strong>Send Drip email</strong> &mdash; Draft email announcing the meetup. Get reviewed in WhatsApp group before sending. Broadcast via Drip. If multiple meetups are happening close together, combine into one email to avoid fatigue. <span class="step-owner">Kevin</span></li>
-    <li><strong>Social media post</strong> &mdash; Instagram story at minimum. Feed post if appropriate. Host can share their own content for reposting. <span class="step-owner">Kevin</span></li>
-    <li><strong>Host Circle post</strong> &mdash; Host posts about the event in Circle to drive RSVPs and engagement. <span class="step-owner">Host</span></li>
-    <li><strong>Event happens</strong> &mdash; Host runs the meetup. Take a group photo for recap content. <span class="step-owner">Host</span></li>
-    <li><strong>Post-event debrief call</strong> &mdash; Monica calls the host: what went well, attendance, what to improve for next time. <span class="step-owner">Monica</span></li>
-    <li><strong>Post-event recap</strong> &mdash; Host posts recap in Circle with group photo. Kevin can repost on social media. <span class="step-owner">Host / Kevin</span></li>
+    <li><strong>Pre-event call</strong> &mdash; Share learnings from past meetups, discuss logistics (venue, time, RSVP), determine promo support. Key insight: more structure helps. <span class="step-owner">Monica</span></li>
+    <li><strong>Create Circle event</strong> &mdash; Host creates the event with date, time, location, description. <span class="step-owner">Host / Juli</span></li>
+    <li><strong>Send Drip email</strong> &mdash; Draft, review in WhatsApp group, then broadcast. Combine multiple nearby meetups into one email. <span class="step-owner">Kevin</span></li>
+    <li><strong>Social media post</strong> &mdash; Instagram story at minimum. Host can share content for reposting. <span class="step-owner">Kevin</span></li>
+    <li><strong>Host Circle post</strong> &mdash; Post in Circle to drive RSVPs. <span class="step-owner">Host</span></li>
+    <li><strong>Event happens</strong> &mdash; Host runs the meetup. Take a group photo for recap. <span class="step-owner">Host</span></li>
+    <li><strong>Post-event debrief call</strong> &mdash; What went well, attendance, improvements for next time. <span class="step-owner">Monica</span></li>
+    <li><strong>Post-event recap</strong> &mdash; Circle post with group photo. Repost on IG. <span class="step-owner">Host / Kevin</span></li>
   </ol>
 
   <div class="callout">
@@ -508,7 +600,7 @@
   </div>
 
   <details>
-    <summary>Past Meetup Reference</summary>
+    <summary>Past Meetups</summary>
     <div class="details-body">
       <table class="data-table">
         <thead><tr><th>Host</th><th>Location</th><th>Attendees</th><th>Notes</th></tr></thead>
@@ -517,34 +609,44 @@
           <tr><td>Clara</td><td>Berlin</td><td>3</td><td></td></tr>
           <tr><td>Jess &amp; Frank</td><td>Vancouver</td><td>5</td><td></td></tr>
           <tr><td>Ashley &amp; Matt</td><td>Denver, CO</td><td>Upcoming (May)</td><td>Pre-call completed.</td></tr>
-          <tr><td>Aliyah</td><td>Dubai</td><td>Planning</td><td>In early stages.</td></tr>
+          <tr><td>Aliyah</td><td>Dubai</td><td>&mdash;</td><td>In planning.</td></tr>
         </tbody>
       </table>
     </div>
   </details>
 </div>
 
-<!-- SOP 2: VIRTUAL WORKSHOPS -->
+<!-- ==================== SECTION 4: VIRTUAL WORKSHOPS ==================== -->
 <div class="section">
   <div class="section-number">SOP 02</div>
   <h2>Virtual Workshops</h2>
   <p class="section-subtitle">Community members and facilitators apply to host virtual workshops for the LaWayra community.</p>
 
-  <h3>Process</h3>
+  <div class="info-card">
+    <div class="info-card-header">
+      <span class="info-card-title">Workshop Application Form</span>
+      <span class="tag tag-active">Active</span>
+    </div>
+    <div class="info-card-body">
+      <p><strong>Form:</strong> <a href="https://docs.google.com/forms/d/e/1FAlpQLSe5zl4hzYwxNlt20eyGBj0h0APaRcGkF76AlaSZAxDlQe2w4A/viewform" target="_blank">Virtual Workshop Form</a></p>
+      <p><strong>Answers:</strong> <a href="https://docs.google.com/spreadsheets/d/1hR9z8CZcBYSOFImGavcBNX9L97ofddlr-SIstk6mhpM/edit?gid=478440172#gid=478440172" target="_blank">Responses Spreadsheet</a></p>
+    </div>
+  </div>
+
   <ol class="step-list">
-    <li><strong>Person applies via form</strong> &mdash; Applicant fills out the <a href="https://docs.google.com/forms/d/e/1FAlpQLSe5zl4hzYwxNlt20eyGBj0h0APaRcGkF76AlaSZAxDlQe2w4A/viewform" target="_blank">Virtual Workshop Form</a>. Responses go to the <a href="https://docs.google.com/spreadsheets/d/1hR9z8CZcBYSOFImGavcBNX9L97ofddlr-SIstk6mhpM/edit?gid=478440172#gid=478440172" target="_blank">Answers Spreadsheet</a>. <span class="step-owner">Applicant</span></li>
-    <li><strong>WhatsApp notification</strong> &mdash; Automated notification to WhatsApp circle group when a new submission arrives. <span class="step-owner">Marcus (automation)</span> <span class="tag tag-pending">In progress</span></li>
-    <li><strong>Team reaches out</strong> &mdash; Contact the applicant to discuss topic, format, duration, scheduling, and collect facilitator bio/photo/website for promo materials. <span class="step-owner">Monica</span></li>
-    <li><strong>Create Circle event</strong> &mdash; Include title, date/time in multiple time zones, description, facilitator bio, and Zoom link. <span class="step-owner">Kevin / Juli</span></li>
-    <li><strong>Send Drip email</strong> &mdash; Draft email with workshop details. Review in WhatsApp group first, then broadcast via Drip. <span class="step-owner">Kevin</span></li>
-    <li><strong>Host Circle post</strong> &mdash; Host announces their workshop in Circle to build interest. <span class="step-owner">Host</span></li>
-    <li><strong>Social media post</strong> &mdash; Instagram story and/or feed post promoting the workshop. <span class="step-owner">Kevin</span></li>
-    <li><strong>Day-of: tech setup</strong> &mdash; Open Zoom/Google Meet, ensure recording is running. One LW team member present for support. Take a gallery-view screenshot for recap content. <span class="step-owner">Host + Team</span></li>
-    <li><strong>Post-workshop follow-up</strong> &mdash; Post-event Circle post with screenshot/recap. Track attendance vs. registrations. <span class="step-owner">Monica / Host</span></li>
+    <li><strong>Person applies via form</strong> &mdash; Responses land in Google Sheets. <span class="step-owner">Applicant</span></li>
+    <li><strong>WhatsApp notification fires</strong> &mdash; Automated alert to the WhatsApp circle group. <span class="step-owner">Marcus (automation)</span> <span class="tag tag-pending">In progress</span></li>
+    <li><strong>Team reaches out</strong> &mdash; Discuss topic, format, duration, scheduling. Collect facilitator bio, photo, website. <span class="step-owner">Monica</span></li>
+    <li><strong>Create Circle event</strong> &mdash; Title, date/time in multiple time zones, description, facilitator bio, Zoom link. <span class="step-owner">Kevin / Juli</span></li>
+    <li><strong>Send Drip email</strong> &mdash; Draft, review in WhatsApp, broadcast. <span class="step-owner">Kevin</span></li>
+    <li><strong>Host Circle post</strong> &mdash; Facilitator announces their workshop in Circle. <span class="step-owner">Host</span></li>
+    <li><strong>Social media post</strong> &mdash; IG story and/or feed post. <span class="step-owner">Kevin</span></li>
+    <li><strong>Day-of: tech setup</strong> &mdash; Open Zoom, start recording, one LW team member present for support. Gallery-view screenshot for recap. <span class="step-owner">Host + Team</span></li>
+    <li><strong>Post-workshop follow-up</strong> &mdash; Circle recap post with screenshot. Track attendance vs. RSVPs. <span class="step-owner">Monica / Host</span></li>
   </ol>
 
   <div class="callout callout-warning">
-    <strong>Lesson learned:</strong> Adam's workshop (Jan 2026) had 18 RSVPs but only 5 attended. Consider adding: a reminder email the day before, a WhatsApp reminder the morning of, and a "save to calendar" link in the Circle event.
+    <strong>Lesson learned:</strong> Adam's workshop (Jan 2026) had 18 RSVPs but only 5 attended. Add: a reminder email the day before, a WhatsApp reminder the morning of, and a "save to calendar" link.
   </div>
 
   <details>
@@ -562,7 +664,7 @@
   </details>
 </div>
 
-<!-- SOP 3: SUNDAY COMMUNITY CALLS -->
+<!-- ==================== SECTION 5: SUNDAY COMMUNITY CALLS ==================== -->
 <div class="section">
   <div class="section-number">SOP 03</div>
   <h2>Sunday Community Calls</h2>
@@ -571,88 +673,102 @@
   <div class="info-card">
     <div class="info-card-header">
       <span class="info-card-title">Call Details</span>
-      <span class="tag tag-active">Active</span>
+      <span class="tag tag-active">Active &mdash; Weekly</span>
     </div>
     <div class="info-card-body">
       <p><strong>Schedule:</strong> Sundays, 1:00 PM &ndash; 2:00 PM Colombian time (CDT)</p>
       <p><strong>Zoom:</strong> <a href="https://us06web.zoom.us/j/82142017248" target="_blank">us06web.zoom.us/j/82142017248</a></p>
       <p><strong>Moderated by:</strong> Marcus &mdash; Sam (founder) joins occasionally</p>
-      <p><strong>First call:</strong> March 29, 2026 (16 attendees)</p>
+      <p><strong>First call:</strong> March 29, 2026 &mdash; 16 attendees</p>
+      <p><strong>Email template:</strong> <code>community-call-email.html</code></p>
     </div>
   </div>
 
   <h3>Call Format</h3>
-  <ol class="step-list">
-    <li>Integration reflection &mdash; where everyone is at</li>
-    <li>Group check-in</li>
-    <li>Breakout rooms for more personal sharing (small groups)</li>
-    <li>Come back together to discuss what support is needed</li>
-    <li>Closing</li>
-  </ol>
+  <div class="flow-diagram">
+    <div class="flow-row">
+      <span class="flow-node flow-node-source">Integration Reflection</span>
+      <span class="flow-arrow">&rarr;</span>
+      <span class="flow-node flow-node-tool">Group Check-in</span>
+      <span class="flow-arrow">&rarr;</span>
+      <span class="flow-node flow-node-dest">Breakout Rooms</span>
+      <span class="flow-arrow">&rarr;</span>
+      <span class="flow-node flow-node-tool">Regroup &amp; Discuss</span>
+      <span class="flow-arrow">&rarr;</span>
+      <span class="flow-node flow-node-output">Closing</span>
+    </div>
+  </div>
 
   <h3>Weekly Process</h3>
-  <ol class="step-list">
-    <li><strong>Create/duplicate Circle event</strong> &mdash; Recurring event may need manual duplication each week (has had issues not showing in upcoming). Include date, time in 5 time zones, Zoom link. <span class="step-owner">Kevin / Juli</span></li>
-    <li><strong>Send Drip email invite</strong> &mdash; Use the email template (<code>community-call-email.html</code>). Includes date, times (CDT, PDT, EDT, BST, CEST), RSVP link, and <a href="https://www.loom.com/share/0c72564773484a8397a77e08bf4a3875" target="_blank">Loom: how to RSVP</a>. Send Wed&ndash;Thu. <span class="step-owner">Kevin</span></li>
-    <li><strong>Circle post reminder</strong> &mdash; Post in Circle (also triggers email notification to members). Thu&ndash;Fri. <span class="step-owner">Marcus / Kevin</span></li>
-    <li><strong>WhatsApp group reminders</strong> &mdash; Send to past cohort WhatsApp groups. Saturday. <span class="step-owner">Juli / Kevin</span></li>
-    <li><strong>Instagram story reminder</strong> &mdash; Post IG story the day before the call. <span class="step-owner">Kevin</span></li>
-    <li><strong>Day-of: host call</strong> &mdash; Open Zoom, moderate, manage breakout rooms, ensure Fathom is recording. Sunday 1 PM COT. <span class="step-owner">Marcus</span></li>
-    <li><strong>Post-call</strong> &mdash; Share Fathom recording link in WhatsApp circle group. Note any follow-ups needed. <span class="step-owner">Marcus</span></li>
-  </ol>
-
-  <div class="callout">
-    <strong>Note:</strong> Some members in other time zones (e.g., Dubai &mdash; 2 AM) cannot attend. Future consideration: add a second call for other time zones.
-  </div>
-</div>
-
-<!-- SOP 4: LIVESTREAMS -->
-<div class="section">
-  <div class="section-number">SOP 04</div>
-  <h2>Livestreams</h2>
-  <p class="section-subtitle">Live streaming Finca activities to the Circle community so remote members can participate in real time.</p>
-
-  <h3>What to Livestream</h3>
   <table class="data-table">
-    <thead><tr><th>Activity</th><th>Schedule</th><th>Notes</th></tr></thead>
+    <thead>
+      <tr><th>When</th><th>What</th><th>Owner</th></tr>
+    </thead>
     <tbody>
-      <tr><td>Yoga Classes</td><td>7-day retreats: Tue/Wed/Thu at 3 PM COT</td><td>4-day retreats: Fri/Sat only</td></tr>
-      <tr><td>Cacao Ceremony</td><td>Sunday at 7 PM COT</td><td>During retreat weeks</td></tr>
+      <tr><td>Monday</td><td>Create/duplicate Circle event (date, 5 time zones, Zoom link)</td><td><span class="step-owner">Kevin / Juli</span></td></tr>
+      <tr><td>Wed&ndash;Thu</td><td>Send Drip email invite (use <code>community-call-email.html</code> template). <a href="https://www.loom.com/share/0c72564773484a8397a77e08bf4a3875" target="_blank">RSVP Loom</a></td><td><span class="step-owner">Kevin</span></td></tr>
+      <tr><td>Thu&ndash;Fri</td><td>Circle post reminder (also triggers email notification)</td><td><span class="step-owner">Marcus / Kevin</span></td></tr>
+      <tr><td>Saturday</td><td>WhatsApp reminders to past cohort groups</td><td><span class="step-owner">Juli / Kevin</span></td></tr>
+      <tr><td>Saturday</td><td>Instagram story reminder</td><td><span class="step-owner">Kevin</span></td></tr>
+      <tr><td>Sunday 1 PM</td><td>Open Zoom, moderate, breakout rooms, Fathom recording</td><td><span class="step-owner">Marcus</span></td></tr>
+      <tr><td>Sunday post-call</td><td>Share Fathom recording link in WhatsApp circle group</td><td><span class="step-owner">Marcus</span></td></tr>
     </tbody>
   </table>
 
-  <div class="callout callout-warning">
-    <strong>Do NOT livestream:</strong> Rapeh ceremony &mdash; not appropriate for streaming.
+  <div class="callout">
+    <strong>Note:</strong> Some members in other time zones (e.g., Dubai &mdash; 2 AM) cannot attend. Future consideration: add a second call for different time zones.
+  </div>
+</div>
+
+<!-- ==================== SECTION 6: LIVESTREAMS ==================== -->
+<div class="section">
+  <div class="section-number">SOP 04</div>
+  <h2>Livestreams</h2>
+  <p class="section-subtitle">Live streaming Finca activities to Circle so remote members can participate in real time.</p>
+
+  <div class="info-card">
+    <div class="info-card-header">
+      <span class="info-card-title">What to Livestream</span>
+      <span class="tag tag-active">Active</span>
+    </div>
+    <div class="info-card-body">
+      <p><strong>Yoga classes:</strong> 7-day retreats: Tue/Wed/Thu at 3 PM COT &bull; 4-day retreats: Fri/Sat</p>
+      <p><strong>Cacao ceremony:</strong> Sunday at 7 PM COT (during retreat weeks)</p>
+      <p><strong style="color: var(--danger);">Do NOT livestream:</strong> Rapeh ceremony &mdash; not appropriate for streaming.</p>
+    </div>
   </div>
 
-  <h3>Process</h3>
   <ol class="step-list">
-    <li><strong>Check retreat schedule</strong> &mdash; Confirm which activities are happening this week based on retreat type (7-day vs 4-day). No classes during breaks between retreats. <span class="step-owner">Kevin</span></li>
-    <li><strong>Create Circle event</strong> &mdash; Use "Live Stream" as the location type in Circle. Include activity name, time, and description. <span class="step-owner">Kevin / Juli</span></li>
-    <li><strong>Announce</strong> &mdash; Circle post + Instagram story promoting the upcoming livestream. <span class="step-owner">Kevin</span></li>
-    <li><strong>Tech setup</strong> &mdash; Set up camera at the maloka. <strong>Test internet connectivity first.</strong> <span class="step-owner">Kevin</span></li>
+    <li><strong>Check retreat schedule</strong> &mdash; Confirm activities based on retreat type (7-day vs 4-day). No classes during breaks. <span class="step-owner">Kevin</span></li>
+    <li><strong>Create Circle event</strong> &mdash; Use "Live Stream" as location type. Include activity name, time, description. <span class="step-owner">Kevin / Juli</span></li>
+    <li><strong>Announce</strong> &mdash; Circle post + Instagram story. <span class="step-owner">Kevin</span></li>
+    <li><strong>Tech setup at maloka</strong> &mdash; Camera setup. <strong>Test internet first.</strong> <span class="step-owner">Kevin</span></li>
     <li><strong>Go live</strong> &mdash; Stream via Circle's built-in livestream feature. <span class="step-owner">Kevin</span></li>
-    <li><strong>Post-stream</strong> &mdash; Save recording if Circle allows. Share replay link in Circle for those who missed it. <span class="step-owner">Kevin</span></li>
+    <li><strong>Post-stream</strong> &mdash; Save recording, share replay link in Circle. <span class="step-owner">Kevin</span></li>
   </ol>
 
   <div class="callout callout-warning">
-    <strong>Known issue:</strong> Internet reliability at the maloka is inconsistent. The first yoga livestream (4/2/26) was cancelled due to internet being down. Always test connectivity before scheduling. Have a backup plan (e.g., post a pre-recorded video instead).
+    <strong>Known issue:</strong> Internet at the maloka is inconsistent. The first yoga livestream (4/2/26) was cancelled due to internet outage. Always test connectivity. Backup plan: post a pre-recorded video instead.
   </div>
 
   <details>
     <summary>Future Expansion Ideas</summary>
     <div class="details-body">
-      <p>These are potential livestream formats to explore beyond Finca activities:</p>
-      <ul style="list-style: disc; margin-left: 20px; color: var(--text-muted); font-size: 14px;">
-        <li style="margin-bottom: 8px;">AMA sessions with Taita, Sam, Monica, or integration coaches</li>
-        <li style="margin-bottom: 8px;">Instagram Live interviews or Q&amp;A sessions</li>
-        <li style="margin-bottom: 8px;">Guest facilitator livestreams</li>
-      </ul>
+      <p style="font-size: 14px; color: var(--text-muted);">Potential livestream formats beyond Finca activities:</p>
+      <br>
+      <table class="data-table">
+        <thead><tr><th>Format</th><th>Platform</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>AMA Sessions</td><td>Circle Live / Zoom</td><td>With Taita, Sam, Monica, or integration coaches</td></tr>
+          <tr><td>Interviews &amp; Q&amp;A</td><td>Instagram Live</td><td>Casual format, reach non-Circle audience</td></tr>
+          <tr><td>Guest Facilitator Sessions</td><td>Circle Live</td><td>Extension of the virtual workshop concept</td></tr>
+        </tbody>
+      </table>
     </div>
   </details>
 </div>
 
-<!-- SOP 5: SIX-WEEK INTEGRATION PROGRAM -->
+<!-- ==================== SECTION 7: SIX-WEEK INTEGRATION PROGRAM ==================== -->
 <div class="section">
   <div class="section-number">SOP 05</div>
   <h2>Six-Week Integration Program</h2>
@@ -660,34 +776,36 @@
 
   <div class="info-card">
     <div class="info-card-header">
-      <span class="info-card-title">Program Components</span>
+      <span class="info-card-title">Program Overview</span>
       <span class="tag tag-pending">In Development</span>
     </div>
     <div class="info-card-body">
       <p><strong>2-hour weekly group call</strong> &mdash; 6 weeks of facilitated group sessions</p>
-      <p><strong>Private Circle chat</strong> &mdash; Ongoing support between calls for the cohort</p>
+      <p><strong>Private Circle chat</strong> &mdash; Ongoing cohort support between calls</p>
       <p><strong>1-on-1 session with Monica</strong> &mdash; One individual session per participant</p>
       <p><strong>Homework &amp; action items</strong> &mdash; Distributed weekly through Circle</p>
-      <p><strong>Guided meditation videos</strong> &mdash; Available in Circle (Monica recording)</p>
+      <p><strong>Guided meditation videos</strong> &mdash; In Circle (Monica recording)</p>
       <p><strong>Pricing:</strong> $30 &ndash; $50 per program (under discussion)</p>
+      <p><strong>Content focus:</strong> Conscious habits, daily routines, meditation, yoga, habit stacking, therapy models, accountability</p>
     </div>
   </div>
 
-  <h3>Content Focus</h3>
-  <p>Conscious habits and daily routines, meditation, yoga, habit stacking, pairing new practices with things you already do, therapy models for post-retreat life, accountability and goal-setting.</p>
-
-  <h3>Process</h3>
+  <h3>Launch Process</h3>
   <ol class="step-list">
     <li><strong>Finalize payment mechanism</strong> &mdash; Evaluating Bold payment links vs. BookingLayer bookable item. <span class="step-owner">Sarah</span> <span class="tag tag-pending">TBD</span></li>
-    <li><strong>Set up private Circle space</strong> &mdash; Investigate Circle's capabilities for private/exclusive events and chat spaces that only show for enrolled members. Need exclusivity &mdash; calls and chat should not be visible to non-enrolled members. Check Circle plan limits (~15 spaces max reported). <span class="step-owner">Marcus</span> <span class="tag tag-pending">TBD</span></li>
-    <li><strong>Open enrollment</strong> &mdash; Announce program via Circle, Drip email, and social media. Include: what's included, schedule, pricing, how to sign up. <span class="step-owner">Monica</span></li>
-    <li><strong>Collect payment</strong> &mdash; Via whichever mechanism is set up (Bold/BookingLayer). <span class="step-owner">Sarah</span></li>
-    <li><strong>Create private Circle space</strong> &mdash; Private chat space + event series for this cohort only. <span class="step-owner">Marcus / Juli</span></li>
-    <li><strong>Weeks 1&ndash;6: Group calls</strong> &mdash; 2-hour facilitated calls. Topics build on each other week by week. <span class="step-owner">Monica</span></li>
-    <li><strong>Weeks 1&ndash;6: Homework</strong> &mdash; Distribute action items and exercises through Circle chat or posts. <span class="step-owner">Monica</span></li>
-    <li><strong>Individual sessions</strong> &mdash; Schedule one 1-on-1 session per participant at their preferred time. <span class="step-owner">Monica</span></li>
-    <li><strong>Guided meditation videos</strong> &mdash; Record and upload to a "Guided Meditations" section in Circle. <span class="step-owner">Monica</span></li>
-    <li><strong>Program completion</strong> &mdash; Graduation/celebration, collect feedback, discuss continued support options. <span class="step-owner">Monica</span></li>
+    <li><strong>Set up private Circle space</strong> &mdash; Private/exclusive events + chat that only enrolled members see. Check Circle plan limits (~15 spaces). <span class="step-owner">Marcus</span> <span class="tag tag-pending">TBD</span></li>
+    <li><strong>Open enrollment</strong> &mdash; Announce via Circle, Drip, and social. Include: schedule, pricing, what's included. <span class="step-owner">Monica</span></li>
+    <li><strong>Collect payment</strong> &mdash; Via Bold/BookingLayer. <span class="step-owner">Sarah</span></li>
+    <li><strong>Create private cohort space</strong> &mdash; Private chat + event series for this cohort only. <span class="step-owner">Marcus / Juli</span></li>
+  </ol>
+
+  <h3>Weekly Delivery (Weeks 1&ndash;6)</h3>
+  <ol class="step-list">
+    <li><strong>Group call</strong> &mdash; 2-hour facilitated session. Topics build week by week. <span class="step-owner">Monica</span></li>
+    <li><strong>Homework</strong> &mdash; Action items and exercises distributed through Circle. <span class="step-owner">Monica</span></li>
+    <li><strong>Individual session</strong> &mdash; Schedule one 1-on-1 per participant at their preferred time. <span class="step-owner">Monica</span></li>
+    <li><strong>Meditation videos</strong> &mdash; Record guided meditations and upload to Circle. <span class="step-owner">Monica</span></li>
+    <li><strong>Program completion</strong> &mdash; Graduation, collect feedback, discuss continued support. <span class="step-owner">Monica</span></li>
   </ol>
 
   <h3>Open Items</h3>
@@ -697,114 +815,171 @@
       <tr><td>Payment mechanism finalized</td><td>Sarah</td><td><span class="tag tag-pending">TBD</span></td></tr>
       <tr><td>Circle private events/spaces investigation</td><td>Marcus</td><td><span class="tag tag-pending">TBD</span></td></tr>
       <tr><td>Circle plan limits confirmed</td><td>Marcus / Juli</td><td><span class="tag tag-pending">TBD</span></td></tr>
-      <tr><td>Monica records guided meditations</td><td>Monica</td><td><span class="tag tag-pending">April</span></td></tr>
+      <tr><td>Guided meditation recordings</td><td>Monica</td><td><span class="tag tag-pending">April</span></td></tr>
       <tr><td>Coordinate with Dan's growth circle concept</td><td>Monica / Dan</td><td><span class="tag tag-info">Overlap</span></td></tr>
     </tbody>
   </table>
 </div>
 
-<!-- KEY RESOURCES -->
+<!-- ==================== SECTION 8: SENDING A DRIP EMAIL ==================== -->
 <div class="section">
-  <div class="section-number">Resources</div>
-  <h2>Key Resources &amp; Links</h2>
-  <p class="section-subtitle">All important links consolidated in one place.</p>
-
-  <h3>Platform</h3>
-  <ul class="resource-list">
-    <li><span class="resource-name">Circle Community</span><span class="resource-detail"><a href="https://lawayra-family.circle.so/" target="_blank">lawayra-family.circle.so</a></span></li>
-    <li><span class="resource-name">Circle Invite Link</span><span class="resource-detail"><a href="https://lawayra-family.circle.so/join?invitation_token=d4e95557ea95daafab992507dcceaddf27d0df6f-57f7f1ae-600d-4fd6-9c06-0d0ee5ec0a51" target="_blank">Invite token link</a></span></li>
-  </ul>
-
-  <h3>Forms &amp; Spreadsheets</h3>
-  <ul class="resource-list">
-    <li><span class="resource-name">Virtual Workshop Form</span><span class="resource-detail"><a href="https://docs.google.com/forms/d/e/1FAlpQLSe5zl4hzYwxNlt20eyGBj0h0APaRcGkF76AlaSZAxDlQe2w4A/viewform" target="_blank">Google Form</a></span></li>
-    <li><span class="resource-name">Workshop Form Answers</span><span class="resource-detail"><a href="https://docs.google.com/spreadsheets/d/1hR9z8CZcBYSOFImGavcBNX9L97ofddlr-SIstk6mhpM/edit?gid=478440172#gid=478440172" target="_blank">Google Sheet</a></span></li>
-    <li><span class="resource-name">Community Survey</span><span class="resource-detail"><a href="https://forms.gle/3ocGPWm7Z2BhF5T86" target="_blank">Google Form</a></span></li>
-    <li><span class="resource-name">Survey Results</span><span class="resource-detail"><a href="https://docs.google.com/spreadsheets/d/1A9Yj2R3EBeNr1PGLh_hPgVZSjIRb3s2gMNQwP61m0oU/edit?usp=sharing" target="_blank">Google Sheet</a></span></li>
-  </ul>
-
-  <h3>Communication Tools</h3>
-  <ul class="resource-list">
-    <li><span class="resource-name">Drip (Email Broadcasts)</span><span class="resource-detail"><a href="https://www.getdrip.com/" target="_blank">getdrip.com</a></span></li>
-    <li><span class="resource-name">Drip Loom Walkthrough</span><span class="resource-detail"><a href="https://www.loom.com/share/5a22821ed2df4c828d894258dd1868e7" target="_blank">How to send a Drip broadcast</a></span></li>
-    <li><span class="resource-name">RSVP Loom Instructions</span><span class="resource-detail"><a href="https://www.loom.com/share/0c72564773484a8397a77e08bf4a3875" target="_blank">How to RSVP on Circle</a></span></li>
-  </ul>
-
-  <h3>Call Infrastructure</h3>
-  <ul class="resource-list">
-    <li><span class="resource-name">Sunday Call Zoom</span><span class="resource-detail"><a href="https://us06web.zoom.us/j/82142017248" target="_blank">us06web.zoom.us/j/82142017248</a></span></li>
-    <li><span class="resource-name">Email Template</span><span class="resource-detail"><code>community-call-email.html</code> (local file)</span></li>
-  </ul>
-
-  <h3>Meeting Notes</h3>
-  <ul class="resource-list">
-    <li><span class="resource-name">Community Meeting Notes</span><span class="resource-detail"><a href="https://docs.google.com/document/d/1jFJb4s9NixnpTTqOghpjGQ6BJm-UnueLefz6SmB104s/edit" target="_blank">Google Doc</a> &mdash; 7 meetings from Sep 2025 to Apr 2026</span></li>
-  </ul>
-</div>
-
-<!-- SHARED SUB-PROCESS -->
-<div class="section">
-  <div class="section-number">Reference</div>
-  <h2>Shared Process: Sending a Drip Email</h2>
+  <div class="section-number">Shared Process</div>
+  <h2>Sending a Drip Email</h2>
   <p class="section-subtitle">Used across meetups, workshops, and Sunday calls. Follow these steps every time.</p>
 
+  <div class="flow-diagram">
+    <div class="flow-row">
+      <span class="flow-node flow-node-source">Draft Email</span>
+      <span class="flow-arrow">&rarr;</span>
+      <span class="flow-node flow-node-tool">Review in WhatsApp</span>
+      <span class="flow-arrow">&rarr;</span>
+      <span class="flow-node flow-node-tool">Send Test Email</span>
+      <span class="flow-arrow">&rarr;</span>
+      <span class="flow-node flow-node-dest">Broadcast via Drip</span>
+      <span class="flow-arrow">&rarr;</span>
+      <span class="flow-node flow-node-output">Check Open/Click Rates</span>
+    </div>
+  </div>
+
   <ol class="step-list">
-    <li><strong>Draft the email</strong> &mdash; Write copy with event details, date/time (include multiple time zones), and CTA (RSVP link to Circle event).</li>
-    <li><strong>Review in WhatsApp group</strong> &mdash; Share draft for team feedback before sending.</li>
-    <li><strong>Send test email</strong> &mdash; Send to yourself first to check formatting and links.</li>
-    <li><strong>Broadcast via Drip</strong> &mdash; Send to the appropriate segment/list. <a href="https://www.loom.com/share/5a22821ed2df4c828d894258dd1868e7" target="_blank">Loom walkthrough</a></li>
-    <li><strong>Confirm delivery</strong> &mdash; Check Drip for open/click rates after sending.</li>
+    <li><strong>Draft the email</strong> &mdash; Event details, date/time in multiple time zones, CTA (RSVP link to Circle event).</li>
+    <li><strong>Review in WhatsApp group</strong> &mdash; Get team feedback before sending.</li>
+    <li><strong>Send test email</strong> &mdash; Send to yourself to check formatting and links.</li>
+    <li><strong>Broadcast via Drip</strong> &mdash; Send to the appropriate list. <a href="https://www.loom.com/share/5a22821ed2df4c828d894258dd1868e7" target="_blank">Loom walkthrough</a></li>
+    <li><strong>Confirm delivery</strong> &mdash; Check Drip for open and click rates.</li>
   </ol>
 </div>
 
-<!-- PIPELINE -->
+<!-- ==================== SECTION 9: KEY RESOURCES ==================== -->
+<div class="section">
+  <div class="section-number">Reference</div>
+  <h2>Key Resources &amp; Links</h2>
+  <p class="section-subtitle">Everything in one place. Click to expand each category.</p>
+
+  <details open>
+    <summary>Platform</summary>
+    <div class="details-body">
+      <ul class="platform-list">
+        <li><span class="platform-name">Circle Community</span><span class="platform-detail"><a href="https://lawayra-family.circle.so/" target="_blank">lawayra-family.circle.so</a></span></li>
+        <li><span class="platform-name">Circle Invite Link</span><span class="platform-detail"><a href="https://lawayra-family.circle.so/join?invitation_token=d4e95557ea95daafab992507dcceaddf27d0df6f-57f7f1ae-600d-4fd6-9c06-0d0ee5ec0a51" target="_blank">Invite token link</a></span></li>
+      </ul>
+    </div>
+  </details>
+
+  <details>
+    <summary>Forms &amp; Spreadsheets</summary>
+    <div class="details-body">
+      <ul class="platform-list">
+        <li><span class="platform-name">Virtual Workshop Form</span><span class="platform-detail"><a href="https://docs.google.com/forms/d/e/1FAlpQLSe5zl4hzYwxNlt20eyGBj0h0APaRcGkF76AlaSZAxDlQe2w4A/viewform" target="_blank">Google Form</a></span></li>
+        <li><span class="platform-name">Workshop Form Answers</span><span class="platform-detail"><a href="https://docs.google.com/spreadsheets/d/1hR9z8CZcBYSOFImGavcBNX9L97ofddlr-SIstk6mhpM/edit?gid=478440172#gid=478440172" target="_blank">Google Sheet</a></span></li>
+        <li><span class="platform-name">Community Survey</span><span class="platform-detail"><a href="https://forms.gle/3ocGPWm7Z2BhF5T86" target="_blank">Google Form</a></span></li>
+        <li><span class="platform-name">Survey Results</span><span class="platform-detail"><a href="https://docs.google.com/spreadsheets/d/1A9Yj2R3EBeNr1PGLh_hPgVZSjIRb3s2gMNQwP61m0oU/edit?usp=sharing" target="_blank">Google Sheet</a></span></li>
+      </ul>
+    </div>
+  </details>
+
+  <details>
+    <summary>Communication Tools</summary>
+    <div class="details-body">
+      <ul class="platform-list">
+        <li><span class="platform-name">Drip (Email Broadcasts)</span><span class="platform-detail"><a href="https://www.getdrip.com/" target="_blank">getdrip.com</a></span></li>
+        <li><span class="platform-name">Drip Loom Walkthrough</span><span class="platform-detail"><a href="https://www.loom.com/share/5a22821ed2df4c828d894258dd1868e7" target="_blank">How to send a Drip broadcast</a></span></li>
+        <li><span class="platform-name">RSVP Loom Instructions</span><span class="platform-detail"><a href="https://www.loom.com/share/0c72564773484a8397a77e08bf4a3875" target="_blank">How to RSVP on Circle</a></span></li>
+        <li><span class="platform-name">Sunday Call Zoom</span><span class="platform-detail"><a href="https://us06web.zoom.us/j/82142017248" target="_blank">us06web.zoom.us/j/82142017248</a></span></li>
+      </ul>
+    </div>
+  </details>
+
+  <details>
+    <summary>Meeting Notes &amp; Templates</summary>
+    <div class="details-body">
+      <ul class="platform-list">
+        <li><span class="platform-name">Community Meeting Notes</span><span class="platform-detail"><a href="https://docs.google.com/document/d/1jFJb4s9NixnpTTqOghpjGQ6BJm-UnueLefz6SmB104s/edit" target="_blank">Google Doc</a> &mdash; 7 meetings (Sep 2025 &ndash; Apr 2026)</span></li>
+        <li><span class="platform-name">Email Template</span><span class="platform-detail"><code>community-call-email.html</code> (local file)</span></li>
+      </ul>
+    </div>
+  </details>
+</div>
+
+<!-- ==================== SECTION 10: PIPELINE ==================== -->
 <div class="section">
   <div class="section-number">Pipeline</div>
   <h2>Coming Up</h2>
-  <p class="section-subtitle">What's in the pipeline and who's responsible.</p>
+  <p class="section-subtitle">What is in the pipeline and who is responsible.</p>
 
-  <div class="pipeline-grid">
-    <div class="pipeline-item">
-      <div class="pipeline-item-title">Dan's Guided Meditation Trial</div>
-      <div class="pipeline-item-meta"><span class="step-owner">Dan</span> &bull; 20-30 min &bull; Dates TBD</div>
-    </div>
-    <div class="pipeline-item">
-      <div class="pipeline-item-title">Dan's Somatic Awareness Circle</div>
-      <div class="pipeline-item-meta"><span class="step-owner">Dan</span> &bull; 75 min &bull; April/May</div>
-    </div>
-    <div class="pipeline-item">
-      <div class="pipeline-item-title">Samuel Araya: Integration in Motion</div>
-      <div class="pipeline-item-meta"><span class="step-owner">Samuel</span> &bull; 90 min &bull; Submitted via form</div>
-    </div>
-    <div class="pipeline-item">
-      <div class="pipeline-item-title">Ashley &amp; Matt's Denver Meetup</div>
-      <div class="pipeline-item-meta"><span class="step-owner">Ashley &amp; Matt</span> &bull; May &bull; Pre-call done</div>
-    </div>
-    <div class="pipeline-item">
-      <div class="pipeline-item-title">Aliyah's Dubai Meetup</div>
-      <div class="pipeline-item-meta"><span class="step-owner">Aliyah</span> &bull; TBD &bull; In planning</div>
-    </div>
-    <div class="pipeline-item">
-      <div class="pipeline-item-title">Monica's 6-Week Program Launch</div>
-      <div class="pipeline-item-meta"><span class="step-owner">Monica / Sarah</span> &bull; April target &bull; Payment TBD</div>
-    </div>
-    <div class="pipeline-item">
-      <div class="pipeline-item-title">Guided Meditation Recordings</div>
-      <div class="pipeline-item-meta"><span class="step-owner">Monica</span> &bull; April &bull; Upload to Circle</div>
-    </div>
-    <div class="pipeline-item">
-      <div class="pipeline-item-title">WhatsApp Workshop Notifications</div>
-      <div class="pipeline-item-meta"><span class="step-owner">Marcus</span> &bull; April &bull; Automation in progress</div>
-    </div>
-    <div class="pipeline-item">
-      <div class="pipeline-item-title">Carter: Remote Integration Writing</div>
-      <div class="pipeline-item-meta"><span class="step-owner">Monica / Carter</span> &bull; TBD &bull; Writing for Circle</div>
-    </div>
-    <div class="pipeline-item">
-      <div class="pipeline-item-title">2nd Weekend Retreat (Following Month)</div>
-      <div class="pipeline-item-meta"><span class="step-owner">Team</span> &bull; TBD &bull; Discussed 4/8</div>
-    </div>
-  </div>
+  <table class="data-table">
+    <thead>
+      <tr><th>Item</th><th>Owner</th><th>Target</th><th>Status</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Dan's Guided Meditation trial</td>
+        <td>Dan</td>
+        <td>April</td>
+        <td><span class="tag tag-pending">Dates TBD</span></td>
+      </tr>
+      <tr>
+        <td>Dan's Somatic Awareness Circle (75 min)</td>
+        <td>Dan</td>
+        <td>April/May</td>
+        <td><span class="tag tag-pending">Dates TBD</span></td>
+      </tr>
+      <tr>
+        <td>Samuel Araya: Integration in Motion (90 min)</td>
+        <td>Samuel</td>
+        <td>TBD</td>
+        <td><span class="tag tag-info">Submitted via form</span></td>
+      </tr>
+      <tr>
+        <td>Ashley &amp; Matt's Denver Meetup</td>
+        <td>Ashley &amp; Matt</td>
+        <td>May</td>
+        <td><span class="tag tag-active">Pre-call done</span></td>
+      </tr>
+      <tr>
+        <td>Aliyah's Dubai Meetup</td>
+        <td>Aliyah</td>
+        <td>TBD</td>
+        <td><span class="tag tag-pending">Planning</span></td>
+      </tr>
+      <tr>
+        <td>Monica's 6-Week Program Launch</td>
+        <td>Monica / Sarah</td>
+        <td>April</td>
+        <td><span class="tag tag-pending">Payment TBD</span></td>
+      </tr>
+      <tr>
+        <td>Guided Meditation Recordings for Circle</td>
+        <td>Monica</td>
+        <td>April</td>
+        <td><span class="tag tag-pending">To record</span></td>
+      </tr>
+      <tr>
+        <td>WhatsApp Workshop Signup Notifications</td>
+        <td>Marcus</td>
+        <td>April</td>
+        <td><span class="tag tag-pending">In progress</span></td>
+      </tr>
+      <tr>
+        <td>Carter: Remote Integration Writing</td>
+        <td>Monica / Carter</td>
+        <td>TBD</td>
+        <td><span class="tag tag-info">Proposed</span></td>
+      </tr>
+      <tr>
+        <td>2nd Weekend Retreat (following month signups)</td>
+        <td>Team</td>
+        <td>TBD</td>
+        <td><span class="tag tag-info">Discussed 4/8</span></td>
+      </tr>
+      <tr>
+        <td>Guided Meditations section in Circle</td>
+        <td>Monica / Juli</td>
+        <td>April</td>
+        <td><span class="tag tag-pending">Create section + upload</span></td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 
 </div><!-- /container -->
