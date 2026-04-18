@@ -60,7 +60,7 @@ Community members or facilitators apply to host a virtual workshop for the LaWay
 
 | Step | Action | Owner | Details |
 |------|--------|-------|---------|
-| 1 | **Person applies** | Applicant | Via [Virtual Workshop Form](https://docs.google.com/forms/d/e/1FAlpQLSe5zl4hzYwxNlt20eyGBj0h0APaRcGkF76AlaSZAxDlQe2w4A/viewform). Responses go to the [Answers Spreadsheet](https://docs.google.com/spreadsheets/d/1hR9z8CZcBYSOFImGavcBNX9L97ofddlr-SIstk6mhpM/edit?gid=478440172#gid=478440172). |
+| 1 | **Person applies** | Applicant | Via [Virtual Workshop Form](https://docs.google.com/forms/d/e/1FAIpQLSe5zl4hzYwxNtt20eyGBj0h0APaRcGkF76AIaSZAxDIQe2w4A/viewform). Responses go to the [Answers Spreadsheet](https://docs.google.com/spreadsheets/d/1hR9z8CZcBYSOFImGavcBNX9L97ofddlr-SIstk6mhpM/edit?gid=478440172#gid=478440172). |
 | 2 | **WhatsApp notification** | Marcus (automation) | Integration sends notification to WhatsApp circle group when a new form submission arrives. *(In progress — Marcus setting up)* |
 | 3 | **Team reaches out** | Monica | Contact the applicant to discuss: topic, format, duration, scheduling, facilitator bio/photo/website for promo materials. |
 | 4 | **Create Circle event** | Kevin/Juli | Create event with: title, date/time in multiple time zones, description, facilitator bio, Zoom link. |
@@ -204,7 +204,7 @@ $30 – $50 per program (under discussion).
 - **Circle Invite Link:** https://lawayra-family.circle.so/join?invitation_token=d4e95557ea95daafab992507dcceaddf27d0df6f-57f7f1ae-600d-4fd6-9c06-0d0ee5ec0a51
 
 ### Forms & Spreadsheets
-- **Virtual Workshop Form:** [Google Form](https://docs.google.com/forms/d/e/1FAlpQLSe5zl4hzYwxNlt20eyGBj0h0APaRcGkF76AlaSZAxDlQe2w4A/viewform)
+- **Virtual Workshop Form:** [Google Form](https://docs.google.com/forms/d/e/1FAIpQLSe5zl4hzYwxNtt20eyGBj0h0APaRcGkF76AIaSZAxDIQe2w4A/viewform)
 - **Workshop Form Answers:** [Google Sheet](https://docs.google.com/spreadsheets/d/1hR9z8CZcBYSOFImGavcBNX9L97ofddlr-SIstk6mhpM/edit?gid=478440172#gid=478440172)
 - **Community Survey:** [Google Form](https://forms.gle/3ocGPWm7Z2BhF5T86)
 - **Survey Results:** [Google Sheet](https://docs.google.com/spreadsheets/d/1A9Yj2R3EBeNr1PGLh_hPgVZSjIRb3s2gMNQwP61m0oU/edit?usp=sharing)
