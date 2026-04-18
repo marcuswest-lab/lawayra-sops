@@ -427,6 +427,49 @@
     .info-card-body { padding: 18px 20px; }
     .platform-list li { flex-direction: column; gap: 4px; }
     .platform-name { min-width: auto; }
+    .toc-grid { grid-template-columns: 1fr; }
+  }
+
+  /* Table of Contents */
+  .toc {
+    padding: 60px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .toc h2 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 24px;
+  }
+  .toc-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px 40px;
+  }
+  .toc-item {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .toc-item:hover { border-bottom-color: var(--accent); }
+  .toc-item:hover .toc-label { color: #fff; }
+  .toc-num {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--accent);
+    min-width: 24px;
+  }
+  .toc-label {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-muted);
+    transition: color 0.2s;
   }
 </style>
 </head>
@@ -446,9 +489,27 @@
   </div>
 </div>
 
-<!-- ==================== SECTION 1: HOW IT ALL CONNECTS ==================== -->
+<!-- ==================== TABLE OF CONTENTS ==================== -->
 <div class="container">
-<div class="section">
+<div class="toc">
+  <h2>Contents</h2>
+  <div class="toc-grid">
+    <a href="#s01" class="toc-item"><span class="toc-num">01</span><span class="toc-label">How It All Connects</span></a>
+    <a href="#s07" class="toc-item"><span class="toc-num">07</span><span class="toc-label">Technical Reference</span></a>
+    <a href="#s02" class="toc-item"><span class="toc-num">02</span><span class="toc-label">The Three Dashboards</span></a>
+    <a href="#s08" class="toc-item"><span class="toc-num">08</span><span class="toc-label">Platform Access</span></a>
+    <a href="#s03" class="toc-item"><span class="toc-num">03</span><span class="toc-label">Automations</span></a>
+    <a href="#s09" class="toc-item"><span class="toc-num">09</span><span class="toc-label">How to Send Email Broadcasts</span></a>
+    <a href="#s04" class="toc-item"><span class="toc-num">04</span><span class="toc-label">Source Attribution</span></a>
+    <a href="#s10" class="toc-item"><span class="toc-num">10</span><span class="toc-label">How to Build &amp; Launch a Funnel Page</span></a>
+    <a href="#s05" class="toc-item"><span class="toc-num">05</span><span class="toc-label">What's Still Manual</span></a>
+    <a href="#s11" class="toc-item"><span class="toc-num">11</span><span class="toc-label">How to Set Up Claude Code</span></a>
+    <a href="#s06" class="toc-item"><span class="toc-num">06</span><span class="toc-label">When Something Breaks</span></a>
+  </div>
+</div>
+
+<!-- ==================== SECTION 1: HOW IT ALL CONNECTS ==================== -->
+<div class="section" id="s01">
   <div class="section-number">Section 01</div>
   <h2>How It All Connects</h2>
   <p class="section-subtitle">A high-level view of how booking data, ad spend, and sales calls flow through our systems and end up on dashboards and Discord.</p>
@@ -506,7 +567,7 @@
 </div>
 
 <!-- ==================== SECTION 2: THE THREE DASHBOARDS ==================== -->
-<div class="section">
+<div class="section" id="s02">
   <div class="section-number">Section 02</div>
   <h2>The Three Dashboards</h2>
   <p class="section-subtitle">Each dashboard tracks a different piece of the funnel. Together they give a full picture from ad spend to revenue.</p>
@@ -555,7 +616,7 @@
 </div>
 
 <!-- ==================== SECTION 3: AUTOMATIONS ==================== -->
-<div class="section">
+<div class="section" id="s03">
   <div class="section-number">Section 03</div>
   <h2>Automations</h2>
   <p class="section-subtitle">Everything that runs automatically. If it is on this list, you do not need to do it manually.</p>
@@ -623,7 +684,7 @@
 </div>
 
 <!-- ==================== SECTION 4: SOURCE ATTRIBUTION ==================== -->
-<div class="section">
+<div class="section" id="s04">
   <div class="section-number">Section 04</div>
   <h2>Source Attribution &mdash; How It Works</h2>
   <p class="section-subtitle">How we figure out which marketing channel each booking came from, and why email matching is critical.</p>
@@ -644,7 +705,7 @@
 </div>
 
 <!-- ==================== SECTION 5: WHAT'S STILL MANUAL ==================== -->
-<div class="section">
+<div class="section" id="s05">
   <div class="section-number">Section 05</div>
   <h2>What's Still Manual</h2>
   <p class="section-subtitle">A few things still require a human touch.</p>
@@ -659,7 +720,7 @@
 </div>
 
 <!-- ==================== SECTION 6: WHEN SOMETHING BREAKS ==================== -->
-<div class="section">
+<div class="section" id="s06">
   <div class="section-number">Section 06</div>
   <h2>When Something Breaks</h2>
   <p class="section-subtitle">Common issues and how to fix them. Check the most likely cause first.</p>
@@ -708,7 +769,7 @@
 </div>
 
 <!-- ==================== SECTION 7: TECHNICAL REFERENCE ==================== -->
-<div class="section">
+<div class="section" id="s07">
   <div class="section-number">Section 07</div>
   <h2>Technical Reference</h2>
   <p class="section-subtitle">IDs, workflow details, and credentials for troubleshooting. Click to expand.</p>
@@ -907,7 +968,7 @@
 </div>
 
 <!-- ==================== SECTION 8: PLATFORM ACCESS ==================== -->
-<div class="section">
+<div class="section" id="s08">
   <div class="section-number">Section 08</div>
   <h2>Platform Access</h2>
   <p class="section-subtitle">Where to log in for each system.</p>
@@ -945,7 +1006,7 @@
 </div>
 
 <!-- ==================== SECTION 9: HOW TO SEND EMAIL BROADCASTS ==================== -->
-<div class="section">
+<div class="section" id="s09">
   <div class="section-number">Section 09</div>
   <h2>How to Send Email Broadcasts</h2>
   <p class="section-subtitle">Step-by-step process for sending email broadcasts to the LaWayra subscriber list via GetDrip.</p>
@@ -982,7 +1043,7 @@
 </div>
 
 <!-- ==================== SECTION 10: HOW TO BUILD & LAUNCH A FUNNEL PAGE ==================== -->
-<div class="section">
+<div class="section" id="s10">
   <div class="section-number">Section 10</div>
   <h2>How to Build &amp; Launch a Funnel Page</h2>
   <p class="section-subtitle">When LaWayra launches a new program, workshop, or offer, it needs its own landing page. We use Claude Code to generate branded, self-contained HTML pages that are hosted on GitHub Pages &mdash; no WordPress or external builder needed.</p>
@@ -1020,7 +1081,7 @@
 </div>
 
 <!-- ==================== SECTION 11: HOW TO SET UP CLAUDE CODE ==================== -->
-<div class="section">
+<div class="section" id="s11">
   <div class="section-number">Section 11</div>
   <h2>How to Set Up Claude Code</h2>
   <p class="section-subtitle">Claude Code is the AI-powered CLI tool that powers content generation, landing page building, dashboard creation, and automation for LaWayra. A new team member needs to set it up on their machine to use the slash commands (skills) documented in this SOP.</p>
