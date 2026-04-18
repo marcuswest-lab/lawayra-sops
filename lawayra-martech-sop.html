@@ -484,7 +484,7 @@
     <span><strong>3</strong> dashboards</span>
     <span><strong>8</strong> automations</span>
     <span><strong>6</strong> platforms</span>
-    <span><strong>11</strong> sections</span>
+    <span><strong>12</strong> sections</span>
     <span>Last updated: April 18, 2026</span>
   </div>
 </div>
@@ -505,6 +505,7 @@
     <a href="#s05" class="toc-item"><span class="toc-num">05</span><span class="toc-label">What's Still Manual</span></a>
     <a href="#s11" class="toc-item"><span class="toc-num">11</span><span class="toc-label">How to Set Up Claude Code</span></a>
     <a href="#s06" class="toc-item"><span class="toc-num">06</span><span class="toc-label">When Something Breaks</span></a>
+    <a href="#s12" class="toc-item"><span class="toc-num">12</span><span class="toc-label">How to Set Up a Subdomain in GHL</span></a>
   </div>
 </div>
 
@@ -1155,6 +1156,69 @@
   <div class="callout">
     <strong>How it works:</strong> The project <code>CLAUDE.md</code> file contains all context about LaWayra &mdash; brand positioning, content strategy, infrastructure, and team structure. Claude Code reads this automatically when you open the project. For the full Claude Code setup guide, see: <a href="https://docs.google.com/document/d/1LxTxjcIG50uWBD3C8AamuPDDBdN0sXVscxfUp_s6wwI/edit" target="_blank">Claude Code Setup Guide (Google Doc)</a>
   </div>
+</div>
+
+<!-- ==================== SECTION 12: HOW TO SET UP A SUBDOMAIN IN GHL ==================== -->
+<div class="section" id="s12">
+  <div class="section-number">Section 12</div>
+  <h2>How to Set Up a Subdomain in GHL</h2>
+  <p class="section-subtitle">When you need to host a landing page or funnel on a custom subdomain (e.g., heal.lawayra.com), follow these steps to connect it through DNS and GHL.</p>
+
+  <h3>What You Need</h3>
+
+  <div class="info-card">
+    <div class="info-card-body">
+      <p><strong>DNS provider:</strong> Wherever lawayra.com DNS is managed (check for existing CNAME records to identify the provider).</p>
+      <p><strong>GHL CNAME value:</strong> <code>sites.ludicrous.cloud</code> &mdash; this is the server our GHL account uses for all hosted pages.</p>
+      <p><strong>Subdomain name:</strong> Choose something short and relevant to the offer (e.g., <code>heal</code>, <code>integration</code>, <code>workshops</code>).</p>
+    </div>
+  </div>
+
+  <h3>Setup Process</h3>
+
+  <ol class="step-list">
+    <li><strong>Add CNAME record in DNS</strong> &mdash; Log in to your DNS provider. Add a new CNAME record with the subdomain name (e.g., <code>heal</code>) pointing to <code>sites.ludicrous.cloud</code>. Set TTL to Automatic.</li>
+    <li><strong>Add domain in GHL</strong> &mdash; Go to <strong>Settings &rarr; Domains</strong> in GHL. Click <strong>Add Domain</strong>. Enter the full subdomain (e.g., <code>heal.lawayra.com</code>). GHL will show you the required CNAME record &mdash; confirm it matches what you just added.</li>
+    <li><strong>Verify the DNS</strong> &mdash; Click <strong>Verify records</strong> in GHL. DNS propagation can take a few minutes to a few hours. If verification fails, wait and try again.</li>
+    <li><strong>Create the funnel in GHL</strong> &mdash; Go to <strong>Sites &rarr; Funnels &rarr; Create New Funnel</strong>. Name it after the offer. Add a new step/page. Use a blank template or add a <strong>Custom Code</strong> element and paste your HTML.</li>
+    <li><strong>Connect domain to funnel</strong> &mdash; In funnel settings, click <strong>Custom Domain</strong>. Select the subdomain you just added (e.g., <code>heal.lawayra.com</code>). Set the page as the default path (<code>/</code>).</li>
+    <li><strong>Test the page</strong> &mdash; Visit the subdomain in your browser (e.g., <code>heal.lawayra.com</code>). Verify the page loads correctly, images render, and CTA buttons link to the right checkout URL.</li>
+  </ol>
+
+  <div class="callout">
+    <strong>Important notes:</strong>
+    <br>&bull; Our GHL uses <code>sites.ludicrous.cloud</code> as the CNAME value &mdash; not the default <code>preview.gohighlevel.com</code>. This is because the account is white-labeled.
+    <br>&bull; The <code>workshops</code> subdomain is already set up this way and can be used as a reference.
+    <br>&bull; If pasting custom HTML into GHL, you may need to add CSS overrides to remove GHL's default container margins and borders. The <code>/build-landing-page</code> skill includes these overrides automatically.
+    <br>&bull; SSL certificates are provisioned automatically by GHL once the domain is verified.
+  </div>
+
+  <h3>DNS Record Reference</h3>
+
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Value</th>
+        <th>Purpose</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>CNAME</td>
+        <td><code>heal</code></td>
+        <td><code>sites.ludicrous.cloud</code></td>
+        <td>Integration Series landing page</td>
+      </tr>
+      <tr>
+        <td>CNAME</td>
+        <td><code>workshops</code></td>
+        <td><code>sites.ludicrous.cloud</code></td>
+        <td>Workshops page (existing)</td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 
 </div><!-- /container -->
