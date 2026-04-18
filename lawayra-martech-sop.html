@@ -441,7 +441,8 @@
     <span><strong>3</strong> dashboards</span>
     <span><strong>8</strong> automations</span>
     <span><strong>6</strong> platforms</span>
-    <span>Last updated: April 12, 2026</span>
+    <span><strong>11</strong> sections</span>
+    <span>Last updated: April 18, 2026</span>
   </div>
 </div>
 
@@ -941,6 +942,158 @@
       <span class="platform-detail"><a href="https://lookerstudio.google.com/u/0/reporting/023b5c1e-17be-4518-b313-aa8a8fb40693/page/I97rF" target="_blank">Open Dashboard</a></span>
     </li>
   </ul>
+</div>
+
+<!-- ==================== SECTION 9: HOW TO SEND EMAIL BROADCASTS ==================== -->
+<div class="section">
+  <div class="section-number">Section 09</div>
+  <h2>How to Send Email Broadcasts</h2>
+  <p class="section-subtitle">Step-by-step process for sending email broadcasts to the LaWayra subscriber list via GetDrip.</p>
+
+  <div class="info-card">
+    <div class="info-card-header">
+      <span class="info-card-title">Email Template Reference</span>
+    </div>
+    <div class="info-card-body">
+      <p><strong>Template file:</strong> <code>community-call-email.html</code> in the project repo</p>
+      <p><strong>Template includes:</strong> Subscriber first name personalization, 5 timezone display, RSVP link, call format overview</p>
+      <p><strong>Drip account:</strong> admin@lawayra.com</p>
+      <p><strong>Walkthrough video:</strong> <a href="https://www.loom.com/share/5a22821ed2df4c828d894258dd1868e7" target="_blank">Loom &mdash; How to send a broadcast in Drip</a></p>
+    </div>
+  </div>
+
+  <h3>Broadcast Process</h3>
+
+  <ol class="step-list">
+    <li><strong>Draft the email</strong> &mdash; Write copy with event details (date, time in multiple time zones, RSVP link to Circle event). Use the community call email template at <code>community-call-email.html</code> as reference for formatting.</li>
+    <li><strong>Review in WhatsApp group</strong> &mdash; Share the draft in the team WhatsApp group and get feedback before sending.</li>
+    <li><strong>Send a test email</strong> &mdash; Send to yourself first. Check formatting, links, time zones, and mobile rendering.</li>
+    <li><strong>Broadcast via Drip</strong> &mdash; Log in to <a href="https://getdrip.com" target="_blank">getdrip.com</a>. Select the appropriate list/segment. Compose or paste your email. Send the broadcast. See the <a href="https://www.loom.com/share/5a22821ed2df4c828d894258dd1868e7" target="_blank">Loom walkthrough</a> for a visual guide.</li>
+    <li><strong>Confirm delivery</strong> &mdash; Check the Drip dashboard for open rates and click rates after sending.</li>
+  </ol>
+
+  <div class="callout">
+    <strong>Best practices:</strong>
+    <br>&bull; Always include times in at least 3 time zones (CDT/COT, EDT, BST).
+    <br>&bull; If multiple events are close together, combine into one email to avoid fatigue.
+    <br>&bull; Day-before reminder emails improve attendance significantly (lesson learned: 18 RSVPs but only 5 showed up without reminders).
+    <br>&bull; Never send without team review first.
+  </div>
+</div>
+
+<!-- ==================== SECTION 10: HOW TO BUILD & LAUNCH A FUNNEL PAGE ==================== -->
+<div class="section">
+  <div class="section-number">Section 10</div>
+  <h2>How to Build &amp; Launch a Funnel Page</h2>
+  <p class="section-subtitle">When LaWayra launches a new program, workshop, or offer, it needs its own landing page. We use Claude Code to generate branded, self-contained HTML pages that are hosted on GitHub Pages &mdash; no WordPress or external builder needed.</p>
+
+  <h3>Build Process</h3>
+
+  <ol class="step-list">
+    <li><strong>Gather content</strong> &mdash; Collect: program name, headline/tagline, start date &amp; schedule, price, checkout URL, program description, what's included, facilitator photo + bio, hero image, FAQ (3&ndash;5 questions). The more complete, the faster the build.</li>
+    <li><strong>Place source files in the project folder</strong> &mdash; Put PDFs (proposals, mockups), promo slide PNGs, and photos in the project directory. Claude Code can extract text from PDFs and read images directly.</li>
+    <li><strong>Run the skill</strong> &mdash; Open Claude Code and run <code>/build-landing-page</code>. Provide the details and file locations. Claude Code will read source files, extract content, apply LaWayra branding, and generate a self-contained HTML page.</li>
+    <li><strong>Review the page</strong> &mdash; Open the HTML file locally in your browser. Check: content accuracy, mobile responsiveness, facilitator photo, CTA button links, logo rendering. Request specific changes ("make the heading bigger", "swap the hero image", "change the price").</li>
+    <li><strong>Push to GitHub</strong> &mdash; Tell Claude Code to push. It will update <code>.gitignore</code>, commit, and push to <code>origin main</code>. The page goes live on GitHub Pages within 1&ndash;2 minutes.</li>
+    <li><strong>Share the viewable URL</strong> &mdash; Format: <code>https://marcuswest-lab.github.io/lawayra-content-strategy/[filename].html</code>. Share with team for final review and sign-off.</li>
+  </ol>
+
+  <div class="callout">
+    <strong>Brand specs for landing pages:</strong>
+    <br>&bull; <strong>Font:</strong> Poppins (Google Fonts) &mdash; Bold (700) for headings, Regular (400) for body
+    <br>&bull; <strong>Colors:</strong> Olive #3F4021, Cream #FFF7E7, Amber #E4A017 (CTAs), Charcoal #2B2728
+    <br>&bull; <strong>Logo:</strong> <code>lawayra-logo-new.png</code> (outline flower, transparent background)
+    <br>&bull; <strong>Voice:</strong> Warm, authentic, compassion-first &mdash; reference <code>content-machine/lawayra-voice-guide.md</code>
+    <br>&bull; <strong>Full SOP:</strong> <code>lawayra-landing-page-sop.md</code> in the project repo
+  </div>
+
+  <div class="info-card">
+    <div class="info-card-header">
+      <span class="info-card-title">Template Reference</span>
+    </div>
+    <div class="info-card-body">
+      <p><strong>Template:</strong> <code>integration-series-landing-page.html</code> (the Integration Series page)</p>
+      <p><strong>Available sections:</strong> Hero, Pain Point, Why It Matters, Program Breakdown, Outcomes, What's Included, Facilitator Bio, Pricing, FAQ, Final CTA</p>
+      <p><strong>Not every page needs all sections</strong> &mdash; adapt based on offer complexity</p>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SECTION 11: HOW TO SET UP CLAUDE CODE ==================== -->
+<div class="section">
+  <div class="section-number">Section 11</div>
+  <h2>How to Set Up Claude Code</h2>
+  <p class="section-subtitle">Claude Code is the AI-powered CLI tool that powers content generation, landing page building, dashboard creation, and automation for LaWayra. A new team member needs to set it up on their machine to use the slash commands (skills) documented in this SOP.</p>
+
+  <h3>Setup Process</h3>
+
+  <ol class="step-list">
+    <li><strong>Install Claude Code</strong> &mdash; Visit <a href="https://claude.ai/code" target="_blank">claude.ai/code</a> or install via terminal: <code>npm install -g @anthropic-ai/claude-code</code>. Requires Node.js 18+.</li>
+    <li><strong>Authenticate</strong> &mdash; Run <code>claude</code> in terminal. It will prompt you to sign in with your Anthropic account. Follow the browser-based auth flow.</li>
+    <li><strong>Clone the project repo</strong> &mdash; <code>git clone https://github.com/marcuswest-lab/lawayra-content-strategy.git</code> and <code>cd</code> into the directory.</li>
+    <li><strong>Verify setup</strong> &mdash; Run <code>claude</code> inside the project directory. It should load the CLAUDE.md project instructions automatically. Type <code>/help</code> to see available commands.</li>
+    <li><strong>Test a skill</strong> &mdash; Try <code>/create-facebook-post</code> with a test hook to verify the skills are working.</li>
+  </ol>
+
+  <details>
+    <summary>Available Skills (Slash Commands)</summary>
+    <div class="details-body">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Command</th>
+            <th>What It Does</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>/build-landing-page</code></td>
+            <td>Generate a branded landing page for any program/offer</td>
+          </tr>
+          <tr>
+            <td><code>/create-instagram-carousel</code></td>
+            <td>Hook &rarr; 5&ndash;8 slide carousel + caption</td>
+          </tr>
+          <tr>
+            <td><code>/create-instagram-reel</code></td>
+            <td>Hook &rarr; face-to-camera Reel script + caption</td>
+          </tr>
+          <tr>
+            <td><code>/create-linkedin-post</code></td>
+            <td>Professional thought leadership post</td>
+          </tr>
+          <tr>
+            <td><code>/create-x-post</code></td>
+            <td>Casual post under 280 chars</td>
+          </tr>
+          <tr>
+            <td><code>/create-facebook-post</code></td>
+            <td>Community-oriented post</td>
+          </tr>
+          <tr>
+            <td><code>/generate-weekly-batch</code></td>
+            <td>Full week of content across all platforms</td>
+          </tr>
+          <tr>
+            <td><code>/generate-stories</code></td>
+            <td>Daily Stories copy with visual direction</td>
+          </tr>
+          <tr>
+            <td><code>/publish-approved</code></td>
+            <td>Push approved content to Upload-Post for scheduling</td>
+          </tr>
+          <tr>
+            <td><code>/repurpose-youtube</code></td>
+            <td>YouTube video &rarr; multi-platform posts</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </details>
+
+  <div class="callout">
+    <strong>How it works:</strong> The project <code>CLAUDE.md</code> file contains all context about LaWayra &mdash; brand positioning, content strategy, infrastructure, and team structure. Claude Code reads this automatically when you open the project. For the full Claude Code setup guide, see: <a href="https://docs.google.com/document/d/1LxTxjcIG50uWBD3C8AamuPDDBdN0sXVscxfUp_s6wwI/edit" target="_blank">Claude Code Setup Guide (Google Doc)</a>
+  </div>
 </div>
 
 </div><!-- /container -->
