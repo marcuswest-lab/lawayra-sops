@@ -506,6 +506,8 @@
     <a href="#s11" class="toc-item"><span class="toc-num">11</span><span class="toc-label">How to Set Up Claude Code</span></a>
     <a href="#s06" class="toc-item"><span class="toc-num">06</span><span class="toc-label">When Something Breaks</span></a>
     <a href="#s12" class="toc-item"><span class="toc-num">12</span><span class="toc-label">How to Set Up a Subdomain in GHL</span></a>
+    <a href="#s13" class="toc-item"><span class="toc-num">13</span><span class="toc-label">How to Change Permissions in GHL</span></a>
+    <a href="#s14" class="toc-item"><span class="toc-num">14</span><span class="toc-label">Logins</span></a>
   </div>
 </div>
 
@@ -1219,6 +1221,100 @@
       </tr>
     </tbody>
   </table>
+</div>
+
+<!-- ==================== SECTION 13: HOW TO CHANGE PERMISSIONS IN GHL ==================== -->
+<div class="section" id="s13">
+  <div class="section-number">Section 13</div>
+  <h2>How to Change Permissions in GHL</h2>
+  <p class="section-subtitle">Walkthrough for managing user roles and permissions inside GHL (adding/removing team members, restricting access to specific areas).</p>
+
+  <div class="info-card">
+    <div class="info-card-body">
+      <p><strong>Video walkthrough:</strong> <a href="https://www.loom.com/share/32434a6dcaa74293a73301fb5877e1eb?from_recorder=1&amp;focus_title=1" target="_blank">Watch Loom &rarr;</a></p>
+      <p>Follow the steps in the video to update a user's permissions. Always confirm with Marcus before changing admin-level access or removing a team member.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SECTION 14: LOGINS (encrypted) ==================== -->
+<div class="section" id="s14">
+  <div class="section-number">Section 14</div>
+  <h2>Logins</h2>
+  <p class="section-subtitle">Credentials for the platforms used across the martech stack. Encrypted &mdash; ask Marcus for the team password.</p>
+
+  <div class="callout">
+    <strong>Security note:</strong> These credentials are encrypted with AES-256-GCM (PBKDF2-SHA256, 200k iterations). Decryption happens locally in your browser &mdash; nothing is sent anywhere. Do not share the password outside the team.
+  </div>
+
+  <div id="logins-gate" class="info-card" style="max-width:420px;">
+    <div class="info-card-header">
+      <span class="info-card-title">Enter team password</span>
+    </div>
+    <div class="info-card-body">
+      <form id="logins-form" autocomplete="off" onsubmit="return false;">
+        <input id="logins-password" type="password" placeholder="Team password" style="width:100%; padding:10px 12px; font-size:14px; font-family:inherit; background:var(--bg, #0f1012); color:var(--text, #eee); border:1px solid var(--border, #333); border-radius:6px; box-sizing:border-box;" />
+        <button id="logins-submit" type="submit" style="margin-top:10px; padding:10px 16px; font-size:14px; font-family:inherit; background:var(--accent, #B34100); color:#fff; border:none; border-radius:6px; cursor:pointer; font-weight:600;">Unlock</button>
+        <p id="logins-error" style="margin-top:10px; color:#ff6b6b; font-size:13px; display:none;">Incorrect password. Try again.</p>
+      </form>
+    </div>
+  </div>
+
+  <div id="logins-content" style="display:none;"></div>
+
+  <script>
+  (function() {
+    const ITERATIONS = 200000;
+    const B64 = "6VjObQkN4fd6kTDHzLSmfS54ItYbadKyQ+fO7SWmhSatJ0SYkYaMqBmh4RNBXe+BgyzIvO0BeOTLPPCX23Bhs7YVExCs5IRA37BaqlwYcemlMO64gmsDHT6TDecAPdxR1bzc42YVq+A7hbBsh8fM4jc83q5tnWKYJJgkfDq5uboqmDOmL8lH1aL0Em95vOBjBSJBcmyl6DGBxy3hi+iWoVpfw0plegCWC+dVRbrRhBSeYhmK4kT2anwEtvwZZKgRKbxbwhGkLmsfuKBxDKZKvtFePNo0o7CPDgmcsrl7LMU95Fw02+6G3RuacJVnwJrNJztSkdAFe3B5MzTrF66bcOwRlQFSecPKhHCJFTF5YTNiYBKCJjuEjRc1gMkev2ORf0MwYkz9sawCGR8If0IB4sKdKjfenwA21nVdUDPg4rqELRMnjXDGcblEdF/SYAjjU+pQkIKNYjID2hVhfExQoIrvMWBmYY8fHw6uA57bQYpSsDbRSPxKGwwL36TggJCok1KOj4etV3QlnVcNPyzCTQadPNZvhMmkB89HScanpr87GBxqD/J5PRbQzK6RCUXxKBaOtTP02ror0XtwKUvLY0mv/aDZO5ltKlAqt+SL6PyymLkLVbzkvD9FrjA491cyaoqzQdoeS6aCSlmFetQCm60WVVnu4F7rQC078Z9hxu1anduSCfKmpGoCDYXP8d/ZJlcUwKzQmM6H5P4ACtiDGGa4oK36PcePFPfNDqxeC03+hirC6SGA7NGwQ8isGvvbgo/A5WkAAsLAST932Dd20Eqhto+cl01KPYnjTLURh0ggOg+XfIMxEjp8ykfXM/9BZmJYQc4+01f4uIhpz7IBkUSAwvX5+mnmZP9lp2vXiih3hqf6Iasvio2tnzKPClqTp1IJl5BkK7obD33zetBk5qAns50vp2PkEPNB29rgF5ZuSWgq6g56axQm9n2Fya340uogzLoZtuHpc2rpipLQKTbpQL9hvn0vYiOoF4kXYyXVmbJ4ZJzihdLGrpi4dEO6ac0xamYYENn2KIj031BOP1/jVMDnhyhO73wpJwGq8yCnt+QUb7Jcv6/D0xfTmFSf9VEbDSske1mn3uMVnOWP45IZSzGHMhEwGZdFWvieQPqwiNDeJspbzhR8Rfk79AI2FZJ4ofL34OK2NC0JymgWusOgmcrJo4s5/rP4RJev0Xe5EE8J/yR2oYfNQ49DphSzymEbX9C4Q8cOCtW+E2TvicE4O7Wgo19GHOl1vbzuLiW+zCpLlU1krFLPBaLg6mcJ7WqEENI0CRANXO00pyvIEUXrsRWW5NMW12LWnM7UXch4GDujsRcc5RoXyUAIAYppf7rf70n32FPFr03fwvrMPL5hcQCJxgMMEqp4vbUv7ziw6i0NZPRovpLG+t+/CcXBSGJfhcu95ohTBW4eVmtkH03cMXSQnzhIAztM2TUDNA3Rixx/nNUWwJvSKBJJizlSTcKHx9gTWSRahuPobsvgDZ6YAgH8cI3J5vR9uXBt2dCola1W3TdwJYZIfpFhTg9bUp8lIYjp4rR8vnhBHCxoM5CprNJW7Z86JtZ3Lvvq0ZNqt/yvhPnbQ5Rf/G8Il12cryrTY2EXTJoBU96yhWIPtYgloWN/2Imx7PnV618HRlh4opbKN8lm4aQQK7N24ISlCZ6XhZTUkE3sZcdYsRR4yZRV8MWX4dHAmDZWXjyZfUe0sd+QPRkoDuNz4wtV+RJ94V4ndD67FkCAsEdafuCbvjb5bDrDTkZokxLqaFwRWw4BKCPFMui+B8azhu2ytmBWJtX3Yj+tMgkk0Aa9jm8RocK22AVF3rXgkPq1rUYFcqZqykpMj3ZivtZ/x5mBHyMkBzxVxFVCCb7Wb7ktYXbRGLCn/BcrfardFlSjMkP91M1wcTwDCUMy4YswDSlPFwEyVYoziRXqzECF13dGLVfdEgIEeeNJOrdR0n9OoAvkmt24bovjsANgMl9uvKiJbkbHtDRh+jvnrGleQIRGNRG4tDEdmQteeULEz8Pa/lGKh2hQ/GMUM/8fvsH7DBjCZRhuc7XBkNCzYLMLtKE77hXFBEac8mxaTN+uCn3gidApKxNu7ZCuNDpz7nBP1V8kP00CxdZ/f8sHlUO/0T0gh5OrJTFv1db7HKm1cIZMTHXeimywp01ZcON/zUFVXujeJ0cNvHmqZGT9q6id4VacClAtwDxx/TUDN+YsPxV7w+KaDW9MUInT7NGNAtJ12elW7HTrnK/9djxON4k9rCpQTNFdGj/DIGYb+Oo/3pC83fw59dhSGHpukiG8jOG/KGqv3H7ut8fupYEHSu0+M2MfqO7PK2r3Y8xuBuHOe6IxnYhsIZl0nJqdbMHAWSJj79CqIK5HtM74UzZ5b2QdZ2by5nqEDGLKY+/zgCGWUqrmti1IwG9pybCz03kqlnbPSptYf6fQqutaqV3RzF8jndTFB2ppNWg+AN4VBdSevXCNnGdYRXkATtaVybgx0bPGatyeBWna0k0DMGbHFM2JTQT2x7NtJuZPL3Bj//JyTjZ3RKetwAakRFmcCqs87RedafmU2tb53o/R7By7B9niU1a4M5mke0Qi8wYh9XFFZ1Q51DM3Hrvpm51Sc3FqdkHG1LzPcyMJ1l2qIEA06Nixk057OPHXYh4zG+0OBTypgV8/70jEafRBZ1MG8wJq4L9oG+mepEGBvi77yzaR+0gqdj/C4EAA4WWiqpRkXgIIdCVja4B2XjpsgUGctuh8VRiJzY4tSG3Z/BYTz6wQ3dF0SYMrJJXxk939tgn4OgYPIzeqehP2Kn81N/Xsef4jN8R8sdqRLSUN7BLUMNCvUFN2wuY0EAY1TgC+m3ddWYxKACBhksP/5DttXyo74uIYQwV/xpPKwGYqkNPZikgkXOLISQh5UUMjTuTVvh5bFDs+LZ435EoL/MzMBgbzZpv7jkXLubAT3TQpaDysyFt0igT5sBi0jb5SnTUPr7dQk7xEllblwxaZJIPK6KB2SGEdOVbmtbxBgSSYPxwkakdAjH9c4uBGRAvkLwEnMvNVbOM+6rCwKy/dMnU1enR6TlvlamboyYbCvVn9KZ5rIfQeouLmOo5gLalD7rBfVTe7yZMxm1Ye7zpo/WSc2SiCZ8gqsCJAGcnKc1uK8mT1l6J8s0piix360APWn2lc4o+vshyYsCnV4CEUHfiAmvo9UEgnICxkfVQOlqPc4TvPyQ8keN0nQwT06PgDToHj7am/xlNVeNLWwShIxspfu8dbV1/St+SjYmt8HZ/B0GGT8eQSiGH6L7YLq2EYuYIUvBDhxxlni2trUlubrxa+4aYvBGWetfpfyu/yJimA73Zpdq4xaPgix/rtSJLklSVVEPV2j9Bsq4/NjtKPPb95sqDGn5wYeUWkYeQ7AWb89KSNi/HSNkkCi/J8+7lRDwhwmzdXU6andDh9MAaB5jIlEgvo/94cHBwQcXI+4Rh3rRkv89ND60L7eTzwuUYb4fiEM+9Lj+v/R+YVL9z0kOrQF3qhSl9TEQZQ+i9UVPaEjL7AMkZCL6CLeD7j/NyOdKJEDfvUuktl1okqKsHA4EBZakSzFTq/mwiVqtMXeDtW7URxDZHJ2AyyuzKQjpkKsNXFka4Li44z94Ja3xP5s/RV+2BGWEx9f7CQXd9Y8HHS/QYSSWu9kVCGSxZ0smN4Vg+rEcM/jUQDSwAh6RYX3ef04SEN7DedbVn099ZfKW0YRBcTy2T1XVYfk6FTc/D787Yg/Jm89MlD/WTw1mcobO0U78lTrF82u7/ANg4KhFfY3ayiBO5LdbdXb389jWkwKgu7s71yWu1Ng7aRNPtsiR1TsQ9YBB2t0u41K+1SL3tXGPjx+GUI3lWIjN7LzEUYLhwsrF97VmIXUoZq8m4j+ZwzvPkT3bdG8yQH3TN/mBpPO93OWH/9t2v3Xl7vvtS840xc/+GNwOG8X01tyvctqp3mFrE4hE0zTpyA5fz9FeBOSG2RF/qdF0S1aRVWVPsvQXSIZ1VCAWtTEuID74wx2WASfxckg0UpftdY/0eL2cc3ryupAzfl3TsHpWWiHXNnQJymYb28r+OEgIDok8lvYRrS4Qf9fTtVvV9HHUFGBXqZSMAc0y33F0MaB/Kj28WN1WehqeedX+ntzYWxndsIw5Frjj8IvhVX87SHZYPLqYgePfLTRuqAZUKflKKXxRgTYrI0qirI7pI2HsaFrOaWFGPLbF8=";
+
+    function b64ToBytes(b64) {
+      const bin = atob(b64);
+      const out = new Uint8Array(bin.length);
+      for (let i = 0; i < bin.length; i++) out[i] = bin.charCodeAt(i);
+      return out;
+    }
+
+    async function decryptBlob(password) {
+      const data = b64ToBytes(B64);
+      const salt = data.slice(0, 16);
+      const iv = data.slice(16, 28);
+      const ct = data.slice(28);
+      const keyMaterial = await crypto.subtle.importKey(
+        "raw", new TextEncoder().encode(password),
+        "PBKDF2", false, ["deriveKey"]
+      );
+      const key = await crypto.subtle.deriveKey(
+        { name: "PBKDF2", salt: salt, iterations: ITERATIONS, hash: "SHA-256" },
+        keyMaterial,
+        { name: "AES-GCM", length: 256 },
+        false, ["decrypt"]
+      );
+      const pt = await crypto.subtle.decrypt({ name: "AES-GCM", iv: iv }, key, ct);
+      return new TextDecoder().decode(pt);
+    }
+
+    const form = document.getElementById("logins-form");
+    const input = document.getElementById("logins-password");
+    const errEl = document.getElementById("logins-error");
+    const gate = document.getElementById("logins-gate");
+    const content = document.getElementById("logins-content");
+
+    form.addEventListener("submit", async function(e) {
+      e.preventDefault();
+      errEl.style.display = "none";
+      try {
+        const html = await decryptBlob(input.value);
+        content.innerHTML = html;
+        content.style.display = "block";
+        gate.style.display = "none";
+      } catch (err) {
+        errEl.style.display = "block";
+        input.value = "";
+        input.focus();
+      }
+    });
+  })();
+  </script>
 </div>
 
 </div><!-- /container -->
