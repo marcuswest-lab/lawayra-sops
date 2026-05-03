@@ -509,6 +509,7 @@
     <a href="#s13" class="toc-item"><span class="toc-num">13</span><span class="toc-label">How to Change Permissions in GHL</span></a>
     <a href="#s14" class="toc-item"><span class="toc-num">14</span><span class="toc-label">AI Appointment Setter Prompt</span></a>
     <a href="#s15" class="toc-item"><span class="toc-num">15</span><span class="toc-label">Logins</span></a>
+    <a href="#s16" class="toc-item"><span class="toc-num">16</span><span class="toc-label">Sales by Source Weekly Sync</span></a>
   </div>
 </div>
 
@@ -1365,6 +1366,131 @@
     });
   })();
   </script>
+</div>
+
+<!-- ==================== SECTION 16: SALES BY SOURCE WEEKLY SYNC ==================== -->
+<div class="section" id="s16">
+  <div class="section-number">Section 16</div>
+  <h2>Sales by Source Weekly Sync</h2>
+  <p class="section-subtitle">A weekly chore that takes ~3 minutes. Run every Monday morning so the dashboard reflects last week. If anything fails, ping Marcus in <code>#martech</code> &mdash; do NOT keep clicking buttons.</p>
+
+  <div class="info-card">
+    <div class="info-card-header">
+      <span class="info-card-title">What you'll need</span>
+    </div>
+    <div class="info-card-body">
+      <p><strong>BookingLayer:</strong> <a href="https://app.bookinglayer.io" target="_blank">app.bookinglayer.io</a> &mdash; admin@lawayra.com (password in team password manager)</p>
+      <p><strong>Sales by Source spreadsheet:</strong> <a href="https://docs.google.com/spreadsheets/d/139G-OUoApI5ksdSMXMe_WE8geaw_mZ3Sv8PYvBDsq5w" target="_blank">Open spreadsheet</a></p>
+      <p><strong>Backing script:</strong> <code>sales-by-source-weekly-sync.gs</code> in the <code>lawayra-content-strategy</code> repo (already pasted into the spreadsheet's bound Apps Script)</p>
+    </div>
+  </div>
+
+  <h3>Step 1 &mdash; Export from BookingLayer (1 min)</h3>
+  <p>Two reports to export.</p>
+
+  <ol class="step-list">
+    <li><strong>Bookings export</strong> &mdash; Open <a href="https://app.bookinglayer.io" target="_blank">app.bookinglayer.io</a> &rarr; <strong>Reports</strong> in the left sidebar &rarr; <strong>Bookings</strong>. Click <strong>Export</strong> &rarr; <strong>xlsx</strong>. Open the file and confirm columns: <code>Created on | Source | Booking # | Status | Check-in on | Booker | Total | Due | Pax</code>.</li>
+    <li><strong>"How did you hear" export</strong> &mdash; Open <a href="https://app.bookinglayer.io/reports_v2/edit/019ca9d3-8267-72dd-87c9-a8be89b7095d" target="_blank">this exact link</a>. Click <strong>Export</strong> &rarr; <strong>xlsx</strong>. Open the file and confirm columns: <code>Booking: Created at | Booking: Reference | Guest: How did you head about us? (checkout) | How did you hear about us? AF | Person: Email</code>.</li>
+  </ol>
+
+  <div class="callout">
+    <strong>If either export looks empty or columns are missing,</strong> stop and ping Marcus. Do not paste partial data.
+  </div>
+
+  <h3>Step 2 &mdash; Paste into the spreadsheet (1 min)</h3>
+
+  <ol class="step-list">
+    <li>Open the <a href="https://docs.google.com/spreadsheets/d/139G-OUoApI5ksdSMXMe_WE8geaw_mZ3Sv8PYvBDsq5w" target="_blank">Sales by Source spreadsheet</a>.</li>
+    <li>At the bottom, click the <code>BL_Bookings</code> tab.</li>
+    <li>Click cell A1.</li>
+    <li>Switch to your downloaded <strong>Bookings</strong> xlsx &rarr; <strong>Cmd+A</strong> (select all) &rarr; <strong>Cmd+C</strong> (copy).</li>
+    <li>Switch back to the spreadsheet &rarr; <strong>Cmd+V</strong>. The whole sheet populates. (If old data was there, paste overwrites it &mdash; that's fine.)</li>
+    <li>Click the <code>BL_HowDidYouHear</code> tab. Repeat: cell A1, paste from the <strong>"How did you hear"</strong> xlsx.</li>
+  </ol>
+
+  <h3>Step 3 &mdash; Run the sync (30 sec)</h3>
+
+  <ol class="step-list">
+    <li>In the spreadsheet, click <strong>Extensions</strong> (top menu) &rarr; <strong>Apps Script</strong>.</li>
+    <li>A new tab opens with code. Find the function dropdown at the top.</li>
+    <li>Choose <code>runWeeklySync</code> from the dropdown.</li>
+    <li>Click the <strong>&#9654; Run</strong> button.</li>
+    <li><strong>First time only:</strong> Google asks for permission. Click "Review permissions" &rarr; choose your account &rarr; "Allow".</li>
+    <li>Wait ~30 seconds. A popup titled <strong>"Weekly Sync Complete"</strong> appears with a summary.</li>
+  </ol>
+
+  <h3>Step 4 &mdash; Read the summary</h3>
+  <p>Example output:</p>
+  <pre style="background: #1a1a1a; color: #eaeaea; padding: 16px; border-radius: 4px; font-size: 12px; overflow-x: auto;">
+1. BL EXPORT SYNC
+   Booking Source updated:  12
+   Status updated:          3
+   Self-Reported filled:    8
+   Email filled:            6
+   Guest Name filled:       2
+   Amount filled:           1
+   Refs not found in BL:    0
+
+2. SOURCE CATEGORY (GG Leads override)
+   Google Ads attributed:   84
+   Organic Search/SEO:      49
+   Other categorized:       97
+   Cells updated:           5
+
+3. ORPHAN CLEANUP
+   Pending/draft rows deleted: 4
+
+4. DUPLICATE CHECK
+   Duplicate Booking Refs flagged: 1
+   &rarr; Resolve these manually:
+     - 2026-0275 (rows 99, 100)</pre>
+
+  <h3>What the numbers mean</h3>
+  <table class="data-table">
+    <thead>
+      <tr><th>Field</th><th>What it means</th><th>Action needed?</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Refs not found in BL &gt; 0</td><td>Spreadsheet has rows for bookings missing from your BL export (usually older bookings not in the export window)</td><td>Usually no &mdash; safe to ignore unless &gt; 5</td></tr>
+      <tr><td>Google Ads attributed</td><td>Total bookings matched to a Google Ads lead email &mdash; the main commission attribution number</td><td>No &mdash; informational</td></tr>
+      <tr><td>Pending/draft rows deleted &gt; 0</td><td>Script cleaned up Zapier orphan inserts</td><td>No &mdash; this is desired cleanup</td></tr>
+      <tr><td><strong>Duplicate Booking Refs flagged &gt; 0</strong></td><td>Same Booking Ref appears on multiple rows (Booking Ref cell highlighted red in column D)</td><td><strong>YES</strong> &mdash; resolve manually. Delete the wrong row.</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Step 5 &mdash; Done</h3>
+  <p>Close the Apps Script tab. The Sales by Source Looker Studio dashboard refreshes automatically.</p>
+
+  <div class="callout">
+    <strong>What this DOES NOT do:</strong>
+    <br>&bull; Does <strong>not</strong> push data to the Sales Dashboard (per-call rep tracker). That happens automatically nightly via <code>updateSalesOutcomesV3</code>.
+    <br>&bull; Does <strong>not</strong> update the Marketing/Ads Dashboard (different sheet, separate automation).
+    <br>&bull; Does <strong>not</strong> fix the Zapier "pending row leak" upstream &mdash; only cleans symptoms. If lots of pending rows show up between syncs, escalate to Marcus.
+  </div>
+
+  <h3>Troubleshooting</h3>
+  <table class="data-table">
+    <thead>
+      <tr><th>Problem</th><th>Fix</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>"BL_Bookings tab missing" error</td><td>You skipped Step 2 &mdash; go paste the BL Bookings export first</td></tr>
+      <tr><td>"BL_HowDidYouHear tab missing" error</td><td>Same &mdash; paste the "How did you hear" export</td></tr>
+      <tr><td>"BL_Bookings is empty" error</td><td>Your paste didn't work. Re-copy &mdash; make sure header row 1 is included</td></tr>
+      <tr><td>Popup never appears</td><td>Check Apps Script "Execution log" at bottom for the error &mdash; screenshot to Marcus</td></tr>
+      <tr><td>Numbers look wildly off</td><td>Don't re-run. Screenshot the popup and ping Marcus</td></tr>
+      <tr><td>Duplicate Booking Refs &mdash; not sure which to delete</td><td>Don't guess. Ping Marcus with the Booking Ref</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout" style="border-color: var(--danger, #b34100);">
+    <strong>Escalate to Marcus immediately if:</strong>
+    <br>&bull; Any error popup
+    <br>&bull; Duplicate Booking Refs you can't confidently resolve
+    <br>&bull; More than 5 "Refs not found in BL" (BL export may be incomplete)
+    <br>&bull; More than 10 orphan pending rows in one week (Zapier is leaking &mdash; needs upstream fix)
+    <br>&bull; New rows showing up with no Booking Ref at all
+  </div>
 </div>
 
 </div><!-- /container -->
