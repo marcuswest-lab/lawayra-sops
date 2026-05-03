@@ -484,61 +484,28 @@
     transition: color 0.2s;
   }
 
-  /* ===== Collapsible sections ===== */
-  .section h2 {
-    cursor: pointer;
-    user-select: none;
-    display: flex;
-    align-items: center;
-    gap: 16px;
-  }
-  .section h2::after {
-    content: '+';
-    margin-left: auto;
-    font-size: 28px;
-    font-weight: 300;
-    color: var(--text-muted);
-    transition: transform 0.2s, color 0.2s;
-    line-height: 1;
-  }
-  .section h2:hover::after { color: var(--accent); }
-  .section.expanded h2::after {
-    content: '\2212'; /* minus sign */
-    color: var(--accent);
-  }
-  /* Collapsed state: hide everything in the section EXCEPT the header */
-  .section > *:not(.section-number):not(h2):not(.section-subtitle) {
-    display: none;
-  }
-  .section.expanded > * {
-    display: revert;
-  }
-  /* Subtitle dimmed slightly when collapsed for visual hierarchy */
-  .section:not(.expanded) .section-subtitle {
-    opacity: 0.65;
-  }
-  /* Expand/Collapse all controls */
-  .toc-controls {
-    display: flex;
-    gap: 12px;
-    margin: 16px 0 24px 0;
-  }
-  .toc-controls button {
-    background: transparent;
-    border: 1px solid rgba(255,255,255,0.15);
-    color: var(--text-muted);
+  /* ===== Back-to-top link at end of each section ===== */
+  .back-to-top {
+    display: inline-block;
+    margin-top: 32px;
     padding: 8px 16px;
-    font-family: inherit;
-    font-size: 12px;
+    font-size: 11px;
+    font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    cursor: pointer;
-    transition: all 0.2s;
+    letter-spacing: 1.5px;
+    color: var(--text-muted);
+    border: 1px solid rgba(255,255,255,0.12);
     border-radius: 2px;
+    text-decoration: none;
+    transition: all 0.2s;
   }
-  .toc-controls button:hover {
-    border-color: var(--accent);
+  .back-to-top:hover {
     color: var(--accent);
+    border-color: var(--accent);
+  }
+  .back-to-top::before {
+    content: '\2191';
+    margin-right: 8px;
   }
 </style>
 </head>
@@ -562,10 +529,6 @@
 <div class="container">
 <div class="toc">
   <h2>Contents</h2>
-  <div class="toc-controls">
-    <button type="button" id="expand-all-btn">Expand all</button>
-    <button type="button" id="collapse-all-btn">Collapse all</button>
-  </div>
   <h3 class="toc-part-heading">Part 1 — Overview</h3>
   <div class="toc-grid">
     <a href="#s01" class="toc-item"><span class="toc-num">01</span><span class="toc-label">How It All Connects</span></a>
@@ -1744,42 +1707,14 @@ fixMarketingDashboardDates()    # Same for Marketing Dashboard (already on daily
 
 <script>
 (function() {
-  // Make every section h2 click-to-toggle
-  var sections = document.querySelectorAll('.section');
-  sections.forEach(function(sec) {
-    var h2 = sec.querySelector('h2');
-    if (!h2) return;
-    h2.addEventListener('click', function() {
-      sec.classList.toggle('expanded');
-    });
+  // Add a "Back to top" link to the bottom of every section
+  document.querySelectorAll('.section').forEach(function(sec) {
+    var link = document.createElement('a');
+    link.href = '#top';
+    link.className = 'back-to-top';
+    link.textContent = 'Back to top';
+    sec.appendChild(link);
   });
-
-  // Auto-expand the section pointed to by the URL hash (e.g. #s10 from a TOC link)
-  function expandFromHash() {
-    if (!window.location.hash) return;
-    var target = document.querySelector(window.location.hash);
-    if (target && target.classList.contains('section')) {
-      target.classList.add('expanded');
-      // Re-scroll after expansion so the user lands at the right spot
-      setTimeout(function() { target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 50);
-    }
-  }
-  window.addEventListener('hashchange', expandFromHash);
-  expandFromHash();
-
-  // Expand all / Collapse all buttons
-  var expandBtn = document.getElementById('expand-all-btn');
-  var collapseBtn = document.getElementById('collapse-all-btn');
-  if (expandBtn) {
-    expandBtn.addEventListener('click', function() {
-      sections.forEach(function(s) { s.classList.add('expanded'); });
-    });
-  }
-  if (collapseBtn) {
-    collapseBtn.addEventListener('click', function() {
-      sections.forEach(function(s) { s.classList.remove('expanded'); });
-    });
-  }
 })();
 </script>
 
