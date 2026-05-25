@@ -423,3 +423,188 @@ This process is used across meetups, workshops, and Sunday calls.
 3. **Send test email** — Send to yourself first to check formatting and links.
 4. **Broadcast via Drip** — Send to the appropriate segment/list. [Loom walkthrough](https://www.loom.com/share/5a22821ed2df4c828d894258dd1868e7).
 5. **Confirm delivery** — Check Drip for open/click rates after sending.
+
+---
+
+## 9. VA Playbook — Inner Circle (Simple Steps)
+
+This section is for the Virtual Assistant (VA) who manages new members. Read this section. You do not need to read Section 8 — that one is for the manager.
+
+### Words to know
+
+| Word | What it means |
+|------|---------------|
+| **Subscription** | A customer pays every month or every year. PayPal charges them automatically. |
+| **Inner Circle** | The paid group inside our Circle community. Only paying members can see it. |
+| **Member** | A person who pays for Inner Circle. |
+| **Active** | The member is still paying. Their payment did not fail. |
+| **Cancelled** | The member stopped paying. We must remove them from Inner Circle. |
+| **Members Tracker** | The Google Sheet where we write all members. The link is in the team WhatsApp group. |
+| **Ops inbox** | The email inbox where PayPal sends messages. The login is saved in our password manager. |
+
+---
+
+### 9.1 When a new person subscribes
+
+**Do this every time you see a new PayPal email that says "New subscription".**
+
+#### Part A — Open the email
+1. Open Gmail.
+2. Look in the Ops inbox.
+3. Find the email from PayPal. The subject says **"New subscription"** or **"You received a payment"**.
+4. Open the email.
+5. Write down these things on a piece of paper or on the screen:
+   - Customer **full name**
+   - Customer **email**
+   - **Plan** (Monthly or Annual)
+   - **First payment date** (the date in the email)
+   - **PayPal Subscription ID** (a long code that starts with "I-" — example: `I-BW452GLLEP1G`)
+
+#### Part B — Add them to the Members Tracker
+
+6. Open the **Members Tracker** Google Sheet. (Link is in WhatsApp group.)
+7. Go to the tab called **"Members"**.
+8. Click on the first empty row.
+9. Type the information in each column:
+   - Column A: **Name**
+   - Column B: **Email**
+   - Column C: **PayPal Subscription ID**
+   - Column D: **Plan** — type `Monthly` or `Annual`
+   - Column E: **First Payment Date** — type the date like `2026-05-25`
+   - Column F: **Last Payment Date** — same as First Payment Date for now
+   - Column I: **Status** — type `Active`
+   - Column J: **Circle Added?** — leave empty for now
+10. Save the sheet. (Google Sheets saves automatically.)
+
+#### Part C — Add them to Circle (Inner Circle group)
+
+11. Open a new browser tab.
+12. Go to: **https://lawayra-family.circle.so/**
+13. Login with the Circle admin account. (Login is in password manager.)
+14. On the top right, click your profile picture.
+15. Click **"Admin"** (Admin panel).
+16. On the left menu, click **"Members"**.
+17. On the top right, click the blue button **"Add Member"**.
+18. A box opens. Type the customer's email (the same email from PayPal).
+19. Under **"Add to spaces"**, click the dropdown.
+20. Find **"Inner Circle"** and click it.
+21. Click the blue button **"Send invite"**.
+22. Wait 2 seconds. You will see a message that says "Invite sent" ✅.
+
+#### Part D — Mark them as added in the sheet
+
+23. Go back to the Members Tracker Google Sheet.
+24. Find the row you created.
+25. In Column J **(Circle Added?)** — type `✓` or `Yes`.
+26. You are done. ✅
+
+#### Part E — Tell the team
+
+27. Open WhatsApp.
+28. Go to the **"Ops"** group.
+29. Send a message:
+    > New Inner Circle member added: [name] ([plan]). ✅
+
+---
+
+### 9.2 When a person cancels OR a payment fails
+
+**Do this every time you see a PayPal email that says "Subscription cancelled" or "Payment failed".**
+
+#### Part A — Read the email carefully
+
+1. Open Gmail. Look in the Ops inbox.
+2. Find the email from PayPal.
+3. Look at the subject:
+   - If it says **"Subscription cancelled"** → go to Part B.
+   - If it says **"Payment failed"** or **"Payment declined"** → **STOP**. Do not remove the member yet. Send a message in WhatsApp Ops group and wait for instructions. PayPal will try again for 3 days.
+
+#### Part B — Update the Members Tracker
+
+4. Open the **Members Tracker** Google Sheet.
+5. Go to the **"Members"** tab.
+6. Find the member's row. (You can use **Edit → Find** to search by email.)
+7. In Column I **(Status)** — change `Active` to `Cancelled`.
+8. Save the sheet.
+
+#### Part C — Remove from Circle
+
+9. Open Circle: **https://lawayra-family.circle.so/**
+10. Login with the admin account.
+11. Click profile picture → **"Admin"** → **"Members"**.
+12. In the search box, type the member's email.
+13. Click on the member's name to open their profile.
+14. Click the tab **"Spaces"**.
+15. Find **"Inner Circle"** in the list.
+16. Click the **three dots (⋮)** next to "Inner Circle".
+17. Click **"Remove from space group"**.
+18. A box asks "Are you sure?" — click **"Yes, remove"**.
+
+#### ⚠️ Important — DO NOT do this
+
+- ❌ **Do NOT delete the member's account.** They still have free community access. Only remove from Inner Circle.
+- ❌ **Do NOT delete their row in the spreadsheet.** Keep the row. Just change Status to `Cancelled`.
+
+#### Part D — Tell the team
+
+19. Open WhatsApp → **"Ops"** group.
+20. Send a message:
+    > Inner Circle member cancelled: [name]. Removed from Circle. ✅
+
+---
+
+### 9.3 Every Monday — Weekly review
+
+**Do this every Monday morning.**
+
+1. Open the **Members Tracker** Google Sheet.
+2. Go to the **"Members"** tab.
+3. Look at Column K **(Free Retreat Eligible?)**.
+4. Sort or filter Column K to show only rows that say **"ELIGIBLE"**.
+5. For every row that says ELIGIBLE:
+   - Copy the **Name** and **Email**.
+   - Open WhatsApp → **"Ops"** group.
+   - Send a message:
+     > 🎉 New free retreat eligible: [name] — [email]. Pinging Integration Coach.
+6. Wait for the Integration Coach to reply with the next steps.
+7. When the Integration Coach books the retreat for the member, the manager will tell you.
+8. After the retreat is booked:
+   - Go back to the spreadsheet.
+   - Find that member's row.
+   - In Column L **(Free Retreat Claimed?)** — type `✓`.
+   - In Column M **(Free Retreat Date)** — type the retreat date.
+
+---
+
+### 9.4 If something is wrong
+
+If you do not understand something, or if you see an email that does not match these instructions:
+
+1. ❗ **Do not guess.** Do not click "Cancel" or "Refund" in PayPal.
+2. Take a screenshot of the email.
+3. Send the screenshot in WhatsApp → **"Ops"** group.
+4. Write: "I need help with this email. What should I do?"
+5. Wait for instructions.
+
+---
+
+### 9.5 Quick checklist
+
+**New subscription:**
+- [ ] Read PayPal email
+- [ ] Add member to Google Sheet
+- [ ] Add member to Circle Inner Circle
+- [ ] Mark "Circle Added? = ✓"
+- [ ] Send WhatsApp message
+
+**Cancellation:**
+- [ ] Read PayPal email (confirm it says "cancelled", not "failed")
+- [ ] Change Status to "Cancelled" in sheet
+- [ ] Remove from Inner Circle in Circle
+- [ ] DO NOT delete account or row
+- [ ] Send WhatsApp message
+
+**Every Monday:**
+- [ ] Open Members Tracker
+- [ ] Filter Column K = "ELIGIBLE"
+- [ ] Send WhatsApp message for each eligible member

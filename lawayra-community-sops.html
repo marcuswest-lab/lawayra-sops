@@ -495,6 +495,7 @@
     <a href="#livestreams"><span>04</span> Livestreams</a>
     <a href="#integration"><span>05</span> 6-Week Program</a>
     <a href="#paid-membership"><span>06</span> Paid Membership (Inner Circle)</a>
+    <a href="#va-playbook"><span>07</span> VA Playbook (Simple Steps)</a>
     <a href="#drip"><span>&bull;</span> Drip Email Process</a>
     <a href="#resources"><span>&bull;</span> Resources &amp; Links</a>
     <a href="#pipeline"><span>&bull;</span> Pipeline</a>
@@ -891,6 +892,232 @@
       <tr><td>Define cancellation flow (immediate access removal? end of billing period?)</td><td>Ops</td><td><span class="tag tag-pending">TBD</span></td></tr>
     </tbody>
   </table>
+</div>
+
+<!-- ==================== SOP 7: VA PLAYBOOK ==================== -->
+<div class="section" id="va-playbook">
+  <div class="section-number">SOP 07</div>
+  <h2>VA Playbook — Inner Circle (Simple Steps)</h2>
+  <p class="section-subtitle">This section is for the Virtual Assistant (VA) who manages new members. Read this section only. You do not need to read SOP 06 — that one is for the manager.</p>
+
+  <h3>Words to know</h3>
+  <table class="data-table">
+    <thead><tr><th>Word</th><th>What it means</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Subscription</strong></td><td>A customer pays every month or every year. PayPal charges them automatically.</td></tr>
+      <tr><td><strong>Inner Circle</strong></td><td>The paid group inside our Circle community. Only paying members can see it.</td></tr>
+      <tr><td><strong>Member</strong></td><td>A person who pays for Inner Circle.</td></tr>
+      <tr><td><strong>Active</strong></td><td>The member is still paying. Their payment did not fail.</td></tr>
+      <tr><td><strong>Cancelled</strong></td><td>The member stopped paying. We must remove them from Inner Circle.</td></tr>
+      <tr><td><strong>Members Tracker</strong></td><td>The Google Sheet where we write all members. The link is in the team WhatsApp group.</td></tr>
+      <tr><td><strong>Ops inbox</strong></td><td>The email inbox where PayPal sends messages. The login is in our password manager.</td></tr>
+    </tbody>
+  </table>
+
+  <h3>7.1 When a new person subscribes</h3>
+  <p>Do this every time you see a new PayPal email that says <strong>"New subscription"</strong>.</p>
+
+  <h4>Part A — Open the email</h4>
+  <ol class="step-list">
+    <li>Open Gmail.</li>
+    <li>Look in the Ops inbox.</li>
+    <li>Find the email from PayPal. The subject says <strong>"New subscription"</strong> or <strong>"You received a payment"</strong>.</li>
+    <li>Open the email.</li>
+    <li>Write down these things on paper or on the screen:
+      <ul>
+        <li>Customer <strong>full name</strong></li>
+        <li>Customer <strong>email</strong></li>
+        <li><strong>Plan</strong> (Monthly or Annual)</li>
+        <li><strong>First payment date</strong> (the date in the email)</li>
+        <li><strong>PayPal Subscription ID</strong> (a long code that starts with "I-" — example: <code>I-BW452GLLEP1G</code>)</li>
+      </ul>
+    </li>
+  </ol>
+
+  <h4>Part B — Add them to the Members Tracker</h4>
+  <ol class="step-list" start="6">
+    <li>Open the <strong>Members Tracker</strong> Google Sheet. (Link is in WhatsApp group.)</li>
+    <li>Go to the tab called <strong>"Members"</strong>.</li>
+    <li>Click on the first empty row.</li>
+    <li>Type the information in each column:
+      <ul>
+        <li>Column A: <strong>Name</strong></li>
+        <li>Column B: <strong>Email</strong></li>
+        <li>Column C: <strong>PayPal Subscription ID</strong></li>
+        <li>Column D: <strong>Plan</strong> — type <code>Monthly</code> or <code>Annual</code></li>
+        <li>Column E: <strong>First Payment Date</strong> — type the date like <code>2026-05-25</code></li>
+        <li>Column F: <strong>Last Payment Date</strong> — same as First Payment Date for now</li>
+        <li>Column I: <strong>Status</strong> — type <code>Active</code></li>
+        <li>Column J: <strong>Circle Added?</strong> — leave empty for now</li>
+      </ul>
+    </li>
+    <li>Save the sheet. (Google Sheets saves automatically.)</li>
+  </ol>
+
+  <h4>Part C — Add them to Circle (Inner Circle group)</h4>
+  <ol class="step-list" start="11">
+    <li>Open a new browser tab.</li>
+    <li>Go to: <a href="https://lawayra-family.circle.so/" target="_blank">https://lawayra-family.circle.so/</a></li>
+    <li>Login with the Circle admin account. (Login is in password manager.)</li>
+    <li>On the top right, click your profile picture.</li>
+    <li>Click <strong>"Admin"</strong>.</li>
+    <li>On the left menu, click <strong>"Members"</strong>.</li>
+    <li>On the top right, click the blue button <strong>"Add Member"</strong>.</li>
+    <li>A box opens. Type the customer's email (the same email from PayPal).</li>
+    <li>Under <strong>"Add to spaces"</strong>, click the dropdown.</li>
+    <li>Find <strong>"Inner Circle"</strong> and click it.</li>
+    <li>Click the blue button <strong>"Send invite"</strong>.</li>
+    <li>Wait 2 seconds. You will see a message that says "Invite sent" ✅.</li>
+  </ol>
+
+  <h4>Part D — Mark them as added in the sheet</h4>
+  <ol class="step-list" start="23">
+    <li>Go back to the Members Tracker Google Sheet.</li>
+    <li>Find the row you created.</li>
+    <li>In Column J (<strong>Circle Added?</strong>) — type <code>✓</code> or <code>Yes</code>.</li>
+    <li>You are done. ✅</li>
+  </ol>
+
+  <h4>Part E — Tell the team</h4>
+  <ol class="step-list" start="27">
+    <li>Open WhatsApp.</li>
+    <li>Go to the <strong>"Ops"</strong> group.</li>
+    <li>Send a message: <em>"New Inner Circle member added: [name] ([plan]). ✅"</em></li>
+  </ol>
+
+  <h3>7.2 When a person cancels OR a payment fails</h3>
+  <p>Do this every time you see a PayPal email that says <strong>"Subscription cancelled"</strong> or <strong>"Payment failed"</strong>.</p>
+
+  <h4>Part A — Read the email carefully</h4>
+  <ol class="step-list">
+    <li>Open Gmail. Look in the Ops inbox.</li>
+    <li>Find the email from PayPal.</li>
+    <li>Look at the subject:
+      <ul>
+        <li>If it says <strong>"Subscription cancelled"</strong> → go to Part B.</li>
+        <li>If it says <strong>"Payment failed"</strong> or <strong>"Payment declined"</strong> → <strong>STOP</strong>. Do not remove the member yet. Send a message in WhatsApp Ops group and wait for instructions. PayPal will try again for 3 days.</li>
+      </ul>
+    </li>
+  </ol>
+
+  <h4>Part B — Update the Members Tracker</h4>
+  <ol class="step-list" start="4">
+    <li>Open the <strong>Members Tracker</strong> Google Sheet.</li>
+    <li>Go to the <strong>"Members"</strong> tab.</li>
+    <li>Find the member's row. (Use <strong>Edit → Find</strong> to search by email.)</li>
+    <li>In Column I (<strong>Status</strong>) — change <code>Active</code> to <code>Cancelled</code>.</li>
+    <li>Save the sheet.</li>
+  </ol>
+
+  <h4>Part C — Remove from Circle</h4>
+  <ol class="step-list" start="9">
+    <li>Open Circle: <a href="https://lawayra-family.circle.so/" target="_blank">https://lawayra-family.circle.so/</a></li>
+    <li>Login with the admin account.</li>
+    <li>Click profile picture → <strong>"Admin"</strong> → <strong>"Members"</strong>.</li>
+    <li>In the search box, type the member's email.</li>
+    <li>Click on the member's name to open their profile.</li>
+    <li>Click the tab <strong>"Spaces"</strong>.</li>
+    <li>Find <strong>"Inner Circle"</strong> in the list.</li>
+    <li>Click the <strong>three dots (⋮)</strong> next to "Inner Circle".</li>
+    <li>Click <strong>"Remove from space group"</strong>.</li>
+    <li>A box asks "Are you sure?" — click <strong>"Yes, remove"</strong>.</li>
+  </ol>
+
+  <div class="info-card">
+    <div class="info-card-header">
+      <span class="info-card-title">⚠️ Important — DO NOT do this</span>
+      <span class="tag tag-pending">Warning</span>
+    </div>
+    <div class="info-card-body">
+      <p>❌ <strong>Do NOT delete the member's account.</strong> They still have free community access. Only remove from Inner Circle.</p>
+      <p>❌ <strong>Do NOT delete their row in the spreadsheet.</strong> Keep the row. Just change Status to <code>Cancelled</code>.</p>
+    </div>
+  </div>
+
+  <h4>Part D — Tell the team</h4>
+  <ol class="step-list" start="19">
+    <li>Open WhatsApp → <strong>"Ops"</strong> group.</li>
+    <li>Send a message: <em>"Inner Circle member cancelled: [name]. Removed from Circle. ✅"</em></li>
+  </ol>
+
+  <h3>7.3 Every Monday — Weekly review</h3>
+  <p>Do this every Monday morning.</p>
+
+  <ol class="step-list">
+    <li>Open the <strong>Members Tracker</strong> Google Sheet.</li>
+    <li>Go to the <strong>"Members"</strong> tab.</li>
+    <li>Look at Column K (<strong>Free Retreat Eligible?</strong>).</li>
+    <li>Sort or filter Column K to show only rows that say <strong>"ELIGIBLE"</strong>.</li>
+    <li>For every row that says ELIGIBLE:
+      <ul>
+        <li>Copy the <strong>Name</strong> and <strong>Email</strong>.</li>
+        <li>Open WhatsApp → <strong>"Ops"</strong> group.</li>
+        <li>Send a message: <em>"🎉 New free retreat eligible: [name] — [email]. Pinging Integration Coach."</em></li>
+      </ul>
+    </li>
+    <li>Wait for the Integration Coach to reply with the next steps.</li>
+    <li>When the Integration Coach books the retreat for the member, the manager will tell you.</li>
+    <li>After the retreat is booked:
+      <ul>
+        <li>Go back to the spreadsheet.</li>
+        <li>Find that member's row.</li>
+        <li>In Column L (<strong>Free Retreat Claimed?</strong>) — type <code>✓</code>.</li>
+        <li>In Column M (<strong>Free Retreat Date</strong>) — type the retreat date.</li>
+      </ul>
+    </li>
+  </ol>
+
+  <h3>7.4 If something is wrong</h3>
+  <p>If you do not understand something, or if you see an email that does not match these instructions:</p>
+  <ol class="step-list">
+    <li>❗ <strong>Do not guess.</strong> Do not click "Cancel" or "Refund" in PayPal.</li>
+    <li>Take a screenshot of the email.</li>
+    <li>Send the screenshot in WhatsApp → <strong>"Ops"</strong> group.</li>
+    <li>Write: "I need help with this email. What should I do?"</li>
+    <li>Wait for instructions.</li>
+  </ol>
+
+  <h3>7.5 Quick checklist</h3>
+
+  <div class="info-card">
+    <div class="info-card-header">
+      <span class="info-card-title">New subscription</span>
+      <span class="tag tag-active">Daily task</span>
+    </div>
+    <div class="info-card-body">
+      <p>☐ Read PayPal email<br>
+      ☐ Add member to Google Sheet<br>
+      ☐ Add member to Circle Inner Circle<br>
+      ☐ Mark "Circle Added? = ✓"<br>
+      ☐ Send WhatsApp message</p>
+    </div>
+  </div>
+
+  <div class="info-card">
+    <div class="info-card-header">
+      <span class="info-card-title">Cancellation</span>
+      <span class="tag tag-active">Daily task</span>
+    </div>
+    <div class="info-card-body">
+      <p>☐ Read PayPal email (confirm it says "cancelled", not "failed")<br>
+      ☐ Change Status to "Cancelled" in sheet<br>
+      ☐ Remove from Inner Circle in Circle<br>
+      ☐ DO NOT delete account or row<br>
+      ☐ Send WhatsApp message</p>
+    </div>
+  </div>
+
+  <div class="info-card">
+    <div class="info-card-header">
+      <span class="info-card-title">Every Monday</span>
+      <span class="tag tag-info">Weekly task</span>
+    </div>
+    <div class="info-card-body">
+      <p>☐ Open Members Tracker<br>
+      ☐ Filter Column K = "ELIGIBLE"<br>
+      ☐ Send WhatsApp message for each eligible member</p>
+    </div>
+  </div>
 </div>
 
 <!-- ==================== SHARED: SENDING A DRIP EMAIL ==================== -->
