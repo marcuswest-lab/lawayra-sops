@@ -494,6 +494,7 @@
     <a href="#sunday-calls"><span>03</span> Sunday Calls</a>
     <a href="#livestreams"><span>04</span> Livestreams</a>
     <a href="#integration"><span>05</span> 6-Week Program</a>
+    <a href="#paid-membership"><span>06</span> Paid Membership (Inner Circle)</a>
     <a href="#drip"><span>&bull;</span> Drip Email Process</a>
     <a href="#resources"><span>&bull;</span> Resources &amp; Links</a>
     <a href="#pipeline"><span>&bull;</span> Pipeline</a>
@@ -740,6 +741,154 @@
       <tr><td>Circle plan limits confirmed</td><td>Marcus / Juli</td><td><span class="tag tag-pending">TBD</span></td></tr>
       <tr><td>Guided meditation recordings</td><td>Monica</td><td><span class="tag tag-pending">April</span></td></tr>
       <tr><td>Coordinate with Dan's growth circle concept</td><td>Monica / Dan</td><td><span class="tag tag-info">Overlap</span></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ==================== SOP 6: PAID COMMUNITY MEMBERSHIP ==================== -->
+<div class="section" id="paid-membership">
+  <div class="section-number">SOP 06</div>
+  <h2>Paid Community Membership (Inner Circle)</h2>
+  <p class="section-subtitle">Inner Circle is the paid tier of the LaWayra community. Members get private Circle spaces, exclusive content, and earn a free retreat after 6 consecutive monthly payments (or 12 months as an annual member).</p>
+
+  <div class="info-card">
+    <div class="info-card-header">
+      <span class="info-card-title">Pricing</span>
+      <span class="tag tag-pending">Launch Pending</span>
+    </div>
+    <div class="info-card-body">
+      <p><strong>Monthly:</strong> $97 USD &mdash; billed monthly, auto-renews</p>
+      <p><strong>Annual:</strong> $997 USD &mdash; billed yearly, ~14% discount vs monthly</p>
+      <p><strong>Payment processor:</strong> PayPal (Stripe not available for international entity)</p>
+    </div>
+  </div>
+
+  <h3>6.1 Creating the Private Space in Circle</h3>
+  <p><span class="step-owner">Owner: Circle admin</span></p>
+
+  <ol class="step-list">
+    <li><strong>Confirm admin access</strong> &mdash; You need Workspace Admin or Moderator role in <a href="https://lawayra-family.circle.so/" target="_blank">lawayra-family.circle.so</a>.</li>
+    <li><strong>Create a Space Group</strong> &mdash; Sidebar &rarr; <code>+ New Space Group</code> (or <code>Admin &rarr; Space Groups &rarr; New Space Group</code>). Name: <strong>Inner Circle</strong>. Slug: <code>inner-circle</code>. Visibility: <strong>Private</strong> (visible with lock icon, creates upgrade pressure).</li>
+    <li><strong>Create private Spaces inside the group</strong> &mdash; Suggested structure: Inner Circle Chat (discussion), Members-Only Events (calls + workshops), Workshop Replays (recordings), Premium Resources (meditations, PDFs, deep content). For each: choose space type, set visibility to Private, set permissions to "all members can post + comment".</li>
+    <li><strong>Verify gate</strong> &mdash; Open Circle as a non-member (incognito + test account). Confirm the Inner Circle group shows a lock icon and content is not visible. If content leaks, recheck visibility settings.</li>
+  </ol>
+
+  <h3>6.2 Adding Members to the Inner Circle</h3>
+
+  <ol class="step-list">
+    <li><strong>Individual add (new subscriber)</strong> &mdash; <code>Admin &rarr; Members &rarr; Add Member</code>. Enter member email (must match PayPal email). Select Inner Circle Space Group under "Add to spaces". Send invite.</li>
+    <li><strong>Bulk add (launch or batch updates)</strong> &mdash; <code>Admin &rarr; Members</code> &rarr; filter / select members &rarr; <code>Actions &rarr; Add to space group &rarr; Inner Circle</code>.</li>
+    <li><strong>Removing a member (cancellation)</strong> &mdash; <code>Admin &rarr; Members</code> &rarr; search member &rarr; Spaces tab &rarr; remove from Inner Circle Space Group. <em>Do NOT delete their account</em> &mdash; they should retain access to free spaces.</li>
+  </ol>
+
+  <h3>6.3 Subscription Process &mdash; PayPal &rarr; Circle Handoff</h3>
+  <p>Circle does not natively integrate with PayPal (only Stripe), so this is a manual workflow until Zapier automation is built.</p>
+
+  <div class="flow-diagram">
+    <div class="flow-row">
+      <span class="flow-node flow-node-source">Customer clicks PayPal link</span>
+      <span class="flow-arrow">&rarr;</span>
+      <span class="flow-node flow-node-tool">PayPal confirms subscription</span>
+      <span class="flow-arrow">&rarr;</span>
+      <span class="flow-node flow-node-tool">Log in Members Tracker</span>
+      <span class="flow-arrow">&rarr;</span>
+      <span class="flow-node flow-node-tool">Add to Circle Inner Circle</span>
+      <span class="flow-arrow">&rarr;</span>
+      <span class="flow-node flow-node-output">Send welcome email</span>
+    </div>
+  </div>
+
+  <table class="data-table">
+    <thead><tr><th>Step</th><th>Action</th><th>Owner</th><th>Tool</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>Customer clicks public PayPal subscription link</td><td>&mdash;</td><td>PayPal</td></tr>
+      <tr><td>2</td><td>Customer enters PayPal / card details, confirms subscription</td><td>&mdash;</td><td>PayPal</td></tr>
+      <tr><td>3</td><td>PayPal sends confirmation email to ops inbox</td><td>Auto</td><td>Email</td></tr>
+      <tr><td>4</td><td>Log new subscription in Members Tracker spreadsheet</td><td>Ops</td><td>Google Sheet</td></tr>
+      <tr><td>5</td><td>Add member to Circle: <code>Admin &rarr; Members &rarr; Add &rarr; Inner Circle Space Group</code></td><td>Circle admin</td><td>Circle</td></tr>
+      <tr><td>6</td><td>Send welcome email (Drip broadcast or manual)</td><td>Comms</td><td>Drip</td></tr>
+      <tr><td>7</td><td>Member appears in Inner Circle, can access all premium spaces</td><td>&mdash;</td><td>Circle</td></tr>
+    </tbody>
+  </table>
+
+  <p><strong>On monthly renewal:</strong> PayPal auto-charges. No Circle action needed.</p>
+  <p><strong>On payment failure / cancellation:</strong> PayPal notifies ops &rarr; Ops updates tracker (Past Due / Cancelled) &rarr; PayPal retries for ~3 days &rarr; if still failed, Circle admin removes member from Inner Circle and tracker is downgraded.</p>
+
+  <h3>6.4 Member Tracking &amp; Free Retreat Eligibility</h3>
+  <div class="info-card">
+    <div class="info-card-header">
+      <span class="info-card-title">Free Retreat Offer</span>
+      <span class="tag tag-info">Member benefit</span>
+    </div>
+    <div class="info-card-body">
+      <p><strong>6 consecutive monthly payments</strong> OR <strong>12 months active annual membership</strong> = 1 free retreat slot.</p>
+    </div>
+  </div>
+
+  <h4>Members Tracker schema (Google Sheet)</h4>
+  <table class="data-table">
+    <thead><tr><th>Column</th><th>Source</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td>Name</td><td>PayPal</td><td>&mdash;</td></tr>
+      <tr><td>Email</td><td>PayPal</td><td>Must match Circle email</td></tr>
+      <tr><td>PayPal Subscription ID</td><td>PayPal</td><td>Unique recurring billing ID</td></tr>
+      <tr><td>Plan</td><td>Manual</td><td>Monthly / Annual</td></tr>
+      <tr><td>First Payment Date</td><td>PayPal</td><td>Anchors "member since" date</td></tr>
+      <tr><td>Last Payment Date</td><td>PayPal</td><td>Tracks current status</td></tr>
+      <tr><td>Payment Count</td><td>Formula</td><td><code>=COUNTIF(Payments!email_column, [email])</code></td></tr>
+      <tr><td>Months as Member</td><td>Formula</td><td><code>=DATEDIF(first_payment_date, TODAY(), "M")</code></td></tr>
+      <tr><td>Status</td><td>Manual</td><td>Active / Past Due / Cancelled</td></tr>
+      <tr><td>Circle Added?</td><td>Manual</td><td>Confirms fulfillment</td></tr>
+      <tr><td>Free Retreat Eligible?</td><td>Formula</td><td>See formula below</td></tr>
+      <tr><td>Free Retreat Claimed?</td><td>Manual</td><td>Mark when redeemed</td></tr>
+      <tr><td>Free Retreat Date</td><td>Manual</td><td>Retreat dates redeemed</td></tr>
+    </tbody>
+  </table>
+
+  <h4>Eligibility formula</h4>
+  <pre><code>=IF(
+  AND(
+    OR(
+      AND(plan="Monthly", payment_count&gt;=6),
+      AND(plan="Annual", months_as_member&gt;=12)
+    ),
+    status="Active",
+    free_retreat_claimed=FALSE
+  ),
+  "ELIGIBLE",
+  "Not yet"
+)</code></pre>
+
+  <h4>Weekly review process</h4>
+  <ol class="step-list">
+    <li><strong>Every Monday</strong> &mdash; Ops opens Members Tracker. <span class="step-owner">Ops</span></li>
+    <li><strong>Check "Free Retreat Eligible?" column</strong> for new ELIGIBLE rows.</li>
+    <li><strong>Notify team</strong> &mdash; Tag Integration Coach + Founder in WhatsApp ops group.</li>
+    <li><strong>Outreach</strong> &mdash; Integration Coach contacts eligible member to schedule free retreat. <span class="step-owner">Integration Coach</span></li>
+    <li><strong>On booking</strong> &mdash; mark "Free Retreat Claimed?" = ✓ and add retreat dates.</li>
+  </ol>
+
+  <h4>Policy notes (confirm with founder before launch)</h4>
+  <ul>
+    <li><strong>6 consecutive payments</strong> required for monthlies. Failed payments with successful retry within 14-day grace window do NOT break the streak.</li>
+    <li><strong>Annual members eligible after 12 full months</strong> of active membership.</li>
+    <li><strong>Member must be Active at time of retreat redemption</strong> &mdash; cannot redeem then cancel before attending.</li>
+    <li><strong>1 free retreat per 6-payment cycle.</strong> After redemption, counter resets &mdash; next eligible at month 13 (monthly) or year 2 (annual).</li>
+    <li><strong>Free retreat = standard dorm bed</strong> at a 7-day LaWayra retreat (specific SKU to be defined by founder).</li>
+  </ul>
+
+  <h3>Open Items</h3>
+  <table class="data-table">
+    <thead><tr><th>Item</th><th>Owner</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr><td>Finalize free retreat SKU (dorm bed only? full retreat? eligible dates?)</td><td>Founder</td><td><span class="tag tag-pending">TBD</span></td></tr>
+      <tr><td>Create PayPal subscription plans (Monthly $97, Annual $997, USD)</td><td>Ops</td><td><span class="tag tag-pending">TBD</span></td></tr>
+      <tr><td>Publish PayPal subscription links on landing page + Drip</td><td>Tech + Comms</td><td><span class="tag tag-pending">TBD</span></td></tr>
+      <tr><td>Build Members Tracker Google Sheet (per schema above)</td><td>Tech</td><td><span class="tag tag-pending">TBD</span></td></tr>
+      <tr><td>Build Zapier automation: PayPal &rarr; Sheet + Circle invite</td><td>Tech</td><td><span class="tag tag-pending">TBD</span></td></tr>
+      <tr><td>Draft welcome email in Drip (Circle access, orientation)</td><td>Integration Coach + Comms</td><td><span class="tag tag-pending">TBD</span></td></tr>
+      <tr><td>Formalize free retreat policy for sign-up page (terms doc)</td><td>Founder + Ops</td><td><span class="tag tag-pending">TBD</span></td></tr>
+      <tr><td>Define cancellation flow (immediate access removal? end of billing period?)</td><td>Ops</td><td><span class="tag tag-pending">TBD</span></td></tr>
     </tbody>
   </table>
 </div>
