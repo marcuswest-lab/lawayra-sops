@@ -241,6 +241,179 @@ $30 – $50 per program (under discussion).
 
 ---
 
+## 8. Paid Community Membership (Inner Circle)
+
+The "Inner Circle" is the paid tier of the LaWayra community. Members get access to private Circle spaces, exclusive content, and earn a free retreat after 6 consecutive monthly payments (or 12 months as an annual member).
+
+### Pricing
+
+| Plan | Price | Billing | Notes |
+|------|-------|---------|-------|
+| **Monthly** | $97 USD | Every month | Auto-renews |
+| **Annual** | $997 USD | Every year | ~14% discount vs monthly |
+
+Payment is processed via **PayPal** (Stripe is not available because LaWayra is an international entity).
+
+### 8.1 Creating the Private Space in Circle
+
+Owner: **Juli** (Circle admin)
+
+#### Step 1 — Confirm admin access
+You need Workspace **Admin** or **Moderator** role in `lawayra-family.circle.so`.
+
+#### Step 2 — Create a Space Group (recommended structure)
+Wrap all paid spaces in a single Space Group so visibility can be controlled in one place.
+
+1. Sidebar → **+ New Space Group** (or **Admin → Space Groups → New Space Group**)
+2. Name: **Inner Circle** (or "Members Only")
+3. Slug: `inner-circle`
+4. **Visibility**: select **Private**
+   - **Private** = visible in directory with a lock icon (creates upgrade pressure for free members)
+   - **Secret** = fully hidden from non-members
+   - Use **Private** for the paid tier so free members can see it exists.
+5. Save.
+
+#### Step 3 — Create private Spaces inside the group
+Suggested structure:
+
+```
+🔒 Inner Circle [PRIVATE SPACE GROUP]
+├── 💬 Inner Circle Chat — discussion
+├── 📅 Members-Only Events — calls, live workshops
+├── 🎥 Workshop Replays — recordings library
+└── 📚 Premium Resources — guided meditations, PDFs, deep content
+```
+
+For each space:
+1. Hover over the Space Group → click **+**
+2. Choose space type (Posts / Chat / Events / Members / Images depending on purpose)
+3. Set **Visibility** to **Private** (inherits from group, but confirm)
+4. Set **Permissions**: All members of the space can post + comment (recommended)
+5. Save.
+
+#### Step 4 — Verify gate
+1. Open Circle as a non-member account (or use incognito + a test account)
+2. Confirm the Inner Circle group appears with a lock icon and content is not visible
+3. If content is visible to non-members, recheck visibility settings
+
+---
+
+### 8.2 Adding Members to the Inner Circle
+
+#### Individual add (standard for new subscribers)
+1. **Admin → Members → Add Member** (or invite by email)
+2. Enter the member's email (must match their PayPal email)
+3. Select the **Inner Circle Space Group** under "Add to spaces"
+4. Send invite — member receives email with Circle access
+
+#### Bulk add (for launch or batch updates)
+1. **Admin → Members**
+2. Filter or select multiple members
+3. **Actions → Add to space group → Inner Circle**
+
+#### Removing a member (cancellation or non-payment)
+1. **Admin → Members → search for member**
+2. Click their profile → **Spaces** tab
+3. Remove them from **Inner Circle** Space Group (do NOT delete their account — they should retain access to free spaces)
+
+---
+
+### 8.3 Subscription Process — PayPal → Circle Handoff
+
+Since Circle does not natively integrate with PayPal (only Stripe), this is a **manual workflow**. Until automated via Zapier, the steps below run for every new subscriber.
+
+| Step | Action | Owner | Tool |
+|------|--------|-------|------|
+| 1 | Customer clicks public PayPal subscription link from website/email | — | PayPal |
+| 2 | Customer enters PayPal account or card details, confirms subscription | — | PayPal |
+| 3 | PayPal sends confirmation email to LaWayra ops inbox | Auto | PayPal → Email |
+| 4 | Log new subscription in **Members Tracker** spreadsheet | Sarah | Google Sheet |
+| 5 | Add member to Circle: **Admin → Members → Add → Inner Circle Space Group** | Juli | Circle |
+| 6 | Send welcome email (Drip broadcast OR manual) | Kevin / Sarah | Drip |
+| 7 | Member appears in Inner Circle, can access all premium spaces | — | Circle |
+
+**On monthly renewal:** PayPal auto-charges. No Circle action needed.
+
+**On payment failure / cancellation:**
+1. PayPal sends notification to ops inbox
+2. Sarah updates Members Tracker (status: Past Due or Cancelled)
+3. PayPal retries failed payment for ~3 days
+4. If still failed → remove member from Inner Circle (Juli) and downgrade in tracker
+
+**Future automation (planned):** Zapier zap to auto-create Circle invite when PayPal subscription event fires. See Section 8.5.
+
+---
+
+### 8.4 Member Tracking & Free Retreat Eligibility
+
+Sam's offer: **6 consecutive monthly payments OR 12 months active annual membership = 1 free retreat slot.**
+
+#### Tracking spreadsheet schema (Members Tracker — Google Sheet)
+
+| Column | Source | Notes |
+|--------|--------|-------|
+| Name | PayPal | |
+| Email | PayPal | Must match Circle email |
+| PayPal Subscription ID | PayPal | Unique recurring billing ID |
+| Plan | Manual | Monthly / Annual |
+| First Payment Date | PayPal | Anchors the "member since" date |
+| Last Payment Date | PayPal | Tracks current status |
+| Payment Count | Formula | `=COUNTIF(Payments!email_column, [email])` |
+| Months as Member | Formula | `=DATEDIF(first_payment_date, TODAY(), "M")` |
+| Status | Manual | Active / Past Due / Cancelled |
+| Circle Added? | Manual (✓) | Confirms fulfillment |
+| Free Retreat Eligible? | Formula | See below |
+| Free Retreat Claimed? | Manual (✓) | Mark when redeemed |
+| Free Retreat Date | Manual | Retreat dates redeemed |
+
+#### Eligibility formula
+
+```
+=IF(
+  AND(
+    OR(
+      AND(plan="Monthly", payment_count>=6),
+      AND(plan="Annual", months_as_member>=12)
+    ),
+    status="Active",
+    free_retreat_claimed=FALSE
+  ),
+  "ELIGIBLE",
+  "Not yet"
+)
+```
+
+#### Weekly review process (Sarah)
+
+1. **Every Monday** — open Members Tracker
+2. Check column "Free Retreat Eligible?" for new "ELIGIBLE" rows
+3. Notify Monica + Sam in WhatsApp ops group of newly eligible members
+4. Monica reaches out to eligible member to schedule their free retreat
+5. On booking → mark "Free Retreat Claimed?" = ✓ and add retreat dates
+
+#### Policy notes (per Sam — confirm before launch)
+
+- **6 consecutive payments** required for monthlies. Failed payments with successful retry within 14-day grace window do NOT break the streak.
+- **Annual members eligible after 12 full months** (one year of active membership).
+- **Member must be Active at time of retreat redemption** — cannot redeem then cancel before attending.
+- **1 free retreat per 6-payment cycle.** After redemption, the counter resets — next eligible at month 13 (for monthly subscribers) or year 2 (for annual subscribers).
+- **Free retreat = standard dorm bed** at a 7-day LaWayra retreat (specific SKU to be defined by Sam).
+
+---
+
+### 8.5 Open Items / Pipeline
+
+- [ ] **Sam to finalize policy** on free retreat SKU (dorm bed only? full retreat? what dates eligible?)
+- [ ] **PayPal subscription plans** — create Monthly ($97) and Annual ($997) plans, in USD, in PayPal Business. Owner: Sarah.
+- [ ] **PayPal subscription links** — publish on community landing page + share via Drip. Owner: Marcus + Kevin.
+- [ ] **Members Tracker** — build Google Sheet using schema above. Owner: Marcus.
+- [ ] **Zapier automation** — PayPal subscription event → Google Sheet row + Circle invite. Owner: Marcus.
+- [ ] **Welcome email** — draft in Drip for new Inner Circle members (includes Circle access instructions, what's inside, first-week orientation). Owner: Monica + Kevin.
+- [ ] **Terms doc** — formalize free retreat policy for sign-up page. Owner: Sam + Sarah.
+- [ ] **Cancellation flow** — define what happens when a member cancels (immediate access removal? end of billing period?). Owner: Sarah.
+
+---
+
 ## Shared Sub-Process: Sending a Drip Email
 
 This process is used across meetups, workshops, and Sunday calls.
