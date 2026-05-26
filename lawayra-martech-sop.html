@@ -553,10 +553,12 @@
     <a href="#s14" class="toc-item"><span class="toc-num">14</span><span class="toc-label">How to Set Up Claude Code</span></a>
     <a href="#s15" class="toc-item"><span class="toc-num">15</span><span class="toc-label">How to Set Up a Subdomain in GHL</span></a>
     <a href="#s16" class="toc-item"><span class="toc-num">16</span><span class="toc-label">How to Change Permissions in GHL</span></a>
+    <a href="#s17" class="toc-item"><span class="toc-num">17</span><span class="toc-label">Sales Tab Weekly Maintenance</span></a>
+    <a href="#s18" class="toc-item"><span class="toc-num">18</span><span class="toc-label">Dashboard Update Playbook</span></a>
   </div>
   <h3 class="toc-part-heading">Part 4 — Troubleshooting</h3>
   <div class="toc-grid">
-    <a href="#s17" class="toc-item"><span class="toc-num">17</span><span class="toc-label">When Something Breaks</span></a>
+    <a href="#s19" class="toc-item"><span class="toc-num">19</span><span class="toc-label">When Something Breaks</span></a>
   </div>
 
 </div>
@@ -1654,9 +1656,222 @@ fixMarketingDashboardDates()    # Same for Marketing Dashboard (already on daily
   </div>
 </div>
 
-<!-- ==================== SECTION 17: WHEN SOMETHING BREAKS ==================== -->
+<!-- ==================== SECTION 17: SALES TAB WEEKLY MAINTENANCE ==================== -->
 <div class="section" id="s17">
   <div class="section-number">Section 17</div>
+  <h2>Sales Tab Weekly Maintenance</h2>
+  <p class="section-subtitle">A weekly chore that takes 10&ndash;15 minutes. Run every Friday so the Sales tab on the Sales Dashboard reflects last week's bookings. The Sales tab is the rich attribution ledger &mdash; one row per booking with Sales Person, Media Buyer, Source, Retreat Length, etc. Distinct from the Dashboard tab (per-call rep activity) and from Sales by Source (raw BL feed).</p>
+
+  <div class="info-card">
+    <div class="info-card-header">
+      <span class="info-card-title">What you'll need</span>
+    </div>
+    <div class="info-card-body">
+      <p><strong>LW Sales Dashboard:</strong> <a href="https://docs.google.com/spreadsheets/d/1fcBghq6dXp9v_58Lz0b-Fm5iXYlhw4HF00zQUjCSSTU/edit?gid=0#gid=0" target="_blank">Open spreadsheet</a></p>
+      <p><strong>BookingLayer:</strong> <a href="https://app.bookinglayer.io" target="_blank">app.bookinglayer.io</a> &mdash; admin@lawayra.com (password in team password manager)</p>
+      <p><strong>Backing scripts:</strong> <code>update-sales-outcomes-v4.gs</code>, <code>auto-populate-sales-tab.gs</code>, <code>create-sales-tab.gs</code> &mdash; all already pasted into the Sales Dashboard's bound Apps Script.</p>
+    </div>
+  </div>
+
+  <h3>What runs automatically (you don't do anything)</h3>
+  <table class="data-table">
+    <thead>
+      <tr><th>What</th><th>When</th><th>What it does</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>BookingLayer &rarr; Raw Bookings sync (Zapier)</td><td>Every time a booking happens</td><td>Adds the booking to the Sales by Source spreadsheet</td></tr>
+      <tr><td>Discord daily report (n8n)</td><td>Every day at 2:03 AM</td><td>Posts a summary to <code>#sales-tracking</code></td></tr>
+      <tr><td>GHL appointments &rarr; Dashboard tab (n8n)</td><td>Every day at 1:13 AM</td><td>Adds new sales calls to the Dashboard tab</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout">
+    <strong>Why the weekly check matters:</strong> these automations sometimes break silently. Your weekly ritual is the safety net that keeps the Sales tab accurate.
+  </div>
+
+  <h3>Step 1 &mdash; Run 3 scripts (5 min)</h3>
+
+  <ol class="step-list">
+    <li>Open the <a href="https://docs.google.com/spreadsheets/d/1fcBghq6dXp9v_58Lz0b-Fm5iXYlhw4HF00zQUjCSSTU/edit?gid=0#gid=0" target="_blank">LW Sales Dashboard</a>.</li>
+    <li>In the top menu, click <strong>Extensions</strong> &rarr; <strong>Apps Script</strong>. A new tab opens.</li>
+    <li>On the left, click each <code>.gs</code> file below in order. For each: pick the function from the dropdown at the top, click the <strong>&#9654; Run</strong> button, wait until "Execution completed" appears.</li>
+  </ol>
+
+  <table class="data-table">
+    <thead>
+      <tr><th>Order</th><th>Script file</th><th>Function</th><th>What it does</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td><code>update-sales-outcomes-v4.gs</code></td><td><code>updateSalesOutcomesV4</code></td><td>Pulls fresh BL paid bookings into the Dashboard tab</td></tr>
+      <tr><td>2</td><td><code>auto-populate-sales-tab.gs</code></td><td><code>autoPopulateSalesTab</code></td><td>Adds any new bookings to the Sales tab</td></tr>
+      <tr><td>3</td><td><code>create-sales-tab.gs</code></td><td><code>crossReferenceSourceAttribution</code></td><td>Fills in the Source column (GG Ads, Organic, etc.)</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout">
+    <strong>First time only:</strong> Google asks for permission. Click <strong>Review permissions</strong> &rarr; choose your account &rarr; <strong>Allow</strong>. If a script says it took 0 rows or errored, note which one and escalate to Marcus &mdash; do not try to fix it yourself.
+  </div>
+
+  <h3>Step 2 &mdash; Reconcile BookingLayer against the Sales tab (5 min)</h3>
+  <p>This is the most important step. The scripts above sometimes miss bookings. You're the safety net.</p>
+
+  <ol class="step-list">
+    <li>Open <a href="https://app.bookinglayer.io" target="_blank">BookingLayer</a>.</li>
+    <li>Filter by <strong>Status:</strong> <code>paid</code> + <code>deposit paid</code>.</li>
+    <li>Filter by <strong>Created on:</strong> last 7 days.</li>
+    <li>Count the bookings in the BL list.</li>
+    <li>Switch to the <strong>Sales</strong> tab in the spreadsheet.</li>
+    <li>Find rows where column B (Date of Purchase) is in the last 7 days. Count them.</li>
+  </ol>
+
+  <p><strong>If counts match</strong> &rarr; done, move to Step 3.</p>
+  <p><strong>If the Sales tab has fewer rows than BL</strong> &rarr; scroll to the bottom of the Sales tab and add one row per missing booking using this column guide:</p>
+
+  <table class="data-table">
+    <thead>
+      <tr><th>Column</th><th>What to fill in</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>A &mdash; Timeline</td><td>Day of the week (Monday, Tuesday, etc.) for the Date of Purchase</td></tr>
+      <tr><td>B &mdash; Date of Purchase</td><td>The "Created on" date from BookingLayer</td></tr>
+      <tr><td>C &mdash; Name</td><td>The guest's name</td></tr>
+      <tr><td>D &mdash; Retreat Length</td><td><code>4 Days</code>, <code>1 Week</code>, <code>11 Days</code>, or <code>18 Days</code> (from the BL package name)</td></tr>
+      <tr><td>E &mdash; Private/Shared</td><td><code>Y</code> if private cabin, <code>N</code> if shared/dorm</td></tr>
+      <tr><td>F &mdash; Retreat #</td><td>Match the retreat number from BL (e.g. <code>4DAY - 03/12</code>)</td></tr>
+      <tr><td>G &mdash; Amount Closed</td><td>The full BL <strong>Total</strong> amount</td></tr>
+      <tr><td>H &mdash; Amount Collected</td><td>BL <strong>Total minus Due</strong> (for deposits, this is the deposit amount)</td></tr>
+      <tr><td>I &mdash; Source</td><td>Leave blank &mdash; the script in Step 1 fills this in</td></tr>
+      <tr><td>J &mdash; Sales Person</td><td>Pick from the dropdown: <code>Nico</code>, <code>Aliyah</code>, <code>Jacobo</code>, <code>Thomas</code>. If no sales person, type <code>Direct</code>.</td></tr>
+      <tr><td>K &mdash; Media Buyer</td><td>Anything since <strong>10/27/2025 = Andrew</strong> (Marcus owns earlier dates)</td></tr>
+      <tr><td>L &mdash; Retreat Dates</td><td>Start&ndash;end dates of the retreat (e.g. <code>06/04/26 - 06/07/26</code>)</td></tr>
+      <tr><td>M &mdash; Notes</td><td>Type <code>Deposit paid</code> if it's a deposit, otherwise leave blank</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Step 3 &mdash; Scan the most recent 20 rows for missing data (5 min)</h3>
+
+  <ol class="step-list">
+    <li>Sort the Sales tab by Date of Purchase (column B), newest first.</li>
+    <li>Look at the top 20 rows. For any empty cell, follow the rule below.</li>
+  </ol>
+
+  <table class="data-table">
+    <thead>
+      <tr><th>If this column is empty</th><th>Do this</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>G</strong> Amount Closed</td><td>Look up the booking in BL, copy the Total</td></tr>
+      <tr><td><strong>H</strong> Amount Collected</td><td>Look up the booking in BL, copy Total &minus; Due</td></tr>
+      <tr><td><strong>I</strong> Source</td><td>Re-run the third script from Step 1. If still blank, leave it.</td></tr>
+      <tr><td><strong>J</strong> Sales Person</td><td>Check the Dashboard tab for a matching name &mdash; copy the rep name. If none, type <code>Direct</code>.</td></tr>
+      <tr><td><strong>K</strong> Media Buyer</td><td>If date is on or after <strong>10/27/2025</strong>, type <code>Andrew</code>.</td></tr>
+      <tr><td><strong>L</strong> Retreat Dates</td><td>Look up in BL &mdash; the booking shows the retreat date range.</td></tr>
+    </tbody>
+  </table>
+
+  <p>If a row is missing <strong>both name AND amount</strong>, delete the row (it's broken).</p>
+
+  <h3>Done checklist</h3>
+  <ul>
+    <li>All 3 scripts ran successfully</li>
+    <li>BookingLayer count matches Sales tab count for the last 7 days</li>
+    <li>No empty cells in the most recent 20 rows</li>
+    <li>No duplicate rows (same name + same date)</li>
+    <li>Marcus has been told about anything weird</li>
+  </ul>
+
+  <div class="callout" style="border-color: var(--danger, #b34100);">
+    <strong>Escalate to Marcus immediately if:</strong>
+    <br>&bull; A script errored out or said "0 rows"
+    <br>&bull; BookingLayer has more than 3&ndash;4 bookings missing from the Sales tab
+    <br>&bull; You see duplicate rows (same name, same date)
+    <br>&bull; You see a row with weird data you don't understand
+    <br>&bull; BookingLayer itself isn't loading or showing errors
+  </div>
+</div>
+
+<!-- ==================== SECTION 18: DASHBOARD UPDATE PLAYBOOK ==================== -->
+<div class="section" id="s18">
+  <div class="section-number">Section 18</div>
+  <h2>Dashboard Update Playbook</h2>
+  <p class="section-subtitle">The concise workflow for making sure all three dashboards reflect current reality. Most things run on schedule &mdash; use this when the schedule has gaps, you just changed something, or numbers look off.</p>
+
+  <div class="info-card" style="border-left:4px solid var(--accent); margin-bottom:24px;">
+    <h3 style="color:var(--accent); margin-top:0;">The Golden Rule</h3>
+    <p><strong>Refresh the BL helper tabs FIRST.</strong> Every script that "fixes" Sales by Source or Sales Dashboard reads from <code>BL_HowDidYouHear</code> and/or <code>BL_Bookings</code> in the Sales by Source spreadsheet. If those tabs are stale, every downstream script silently runs against bad data and reports success.</p>
+    <p style="margin-bottom:0;">The most common bug pattern: "I ran the script and it said success, but row X is still blank." 90% of the time &mdash; BL helper tabs were stale.</p>
+  </div>
+
+  <h3>Phase A &mdash; Refresh source data (10 min)</h3>
+  <p>Do this every time before running any of the scripts below.</p>
+  <ol>
+    <li>Open BL &rarr; "Bookings" report &rarr; kebab menu &rarr; <strong>Generate now (XLSX)</strong> &rarr; wait for "Report ready" toast &rarr; Download.</li>
+    <li>Open BL &rarr; "How did you hear about us?" report &rarr; same flow &rarr; Download.</li>
+    <li>Open Sales by Source sheet &rarr; <code>BL_Bookings</code> tab &rarr; select all &rarr; paste fresh XLSX over it.</li>
+    <li>Same with <code>BL_HowDidYouHear</code> tab.</li>
+  </ol>
+
+  <h3>Phase B &mdash; Sales by Source (Raw Bookings tab) &mdash; 2 min</h3>
+  <p>Apps Script project: bound to Sales by Source sheet. Run in this order:</p>
+  <ul>
+    <li><code>syncFromBLExports()</code> &mdash; fills Raw Bookings cols E Name, F Email, H Amount, O Status, P Booking Source from BL_Bookings</li>
+    <li><code>updateSourceCategoriesV5()</code> &mdash; fills cols I Self-Reported Source + J Source Category. Reads BL_HowDidYouHear + the Leads master tab. Applies GG Ads email/name override.</li>
+    <li><code>cleanupOrphanPendingRows()</code> (DRY_RUN=true first) &mdash; removes Zapier-created orphan rows (blank name + blank amount + status=pending). Flip flag and re-run.</li>
+  </ul>
+
+  <h3>Phase C &mdash; Sales Dashboard &mdash; 2 min</h3>
+  <ul>
+    <li><code>updateSalesOutcomesV3()</code> &mdash; walks paid Raw Bookings, fills Sales Dashboard Outcome=Sale + Revenue + Cash + Rep. Inserts new rows for direct purchases via sales-team reps.</li>
+    <li><code>backfillOpportunityIds()</code> (DRY_RUN first) &mdash; fills col N for blank rows by name-matching against GHL opps. Required for dedup to work.</li>
+    <li><code>dedupByOpportunityId()</code> (DRY_RUN first) &mdash; collapses duplicate rows sharing the same opp ID.</li>
+    <li><code>backfillCalendarColO()</code> &mdash; fills col O Calendar with actual GHL calendar name.</li>
+  </ul>
+  <p><strong>Caveats:</strong> V3 fills Cash = full Amount for both <code>paid</code> and <code>deposit_paid</code>. For deposit rows, manually correct Cash if you need exact cash-collected. V3 only fills Rep if BL Booking Source matches Nico / Aliyah / Jacobo / Thomas &mdash; anything else leaves rep blank for manual review.</p>
+
+  <h3>Phase D &mdash; LW Ads Dashboard &mdash; 1 min</h3>
+  <p>Apps Script project: bound to LW Ads Dashboard sheet.</p>
+  <ul>
+    <li><code>fixMarketingDashboardDates()</code> &mdash; converts string dates in col B to real Date type so SUMIFS work. Already on 7:30 UTC trigger.</li>
+    <li><code>backfillMarketingDashboardV7()</code> &mdash; fills cols L (Booked Calls), N (Sales), P (Revenue) on GG Daily tab. Reads Raw Bookings paid rows where Source Category = "Google Ads". Already on nightly trigger.</li>
+    <li><code>populateMarketingTrackers()</code> &mdash; rebuilds GG Weekly + GG Monthly tracker tabs with SUMIFS formulas. Only run when you actually want to refresh the tracker views.</li>
+  </ul>
+  <div class="info-card" style="background:rgba(255,180,0,0.08); border-left:3px solid var(--warning); margin:16px 0;">
+    <p style="margin:0;"><strong>Tab references after rename:</strong> As of 2026-05-24, the Ads Dashboard tabs are <code>GG Daily</code>, <code>GG Weekly</code>, <code>GG Monthly</code>, <code>GG Daily Report</code>. If a script references the old <code>Dashboard</code> / <code>Weekly Tracker</code> / <code>Monthly Tracker</code>, it'll silently break.</p>
+  </div>
+
+  <h3>Phase E &mdash; n8n workflows (rarely need manual intervention)</h3>
+  <p>These run on schedule via <code>server.lawayraserver.com</code>. Check via the <a href="https://server.lawayraserver.com/home/workflows" target="_blank">workflows UI</a>:</p>
+  <div class="info-card">
+    <ul style="margin:0;">
+      <li><strong>3ztYQF2wJO3cHDi2</strong> &mdash; LW Booking Sync Pipeline (CSV email trigger). BL CSV &rarr; Raw Bookings.</li>
+      <li><strong>fOTmp4CofwDzsLft</strong> &mdash; LW Source Data Pipeline (CSV email trigger). BL "How did you hear?" CSV &rarr; Raw Bookings col I.</li>
+      <li><strong>jStC73dYSNXQEuV7</strong> &mdash; GHL &gt; LW Sales Dashboard. Daily 1:13 UTC. GHL opps + appointments &rarr; Sales Dashboard (appendOrUpdate by col N).</li>
+      <li><strong>FXxEh8d2nQRZ9sEy</strong> &mdash; LaWayra-Individual-Sales-Sheets. Real-time webhook on pipeline-stage changes.</li>
+      <li><strong>E6K7ts1s0HXYw8JV</strong> &mdash; Google Ads &gt; LW Marketing Dashboard. Daily 1:07 UTC.</li>
+      <li><strong>ZfiXuiG20bwPLj42</strong> &mdash; LW Daily Report &gt; Discord. Daily 2:03 UTC.</li>
+    </ul>
+  </div>
+
+  <h3>Quick reference &mdash; "I just want to..."</h3>
+  <div class="info-card">
+    <table style="width:100%; border-collapse:collapse;">
+      <tr><th style="text-align:left; padding:8px; border-bottom:1px solid var(--border);">Goal</th><th style="text-align:left; padding:8px; border-bottom:1px solid var(--border);">Run</th></tr>
+      <tr><td style="padding:8px;">Make sure recent BL bookings show up</td><td style="padding:8px;">Phase A &rarr; <code>syncFromBLExports</code></td></tr>
+      <tr><td style="padding:8px;">Fix wrong/missing Source Category</td><td style="padding:8px;">Phase A &rarr; <code>updateSourceCategoriesV5</code></td></tr>
+      <tr><td style="padding:8px;">Get a Sale row's Revenue/Cash filled</td><td style="padding:8px;">Phase A &rarr; <code>updateSalesOutcomesV3</code></td></tr>
+      <tr><td style="padding:8px;">Clean up Sales Dashboard duplicates</td><td style="padding:8px;">Phase C &rarr; <code>backfillOpportunityIds</code> then <code>dedupByOpportunityId</code></td></tr>
+      <tr><td style="padding:8px;">Fill missing Calendar (col O)</td><td style="padding:8px;">Phase C &rarr; <code>backfillCalendarColO</code></td></tr>
+      <tr><td style="padding:8px;">Refresh weekly/monthly tracker views</td><td style="padding:8px;">Phase D &rarr; <code>populateMarketingTrackers</code></td></tr>
+      <tr><td style="padding:8px;">See the day's report numbers</td><td style="padding:8px;">Just check Discord &mdash; they post 2:03 / 8:03 UTC</td></tr>
+    </table>
+  </div>
+
+  <p style="margin-top:24px; color:var(--text-muted); font-size:14px;">Full session log of the 5/25-5/26 dashboard overhaul is at <a href="dashboard-session-2026-05-25.html">dashboard-session-2026-05-25.html</a>.</p>
+</div>
+
+<!-- ==================== SECTION 19: WHEN SOMETHING BREAKS ==================== -->
+<div class="section" id="s19">
+  <div class="section-number">Section 19</div>
   <h2>When Something Breaks</h2>
   <p class="section-subtitle">Common issues and how to fix them. Check the most likely cause first.</p>
 
