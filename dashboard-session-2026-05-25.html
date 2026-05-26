@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LW Dashboard Session — May 25-26, 2026</title>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+  :root {
+    --primary: #1a3a2a;
+    --primary-light: #2d5e42;
+    --accent: #c8956c;
+    --bg: #0f1710;
+    --bg-card: #151e17;
+    --bg-code: #0a0e0b;
+    --text: #e8e4df;
+    --text-muted: #9a9590;
+    --text-dim: #6b6560;
+    --border: #2a3a2e;
+    --success: #4ade80;
+    --warning: #fbbf24;
+    --danger: #f87171;
+    --blue: #60a5fa;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  .hero {
+    padding: 70px 60px 50px;
+    background: linear-gradient(165deg, #0f1710 0%, #1a3a2a 50%, #0f1710 100%);
+    border-bottom: 1px solid var(--border);
+  }
+  .hero h1 {
+    font-size: 38px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-bottom: 12px;
+  }
+  .hero .subtitle {
+    color: var(--text-muted);
+    font-size: 16px;
+  }
+  .hero .meta {
+    margin-top: 16px;
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    color: var(--text-dim);
+    font-size: 13px;
+  }
+  .hero .meta span::before {
+    content: '●';
+    color: var(--accent);
+    margin-right: 8px;
+  }
+  nav.tabs {
+    background: var(--bg-card);
+    border-bottom: 1px solid var(--border);
+    padding: 0 60px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    gap: 4px;
+  }
+  nav.tabs button {
+    background: transparent;
+    color: var(--text-muted);
+    border: 0;
+    padding: 18px 22px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: all 0.15s;
+  }
+  nav.tabs button:hover { color: var(--text); }
+  nav.tabs button.active {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+  }
+  main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 50px 40px 100px;
+  }
+  .content { display: none; }
+  .content.active { display: block; }
+
+  /* Markdown styling */
+  .content h1 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-top: 48px;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text);
+  }
+  .content h1:first-child { margin-top: 0; }
+  .content h2 {
+    font-size: 22px;
+    font-weight: 600;
+    margin-top: 40px;
+    margin-bottom: 14px;
+    color: var(--accent);
+  }
+  .content h3 {
+    font-size: 17px;
+    font-weight: 600;
+    margin-top: 28px;
+    margin-bottom: 10px;
+    color: var(--text);
+  }
+  .content h4 {
+    font-size: 15px;
+    font-weight: 600;
+    margin-top: 22px;
+    margin-bottom: 8px;
+    color: var(--text-muted);
+  }
+  .content p {
+    margin-bottom: 14px;
+    color: var(--text);
+  }
+  .content ul, .content ol {
+    margin-bottom: 14px;
+    padding-left: 24px;
+  }
+  .content li { margin-bottom: 4px; }
+  .content strong { color: var(--text); font-weight: 600; }
+  .content em { color: var(--text-muted); }
+  .content a {
+    color: var(--blue);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--blue);
+  }
+  .content a:hover { border-bottom-style: solid; }
+  .content code {
+    font-family: 'SF Mono', Monaco, Consolas, monospace;
+    background: var(--bg-code);
+    color: var(--accent);
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 13px;
+  }
+  .content pre {
+    background: var(--bg-code);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 16px;
+    overflow-x: auto;
+    margin-bottom: 16px;
+  }
+  .content pre code {
+    background: transparent;
+    color: var(--text);
+    padding: 0;
+    font-size: 12.5px;
+    line-height: 1.55;
+  }
+  .content blockquote {
+    border-left: 3px solid var(--accent);
+    padding: 8px 16px;
+    margin: 16px 0;
+    color: var(--text-muted);
+    background: var(--bg-card);
+    border-radius: 0 4px 4px 0;
+  }
+  .content table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 20px;
+    font-size: 13.5px;
+  }
+  .content table th, .content table td {
+    text-align: left;
+    padding: 10px 14px;
+    border: 1px solid var(--border);
+  }
+  .content table th {
+    background: var(--bg-card);
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .content table tr:nth-child(even) td { background: var(--bg-card); }
+  .content hr {
+    border: 0;
+    border-top: 1px solid var(--border);
+    margin: 32px 0;
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <h1>LW Dashboard Session</h1>
+  <div class="subtitle">All three dashboards refreshed, n8n dedup deployed, calendar attribution added, leads cross-checked.</div>
+  <div class="meta">
+    <span>2026-05-25 → 2026-05-26</span>
+    <span>17 phases</span>
+    <span>n8n + Apps Script + Vercel</span>
+  </div>
+</div>
+
+<nav class="tabs">
+  <button class="active" onclick="show('playbook', this)">Playbook</button>
+  <button onclick="show('session', this)">Session Log</button>
+</nav>
+
+<main>
+  <div id="playbook" class="content active"></div>
+  <div id="session" class="content"></div>
+</main>
+
+<script>
+  const playbookMd = "# Dashboard Update Playbook\n\n**TL;DR \u2014 when you want to make sure all 3 dashboards (Sales by Source, Sales Dashboard, LW Ads Dashboard) reflect current reality.**\n\nMost things run on schedule. This playbook is for **manual catch-up** when the schedule has gaps, you just changed something, or numbers look off.\n\n---\n\n## The Golden Rule\n\n**Refresh the BL helper tabs FIRST.** Every script that \"fixes\" Sales by Source / Sales Dashboard reads from `BL_HowDidYouHear` and/or `BL_Bookings` in the Sales by Source spreadsheet. If those tabs are stale, every downstream script silently runs against bad data and reports success.\n\nThe most common bug pattern this session was: \"I ran the script and it said success, but row X is still blank.\" 90% of the time \u2192 BL helper tabs were stale.\n\n---\n\n## Phase A \u2014 Refresh source data (10 min)\n\n**Do this every time before running any of the scripts below.**\n\n1. Open BL \u2192 \"Bookings\" report \u2192 kebab menu \u2192 **Generate now (XLSX)** \u2192 wait for \"Report ready\" toast \u2192 Download.\n2. Open BL \u2192 \"How did you hear about us?\" report \u2192 same flow \u2192 Download.\n3. Open Sales by Source sheet \u2192 `BL_Bookings` tab \u2192 select all \u2192 paste fresh XLSX over it.\n4. Same with `BL_HowDidYouHear` tab.\n\nThat's it. The scripts below will pull from these tabs.\n\n---\n\n## Phase B \u2014 Sales by Source (Raw Bookings tab) \u2014 2 min\n\nApps Script project: **bound to Sales by Source sheet**.\n\nRun in this order (each ~30 sec):\n\n```\n1-sync-from-bl-exports          \u2192 syncFromBLExports()\n                                  Fills Raw Bookings cols: E Name, F Email, H Amount,\n                                  O Status, P Booking Source from BL_Bookings.\n\n2-update-source-category-v5     \u2192 updateSourceCategoriesV5()\n                                  Fills Raw Bookings cols: I Self-Reported Source,\n                                  J Source Category. Reads BL_HowDidYouHear + the\n                                  Leads master tab. Applies GG Ads email override.\n\ncleanup-orphan-pending-rows     \u2192 cleanupOrphanPendingRows()  (DRY_RUN=true first)\n                                  Removes Zapier-created orphan rows (blank name +\n                                  blank amount + status=pending). Flip flag and\n                                  re-run to actually delete.\n```\n\nAfter these run, Raw Bookings is current. Looker Studio auto-refreshes from this.\n\n---\n\n## Phase C \u2014 Sales Dashboard \u2014 2 min\n\nSame Apps Script project (or wherever you keep these \u2014 uses openById either way).\n\n```\nupdate-sales-outcomes-v3        \u2192 updateSalesOutcomesV3()\n                                  Walks Raw Bookings paid/deposit_paid rows, finds\n                                  the Sales Dashboard row by Booking Ref \u2192 name,\n                                  fills Outcome=Sale + Revenue + Cash + Rep.\n                                  Inserts new rows for direct purchases via sales-\n                                  team reps.\n\nbackfill-ghl-opportunity-ids    \u2192 backfillOpportunityIds()  (DRY_RUN=true first)\n                                  Fills col N (GHL Opportunity ID) for rows where\n                                  it's blank, by name-matching against GHL opps.\n                                  Required for dedup to work.\n\n                                \u2192 dedupByOpportunityId()  (DRY_RUN=true first)\n                                  Collapses duplicate Sales Dashboard rows that\n                                  share the same opp ID (keeps most-complete row).\n\nbackfill-calendar-col-o         \u2192 backfillCalendarColO_DryRun() first\n                                  Fills col O (Calendar) with actual GHL calendar\n                                  name for each row. Uses contactId \u2192 calendarId\n                                  lookup from 5 mapped calendars.\n```\n\nCaveats:\n- **Cash for deposit_paid bookings**: V3 fills Cash = full Amount (not Total \u2212 Due). For deposit rows, manually correct Cash if you need exact cash-collected.\n- **Sales Rep allowlist**: V3 only fills Rep if BL Booking Source matches Nico / Aliyah / Jacobo / Thomas. Anything else (`Booking engine`, `frontoffice`, etc.) leaves rep blank for manual review.\n\n---\n\n## Phase D \u2014 LW Ads Dashboard \u2014 1 min\n\nApps Script project: **bound to LW Ads Dashboard sheet**.\n\n```\nfix-marketing-dashboard-dates   \u2192 fixMarketingDashboardDates()\n                                  Converts string dates in col B \u2192 real Date type\n                                  so SUMIFS work. Already on daily 7:30 UTC trigger.\n\nbackfill-marketing-dashboard-v7 \u2192 backfillMarketingDashboardV7()\n                                  Fills cols L (Booked Calls), N (Sales), P (Revenue)\n                                  on GG Daily tab. Reads Raw Bookings paid rows\n                                  where Source Category = \"Google Ads\". Already on\n                                  nightly trigger.\n\npopulate-marketing-trackers     \u2192 populateMarketingTrackers()\n                                  Rebuilds GG Weekly + GG Monthly tracker tabs with\n                                  SUMIFS formulas. Only run when you actually want\n                                  to refresh the tracker views.\n```\n\n\u26a0\ufe0f **Tab references after rename**: as of 2026-05-24, the Ads Dashboard tabs are `GG Daily`, `GG Weekly`, `GG Monthly`, `GG Daily Report`. If a script references the old `Dashboard` / `Weekly Tracker` / `Monthly Tracker`, it'll silently break. The local copy of `populate-marketing-trackers.gs` is already fixed \u2014 paste it over the live version next time you touch it.\n\n---\n\n## Phase E \u2014 n8n workflows (rarely need manual intervention)\n\nThese run on schedule. Check via `https://server.lawayraserver.com/home/workflows`:\n\n| Workflow ID | Name | Schedule | What it does |\n|---|---|---|---|\n| `3ztYQF2wJO3cHDi2` | LW Booking Sync Pipeline | CSV email trigger | BL CSV \u2192 Raw Bookings (appendOrUpdate by ref) |\n| `fOTmp4CofwDzsLft` | LW Source Data Pipeline | CSV email trigger | BL \"How did you hear?\" CSV \u2192 Raw Bookings col I |\n| `jStC73dYSNXQEuV7` | GHL > LW Sales Dashboard | 1:13 UTC daily | GHL opps + appointments \u2192 Sales Dashboard (appendOrUpdate by col N) |\n| `FXxEh8d2nQRZ9sEy` | LaWayra-Individual-Sales-Sheets | webhook (real-time) | Pipeline-stage changes \u2192 Sales Dashboard + per-rep sheets |\n| `E6K7ts1s0HXYw8JV` | Google Ads > LW Marketing Dashboard | 1:07 UTC daily | Google Ads API \u2192 LW Ads Dashboard GG Daily |\n| `ZfiXuiG20bwPLj42` | LW Daily Report > Discord | 2:03 UTC daily | Reads both Daily Report tabs \u2192 posts to Discord |\n\nIf something looks wrong with daily flow, check workflow executions first before running scripts.\n\nTo edit a workflow via REST (rather than UI):\n\n```bash\nKEY=\"$(cat n8n key from reference_ghl_credentials.md)\"\nBASE=\"https://server.lawayraserver.com/api/v1\"\n\n# Fetch\ncurl -sS -H \"X-N8N-API-KEY: $KEY\" \"$BASE/workflows/{ID}\" > /tmp/wf.json\n\n# Modify nodes/connections/settings via python, then PUT only the allowed fields:\npython3 -c \"\nimport json\nwith open('/tmp/wf.json') as f: w = json.load(f)\n# ... edit w['nodes'] etc ...\nout = {'name': w['name'], 'nodes': w['nodes'], 'connections': w['connections'],\n       'settings': w.get('settings', {}), 'staticData': w.get('staticData')}\nprint(json.dumps(out))\n\" > /tmp/wf_clean.json\n\n# PUT\ncurl -X PUT -H \"X-N8N-API-KEY: $KEY\" -H \"Content-Type: application/json\" \\\n  -d @/tmp/wf_clean.json \"$BASE/workflows/{ID}\"\n```\n\n**Always save a backup before editing**:\n```bash\ncp /tmp/wf.json \"content-machine/n8n/{workflow-name}_backup_{YYYYMMDD}.json\"\n```\n\n---\n\n## Quick reference \u2014 \"I just want to...\"\n\n| Goal | Run |\n|---|---|\n| Make sure recent BL bookings show up | Phase A \u2192 `syncFromBLExports` |\n| Fix wrong/missing Source Category | Phase A \u2192 `updateSourceCategoriesV5` |\n| Get a Sale row's Revenue/Cash filled | Phase A \u2192 `updateSalesOutcomesV3` |\n| Clean up Sales Dashboard duplicates | Phase C \u2192 `backfillOpportunityIds` then `dedupByOpportunityId` |\n| Fill missing Calendar (col O) | Phase C \u2192 `backfillCalendarColO` |\n| Refresh weekly/monthly tracker views | Phase D \u2192 `populateMarketingTrackers` |\n| See the day's report numbers | Just check Discord \u2014 they post 2:03 / 8:03 UTC |\n\n---\n\n## When to escalate\n\n- **n8n workflow stopped firing for 24h+**: check executions in the n8n UI. Likely a credential expired (Madhu's keys were revoked in April \u2014 same pattern could recur).\n- **Daily Report numbers look way off**: cross-reference BL UI count vs Sales Dashboard count for the date. Walk the Phase B+C scripts.\n- **Looker Studio shows stale data**: it auto-refreshes every ~12h. Force refresh via the menu in Looker.\n- **Real-time webhook missed a sale**: the scheduled daily run at 1:13 UTC backfills via `appendOrUpdate`. No action needed within 24h.\n\n---\n\n## File locations\n\nAll scripts live as `.gs` files in this repo. To deploy, paste into the Apps Script editor for the relevant sheet. Master reference for which dashboards exist + what feeds them: [DASHBOARDS_MASTER.md](DASHBOARDS_MASTER.md).\n\nMemory files in `~/.claude/projects/.../memory/` carry the why behind specific decisions (e.g., why we don't label calendar col O as \"Google Ads\", why BL helper tabs must be refreshed first).\n";
+  const sessionMd = "# Session log \u2014 2026-05-25 (Dashboard refresh + n8n dedup + Calendar attribution)\n\n**Owner:** Marcus\n**Duration:** ~5 hours\n**Scope:** Refresh all 3 dashboards (Sales by Source, Sales Dashboard, LW Ads Dashboard); fix structural issues; deploy two new features (col N opportunity dedup + col O calendar attribution); align tab renames.\n\nThis doc serves two purposes:\n1. **Audit trail** \u2014 what changed and why, so we can troubleshoot if something breaks tomorrow.\n2. **Playbook** \u2014 next-time best practices distilled into a checklist at the bottom.\n\n---\n\n## What we did (chronological)\n\n### 1. Sales by Source \u2014 V5 source categorization + orphan cleanup\n- Discovered `updateSourceCategoriesV5` is the live version (docs still said V4). V5 reads from the \"Leads\" master tab (4,500+ rows vs GG Leads only) and maps `GG \u2192 \"Google Ads\"`, `FB \u2192 \"Facebook Ads\"`, `TT \u2192 \"TikTok Ads\"`.\n- Ran `updateSourceCategoriesV5` \u2014 final state: 91 Google Ads / 0 Facebook / 1 TikTok / 59 Organic / 92 Other; 8 cells updated.\n- Ran `cleanupOrphanPendingRows` \u2014 deleted 14 Zapier orphan rows (Status pending/draft + no name + no amount).\n\n### 2. Sales Dashboard \u2014 V4 + cleanup dupes\n- Ran `updateSalesOutcomesV4` \u2014 0 changes (105 matched, 0 inserted; allowlist working).\n- Ran `cleanup-dashboard-duplicates.gs` \u2014 deleted 12 duplicate rows. Two patterns: pure dupes (same Date+Name+Outcome) and status-update dupes (Appointment Booked + No Show for same person same date).\n\n### 3. LW Ads Dashboard \u2014 V7\n- Ran `backfillMarketingDashboardV7` \u2014 cleared rows after 2025-11-22, rebuilt 58 Sales + 58 Revenue from 70 Google Ads paid/deposit_paid bookings.\n\n### 4. n8n dedup fix v1 (col M \u2014 WRONG)\n- Backed up workflow `jStC73dYSNXQEuV7` to `content-machine/n8n/LW_GHL_Sales_Dashboard_backup_20260525.json`.\n- Modified Transform: emits only 6 owned fields + `GHL Appointment ID`.\n- Modified Append node: `append` \u2192 `appendOrUpdate` matching on `GHL Appointment ID` (col M).\n- Mistake: opportunities endpoint returns `opp.id` which is the **Opportunity ID**, not Appointment ID. I wrote opportunity IDs into the \"GHL Appointment ID\" column.\n\n### 5. n8n dedup fix v2 (col N \u2014 CORRECT)\n- Realized the real-time webhook workflow `FXxEh8d2nQRZ9sEy` already matches on **col N \"GHL Opportunity ID\"**. Both workflows fetch the same `opp.id` value \u2014 if they write to different columns they can't dedup each other.\n- Renamed Transform field to `GHL Opportunity ID`, changed `matchingColumns` to `[\"GHL Opportunity ID\"]`.\n- Both n8n workflows now share col N as the dedup key.\n\n### 6. Backfill col N for historical rows\n- Wrote `backfill-ghl-opportunity-ids.gs` (added as new file in Sales Dashboard Apps Script project).\n- Hit two Apps Script global-scope name collisions (`DRY_RUN`, `SALES_DASHBOARD_ID`) \u2014 renamed everything to `BACKFILL_*` prefix.\n- Dry-run: 1390 rows, 99 already filled, 452 will fill, 838 no GHL match (older/test/non-GHL rows).\n- Live run: wrote 452 opp IDs. Total col N populated = 551.\n- `dedupByOpportunityId` not yet executed \u2014 Marcus to run manually (Apps Script dropdown was flaky over MCP).\n\n### 7. Calendar attribution (col O)\n- Marcus runs two GHL calendars for paid funnels:\n  - `yN2tS8tSN24EtkLfiW4E` \"La Wayra Consultation Call\" \u2014 **Google Ads**\n  - `DsHbMdxv4eB7dZY0Ipkq` \"LaWayra Consultation\" \u2014 **Meta Ads**\n- Verified opp data has `contactId` (top-level), and the workflow's existing `/v1/appointments/` fetch (previously unused) returns `{appointments: [{contactId, calendarId, ...}]}`.\n- Modified Transform to:\n  1. Build `contactId \u2192 calendarId` map from appointments (latest by startTime if multiple).\n  2. Look up calendarId per opp via contactId.\n  3. Map to \"Google Ads\" / \"Meta Ads\" / blank.\n  4. Emit `Calendar` field.\n- Added `Calendar` to Append node schema.\n- Added \"Calendar\" header to Sales Dashboard col O.\n- Deployed (HTTP 200). Backup at same file as v2.\n- Real-time webhook `FXxEh8d2nQRZ9sEy` NOT yet updated \u2014 only scheduled workflow tags Calendar. Real-time-driven rows will show Calendar blank until that's also patched.\n\n### 8. LW Ads Dashboard tab renames (Marcus did UI, I patched n8n)\n- Renames done by Marcus:\n  - `Weekly Tracker` \u2192 **GG Weekly**\n  - `Monthly Tracker` \u2192 **GG Monthly**\n  - `Daily Report` \u2192 **GG Daily Report**\n- (Previous rename 5/24: `Dashboard` \u2192 `GG Daily`.)\n- Audited downstream: Vercel dashboard `apps-script-api.gs` computes Ads weekly/monthly from the daily tab in memory, so doesn't read the Tracker tabs \u2014 safe. But `mktSS.getSheetByName('Daily Report')` would have broken with the GG Daily Report rename.\n- n8n workflow `LW Daily Report > Discord` (`ZfiXuiG20bwPLj42`) has a \"Read Marketing Report\" node \u2014 patched via API to read `GG Daily Report`. Backup at `content-machine/n8n/LW_Daily_Report_Discord_backup_20260525.json`.\n\n### 9. Round 2 of orphan cleanup\n- Marcus screenshotted 3 new orphan rows (2026-0301, 0302, 0303) + 1 dupe (2026-0294 booker/Danny Goler) that arrived AFTER the earlier cleanup.\n- Re-ran `cleanupOrphanPendingRows` \u2014 deleted 10 more orphan rows (Zapier leaks since the earlier run).\n\n---\n\n## Files modified / created today\n\n### Locally (committed to project repo)\n- `DASHBOARDS_MASTER.md` \u2014 V4\u2192V5 rename, BL export path corrections, n8n fix marked done\n- `SALES_BY_SOURCE_RUNBOOK.md` \u2014 BL \"Generate now (XLSX)\" + Download flow documented\n- `backfill-ghl-opportunity-ids.gs` \u2014 new script for col N backfill + dedup\n- `content-machine/n8n/LW_GHL_Sales_Dashboard_backup_20260525.json` \u2014 pre-change workflow backup\n- `content-machine/n8n/LW_Daily_Report_Discord_backup_20260525.json` \u2014 pre-change backup\n- `SESSION_LOG_2026-05-25.md` (this file)\n\n### Memory files\n- `project_n8n_dedup_fix_may25.md`\n- `project_calendar_attribution_may25.md`\n- `project_ads_dashboard_tab_renames_may25.md`\n\n### Remote (n8n live, sheets)\n- n8n workflow `jStC73dYSNXQEuV7` (GHL > LW Sales Dashboard) \u2014 Transform code rewritten, append node converted to appendOrUpdate matching col N, schema includes Calendar\n- n8n workflow `ZfiXuiG20bwPLj42` (LW Daily Report > Discord) \u2014 Read Marketing Report node sheet renamed to `GG Daily Report`\n- LW Sales Dashboard sheet \u2014 col O header \"Calendar\" added; col N populated for 452 historical rows\n- LW Ads Dashboard sheet \u2014 Marcus renamed Weekly/Monthly Tracker + Daily Report to GG-prefixed names\n- Sales by Source \u2014 14 + 10 = 24 orphan rows deleted; source categories refreshed via V5\n\n---\n\n## Gotchas hit (so we don't repeat them)\n\n1. **BL export via Chrome MCP is flaky.** Click on \"Generate now (XLSX)\" works, but clicking the \"Download\" link in the toast notification fails ~50% of the time. Workflow is: click XLSX \u2192 wait for \"Report ready\" toast \u2192 click Download. Future automation: use the scheduled CSV email instead of UI clicks.\n2. **Apps Script global scope is shared across all files in a project.** `const DRY_RUN`, `const SALES_DASHBOARD_ID` etc. in a new file collide with existing files. Always prefix new globals with the script name (`BACKFILL_DRY_RUN`).\n3. **Apps Script function dropdown selection doesn't always persist over Chrome MCP.** After clicking a function name in the dropdown, the editor sometimes still runs the previously-selected function. Workaround: select function, then verify the dropdown button text actually updated before clicking Run.\n4. **Opportunities endpoint has `opp.id` which is the Opportunity ID, NOT the Appointment ID.** Two different GHL entities. The naming conflict broke v1 of my dedup fix. Always verify field meanings against actual API response, not naming.\n5. **Cross-workflow dedup requires shared match column.** Two n8n workflows writing the same opp ID to two different columns = no dedup. Always check what other workflows write to the same sheet before choosing a match column.\n6. **`cleanupOrphanPendingRows` doesn't catch rows with a name but no email.** It only matches rows with blank Guest Name + blank Amount + pending Status. Rows like 2026-0256 (Michal Koloszyc, no email) need manual review.\n7. **Tab renames break scripts silently.** `getSheetByName(...)` returns null, no error. Always audit n8n + Apps Script + Vercel API + populate scripts before renaming a tab.\n\n---\n\n## Open items (pending next session)\n\n1. **Run `dedupByOpportunityId`** in Sales Dashboard Apps Script (Marcus, ~30 sec). Will collapse cross-source dupes now that 551 rows have col N.\n2. **Backfill col O Calendar for historical rows** \u2014 requires new script that fetches `/v1/appointments/` per contactId for each of the 551 rows with col N. ~10 min runtime.\n3. **Update real-time webhook `FXxEh8d2nQRZ9sEy`** to also write Calendar to col O. Webhook payload may already include calendarId \u2014 needs verification.\n4. **Fix `1-populate-marketing-trac\u2026` Apps Script** on LW Ads Dashboard project \u2014 likely references old `Weekly Tracker` / `Monthly Tracker` tab names. One-line patch each.\n5. **Verify Vercel deployed Web App** reads `GG Daily` (not `Dashboard`) on Ads side. Local `apps-script-api.gs` still says `Dashboard` \u2014 if Marcus patched the live Web App directly the local copy is stale.\n6. **Decide on Vercel local copy maintenance** \u2014 if `clasp push` is ever run, the stale local apps-script-api.gs will overwrite the patched live version and break things. Best: pull live \u2192 commit locally before any push.\n\n---\n\n## \u2b50 Next-time playbook \u2014 Dashboard refresh checklist\n\nRun this in order whenever you want to \"make sure all 3 dashboards are up to date\":\n\n### Phase 1: Refresh source data (15 min)\n\n```\nSales by Source > Apps Script:\n  1. updateSourceCategoriesV5      (re-categorize bookings by source)\n  2. cleanupOrphanPendingRows      (delete Zapier leak rows)\n  3. flagDuplicateBookingRefs      (highlight any dup Booking Refs)\n```\n\n### Phase 2: Propagate to Sales + Ads dashboards (5 min)\n\n```\nSales Dashboard > Apps Script:\n  4. fixSalesDashboardDates        (only needed if Daily Report tab values show $0)\n  5. updateSalesOutcomesV4         (insert rep Sale rows from BL)\n  6. cleanup-dashboard-duplicates  (delete same-Date+Name dupes from n8n appends)\n\nLW Ads Dashboard > Apps Script:\n  7. fixMarketingDashboardDates    (only needed if Yesterday SUMIFS show $0)\n  8. backfillMarketingDashboardV7  (rebuild Sales + Revenue from Raw Bookings GG Ads rows)\n```\n\n### Phase 3: Verify (5 min)\n\n- Open Sales Dashboard > Daily Report \u2014 does Yesterday/WTD/MTD look sensible?\n- Open LW Ads Dashboard > GG Daily Report \u2014 same check\n- Open Vercel dashboard https://lw-sales-dashboard.vercel.app \u2014 does Ads section show numbers?\n- Discord #sales-tracking + #gg-marketing-tracking \u2014 last post should be at ~2:03 AM today\n\n### Phase 4: New-tab / new-column protocol\n\nBefore adding or renaming a tab/column on any dashboard:\n\n1. **Grep the project root** for the exact tab/column name: `Grep \"Tab Name|Column Name\"` in `~/Desktop/lw-sales-dashboard` and `~/Desktop/LW/Claude Code LW`. Catches Vercel API + Apps Script references.\n2. **List n8n workflows that touch the sheet**: API call `GET /workflows` and grep for the sheet ID. Inspect each for `sheetName` references to the tab.\n3. **List Apps Script files in the sheet's project** that reference the tab via `getSheetByName('exact name')`.\n4. **Document the rename in CLAUDE.md \"Dashboard Column Schemas\"** so future-you sees the correct names.\n5. After renaming, patch each downstream reference. Test by manually triggering each workflow once.\n\n### Phase 5: When n8n duplicates appear\n\nThe root cause is almost always: one workflow uses `append`, not `appendOrUpdate`. Fix:\n\n1. Decide on a unique match column. Existing options on Sales Dashboard:\n   - col L: Booking Ref (BL ledger)\n   - col M: GHL Appointment ID\n   - col N: GHL Opportunity ID\n2. Verify all workflows writing to that sheet use the SAME match column.\n3. Update each workflow's Google Sheets node operation to `appendOrUpdate` with that column in `matchingColumns`.\n4. Run `cleanup-dashboard-duplicates.gs` once to clean historical dupes.\n\n---\n\n## Quick command reference\n\n```bash\n# Get any n8n workflow JSON\ncurl -sS -H \"X-N8N-API-KEY: $KEY\" \\\n  https://server.lawayraserver.com/api/v1/workflows/{ID} > /tmp/wf.json\n\n# PUT modified workflow (strip read-only fields first)\npython3 -c \"\nimport json\nwith open('/tmp/wf.json') as f: w = json.load(f)\nout = {'name': w['name'], 'nodes': w['nodes'], 'connections': w['connections'],\n       'settings': w.get('settings', {}), 'staticData': w.get('staticData')}\nprint(json.dumps(out))\n\" > /tmp/wf_clean.json\n\ncurl -X PUT -H \"X-N8N-API-KEY: $KEY\" -H \"Content-Type: application/json\" \\\n  -d @/tmp/wf_clean.json https://server.lawayraserver.com/api/v1/workflows/{ID}\n```\n\nActive workflow IDs:\n- `jStC73dYSNXQEuV7` \u2014 GHL > LW Sales Dashboard (1:13 AM)\n- `FXxEh8d2nQRZ9sEy` \u2014 LaWayra-Individual-Sales-Sheets (real-time webhook)\n- `ZfiXuiG20bwPLj42` \u2014 LW Daily Report > Discord (2:03 AM)\n- `3ztYQF2wJO3cHDi2` \u2014 LW Booking Sync Pipeline (CSV email-driven)\n- `fOTmp4CofwDzsLft` \u2014 LW Source Data Pipeline (CSV email-driven)\n- `E6K7ts1s0HXYw8JV` \u2014 Google Ads > LW Marketing Dashboard (1:07 AM)\n\n---\n\n# Continuation \u2014 Late 5/25 + into 5/26\n\nSession continued after context truncation. Picks up from \"rows 308/310/311 still missing data.\"\n\n## Phase 10 \u2014 Resolving rows 308/310/311 (refs 2026-0301/0302/0303)\n\n**Issue:** 3 Raw Bookings rows had blank Name/Email/Source after the orphan cleanup. Marcus confirmed they're real bookings, not orphans.\n\n**Root cause:** `BL_HowDidYouHear` tab was stale \u2014 n8n's daily CSV pipeline had missed those refs (or hadn't run since they came in). Earlier in the session I'd refreshed the dashboards by running `updateSourceCategoriesV5` alone, but against stale BL helper tabs the script silently succeeded without filling new rows.\n\n**Fix:** Marcus manually refreshed the `BL_HowDidYouHear` tab. Re-running `updateSourceCategoriesV5()` then populated cols I/J for those refs.\n\n**Memory captured:** `feedback_refresh_bl_helper_tabs_first.md`\n\n## Phase 11 \u2014 populate-marketing-trackers tab-rename fix\n\n**Issue:** LW Ads Dashboard tabs renamed earlier (`Dashboard` \u2192 `GG Daily`, `Weekly Tracker` \u2192 `GG Weekly`, `Monthly Tracker` \u2192 `GG Monthly`) broke `populate-marketing-trackers.gs` \u2014 it still referenced the old tab names AND the SUMIFS formulas embedded inside used `Dashboard!` as the sheet prefix.\n\n**Fix (local file only):** Updated `populate-marketing-trackers.gs`:\n- `getSheetByName('Dashboard')` \u2192 `getSheetByName('GG Daily')`\n- `getSheetByName('Weekly Tracker')` \u2192 `getSheetByName('GG Weekly')`\n- `getSheetByName('Monthly Tracker')` \u2192 `getSheetByName('GG Monthly')`\n- All in-formula `Dashboard!` \u2192 `\\'GG Daily\\'!` (with escaped single quotes since the formulas are inside single-quoted JS strings)\n\n**Status:** Local file fixed. Not yet deployed to live Apps Script \u2014 only matters when Marcus rebuilds Weekly/Monthly Tracker tabs, so deferred to next time those tabs need to be regenerated.\n\n## Phase 12 \u2014 Calendar attribution revisited (label-style \u2192 calendar-name-style)\n\n**Original design (earlier in session):** Tag each Sales Dashboard row in col O with \"Google Ads\" or \"Meta Ads\" based on which GHL calendar the contact's appointment was on. Two-calendar map.\n\n**Revision (Marcus 5/25 evening):** The main `yN2tS8tSN24EtkLfiW4E` (\"La Wayra Consultation Call\") calendar is ALSO used by the website pop-up widget, not just Google Ads ads. Labeling it \"Google Ads\" overstates the channel. Marcus requested: use actual GHL calendar names instead. For real Google Ads channel attribution, keep using the GG Leads email override on Sales by Source > Raw Bookings col J (`updateSourceCategoriesV5`).\n\n**New 5-calendar map (deployed both in n8n workflow and historical backfill script):**\n\n| calendarId | Col O value |\n|---|---|\n| `yN2tS8tSN24EtkLfiW4E` | La Wayra Consultation Call |\n| `SA6hOFBKnYgvvHshK7tu` | Organic - LaWayra Consultation Call |\n| `DsHbMdxv4eB7dZY0Ipkq` | La Wayra Consultation Call - FB |\n| `AdahiZDb0K1TTvIenIXR` | Hero Heal Consultation Call |\n| `vMW1Sgtn75UHGZdzapfH` | La Wayra Facilitator Call |\n\n**Deployed via n8n REST API:**\n- Workflow `jStC73dYSNXQEuV7` Transform code's `CALENDAR_NAME_MAP` updated\n- Backup saved: `content-machine/n8n/LW_GHL_Sales_Dashboard_backup_20260525_v4.json`\n- Next scheduled run at 1:13 UTC will overwrite any stale \"Google Ads\"/\"Meta Ads\" labels on rows that match in last-2-days opp window (appendOrUpdate on col N).\n\n**Memory updated:** `project_calendar_attribution_may25.md`\n\n## Phase 13 \u2014 Historical Calendar backfill (col O for 551+ rows)\n\n**Script:** `backfill-calendar-col-o.gs` (NEW)\n\n**Strategy:**\n1. Fetch ALL opportunities from sales pipeline (paginated, 30 pages \u00d7 100 = 3000 cap, ordered desc) \u2192 build `oppId \u2192 contactId` map.\n2. For each of the 5 mapped calendars, fetch appointments in date window (2024-09-01 \u2192 now) in 60-day chunks \u2192 build `contactId \u2192 calendarId` map (latest by startTime wins on collisions).\n3. Walk Sales Dashboard rows; for each row with col N set + col O blank (or showing old stale \"Google Ads\"/\"Meta Ads\" label), look up oppId \u2192 contactId \u2192 calendarId \u2192 name \u2192 write to col O.\n\n**First run (Marcus 11:18 PM):** Wrote 513 Calendar values to col O.\n\n**Issue identified after first run:** Most recent appointments were missing from the lookup. Diagnosed as `CAL_WINDOW_END_MS = Date.now()` \u2014 future-scheduled appointments (call booked today, scheduled for tomorrow/next week) fall outside the window and are excluded from the appointments fetch.\n\n**Pending fix (Marcus to apply):** Change `CAL_WINDOW_END_MS` to `Date.now() + 90*24*60*60*1000` (90 days future). Optionally also shrink chunk size from 60 days to 14 days to avoid potential v1 API per-request truncation (~100 limit).\n\n**Also added during this phase:** Stale-label override in the row filter:\n```js\nif (curCal && curCal !== 'Google Ads' && curCal !== 'Meta Ads') { alreadyFilled++; continue; }\n```\nThis re-writes any existing \"Google Ads\" / \"Meta Ads\" values from the original n8n runs earlier in the day.\n\n## Phase 14 \u2014 Real-time webhook FXxEh8d2nQRZ9sEy: deferred\n\n**Question:** Should the real-time webhook also write Calendar to col O?\n\n**Decision:** No \u2014 defer. Rationale:\n1. The scheduled workflow `jStC73dYSNXQEuV7` runs at 1:13 UTC and uses `appendOrUpdate` matching on col N. It overwrites Calendar within \u226424h.\n2. The Daily Report (`ZfiXuiG20bwPLj42`) at 8:03 UTC runs AFTER the scheduled at 1:13 UTC, so by the time anyone reads it, Calendar is correct.\n3. Adding the lookup to the real-time webhook requires a new HTTP node (appointments by contactId) + Code node (pick latest) + schema update on \"Update LW Sales Dashboard\" \u2014 non-trivial, production-risk edit.\n\n**Backup saved:** `content-machine/n8n/LW_LaWayra_Individual_Sales_Sheets_backup_20260525.json` (for whenever this is revisited)\n\n**Memory captured:** `project_webhook_calendar_deferred.md`\n\n## Phase 15 \u2014 Revenue/Cash backfill attempt (in progress)\n\n**Issue:** Sales Dashboard rows with `Outcome = Sale` but Revenue + Cash Collected blank (e.g., Andreas Soteriou 4/20/2026 / Thomas).\n\n**First attempt:** Marcus ran `updateSalesOutcomesV3()`. Result:\n```\nPaid guests in Raw Bookings: 277\nOutcomes upgraded: 1 | Revenue filled: 3 | Reps filled: 0 | Inserted: 0\n```\n\n**Diagnosis:** Only 3 Revenue fills out of 277 candidates. V3 matches by lowercase name (or Booking Ref if col L is set). For n8n-created Sales Dashboard rows, col L is blank \u2192 match is by name only. Likely most blank-Revenue Sale rows didn't match because:\n- Their Raw Bookings counterpart is missing (BL_Bookings tab stale \u2014 only BL_HowDidYouHear was refreshed in Phase 10)\n- OR exact-name match failed between Sales Dashboard (GHL-sourced name) and Raw Bookings (BL-sourced name)\n\n**Pending action (Marcus):** Refresh `BL_Bookings` tab with a fresh BL Bookings export \u2192 run `syncFromBLExports()` \u2192 re-run `updateSalesOutcomesV3()`.\n\n## Phase 16 \u2014 Open items for next session\n\n1. **Re-run calendar backfill** with `CAL_WINDOW_END_MS = Date.now() + 90 days` to catch future-dated appointments\n2. **Refresh BL_Bookings + re-run V3** for Revenue/Cash on Sale rows\n3. **dedupByOpportunityId** \u2014 still hasn't been run; the dedup fix was deployed to n8n but historical duplicates (if any remain from before the fix) need a one-time cleanup\n4. **Deploy populate-marketing-trackers fix** to LW Ads Dashboard Apps Script \u2014 only when rebuilding tracker tabs\n5. **Considerations for real-time webhook col O writes** \u2014 deferred, see `project_webhook_calendar_deferred.md`\n\n\n## Phase 17 \u2014 Leads \u2194 Raw Bookings cross-check (full audit)\n\n**Trigger:** Sales by Source April showed only 8 Google Ads sales when Marcus expected 10-11 (from his manual attribution sheet). Investigation revealed V5's email-only override misses cases where the booker uses a different email than the ad-lead email.\n\n**Method:** Downloaded both files locally as XLSX and cross-referenced in Python:\n- `LEADS (2).xlsx` \u2014 Leads master tab, 4709 rows, col 22 = \"Source\" (GG / FB Ads / TT Ads / etc.)\n- `LaWayra Sales by Source Dashboard.xlsx` \u2014 Raw Bookings tab, 308 rows\n\nFor every paid/deposit_paid Raw Bookings row, looked up in Leads by:\n1. Email exact (lowercase)\n2. First+last name exact (lowercase)\n\nFlagged any row where the Leads-derived category differs from the current col J.\n\n**Result \u2014 5 miscategorized rows across all months:**\n\n| Ref | Name | Current | Should be | Match type |\n|---|---|---|---|---|\n| 2026-0098 | Manfred Mueller | AI Chatbots | Google Ads | NAME |\n| 2026-0208 | Dimitry Sharashidze | Organic Search/SEO | Google Ads | NAME |\n| 2026-0259 | Derek Davis | Organic Search/SEO | TikTok Ads | NAME |\n| 2026-0266 | Sandy Trujillo (lead = Jasmine) | Word of Mouth | Google Ads | NAME |\n| 2026-0272 | Alexander Giannone | Organic Search/SEO | Google Ads | NAME |\n\n**All 5 were caught by NAME match \u2014 not EMAIL.** That confirms the gap: bookers commonly use different emails than the email captured on the ad lead form.\n\n**Why V5 in the live sheet didn't catch these even though it does name-match:**\n- Manfred + Dimitry were in the downloaded `LEADS (2).xlsx` but possibly NOT in the live \"Leads\" tab on the Leads spreadsheet (`1PKOKpTg9o6HgV41Fvwag8aId5PAnr4qH5AwxmVL2jBg`) the last time V5 ran. The downloaded file is a more complete export.\n- For Derek/Alexander/Sandy/Jasmine: the booking name in Raw Bookings is the BOOKER, not always the lead. Jasmine\u2192Sandy is a multi-person-per-household case V5 cannot solve without a manual override.\n\n**Fix applied:** Marcus manually corrected the 5 col J cells. No script run.\n\n**Long-term V6 plan (not built yet):**\n1. Last-name-only match within \u00b130 day window of lead date \u2014 catches Alexander/Vito Giannone-style name format mismatches without exploding false positives\n2. Manual override tab (`Manual Overrides`) \u2014 `booking_ref \u2192 source_category` for true edge cases like Sandy/Jasmine. V6 reads this BEFORE all other logic so it never gets overwritten.\n3. Walk direction reversed: iterate Leads \u2192 check Raw Bookings for matches by email OR last-name+date \u2014 idempotent, single source of truth (\"if a Raw Booking matches anyone in the Leads list, that booking is an ad sale of that channel\")\n4. Refresh the live Leads tab regularly so V5/V6 has current data (the live Leads tab fell behind the downloaded export)\n\n";
+  document.getElementById('playbook').innerHTML = marked.parse(playbookMd);
+  document.getElementById('session').innerHTML = marked.parse(sessionMd);
+  function show(id, btn) {
+    document.querySelectorAll('.content').forEach(el => el.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    document.querySelectorAll('nav.tabs button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    window.scrollTo({ top: 0 });
+  }
+</script>
+
+</body>
+</html>
