@@ -1506,77 +1506,59 @@ fixMarketingDashboardDates()    # Same for Marketing Dashboard (already on daily
 <div class="section" id="s14">
   <div class="section-number">Section 14</div>
   <h2>How to Set Up Claude Code</h2>
-  <p class="section-subtitle">Claude Code is the AI-powered CLI tool that powers content generation, landing page building, dashboard creation, and automation for LaWayra. A new team member needs to set it up on their machine to use the slash commands (skills) documented in this SOP.</p>
-
-  <h3>Setup Process</h3>
-
-  <ol class="step-list">
-    <li><strong>Install Claude Code</strong> &mdash; Visit <a href="https://claude.ai/code" target="_blank">claude.ai/code</a> or install via terminal: <code>npm install -g @anthropic-ai/claude-code</code>. Requires Node.js 18+.</li>
-    <li><strong>Authenticate</strong> &mdash; Run <code>claude</code> in terminal. It will prompt you to sign in with your Anthropic account. Follow the browser-based auth flow.</li>
-    <li><strong>Clone the project repo</strong> &mdash; <code>git clone https://github.com/marcuswest-lab/lawayra-content-strategy.git</code> and <code>cd</code> into the directory.</li>
-    <li><strong>Verify setup</strong> &mdash; Run <code>claude</code> inside the project directory. It should load the CLAUDE.md project instructions automatically. Type <code>/help</code> to see available commands.</li>
-    <li><strong>Test a skill</strong> &mdash; Try <code>/create-facebook-post</code> with a test hook to verify the skills are working.</li>
-  </ol>
-
-  <details>
-    <summary>Available Skills (Slash Commands)</summary>
-    <div class="details-body">
-      <table class="data-table">
-        <thead>
-          <tr>
-            <th>Command</th>
-            <th>What It Does</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><code>/build-landing-page</code></td>
-            <td>Generate a branded landing page for any program/offer</td>
-          </tr>
-          <tr>
-            <td><code>/create-instagram-carousel</code></td>
-            <td>Hook &rarr; 5&ndash;8 slide carousel + caption</td>
-          </tr>
-          <tr>
-            <td><code>/create-instagram-reel</code></td>
-            <td>Hook &rarr; face-to-camera Reel script + caption</td>
-          </tr>
-          <tr>
-            <td><code>/create-linkedin-post</code></td>
-            <td>Professional thought leadership post</td>
-          </tr>
-          <tr>
-            <td><code>/create-x-post</code></td>
-            <td>Casual post under 280 chars</td>
-          </tr>
-          <tr>
-            <td><code>/create-facebook-post</code></td>
-            <td>Community-oriented post</td>
-          </tr>
-          <tr>
-            <td><code>/generate-weekly-batch</code></td>
-            <td>Full week of content across all platforms</td>
-          </tr>
-          <tr>
-            <td><code>/generate-stories</code></td>
-            <td>Daily Stories copy with visual direction</td>
-          </tr>
-          <tr>
-            <td><code>/publish-approved</code></td>
-            <td>Push approved content to Upload-Post for scheduling</td>
-          </tr>
-          <tr>
-            <td><code>/repurpose-youtube</code></td>
-            <td>YouTube video &rarr; multi-platform posts</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </details>
+  <p class="section-subtitle">Claude Code is the AI agent that powers content generation, landing page building, dashboard creation, and automation for LaWayra. This is the full setup walkthrough &mdash; install the app, add the Chrome extension, set up your project folder, then connect Claude Code to n8n and GHL.</p>
 
   <div class="callout">
-    <strong>How it works:</strong> The project <code>CLAUDE.md</code> file contains all context about LaWayra &mdash; brand positioning, content strategy, infrastructure, and team structure. Claude Code reads this automatically when you open the project. For the full Claude Code setup guide, see: <a href="https://docs.google.com/document/d/1LxTxjcIG50uWBD3C8AamuPDDBdN0sXVscxfUp_s6wwI/edit" target="_blank">Claude Code Setup Guide (Google Doc)</a>
+    <strong>Video walkthrough:</strong> <a href="https://www.loom.com/share/c4632d4503334818bdcc8af341e3647d" target="_blank">Watch the Loom explainer</a> for a screen-share of this entire setup.
   </div>
+
+  <h3>1. Download the Claude Desktop App</h3>
+
+  <ol class="step-list">
+    <li><strong>Install Claude</strong> &mdash; Follow Anthropic's guide: <a href="https://support.claude.com/en/articles/10065433-installing-claude-desktop" target="_blank">Installing Claude Desktop</a>. The desktop app works well enough for everything in this SOP.</li>
+  </ol>
+
+  <div class="callout">
+    <strong>Optional &mdash; use an IDE instead:</strong> If you'd rather, you can run Claude Code inside an IDE like <strong>VS Code</strong>, <strong>Cursor</strong>, or <strong>Windsurf</strong>.
+    <br>&bull; The main advantage is multitasking &mdash; you can run different agents side by side, and download extensions within the IDE.
+    <br>&bull; Heads up: when running Claude Code inside VS Code, the <strong>Claude Chrome extension</strong> (used a lot for hands-off browser work) wouldn't connect. The desktop app doesn't have that problem.
+  </div>
+
+  <h3>2. Download the Claude Chrome Extension</h3>
+
+  <ol class="step-list">
+    <li><strong>Install the extension</strong> &mdash; Get it from the <a href="https://chromewebstore.google.com/publisher/anthropic/u308d63ea0533efcf7ba778ad42da7390" target="_blank">Anthropic Chrome Web Store page</a>. This lets Claude do hands-off work directly in the browser.</li>
+  </ol>
+
+  <h3>3. Set Up Your Project Folder</h3>
+
+  <p>The project folder is the context window Claude Code works from. You can throw as much content and as many files as you want into this folder &mdash; Claude Code will be able to see all of it.</p>
+
+  <div class="info-card">
+    <div class="info-card-body">
+      <p><strong>Example:</strong> For the website rebranding project, the brand guidelines were dropped into the project folder. Then it was as simple as saying: <em>"Look at the brand guidelines in the project folder and create a new website for lawayraretreat.com."</em></p>
+    </div>
+  </div>
+
+  <div class="callout">
+    <strong>Best practice:</strong> First have Claude Code create a <code>CLAUDE.md</code> file and a <code>README</code> file, and ask it to keep updating them as you make progress. That way, whenever you come back to a project, it knows exactly where it left off.
+  </div>
+
+  <h3>4. Set Up Claude Code for n8n</h3>
+
+  <ol class="step-list">
+    <li><strong>Install the n8n MCP &amp; skills</strong> &mdash; Point Claude Code at these two repos: <a href="https://github.com/czlonkowski/n8n-mcp" target="_blank">n8n-mcp</a> and <a href="https://github.com/czlonkowski/n8n-skills" target="_blank">n8n-skills</a>.</li>
+    <li><strong>Give Claude Code the n8n URL</strong> &mdash; <a href="https://server.lawayraserver.com/" target="_blank">https://server.lawayraserver.com/</a>. You might need to help it log in the first time, but once it's in, it can do everything for you.</li>
+    <li><strong>Give Claude Code an n8n API key</strong> &mdash; Generate one in n8n (Settings &rarr; n8n API) and hand it to Claude Code.</li>
+  </ol>
+
+  <h3>5. Set Up Claude Code for GHL</h3>
+
+  <ol class="step-list">
+    <li><strong>Open Private Integrations</strong> &mdash; In GHL, go to <strong>Settings &rarr; Private Integrations</strong>.</li>
+    <li><strong>Create a private integration key</strong> &mdash; Set up a Claude Code private integration and give the key to Claude Code. If you're not sure which scopes to enable, ask Claude Code what scopes it needs for the particular project.</li>
+    <li><strong>Provide the Location ID</strong> &mdash; Claude Code usually also asks for the GHL Location ID, which you can find in <strong>Business Settings</strong>.</li>
+  </ol>
 </div>
 
 <!-- ==================== SECTION 15: HOW TO SET UP A SUBDOMAIN IN GHL ==================== -->
