@@ -544,21 +544,27 @@
     <a href="#s08" class="toc-item"><span class="toc-num">08</span><span class="toc-label">Technical Reference</span></a>
     <a href="#s09" class="toc-item"><span class="toc-num">09</span><span class="toc-label">AI Appointment Setter Prompt</span></a>
   </div>
-  <h3 class="toc-part-heading">Part 3 — How-To Runbooks</h3>
+  <h3 class="toc-part-heading">Part 3 — Launch a Funnel Page</h3>
   <div class="toc-grid">
-    <a href="#s10" class="toc-item"><span class="toc-num">10</span><span class="toc-label">Sales by Source Weekly Sync</span></a>
-    <a href="#s11" class="toc-item"><span class="toc-num">11</span><span class="toc-label">Monthly Commission Calculation</span></a>
-    <a href="#s12" class="toc-item"><span class="toc-num">12</span><span class="toc-label">How to Send Email Broadcasts</span></a>
-    <a href="#s13" class="toc-item"><span class="toc-num">13</span><span class="toc-label">How to Build & Launch a Funnel Page</span></a>
-    <a href="#s14" class="toc-item"><span class="toc-num">14</span><span class="toc-label">How to Set Up Claude Code</span></a>
-    <a href="#s15" class="toc-item"><span class="toc-num">15</span><span class="toc-label">How to Set Up a Subdomain in GHL</span></a>
-    <a href="#s16" class="toc-item"><span class="toc-num">16</span><span class="toc-label">How to Change Permissions in GHL</span></a>
-    <a href="#s17" class="toc-item"><span class="toc-num">17</span><span class="toc-label">Sales Tab Weekly Maintenance</span></a>
-    <a href="#s18" class="toc-item"><span class="toc-num">18</span><span class="toc-label">Dashboard Update Playbook</span></a>
+    <a href="#setup-claude-code" class="toc-item"><span class="toc-num">10</span><span class="toc-label">How to Set Up Claude Code</span></a>
+    <a href="#build-funnel-page" class="toc-item"><span class="toc-num">11</span><span class="toc-label">How to Build & Launch a Funnel Page</span></a>
+    <a href="#setup-subdomain" class="toc-item"><span class="toc-num">12</span><span class="toc-label">How to Set Up a Subdomain in GHL</span></a>
   </div>
-  <h3 class="toc-part-heading">Part 4 — Troubleshooting</h3>
+  <h3 class="toc-part-heading">Part 4 — Other GHL & Email How-Tos</h3>
   <div class="toc-grid">
-    <a href="#s19" class="toc-item"><span class="toc-num">19</span><span class="toc-label">When Something Breaks</span></a>
+    <a href="#email-broadcasts" class="toc-item"><span class="toc-num">13</span><span class="toc-label">How to Send Email Broadcasts</span></a>
+    <a href="#ghl-permissions" class="toc-item"><span class="toc-num">14</span><span class="toc-label">How to Change Permissions in GHL</span></a>
+  </div>
+  <h3 class="toc-part-heading">Part 5 — Data & Dashboards</h3>
+  <div class="toc-grid">
+    <a href="#dashboard-playbook" class="toc-item"><span class="toc-num">15</span><span class="toc-label">Dashboard Update Playbook</span></a>
+    <a href="#sales-by-source" class="toc-item"><span class="toc-num">16</span><span class="toc-label">Sales by Source Sync</span></a>
+    <a href="#sales-tab-maintenance" class="toc-item"><span class="toc-num">17</span><span class="toc-label">Sales Tab Weekly Maintenance</span></a>
+    <a href="#monthly-commission" class="toc-item"><span class="toc-num">18</span><span class="toc-label">Monthly Commission Calculation</span></a>
+  </div>
+  <h3 class="toc-part-heading">Part 6 — Troubleshooting</h3>
+  <div class="toc-grid">
+    <a href="#troubleshooting" class="toc-item"><span class="toc-num">19</span><span class="toc-label">When Something Breaks</span></a>
   </div>
 
 </div>
@@ -1236,279 +1242,9 @@
   </div>
 </div>
 
-<!-- ==================== SECTION 10: SALES BY SOURCE WEEKLY SYNC ==================== -->
-<div class="section" id="s10">
+<!-- ==================== SECTION 10: HOW TO SET UP CLAUDE CODE ==================== -->
+<div class="section" id="setup-claude-code">
   <div class="section-number">Section 10</div>
-  <h2>Sales by Source Weekly Sync</h2>
-  <p class="section-subtitle">A weekly chore that takes ~3 minutes. Run every Monday morning so the dashboard reflects last week. If anything fails, ping Marcus in <code>#martech</code> &mdash; do NOT keep clicking buttons.</p>
-
-  <div class="info-card">
-    <div class="info-card-header">
-      <span class="info-card-title">What you'll need</span>
-    </div>
-    <div class="info-card-body">
-      <p><strong>BookingLayer:</strong> <a href="https://app.bookinglayer.io" target="_blank">app.bookinglayer.io</a> &mdash; admin@lawayra.com (password in team password manager)</p>
-      <p><strong>Sales by Source spreadsheet:</strong> <a href="https://docs.google.com/spreadsheets/d/139G-OUoApI5ksdSMXMe_WE8geaw_mZ3Sv8PYvBDsq5w" target="_blank">Open spreadsheet</a></p>
-      <p><strong>Backing script:</strong> <code>sales-by-source-weekly-sync.gs</code> in the <code>lawayra-content-strategy</code> repo (already pasted into the spreadsheet's bound Apps Script)</p>
-    </div>
-  </div>
-
-  <h3>Step 1 &mdash; Export from BookingLayer (1 min)</h3>
-  <p>Two reports to export.</p>
-
-  <ol class="step-list">
-    <li><strong>Bookings export</strong> &mdash; Open <a href="https://app.bookinglayer.io" target="_blank">app.bookinglayer.io</a> &rarr; <strong>Reports</strong> in the left sidebar &rarr; <strong>Bookings</strong>. Click <strong>Export</strong> &rarr; <strong>xlsx</strong>. Open the file and confirm columns: <code>Created on | Source | Booking # | Status | Check-in on | Booker | Total | Due | Pax</code>.</li>
-    <li><strong>"How did you hear" export</strong> &mdash; Open <a href="https://app.bookinglayer.io/reports_v2/edit/019ca9d3-8267-72dd-87c9-a8be89b7095d" target="_blank">this exact link</a>. Click <strong>Export</strong> &rarr; <strong>xlsx</strong>. Open the file and confirm columns: <code>Booking: Created at | Booking: Reference | Guest: How did you head about us? (checkout) | How did you hear about us? AF | Person: Email</code>.</li>
-  </ol>
-
-  <div class="callout">
-    <strong>If either export looks empty or columns are missing,</strong> stop and ping Marcus. Do not paste partial data.
-  </div>
-
-  <h3>Step 2 &mdash; Paste into the spreadsheet (1 min)</h3>
-
-  <ol class="step-list">
-    <li>Open the <a href="https://docs.google.com/spreadsheets/d/139G-OUoApI5ksdSMXMe_WE8geaw_mZ3Sv8PYvBDsq5w" target="_blank">Sales by Source spreadsheet</a>.</li>
-    <li>At the bottom, click the <code>BL_Bookings</code> tab.</li>
-    <li>Click cell A1.</li>
-    <li>Switch to your downloaded <strong>Bookings</strong> xlsx &rarr; <strong>Cmd+A</strong> (select all) &rarr; <strong>Cmd+C</strong> (copy).</li>
-    <li>Switch back to the spreadsheet &rarr; <strong>Cmd+V</strong>. The whole sheet populates. (If old data was there, paste overwrites it &mdash; that's fine.)</li>
-    <li>Click the <code>BL_HowDidYouHear</code> tab. Repeat: cell A1, paste from the <strong>"How did you hear"</strong> xlsx.</li>
-  </ol>
-
-  <h3>Step 3 &mdash; Run the sync (30 sec)</h3>
-
-  <ol class="step-list">
-    <li>In the spreadsheet, click <strong>Extensions</strong> (top menu) &rarr; <strong>Apps Script</strong>.</li>
-    <li>A new tab opens with code. Find the function dropdown at the top.</li>
-    <li>Choose <code>runWeeklySync</code> from the dropdown.</li>
-    <li>Click the <strong>&#9654; Run</strong> button.</li>
-    <li><strong>First time only:</strong> Google asks for permission. Click "Review permissions" &rarr; choose your account &rarr; "Allow".</li>
-    <li>Wait ~30 seconds. A popup titled <strong>"Weekly Sync Complete"</strong> appears with a summary.</li>
-  </ol>
-
-  <h3>Step 4 &mdash; Read the summary</h3>
-  <p>Example output:</p>
-  <pre style="background: #1a1a1a; color: #eaeaea; padding: 16px; border-radius: 4px; font-size: 12px; overflow-x: auto;">
-1. BL EXPORT SYNC
-   Booking Source updated:  12
-   Status updated:          3
-   Self-Reported filled:    8
-   Email filled:            6
-   Guest Name filled:       2
-   Amount filled:           1
-   Refs not found in BL:    0
-
-2. SOURCE CATEGORY (GG Leads override)
-   Google Ads attributed:   84
-   Organic Search/SEO:      49
-   Other categorized:       97
-   Cells updated:           5
-
-3. ORPHAN CLEANUP
-   Pending/draft rows deleted: 4
-
-4. DUPLICATE CHECK
-   Duplicate Booking Refs flagged: 1
-   &rarr; Resolve these manually:
-     - 2026-0275 (rows 99, 100)</pre>
-
-  <h3>What the numbers mean</h3>
-  <table class="data-table">
-    <thead>
-      <tr><th>Field</th><th>What it means</th><th>Action needed?</th></tr>
-    </thead>
-    <tbody>
-      <tr><td>Refs not found in BL &gt; 0</td><td>Spreadsheet has rows for bookings missing from your BL export (usually older bookings not in the export window)</td><td>Usually no &mdash; safe to ignore unless &gt; 5</td></tr>
-      <tr><td>Google Ads attributed</td><td>Total bookings matched to a Google Ads lead email &mdash; the main commission attribution number</td><td>No &mdash; informational</td></tr>
-      <tr><td>Pending/draft rows deleted &gt; 0</td><td>Script cleaned up Zapier orphan inserts</td><td>No &mdash; this is desired cleanup</td></tr>
-      <tr><td><strong>Duplicate Booking Refs flagged &gt; 0</strong></td><td>Same Booking Ref appears on multiple rows (Booking Ref cell highlighted red in column D)</td><td><strong>YES</strong> &mdash; resolve manually. Delete the wrong row.</td></tr>
-    </tbody>
-  </table>
-
-  <h3>Step 5 &mdash; Done</h3>
-  <p>Close the Apps Script tab. The Sales by Source Looker Studio dashboard refreshes automatically.</p>
-
-  <div class="callout">
-    <strong>What this DOES NOT do:</strong>
-    <br>&bull; Does <strong>not</strong> push data to the Sales Dashboard (per-call rep tracker). That happens automatically nightly via <code>updateSalesOutcomesV3</code>.
-    <br>&bull; Does <strong>not</strong> update the Marketing/Ads Dashboard (different sheet, separate automation).
-    <br>&bull; Does <strong>not</strong> fix the Zapier "pending row leak" upstream &mdash; only cleans symptoms. If lots of pending rows show up between syncs, escalate to Marcus.
-  </div>
-
-  <h3>Troubleshooting</h3>
-  <table class="data-table">
-    <thead>
-      <tr><th>Problem</th><th>Fix</th></tr>
-    </thead>
-    <tbody>
-      <tr><td>"BL_Bookings tab missing" error</td><td>You skipped Step 2 &mdash; go paste the BL Bookings export first</td></tr>
-      <tr><td>"BL_HowDidYouHear tab missing" error</td><td>Same &mdash; paste the "How did you hear" export</td></tr>
-      <tr><td>"BL_Bookings is empty" error</td><td>Your paste didn't work. Re-copy &mdash; make sure header row 1 is included</td></tr>
-      <tr><td>Popup never appears</td><td>Check Apps Script "Execution log" at bottom for the error &mdash; screenshot to Marcus</td></tr>
-      <tr><td>Numbers look wildly off</td><td>Don't re-run. Screenshot the popup and ping Marcus</td></tr>
-      <tr><td>Duplicate Booking Refs &mdash; not sure which to delete</td><td>Don't guess. Ping Marcus with the Booking Ref</td></tr>
-    </tbody>
-  </table>
-
-  <div class="callout" style="border-color: var(--danger, #b34100);">
-    <strong>Escalate to Marcus immediately if:</strong>
-    <br>&bull; Any error popup
-    <br>&bull; Duplicate Booking Refs you can't confidently resolve
-    <br>&bull; More than 5 "Refs not found in BL" (BL export may be incomplete)
-    <br>&bull; More than 10 orphan pending rows in one week (Zapier is leaking &mdash; needs upstream fix)
-    <br>&bull; New rows showing up with no Booking Ref at all
-  </div>
-</div>
-
-<!-- ==================== SECTION 11: MONTHLY COMMISSION CALCULATION ==================== -->
-<div class="section" id="s11">
-  <div class="section-number">Section 11</div>
-  <h2>Monthly Commission Calculation</h2>
-  <p class="section-subtitle">Run on the first business day of each month, before payroll. Cross-references BookingLayer paid bookings against the lead sheets and Sales Dashboard so every rep gets credited for the deals they actually closed &mdash; including direct-purchase rep deals that don't go through GHL.</p>
-
-  <div class="callout" style="border-color: var(--danger, #b34100);">
-    <strong>Why this matters:</strong> If a Sale row has the wrong rep, a different rep gets paid. If a Sale row has no rep when it should, the actual rep doesn't get paid at all. Both are bad. The weekly Sales by Source sync (Section 10) prepares the data; this monthly process verifies and finalizes commissions.
-  </div>
-
-  <h3>Inputs</h3>
-  <table class="data-table">
-    <thead>
-      <tr><th>Source</th><th>What it provides</th></tr>
-    </thead>
-    <tbody>
-      <tr><td><a href="https://app.bookinglayer.io" target="_blank">BookingLayer</a></td><td>Bookings export (xlsx) for the month &mdash; status, paid amount, BL Source field (rep name or "Booking engine")</td></tr>
-      <tr><td><a href="https://docs.google.com/spreadsheets/d/1fcBghq6dXp9v_58Lz0b-Fm5iXYlhw4HF00zQUjCSSTU" target="_blank">Sales Dashboard</a></td><td>Every GHL appointment + V3-inserted direct-purchase rep rows. Outcome=Sale rows are commission candidates.</td></tr>
-      <tr><td><a href="https://docs.google.com/spreadsheets/d/1PKOKpTg9o6HgV41Fvwag8aId5PAnr4qH5AwxmVL2jBg" target="_blank">GG Leads sheet</a></td><td>Google Ads lead emails &mdash; used to flag a sale as Google-Ads-sourced</td></tr>
-      <tr><td><a href="https://docs.google.com/spreadsheets/d/139G-OUoApI5ksdSMXMe_WE8geaw_mZ3Sv8PYvBDsq5w" target="_blank">Sales by Source &gt; Raw Bookings</a></td><td>Per-booking record with Status, Source Category (Google Ads vs Organic vs Word of Mouth), Booking Source (rep name)</td></tr>
-    </tbody>
-  </table>
-
-  <h3>Process</h3>
-  <ol class="step-list">
-    <li><strong>Run the weekly sync first</strong> &mdash; If you haven't run <code>runWeeklySync()</code> recently (Section 10), do it now. Commission accuracy depends on Source Category and Booking Source being current.</li>
-    <li><strong>Pull BL bookings for the month</strong> &mdash; Open BL &rarr; Reports &rarr; Bookings &rarr; filter to <code>Status = paid OR deposit_paid</code> AND the target month &rarr; export xlsx.</li>
-    <li><strong>Cross-reference each paid booking against Raw Bookings</strong> &mdash; Confirm Status, Amount, Booking Source col P, and Source Category col J are all filled. If anything is blank, re-run <code>runWeeklySync()</code>.</li>
-    <li><strong>Run <code>updateSalesOutcomesV3()</code></strong> &mdash; Open Sales Dashboard &rarr; Extensions &rarr; Apps Script &rarr; run <code>updateSalesOutcomesV3</code>. This inserts missing rep rows (where Booking Source = real rep name) and marks paid bookings as Sale + fills Revenue.</li>
-    <li><strong>Manual review of blank-rep Sale rows</strong> &mdash; In Sales Dashboard, filter col D (Sales Rep) = blank. For each row:
-      <ul>
-        <li>Check the BL UI Source field for that booking. If it shows a rep name &rarr; fill it in.</li>
-        <li>If "Booking Engine" &rarr; that's a direct purchase &mdash; not a commission. Leave the row.</li>
-        <li>If ambiguous &rarr; ask in <code>#sales-tracking</code> Discord. <strong>Never guess.</strong></li>
-      </ul>
-    </li>
-    <li><strong>Calculate commissions</strong> &mdash; Sum Sales Dashboard Revenue (col I) by Sales Rep (col D) for the month. Apply the per-rep commission percentage from the rep agreements.</li>
-    <li><strong>Sanity check against Marketing Dashboard</strong> &mdash; Sales (col N) and Revenue (col P) per day should equal the count/sum of paid Raw Bookings where Source Category = "Google Ads". If Marketing Dashboard MTD Sales is materially less than the GG Ads count in Raw Bookings, re-run <code>backfillMarketingDashboardV7()</code>.</li>
-  </ol>
-
-  <h3>What the cross-references catch</h3>
-  <table class="data-table">
-    <thead>
-      <tr><th>Edge case</th><th>Caught by</th></tr>
-    </thead>
-    <tbody>
-      <tr><td>Google Ads guests who self-report "Friend Recommendation" or "Google Search"</td><td>GG Leads email override in <code>updateSourceCategoriesV4</code> &mdash; otherwise the ads channel under-reports</td></tr>
-      <tr><td>Direct-purchase rep deals that bypass GHL</td><td>Booking Source col P (BL Source field synced via runWeeklySync) &mdash; otherwise reps don't get paid</td></tr>
-      <tr><td>Pendings that flipped to paid but Zapier missed the update</td><td>Manual BL export sync via runWeeklySync &mdash; otherwise the row stays pending forever</td></tr>
-    </tbody>
-  </table>
-
-  <h3>Quick run order (every month)</h3>
-  <pre style="background: #1a1a1a; color: #eaeaea; padding: 16px; border-radius: 4px; font-size: 12px; overflow-x: auto;">
-runWeeklySync()                 # Section 10 &mdash; backfill from BL exports
-updateSalesOutcomesV3()         # Push to Sales Dashboard, insert direct-purchase rep rows
-populateSalesTrackers()         # Rebuild Weekly + Monthly Tracker tabs
-populateMarketingTrackers()     # Same for Marketing Dashboard
-fixSalesDashboardDates()        # Convert string dates so SUMIFS work (run before populate)
-fixMarketingDashboardDates()    # Same for Marketing Dashboard (already on daily trigger)</pre>
-
-  <div class="callout">
-    <strong>Escalate to Marcus if:</strong>
-    <br>&bull; More than 5 blank-rep Sale rows you can't resolve via Discord
-    <br>&bull; Marketing Dashboard MTD Sales differs from Raw Bookings GG Ads count by &gt; 10%
-    <br>&bull; A rep disputes their commission total
-    <br>&bull; Any duplicate Booking Refs flagged by runWeeklySync that you couldn't resolve
-  </div>
-</div>
-
-<!-- ==================== SECTION 12: HOW TO SEND EMAIL BROADCASTS ==================== -->
-<div class="section" id="s12">
-  <div class="section-number">Section 12</div>
-  <h2>How to Send Email Broadcasts</h2>
-  <p class="section-subtitle">Step-by-step process for sending email broadcasts to the LaWayra subscriber list via GetDrip.</p>
-
-  <div class="info-card">
-    <div class="info-card-header">
-      <span class="info-card-title">Email Template Reference</span>
-    </div>
-    <div class="info-card-body">
-      <p><strong>Template file:</strong> <code>community-call-email.html</code> in the project repo</p>
-      <p><strong>Template includes:</strong> Subscriber first name personalization, 5 timezone display, RSVP link, call format overview</p>
-      <p><strong>Drip account:</strong> admin@lawayra.com</p>
-      <p><strong>Walkthrough video:</strong> <a href="https://www.loom.com/share/5a22821ed2df4c828d894258dd1868e7" target="_blank">Loom &mdash; How to send a broadcast in Drip</a></p>
-    </div>
-  </div>
-
-  <h3>Broadcast Process</h3>
-
-  <ol class="step-list">
-    <li><strong>Draft the email</strong> &mdash; Write copy with event details (date, time in multiple time zones, RSVP link to Circle event). Use the community call email template at <code>community-call-email.html</code> as reference for formatting.</li>
-    <li><strong>Review in WhatsApp group</strong> &mdash; Share the draft in the team WhatsApp group and get feedback before sending.</li>
-    <li><strong>Send a test email</strong> &mdash; Send to yourself first. Check formatting, links, time zones, and mobile rendering.</li>
-    <li><strong>Broadcast via Drip</strong> &mdash; Log in to <a href="https://getdrip.com" target="_blank">getdrip.com</a>. Select the appropriate list/segment. Compose or paste your email. Send the broadcast. See the <a href="https://www.loom.com/share/5a22821ed2df4c828d894258dd1868e7" target="_blank">Loom walkthrough</a> for a visual guide.</li>
-    <li><strong>Confirm delivery</strong> &mdash; Check the Drip dashboard for open rates and click rates after sending.</li>
-  </ol>
-
-  <div class="callout">
-    <strong>Best practices:</strong>
-    <br>&bull; Always include times in at least 3 time zones (CDT/COT, EDT, BST).
-    <br>&bull; If multiple events are close together, combine into one email to avoid fatigue.
-    <br>&bull; Day-before reminder emails improve attendance significantly (lesson learned: 18 RSVPs but only 5 showed up without reminders).
-    <br>&bull; Never send without team review first.
-  </div>
-</div>
-
-<!-- ==================== SECTION 13: HOW TO BUILD & LAUNCH A FUNNEL PAGE ==================== -->
-<div class="section" id="s13">
-  <div class="section-number">Section 13</div>
-  <h2>How to Build &amp; Launch a Funnel Page</h2>
-  <p class="section-subtitle">When LaWayra launches a new program, workshop, or offer, it needs its own landing page. We use Claude Code to generate branded, self-contained HTML pages that are hosted on GitHub Pages &mdash; no WordPress or external builder needed.</p>
-
-  <h3>Build Process</h3>
-
-  <ol class="step-list">
-    <li><strong>Gather content</strong> &mdash; Collect: program name, headline/tagline, start date &amp; schedule, price, checkout URL, program description, what's included, facilitator photo + bio, hero image, FAQ (3&ndash;5 questions). The more complete, the faster the build.</li>
-    <li><strong>Place source files in the project folder</strong> &mdash; Put PDFs (proposals, mockups), promo slide PNGs, and photos in the project directory. Claude Code can extract text from PDFs and read images directly.</li>
-    <li><strong>Run the skill</strong> &mdash; Open Claude Code and run <code>/build-landing-page</code>. Provide the details and file locations. Claude Code will read source files, extract content, apply LaWayra branding, and generate a self-contained HTML page.</li>
-    <li><strong>Review the page</strong> &mdash; Open the HTML file locally in your browser. Check: content accuracy, mobile responsiveness, facilitator photo, CTA button links, logo rendering. Request specific changes ("make the heading bigger", "swap the hero image", "change the price").</li>
-    <li><strong>Push to GitHub</strong> &mdash; Tell Claude Code to push. It will update <code>.gitignore</code>, commit, and push to <code>origin main</code>. The page goes live on GitHub Pages within 1&ndash;2 minutes.</li>
-    <li><strong>Share the viewable URL</strong> &mdash; Format: <code>https://marcuswest-lab.github.io/lawayra-content-strategy/[filename].html</code>. Share with team for final review and sign-off.</li>
-  </ol>
-
-  <div class="callout">
-    <strong>Brand specs for landing pages:</strong>
-    <br>&bull; <strong>Font:</strong> Poppins (Google Fonts) &mdash; Bold (700) for headings, Regular (400) for body
-    <br>&bull; <strong>Colors:</strong> Olive #3F4021, Cream #FFF7E7, Amber #E4A017 (CTAs), Charcoal #2B2728
-    <br>&bull; <strong>Logo:</strong> <code>lawayra-logo-new.png</code> (outline flower, transparent background)
-    <br>&bull; <strong>Voice:</strong> Warm, authentic, compassion-first &mdash; reference <code>content-machine/lawayra-voice-guide.md</code>
-    <br>&bull; <strong>Full SOP:</strong> <code>lawayra-landing-page-sop.md</code> in the project repo
-  </div>
-
-  <div class="info-card">
-    <div class="info-card-header">
-      <span class="info-card-title">Template Reference</span>
-    </div>
-    <div class="info-card-body">
-      <p><strong>Template:</strong> <code>integration-series-landing-page.html</code> (the Integration Series page)</p>
-      <p><strong>Available sections:</strong> Hero, Pain Point, Why It Matters, Program Breakdown, Outcomes, What's Included, Facilitator Bio, Pricing, FAQ, Final CTA</p>
-      <p><strong>Not every page needs all sections</strong> &mdash; adapt based on offer complexity</p>
-    </div>
-  </div>
-</div>
-
-<!-- ==================== SECTION 14: HOW TO SET UP CLAUDE CODE ==================== -->
-<div class="section" id="s14">
-  <div class="section-number">Section 14</div>
   <h2>How to Set Up Claude Code</h2>
   <p class="section-subtitle">Claude Code is the AI agent that powers content generation, landing page building, dashboard creation, and automation for LaWayra. This is the full setup walkthrough &mdash; install the app, add the Chrome extension, set up your project folder, then connect Claude Code to n8n and GHL.</p>
 
@@ -1565,9 +1301,107 @@ fixMarketingDashboardDates()    # Same for Marketing Dashboard (already on daily
   </ol>
 </div>
 
-<!-- ==================== SECTION 15: HOW TO SET UP A SUBDOMAIN IN GHL ==================== -->
-<div class="section" id="s15">
-  <div class="section-number">Section 15</div>
+<!-- ==================== SECTION 11: HOW TO BUILD & LAUNCH A FUNNEL PAGE ==================== -->
+<div class="section" id="build-funnel-page">
+  <div class="section-number">Section 11</div>
+  <h2>How to Build &amp; Launch a Funnel Page</h2>
+  <p class="section-subtitle">A simple landing page with a lead-capture form, hosted on a GHL funnel. The flow: build the form in GHL, build the page with Claude Code (with the form embedded), drop the page into a GHL funnel, point a subdomain at it, then tag everyone who applies. It looks more technical than it is &mdash; take it one step at a time.</p>
+
+  <div class="callout">
+    <strong>Video walkthrough:</strong> <a href="https://www.loom.com/share/1a4cfd5f909248baa4cdf4b684fc7ef4" target="_blank">Watch the Loom</a> for a screen-share of this entire process.
+  </div>
+
+  <div class="callout">
+    <strong>Before you start:</strong> You'll need Claude Code set up with the LaWayra project folder (brand kit, photos, etc.) &mdash; see <a href="#setup-claude-code">Section 10: How to Set Up Claude Code</a>. Steps 1&ndash;5 are the core build; the domain (Step 6) and integrations (Step 7) are a bit more technical &mdash; ask Marcus if you get stuck.
+  </div>
+
+  <h3>Step 1 &mdash; Create the form in GHL</h3>
+  <p>In GHL, go to <strong>Sites</strong> &rarr; you'll see <strong>Forms</strong>, <strong>Surveys</strong>, and <strong>Quizzes</strong>.</p>
+  <table class="data-table">
+    <thead>
+      <tr><th>Type</th><th>What it is</th><th>When to use</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Form</strong></td><td>All questions on a single page (like a Google Form)</td><td>Default choice &mdash; this is what we normally use</td></tr>
+      <tr><td><strong>Survey</strong></td><td>One question at a time, slides through (Typeform-style)</td><td>Optional, if you want a one-at-a-time feel</td></tr>
+      <tr><td>Quiz</td><td>Adds a lead score</td><td>Not needed for LaWayra</td></tr>
+    </tbody>
+  </table>
+  <p>Create the form, add whatever questions you want, and save. Keep it simple. (If you ever need to <strong>disqualify</strong> applicants based on an answer, that requires conditional logic &mdash; ask Marcus before adding it.)</p>
+
+  <h3>Step 2 &mdash; Get the form embed code</h3>
+  <ol class="step-list">
+    <li>Open the form you just built.</li>
+    <li>Click <strong>Integrate</strong> (top) &rarr; <strong>Embed code</strong>.</li>
+    <li>Choose <strong>Inline</strong> (embeds the form directly in the body of the page).</li>
+    <li>Click <strong>Copy</strong>. Hold onto this code &mdash; Claude Code needs it in the next step.</li>
+  </ol>
+
+  <h3>Step 3 &mdash; Build the landing page with Claude Code</h3>
+  <ol class="step-list">
+    <li>Open Claude Code pointed at your <strong>LaWayra project folder</strong> (the one with the brand kit, brand guides, and photos). Claude can see everything in that folder.</li>
+    <li>Run <code>/build-landing-page</code> (or just describe what you want). Tell it to dig into the brand kit and build a simple landing page for the offer.</li>
+    <li><strong>Give it the form embed code from Step 2</strong> so it embeds the form into the page.</li>
+    <li>Feed it as much context as you can &mdash; offer details, photos, the audience. It will sort through the folder and pull what it needs.</li>
+    <li>Review the preview. Iterate with feedback ("make the heading bigger", "swap the hero image"). For layout problems, <strong>send a screenshot</strong> so Claude has visual context.</li>
+  </ol>
+
+  <h3>Step 4 &mdash; Get the HTML out</h3>
+  <p>You need the final HTML to paste into GHL. Two options:</p>
+  <ol class="step-list">
+    <li><strong>Easiest:</strong> Ask Claude to <em>"output the full HTML code in the chat"</em>, then copy it directly.</li>
+    <li><strong>Or:</strong> Open the saved <code>.html</code> file in a code editor like <a href="https://code.visualstudio.com/" target="_blank">VS Code</a> and copy from there. (Don't just double-click the file &mdash; that opens it in the browser, not for copying.)</li>
+  </ol>
+
+  <h3>Step 5 &mdash; Create the funnel in GHL and paste the code</h3>
+  <ol class="step-list">
+    <li>In GHL, go to <strong>Sites</strong> &rarr; <strong>Funnels</strong> &rarr; <strong>Create New Funnel</strong> (from scratch). Name it after the offer.</li>
+    <li>Click <strong>Create Funnel Step</strong>, name the page, and choose <strong>Create from blank</strong>.</li>
+    <li>In the editor, search for the <strong>Code</strong> element and drag it onto the page.</li>
+    <li>Click the box &rarr; <strong>Open code editor</strong> &rarr; paste your landing page HTML &rarr; <strong>Save</strong>.</li>
+    <li><strong>Preview</strong> the page. If margins/spacing look off (GHL adds default container margins), send Claude a screenshot and ask it to make the page full-width and fix the spacing, then re-paste the updated code.</li>
+  </ol>
+
+  <div class="callout">
+    <strong>Common layout fix:</strong> GHL wraps custom code in a container with default margins/borders. Ask Claude for full-width CSS overrides. The <code>/build-landing-page</code> skill includes these automatically.
+  </div>
+
+  <h3>Step 6 &mdash; Connect a domain / subdomain</h3>
+  <p>To put the page on a clean URL (e.g., <code>community.lawayra.com</code> or <code>apply.lawayra.com</code>), point a subdomain at GHL. This is the more technical part &mdash; full walkthrough in <a href="#setup-subdomain">Section 12: How to Set Up a Subdomain in GHL</a>. If GHL shows "Please add a domain in settings to see your funnel live," that's your cue to do this step.</p>
+
+  <h3>Step 7 &mdash; Set up integrations (tag your applicants)</h3>
+  <p>Decide where the form data goes. At minimum, <strong>tag every contact who submits the form</strong> so applicants are distinguishable from the rest of the database (which is full of past patients/guests).</p>
+  <ol class="step-list">
+    <li>In GHL, go to <strong>Automation</strong> &rarr; create a workflow (start from scratch).</li>
+    <li>Set the trigger to <strong>Form Submitted</strong> &rarr; add a filter so <strong>Form is</strong> [the form you built].</li>
+    <li>Save the trigger, then add an action &mdash; e.g., <strong>Add Tag</strong> with a tag that identifies these applicants.</li>
+    <li>(Optional) Add more actions later: notifications, pipeline stages, email sequences, etc.</li>
+  </ol>
+
+  <div class="callout">
+    <strong>Brand specs for landing pages:</strong>
+    <br>&bull; <strong>Font:</strong> Poppins (Google Fonts) &mdash; Bold (700) for headings, Regular (400) for body
+    <br>&bull; <strong>Colors:</strong> Olive #3F4021, Cream #FFF7E7, Amber #E4A017 (CTAs), Charcoal #2B2728
+    <br>&bull; <strong>Logo:</strong> <code>lawayra-logo-new.png</code> (outline flower, transparent background)
+    <br>&bull; <strong>Voice:</strong> Warm, authentic, compassion-first &mdash; reference <code>content-machine/lawayra-voice-guide.md</code>
+    <br>&bull; <strong>Full SOP:</strong> <code>lawayra-landing-page-sop.md</code> in the project repo
+  </div>
+
+  <div class="info-card">
+    <div class="info-card-header">
+      <span class="info-card-title">Template Reference</span>
+    </div>
+    <div class="info-card-body">
+      <p><strong>Template:</strong> <code>integration-series-landing-page.html</code> (the Integration Series page)</p>
+      <p><strong>Available sections:</strong> Hero, Pain Point, Why It Matters, Program Breakdown, Outcomes, What's Included, Facilitator Bio, Pricing, FAQ, Final CTA</p>
+      <p><strong>Not every page needs all sections</strong> &mdash; adapt based on offer complexity</p>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SECTION 12: HOW TO SET UP A SUBDOMAIN IN GHL ==================== -->
+<div class="section" id="setup-subdomain">
+  <div class="section-number">Section 12</div>
   <h2>How to Set Up a Subdomain in GHL</h2>
   <p class="section-subtitle">When you need to host a landing page or funnel on a custom subdomain (e.g., heal.lawayra.com), follow these steps to connect it through DNS and GHL.</p>
 
@@ -1575,16 +1409,20 @@ fixMarketingDashboardDates()    # Same for Marketing Dashboard (already on daily
 
   <div class="info-card">
     <div class="info-card-body">
-      <p><strong>DNS provider:</strong> Wherever lawayra.com DNS is managed (check for existing CNAME records to identify the provider).</p>
+      <p><strong>Where the domain lives:</strong> <strong>Namecheap</strong> &mdash; this is where all the <code>lawayra.com</code> domains are registered and where you add DNS records. Login + 2FA key are in <a href="#s04">Section 4: Logins</a>. (Hosting is on Hawkhost / cPanel, but DNS for subdomains is managed in Namecheap.)</p>
       <p><strong>GHL CNAME value:</strong> <code>sites.ludicrous.cloud</code> &mdash; this is the server our GHL account uses for all hosted pages.</p>
-      <p><strong>Subdomain name:</strong> Choose something short and relevant to the offer (e.g., <code>heal</code>, <code>integration</code>, <code>workshops</code>).</p>
+      <p><strong>Subdomain name:</strong> Choose something short and relevant to the offer (e.g., <code>heal</code>, <code>community</code>, <code>apply</code>, <code>workshops</code>).</p>
     </div>
+  </div>
+
+  <div class="callout" style="border-color: var(--danger, #b34100);">
+    <strong>Do NOT touch the email records.</strong> All <code>lawayra.com</code> email is connected to the existing MX records in Namecheap. Changing or deleting those will break email. You're only <em>adding</em> a new CNAME for the subdomain &mdash; leave everything else alone.
   </div>
 
   <h3>Setup Process</h3>
 
   <ol class="step-list">
-    <li><strong>Add CNAME record in DNS</strong> &mdash; Log in to your DNS provider. Add a new CNAME record with the subdomain name (e.g., <code>heal</code>) pointing to <code>sites.ludicrous.cloud</code>. Set TTL to Automatic.</li>
+    <li><strong>Add CNAME record in Namecheap</strong> &mdash; Log in to Namecheap (use the 2FA extension for the OTP code). Open the <code>lawayra.com</code> domain &rarr; <strong>Advanced DNS</strong>. Add a new <strong>CNAME record</strong> with Host = the subdomain (e.g., <code>community</code>) and Value = <code>sites.ludicrous.cloud</code>. Set TTL to Automatic. <strong>Leave the existing MX/email records untouched.</strong></li>
     <li><strong>Add domain in GHL</strong> &mdash; Go to <strong>Settings &rarr; Domains</strong> in GHL. Click <strong>Add Domain</strong>. Enter the full subdomain (e.g., <code>heal.lawayra.com</code>). GHL will show you the required CNAME record &mdash; confirm it matches what you just added.</li>
     <li><strong>Verify the DNS</strong> &mdash; Click <strong>Verify records</strong> in GHL. DNS propagation can take a few minutes to a few hours. If verification fails, wait and try again.</li>
     <li><strong>Create the funnel in GHL</strong> &mdash; Go to <strong>Sites &rarr; Funnels &rarr; Create New Funnel</strong>. Name it after the offer. Add a new step/page. Use a blank template or add a <strong>Custom Code</strong> element and paste your HTML.</li>
@@ -1628,9 +1466,46 @@ fixMarketingDashboardDates()    # Same for Marketing Dashboard (already on daily
   </table>
 </div>
 
-<!-- ==================== SECTION 16: HOW TO CHANGE PERMISSIONS IN GHL ==================== -->
-<div class="section" id="s16">
-  <div class="section-number">Section 16</div>
+<!-- ==================== SECTION 13: HOW TO SEND EMAIL BROADCASTS ==================== -->
+<div class="section" id="email-broadcasts">
+  <div class="section-number">Section 13</div>
+  <h2>How to Send Email Broadcasts</h2>
+  <p class="section-subtitle">Step-by-step process for sending email broadcasts to the LaWayra subscriber list via GetDrip.</p>
+
+  <div class="info-card">
+    <div class="info-card-header">
+      <span class="info-card-title">Email Template Reference</span>
+    </div>
+    <div class="info-card-body">
+      <p><strong>Template file:</strong> <code>community-call-email.html</code> in the project repo</p>
+      <p><strong>Template includes:</strong> Subscriber first name personalization, 5 timezone display, RSVP link, call format overview</p>
+      <p><strong>Drip account:</strong> admin@lawayra.com</p>
+      <p><strong>Walkthrough video:</strong> <a href="https://www.loom.com/share/5a22821ed2df4c828d894258dd1868e7" target="_blank">Loom &mdash; How to send a broadcast in Drip</a></p>
+    </div>
+  </div>
+
+  <h3>Broadcast Process</h3>
+
+  <ol class="step-list">
+    <li><strong>Draft the email</strong> &mdash; Write copy with event details (date, time in multiple time zones, RSVP link to Circle event). Use the community call email template at <code>community-call-email.html</code> as reference for formatting.</li>
+    <li><strong>Review in WhatsApp group</strong> &mdash; Share the draft in the team WhatsApp group and get feedback before sending.</li>
+    <li><strong>Send a test email</strong> &mdash; Send to yourself first. Check formatting, links, time zones, and mobile rendering.</li>
+    <li><strong>Broadcast via Drip</strong> &mdash; Log in to <a href="https://getdrip.com" target="_blank">getdrip.com</a>. Select the appropriate list/segment. Compose or paste your email. Send the broadcast. See the <a href="https://www.loom.com/share/5a22821ed2df4c828d894258dd1868e7" target="_blank">Loom walkthrough</a> for a visual guide.</li>
+    <li><strong>Confirm delivery</strong> &mdash; Check the Drip dashboard for open rates and click rates after sending.</li>
+  </ol>
+
+  <div class="callout">
+    <strong>Best practices:</strong>
+    <br>&bull; Always include times in at least 3 time zones (CDT/COT, EDT, BST).
+    <br>&bull; If multiple events are close together, combine into one email to avoid fatigue.
+    <br>&bull; Day-before reminder emails improve attendance significantly (lesson learned: 18 RSVPs but only 5 showed up without reminders).
+    <br>&bull; Never send without team review first.
+  </div>
+</div>
+
+<!-- ==================== SECTION 14: HOW TO CHANGE PERMISSIONS IN GHL ==================== -->
+<div class="section" id="ghl-permissions">
+  <div class="section-number">Section 14</div>
   <h2>How to Change Permissions in GHL</h2>
   <p class="section-subtitle">Walkthrough for managing user roles and permissions inside GHL (adding/removing team members, restricting access to specific areas).</p>
 
@@ -1642,8 +1517,203 @@ fixMarketingDashboardDates()    # Same for Marketing Dashboard (already on daily
   </div>
 </div>
 
+<!-- ==================== SECTION 15: DASHBOARD UPDATE PLAYBOOK ==================== -->
+<div class="section" id="dashboard-playbook">
+  <div class="section-number">Section 15</div>
+  <h2>Dashboard Update Playbook</h2>
+  <p class="section-subtitle">The concise workflow for making sure all three dashboards reflect current reality. Most things run on schedule &mdash; use this when the schedule has gaps, you just changed something, or numbers look off.</p>
+
+  <div class="info-card" style="border-left:4px solid var(--accent); margin-bottom:24px;">
+    <h3 style="color:var(--accent); margin-top:0;">The Golden Rule</h3>
+    <p><strong>Refresh the BL helper tabs FIRST.</strong> Every script that "fixes" Sales by Source or Sales Dashboard reads from <code>BL_HowDidYouHear</code> and/or <code>BL_Bookings</code> in the Sales by Source spreadsheet. If those tabs are stale, every downstream script silently runs against bad data and reports success.</p>
+    <p style="margin-bottom:0;">The most common bug pattern: "I ran the script and it said success, but row X is still blank." 90% of the time &mdash; BL helper tabs were stale.</p>
+  </div>
+
+  <h3>Phase A &mdash; Refresh source data (10 min)</h3>
+  <p>Do this every time before running any of the scripts below.</p>
+  <ol>
+    <li>Open BL &rarr; "Bookings" report &rarr; kebab menu &rarr; <strong>Generate now (XLSX)</strong> &rarr; wait for "Report ready" toast &rarr; Download.</li>
+    <li>Open BL &rarr; "How did you hear about us?" report &rarr; same flow &rarr; Download.</li>
+    <li>Open Sales by Source sheet &rarr; <code>BL_Bookings</code> tab &rarr; select all &rarr; paste fresh XLSX over it.</li>
+    <li>Same with <code>BL_HowDidYouHear</code> tab.</li>
+  </ol>
+
+  <h3>Phase B &mdash; Sales by Source (Raw Bookings tab) &mdash; 2 min</h3>
+  <p>Apps Script project: bound to Sales by Source sheet. Run in this order:</p>
+  <ul>
+    <li><code>syncFromBLExports()</code> &mdash; fills Raw Bookings cols E Name, F Email, H Amount, O Status, P Booking Source from BL_Bookings</li>
+    <li><code>updateSourceCategoriesV5()</code> &mdash; fills cols I Self-Reported Source + J Source Category. Reads BL_HowDidYouHear + the Leads master tab. Applies GG Ads email/name override.</li>
+    <li><code>cleanupOrphanPendingRows()</code> (DRY_RUN=true first) &mdash; removes Zapier-created orphan rows (blank name + blank amount + status=pending). Flip flag and re-run.</li>
+  </ul>
+
+  <h3>Phase C &mdash; Sales Dashboard &mdash; 2 min</h3>
+  <ul>
+    <li><code>updateSalesOutcomesV3()</code> &mdash; walks paid Raw Bookings, fills Sales Dashboard Outcome=Sale + Revenue + Cash + Rep. Inserts new rows for direct purchases via sales-team reps.</li>
+    <li><code>backfillOpportunityIds()</code> (DRY_RUN first) &mdash; fills col N for blank rows by name-matching against GHL opps. Required for dedup to work.</li>
+    <li><code>dedupByOpportunityId()</code> (DRY_RUN first) &mdash; collapses duplicate rows sharing the same opp ID.</li>
+    <li><code>backfillCalendarColO()</code> &mdash; fills col O Calendar with actual GHL calendar name.</li>
+  </ul>
+  <p><strong>Caveats:</strong> V3 fills Cash = full Amount for both <code>paid</code> and <code>deposit_paid</code>. For deposit rows, manually correct Cash if you need exact cash-collected. V3 only fills Rep if BL Booking Source matches Nico / Aliyah / Jacobo / Thomas &mdash; anything else leaves rep blank for manual review.</p>
+
+  <h3>Phase D &mdash; LW Ads Dashboard &mdash; 1 min</h3>
+  <p>Apps Script project: bound to LW Ads Dashboard sheet.</p>
+  <ul>
+    <li><code>fixMarketingDashboardDates()</code> &mdash; converts string dates in col B to real Date type so SUMIFS work. Already on 7:30 UTC trigger.</li>
+    <li><code>backfillMarketingDashboardV7()</code> &mdash; fills cols L (Booked Calls), N (Sales), P (Revenue) on GG Daily tab. Reads Raw Bookings paid rows where Source Category = "Google Ads". Already on nightly trigger.</li>
+    <li><code>populateMarketingTrackers()</code> &mdash; rebuilds GG Weekly + GG Monthly tracker tabs with SUMIFS formulas. Only run when you actually want to refresh the tracker views.</li>
+  </ul>
+  <div class="info-card" style="background:rgba(255,180,0,0.08); border-left:3px solid var(--warning); margin:16px 0;">
+    <p style="margin:0;"><strong>Tab references after rename:</strong> As of 2026-05-24, the Ads Dashboard tabs are <code>GG Daily</code>, <code>GG Weekly</code>, <code>GG Monthly</code>, <code>GG Daily Report</code>. If a script references the old <code>Dashboard</code> / <code>Weekly Tracker</code> / <code>Monthly Tracker</code>, it'll silently break.</p>
+  </div>
+
+  <h3>Phase E &mdash; n8n workflows (rarely need manual intervention)</h3>
+  <p>These run on schedule via <code>server.lawayraserver.com</code>. Check via the <a href="https://server.lawayraserver.com/home/workflows" target="_blank">workflows UI</a>:</p>
+  <div class="info-card">
+    <ul style="margin:0;">
+      <li><strong>3ztYQF2wJO3cHDi2</strong> &mdash; LW Booking Sync Pipeline (CSV email trigger). BL CSV &rarr; Raw Bookings.</li>
+      <li><strong>fOTmp4CofwDzsLft</strong> &mdash; LW Source Data Pipeline (CSV email trigger). BL "How did you hear?" CSV &rarr; Raw Bookings col I.</li>
+      <li><strong>jStC73dYSNXQEuV7</strong> &mdash; GHL &gt; LW Sales Dashboard. Daily 1:13 UTC. GHL opps + appointments &rarr; Sales Dashboard (appendOrUpdate by col N).</li>
+      <li><strong>FXxEh8d2nQRZ9sEy</strong> &mdash; LaWayra-Individual-Sales-Sheets. Real-time webhook on pipeline-stage changes.</li>
+      <li><strong>E6K7ts1s0HXYw8JV</strong> &mdash; Google Ads &gt; LW Marketing Dashboard. Daily 1:07 UTC.</li>
+      <li><strong>ZfiXuiG20bwPLj42</strong> &mdash; LW Daily Report &gt; Discord. Daily 2:03 UTC.</li>
+    </ul>
+  </div>
+
+  <h3>Quick reference &mdash; "I just want to..."</h3>
+  <div class="info-card">
+    <table style="width:100%; border-collapse:collapse;">
+      <tr><th style="text-align:left; padding:8px; border-bottom:1px solid var(--border);">Goal</th><th style="text-align:left; padding:8px; border-bottom:1px solid var(--border);">Run</th></tr>
+      <tr><td style="padding:8px;">Make sure recent BL bookings show up</td><td style="padding:8px;">Phase A &rarr; <code>syncFromBLExports</code></td></tr>
+      <tr><td style="padding:8px;">Fix wrong/missing Source Category</td><td style="padding:8px;">Phase A &rarr; <code>updateSourceCategoriesV5</code></td></tr>
+      <tr><td style="padding:8px;">Get a Sale row's Revenue/Cash filled</td><td style="padding:8px;">Phase A &rarr; <code>updateSalesOutcomesV3</code></td></tr>
+      <tr><td style="padding:8px;">Clean up Sales Dashboard duplicates</td><td style="padding:8px;">Phase C &rarr; <code>backfillOpportunityIds</code> then <code>dedupByOpportunityId</code></td></tr>
+      <tr><td style="padding:8px;">Fill missing Calendar (col O)</td><td style="padding:8px;">Phase C &rarr; <code>backfillCalendarColO</code></td></tr>
+      <tr><td style="padding:8px;">Refresh weekly/monthly tracker views</td><td style="padding:8px;">Phase D &rarr; <code>populateMarketingTrackers</code></td></tr>
+      <tr><td style="padding:8px;">See the day's report numbers</td><td style="padding:8px;">Just check Discord &mdash; they post 2:03 / 8:03 UTC</td></tr>
+    </table>
+  </div>
+
+  <p style="margin-top:24px; color:var(--text-muted); font-size:14px;">Full session log of the 5/25-5/26 dashboard overhaul is at <a href="dashboard-session-2026-05-25.html">dashboard-session-2026-05-25.html</a>.</p>
+</div>
+
+<!-- ==================== SECTION 16: SALES BY SOURCE SYNC ==================== -->
+<div class="section" id="sales-by-source">
+  <div class="section-number">Section 16</div>
+  <h2>Sales by Source Sync</h2>
+  <p class="section-subtitle">A ~3 minute chore. Run it whenever you want to check where sales are coming from (Marcus does it a few times a week). It refreshes the source data, runs two scripts to fill in attribution, then you clean up a few junk rows by hand. If anything fails, ping Marcus in <code>#martech</code> &mdash; do NOT keep clicking buttons.</p>
+
+  <div class="callout">
+    <strong>Video walkthrough:</strong> <a href="https://www.loom.com/share/e57fa0cf52524c648e65e9ef84863760" target="_blank">Watch the Loom</a> for a screen-share of this entire process.
+  </div>
+
+  <div class="info-card">
+    <div class="info-card-header">
+      <span class="info-card-title">What you'll need</span>
+    </div>
+    <div class="info-card-body">
+      <p><strong>BookingLayer:</strong> <a href="https://app.bookinglayer.io" target="_blank">app.bookinglayer.io</a> &mdash; admin@lawayra.com (password in team password manager)</p>
+      <p><strong>Sales by Source spreadsheet:</strong> <a href="https://docs.google.com/spreadsheets/d/139G-OUoApI5ksdSMXMe_WE8geaw_mZ3Sv8PYvBDsq5w" target="_blank">Open spreadsheet</a></p>
+    </div>
+  </div>
+
+  <h3>Step 1 &mdash; Export from BookingLayer (1 min)</h3>
+
+  <ol class="step-list">
+    <li>Log in to <a href="https://app.bookinglayer.io" target="_blank">app.bookinglayer.io</a>.</li>
+    <li>Open the <strong>Reports</strong> tab.</li>
+    <li>Find the report called <strong>"How Did You Hear About Us?"</strong>.</li>
+    <li>Click the three dots (&#8942;) on that row &rarr; <strong>Generate now (CSV)</strong>.</li>
+    <li>Wait a few seconds for it to generate, then click <strong>Download</strong>.</li>
+    <li>Save it to your <strong>LaWayra ref folder</strong> (if you have one).</li>
+  </ol>
+
+  <div class="callout">
+    <strong>If the export looks empty or columns are missing,</strong> stop and ping Marcus. Do not import partial data.
+  </div>
+
+  <h3>Step 2 &mdash; Import into the spreadsheet (1 min)</h3>
+
+  <ol class="step-list">
+    <li>Open the <a href="https://docs.google.com/spreadsheets/d/139G-OUoApI5ksdSMXMe_WE8geaw_mZ3Sv8PYvBDsq5w" target="_blank">Sales by Source spreadsheet</a>.</li>
+    <li>At the bottom, click the <code>How Did You Hear</code> tab.</li>
+    <li>Click <strong>File</strong> (top menu) &rarr; <strong>Import</strong>.</li>
+    <li>Go to the <strong>Upload</strong> tab &rarr; select the CSV you just downloaded.</li>
+    <li>Under "Import location", choose <strong>Replace current sheet</strong>.</li>
+    <li>Click <strong>Import data</strong>. The tab now holds source data updated through today.</li>
+  </ol>
+
+  <h3>Step 3 &mdash; Run "1 sync from BL exports" (30 sec)</h3>
+
+  <ol class="step-list">
+    <li>Click <strong>Extensions</strong> (top menu) &rarr; <strong>Apps Script</strong>.</li>
+    <li>A new tab opens with code. Find the function dropdown at the top.</li>
+    <li>Choose <code>syncFromBLExports</code> (shown as <strong>"1 sync from BL exports"</strong>).</li>
+    <li>Click the <strong>&#9654; Run</strong> button.</li>
+    <li><strong>First time only:</strong> Google asks for permission. Click "Review permissions" &rarr; choose your account &rarr; "Allow".</li>
+    <li>Wait for it to finish. This fills in the extra columns on the <strong>Raw Bookings</strong> tab (Booking Source, Status, Self-Reported Source, Email, Guest Name, Amount).</li>
+  </ol>
+
+  <h3>Step 4 &mdash; Run "2 update source categories" (30 sec)</h3>
+
+  <ol class="step-list">
+    <li>Still in Apps Script, change the function dropdown to <code>updateSourceCategoriesV4</code> (shown as <strong>"2 update source categories"</strong>).</li>
+    <li>Click <strong>&#9654; Run</strong>.</li>
+    <li>Wait for it to finish. This fills <strong>column J</strong> on Raw Bookings, including the correct <strong>Facebook Ads</strong> and <strong>Google Ads</strong> attribution.</li>
+    <li>Close the Apps Script tab.</li>
+  </ol>
+
+  <div class="callout">
+    <strong>Why a second script?</strong> Facebook and Google ad bookings come in from BookingLayer inaccurately (as generic "paid ads"). This script pulls the real attribution directly from the Google Ads and Facebook Ads data and overrides column J so the channel split is correct.
+  </div>
+
+  <h3>Step 5 &mdash; Manual cleanup on Raw Bookings (1 min)</h3>
+  <p>The scripts won't catch everything. Open the <strong>Raw Bookings</strong> tab and clean up by hand:</p>
+
+  <ol class="step-list">
+    <li><strong>Dummy / test bookings</strong> &mdash; delete these rows.</li>
+    <li><strong>Back-office bookings</strong> &mdash; delete the obvious junk back-office rows. Some may remain after the scripts; it won't be perfect.</li>
+    <li><strong><code>confirmed</code> / <code>pending</code> status rows</strong> &mdash; these shouldn't count as bookings. A row only counts if its amount/category columns are filled in. Delete the stray ones &mdash; <strong>including any <code>pending</code> row that <em>does</em> have values filled in</strong> (those will wrongly count if left).</li>
+  </ol>
+
+  <div class="callout">
+    You don't have to get it perfect &mdash; one stray "no source" or "back office" row left over is fine.
+  </div>
+
+  <h3>Step 6 &mdash; Done</h3>
+  <p>Refresh the Sales by Source dashboard view. Bookings should now show proper attribution instead of front-office/back-office labels. The Looker Studio dashboard refreshes automatically.</p>
+
+  <div class="callout">
+    <strong>What this DOES NOT do:</strong>
+    <br>&bull; Does <strong>not</strong> push data to the Sales Dashboard (per-call rep tracker). That happens automatically nightly via <code>updateSalesOutcomesV3</code>.
+    <br>&bull; Does <strong>not</strong> update the Marketing/Ads Dashboard (different sheet, separate automation).
+    <br>&bull; Does <strong>not</strong> fix the Zapier "pending row leak" upstream &mdash; only cleans symptoms. If lots of pending rows show up between syncs, escalate to Marcus.
+  </div>
+
+  <h3>Troubleshooting</h3>
+  <table class="data-table">
+    <thead>
+      <tr><th>Problem</th><th>Fix</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>"How Did You Hear" report missing in BL</td><td>Check the <strong>Reports</strong> tab again &mdash; the report name is "How Did You Hear About Us?". If it's gone, ping Marcus.</td></tr>
+      <tr><td>Import didn't replace the old data</td><td>Re-do Step 2 and make sure you picked <strong>Replace current sheet</strong> (not "Insert new sheet" or "Append").</td></tr>
+      <tr><td>Script throws a red error</td><td>Check the Apps Script "Execution log" at the bottom for the error &mdash; screenshot to Marcus.</td></tr>
+      <tr><td>Column J still blank after Step 4</td><td>Make sure Step 3 ran first &mdash; "2 update source categories" depends on the columns "1 sync from BL exports" fills in. Re-run them in order.</td></tr>
+      <tr><td>Attribution still shows front/back office after refresh</td><td>Expected to be imperfect &mdash; clean up the obvious junk rows by hand (Step 5). A stray one or two is fine.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout" style="border-color: var(--danger, #b34100);">
+    <strong>Escalate to Marcus immediately if:</strong>
+    <br>&bull; Either script throws a red error you don't understand
+    <br>&bull; The "How Did You Hear About Us?" report is missing or generates an empty CSV
+    <br>&bull; Numbers look wildly off &mdash; don't re-run repeatedly, screenshot and ping Marcus
+    <br>&bull; Lots of pending/back-office rows showing up every time (Zapier may be leaking &mdash; needs an upstream fix)
+  </div>
+</div>
+
 <!-- ==================== SECTION 17: SALES TAB WEEKLY MAINTENANCE ==================== -->
-<div class="section" id="s17">
+<div class="section" id="sales-tab-maintenance">
   <div class="section-number">Section 17</div>
   <h2>Sales Tab Weekly Maintenance</h2>
   <p class="section-subtitle">A weekly chore that takes 10&ndash;15 minutes. Run every Friday so the Sales tab on the Sales Dashboard reflects last week's bookings. The Sales tab is the rich attribution ledger &mdash; one row per booking with Sales Person, Media Buyer, Source, Retreat Length, etc. Distinct from the Dashboard tab (per-call rep activity) and from Sales by Source (raw BL feed).</p>
@@ -1776,87 +1846,78 @@ fixMarketingDashboardDates()    # Same for Marketing Dashboard (already on daily
   </div>
 </div>
 
-<!-- ==================== SECTION 18: DASHBOARD UPDATE PLAYBOOK ==================== -->
-<div class="section" id="s18">
+<!-- ==================== SECTION 18: MONTHLY COMMISSION CALCULATION ==================== -->
+<div class="section" id="monthly-commission">
   <div class="section-number">Section 18</div>
-  <h2>Dashboard Update Playbook</h2>
-  <p class="section-subtitle">The concise workflow for making sure all three dashboards reflect current reality. Most things run on schedule &mdash; use this when the schedule has gaps, you just changed something, or numbers look off.</p>
+  <h2>Monthly Commission Calculation</h2>
+  <p class="section-subtitle">Run on the first business day of each month, before payroll. Cross-references BookingLayer paid bookings against the lead sheets and Sales Dashboard so every rep gets credited for the deals they actually closed &mdash; including direct-purchase rep deals that don't go through GHL.</p>
 
-  <div class="info-card" style="border-left:4px solid var(--accent); margin-bottom:24px;">
-    <h3 style="color:var(--accent); margin-top:0;">The Golden Rule</h3>
-    <p><strong>Refresh the BL helper tabs FIRST.</strong> Every script that "fixes" Sales by Source or Sales Dashboard reads from <code>BL_HowDidYouHear</code> and/or <code>BL_Bookings</code> in the Sales by Source spreadsheet. If those tabs are stale, every downstream script silently runs against bad data and reports success.</p>
-    <p style="margin-bottom:0;">The most common bug pattern: "I ran the script and it said success, but row X is still blank." 90% of the time &mdash; BL helper tabs were stale.</p>
+  <div class="callout" style="border-color: var(--danger, #b34100);">
+    <strong>Why this matters:</strong> If a Sale row has the wrong rep, a different rep gets paid. If a Sale row has no rep when it should, the actual rep doesn't get paid at all. Both are bad. The weekly Sales by Source sync (Section 16) prepares the data; this monthly process verifies and finalizes commissions.
   </div>
 
-  <h3>Phase A &mdash; Refresh source data (10 min)</h3>
-  <p>Do this every time before running any of the scripts below.</p>
-  <ol>
-    <li>Open BL &rarr; "Bookings" report &rarr; kebab menu &rarr; <strong>Generate now (XLSX)</strong> &rarr; wait for "Report ready" toast &rarr; Download.</li>
-    <li>Open BL &rarr; "How did you hear about us?" report &rarr; same flow &rarr; Download.</li>
-    <li>Open Sales by Source sheet &rarr; <code>BL_Bookings</code> tab &rarr; select all &rarr; paste fresh XLSX over it.</li>
-    <li>Same with <code>BL_HowDidYouHear</code> tab.</li>
+  <h3>Inputs</h3>
+  <table class="data-table">
+    <thead>
+      <tr><th>Source</th><th>What it provides</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><a href="https://app.bookinglayer.io" target="_blank">BookingLayer</a></td><td>Bookings export (xlsx) for the month &mdash; status, paid amount, BL Source field (rep name or "Booking engine")</td></tr>
+      <tr><td><a href="https://docs.google.com/spreadsheets/d/1fcBghq6dXp9v_58Lz0b-Fm5iXYlhw4HF00zQUjCSSTU" target="_blank">Sales Dashboard</a></td><td>Every GHL appointment + V3-inserted direct-purchase rep rows. Outcome=Sale rows are commission candidates.</td></tr>
+      <tr><td><a href="https://docs.google.com/spreadsheets/d/1PKOKpTg9o6HgV41Fvwag8aId5PAnr4qH5AwxmVL2jBg" target="_blank">GG Leads sheet</a></td><td>Google Ads lead emails &mdash; used to flag a sale as Google-Ads-sourced</td></tr>
+      <tr><td><a href="https://docs.google.com/spreadsheets/d/139G-OUoApI5ksdSMXMe_WE8geaw_mZ3Sv8PYvBDsq5w" target="_blank">Sales by Source &gt; Raw Bookings</a></td><td>Per-booking record with Status, Source Category (Google Ads vs Organic vs Word of Mouth), Booking Source (rep name)</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Process</h3>
+  <ol class="step-list">
+    <li><strong>Run the weekly sync first</strong> &mdash; If you haven't run <code>runWeeklySync()</code> recently (Section 16), do it now. Commission accuracy depends on Source Category and Booking Source being current.</li>
+    <li><strong>Pull BL bookings for the month</strong> &mdash; Open BL &rarr; Reports &rarr; Bookings &rarr; filter to <code>Status = paid OR deposit_paid</code> AND the target month &rarr; export xlsx.</li>
+    <li><strong>Cross-reference each paid booking against Raw Bookings</strong> &mdash; Confirm Status, Amount, Booking Source col P, and Source Category col J are all filled. If anything is blank, re-run <code>runWeeklySync()</code>.</li>
+    <li><strong>Run <code>updateSalesOutcomesV3()</code></strong> &mdash; Open Sales Dashboard &rarr; Extensions &rarr; Apps Script &rarr; run <code>updateSalesOutcomesV3</code>. This inserts missing rep rows (where Booking Source = real rep name) and marks paid bookings as Sale + fills Revenue.</li>
+    <li><strong>Manual review of blank-rep Sale rows</strong> &mdash; In Sales Dashboard, filter col D (Sales Rep) = blank. For each row:
+      <ul>
+        <li>Check the BL UI Source field for that booking. If it shows a rep name &rarr; fill it in.</li>
+        <li>If "Booking Engine" &rarr; that's a direct purchase &mdash; not a commission. Leave the row.</li>
+        <li>If ambiguous &rarr; ask in <code>#sales-tracking</code> Discord. <strong>Never guess.</strong></li>
+      </ul>
+    </li>
+    <li><strong>Calculate commissions</strong> &mdash; Sum Sales Dashboard Revenue (col I) by Sales Rep (col D) for the month. Apply the per-rep commission percentage from the rep agreements.</li>
+    <li><strong>Sanity check against Marketing Dashboard</strong> &mdash; Sales (col N) and Revenue (col P) per day should equal the count/sum of paid Raw Bookings where Source Category = "Google Ads". If Marketing Dashboard MTD Sales is materially less than the GG Ads count in Raw Bookings, re-run <code>backfillMarketingDashboardV7()</code>.</li>
   </ol>
 
-  <h3>Phase B &mdash; Sales by Source (Raw Bookings tab) &mdash; 2 min</h3>
-  <p>Apps Script project: bound to Sales by Source sheet. Run in this order:</p>
-  <ul>
-    <li><code>syncFromBLExports()</code> &mdash; fills Raw Bookings cols E Name, F Email, H Amount, O Status, P Booking Source from BL_Bookings</li>
-    <li><code>updateSourceCategoriesV5()</code> &mdash; fills cols I Self-Reported Source + J Source Category. Reads BL_HowDidYouHear + the Leads master tab. Applies GG Ads email/name override.</li>
-    <li><code>cleanupOrphanPendingRows()</code> (DRY_RUN=true first) &mdash; removes Zapier-created orphan rows (blank name + blank amount + status=pending). Flip flag and re-run.</li>
-  </ul>
+  <h3>What the cross-references catch</h3>
+  <table class="data-table">
+    <thead>
+      <tr><th>Edge case</th><th>Caught by</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Google Ads guests who self-report "Friend Recommendation" or "Google Search"</td><td>GG Leads email override in <code>updateSourceCategoriesV4</code> &mdash; otherwise the ads channel under-reports</td></tr>
+      <tr><td>Direct-purchase rep deals that bypass GHL</td><td>Booking Source col P (BL Source field synced via runWeeklySync) &mdash; otherwise reps don't get paid</td></tr>
+      <tr><td>Pendings that flipped to paid but Zapier missed the update</td><td>Manual BL export sync via runWeeklySync &mdash; otherwise the row stays pending forever</td></tr>
+    </tbody>
+  </table>
 
-  <h3>Phase C &mdash; Sales Dashboard &mdash; 2 min</h3>
-  <ul>
-    <li><code>updateSalesOutcomesV3()</code> &mdash; walks paid Raw Bookings, fills Sales Dashboard Outcome=Sale + Revenue + Cash + Rep. Inserts new rows for direct purchases via sales-team reps.</li>
-    <li><code>backfillOpportunityIds()</code> (DRY_RUN first) &mdash; fills col N for blank rows by name-matching against GHL opps. Required for dedup to work.</li>
-    <li><code>dedupByOpportunityId()</code> (DRY_RUN first) &mdash; collapses duplicate rows sharing the same opp ID.</li>
-    <li><code>backfillCalendarColO()</code> &mdash; fills col O Calendar with actual GHL calendar name.</li>
-  </ul>
-  <p><strong>Caveats:</strong> V3 fills Cash = full Amount for both <code>paid</code> and <code>deposit_paid</code>. For deposit rows, manually correct Cash if you need exact cash-collected. V3 only fills Rep if BL Booking Source matches Nico / Aliyah / Jacobo / Thomas &mdash; anything else leaves rep blank for manual review.</p>
+  <h3>Quick run order (every month)</h3>
+  <pre style="background: #1a1a1a; color: #eaeaea; padding: 16px; border-radius: 4px; font-size: 12px; overflow-x: auto;">
+runWeeklySync()                 # Section 16 &mdash; backfill from BL exports
+updateSalesOutcomesV3()         # Push to Sales Dashboard, insert direct-purchase rep rows
+populateSalesTrackers()         # Rebuild Weekly + Monthly Tracker tabs
+populateMarketingTrackers()     # Same for Marketing Dashboard
+fixSalesDashboardDates()        # Convert string dates so SUMIFS work (run before populate)
+fixMarketingDashboardDates()    # Same for Marketing Dashboard (already on daily trigger)</pre>
 
-  <h3>Phase D &mdash; LW Ads Dashboard &mdash; 1 min</h3>
-  <p>Apps Script project: bound to LW Ads Dashboard sheet.</p>
-  <ul>
-    <li><code>fixMarketingDashboardDates()</code> &mdash; converts string dates in col B to real Date type so SUMIFS work. Already on 7:30 UTC trigger.</li>
-    <li><code>backfillMarketingDashboardV7()</code> &mdash; fills cols L (Booked Calls), N (Sales), P (Revenue) on GG Daily tab. Reads Raw Bookings paid rows where Source Category = "Google Ads". Already on nightly trigger.</li>
-    <li><code>populateMarketingTrackers()</code> &mdash; rebuilds GG Weekly + GG Monthly tracker tabs with SUMIFS formulas. Only run when you actually want to refresh the tracker views.</li>
-  </ul>
-  <div class="info-card" style="background:rgba(255,180,0,0.08); border-left:3px solid var(--warning); margin:16px 0;">
-    <p style="margin:0;"><strong>Tab references after rename:</strong> As of 2026-05-24, the Ads Dashboard tabs are <code>GG Daily</code>, <code>GG Weekly</code>, <code>GG Monthly</code>, <code>GG Daily Report</code>. If a script references the old <code>Dashboard</code> / <code>Weekly Tracker</code> / <code>Monthly Tracker</code>, it'll silently break.</p>
+  <div class="callout">
+    <strong>Escalate to Marcus if:</strong>
+    <br>&bull; More than 5 blank-rep Sale rows you can't resolve via Discord
+    <br>&bull; Marketing Dashboard MTD Sales differs from Raw Bookings GG Ads count by &gt; 10%
+    <br>&bull; A rep disputes their commission total
+    <br>&bull; Any duplicate Booking Refs flagged by runWeeklySync that you couldn't resolve
   </div>
-
-  <h3>Phase E &mdash; n8n workflows (rarely need manual intervention)</h3>
-  <p>These run on schedule via <code>server.lawayraserver.com</code>. Check via the <a href="https://server.lawayraserver.com/home/workflows" target="_blank">workflows UI</a>:</p>
-  <div class="info-card">
-    <ul style="margin:0;">
-      <li><strong>3ztYQF2wJO3cHDi2</strong> &mdash; LW Booking Sync Pipeline (CSV email trigger). BL CSV &rarr; Raw Bookings.</li>
-      <li><strong>fOTmp4CofwDzsLft</strong> &mdash; LW Source Data Pipeline (CSV email trigger). BL "How did you hear?" CSV &rarr; Raw Bookings col I.</li>
-      <li><strong>jStC73dYSNXQEuV7</strong> &mdash; GHL &gt; LW Sales Dashboard. Daily 1:13 UTC. GHL opps + appointments &rarr; Sales Dashboard (appendOrUpdate by col N).</li>
-      <li><strong>FXxEh8d2nQRZ9sEy</strong> &mdash; LaWayra-Individual-Sales-Sheets. Real-time webhook on pipeline-stage changes.</li>
-      <li><strong>E6K7ts1s0HXYw8JV</strong> &mdash; Google Ads &gt; LW Marketing Dashboard. Daily 1:07 UTC.</li>
-      <li><strong>ZfiXuiG20bwPLj42</strong> &mdash; LW Daily Report &gt; Discord. Daily 2:03 UTC.</li>
-    </ul>
-  </div>
-
-  <h3>Quick reference &mdash; "I just want to..."</h3>
-  <div class="info-card">
-    <table style="width:100%; border-collapse:collapse;">
-      <tr><th style="text-align:left; padding:8px; border-bottom:1px solid var(--border);">Goal</th><th style="text-align:left; padding:8px; border-bottom:1px solid var(--border);">Run</th></tr>
-      <tr><td style="padding:8px;">Make sure recent BL bookings show up</td><td style="padding:8px;">Phase A &rarr; <code>syncFromBLExports</code></td></tr>
-      <tr><td style="padding:8px;">Fix wrong/missing Source Category</td><td style="padding:8px;">Phase A &rarr; <code>updateSourceCategoriesV5</code></td></tr>
-      <tr><td style="padding:8px;">Get a Sale row's Revenue/Cash filled</td><td style="padding:8px;">Phase A &rarr; <code>updateSalesOutcomesV3</code></td></tr>
-      <tr><td style="padding:8px;">Clean up Sales Dashboard duplicates</td><td style="padding:8px;">Phase C &rarr; <code>backfillOpportunityIds</code> then <code>dedupByOpportunityId</code></td></tr>
-      <tr><td style="padding:8px;">Fill missing Calendar (col O)</td><td style="padding:8px;">Phase C &rarr; <code>backfillCalendarColO</code></td></tr>
-      <tr><td style="padding:8px;">Refresh weekly/monthly tracker views</td><td style="padding:8px;">Phase D &rarr; <code>populateMarketingTrackers</code></td></tr>
-      <tr><td style="padding:8px;">See the day's report numbers</td><td style="padding:8px;">Just check Discord &mdash; they post 2:03 / 8:03 UTC</td></tr>
-    </table>
-  </div>
-
-  <p style="margin-top:24px; color:var(--text-muted); font-size:14px;">Full session log of the 5/25-5/26 dashboard overhaul is at <a href="dashboard-session-2026-05-25.html">dashboard-session-2026-05-25.html</a>.</p>
 </div>
 
 <!-- ==================== SECTION 19: WHEN SOMETHING BREAKS ==================== -->
-<div class="section" id="s19">
+<div class="section" id="troubleshooting">
   <div class="section-number">Section 19</div>
   <h2>When Something Breaks</h2>
   <p class="section-subtitle">Common issues and how to fix them. Check the most likely cause first.</p>
