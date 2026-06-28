@@ -325,7 +325,12 @@
     border: 1px solid rgba(167,139,250,0.25);
     color: var(--purple);
   }
-  .flow-node-neutral {       /* Zapier, Apps Script — neutral tool */
+  .flow-node-zapier {        /* Zapier — orange */
+    background: rgba(255,138,76,0.1);
+    border: 1px solid rgba(255,138,76,0.28);
+    color: #ff8a4c;
+  }
+  .flow-node-neutral {       /* Apps Script — neutral tool */
     background: rgba(154,149,144,0.1);
     border: 1px solid rgba(154,149,144,0.22);
     color: var(--text-muted);
@@ -618,7 +623,7 @@
     <div class="flow-row">
       <span class="flow-node flow-node-bl">BookingLayer</span>
       <span class="flow-arrow">&rarr;</span>
-      <span class="flow-node flow-node-neutral">Zapier</span>
+      <span class="flow-node flow-node-zapier">Zapier</span>
       <span class="flow-arrow">&rarr;</span>
       <span class="flow-node flow-node-sheet">Sales by Source Dashboard</span>
       <span style="font-size:12px; color:var(--text-dim); margin-left:4px;">(Raw Bookings tab)</span>
@@ -671,7 +676,8 @@
       <span class="flow-node flow-node-n8n">n8n</span>
       <span class="flow-node flow-node-sheet">Sheets &amp; Dashboards</span>
       <span class="flow-node flow-node-discord">Discord</span>
-      <span class="flow-node flow-node-neutral">Other tools</span>
+      <span class="flow-node flow-node-zapier">Zapier</span>
+      <span class="flow-node flow-node-neutral">Apps Script</span>
     </div>
   </div>
 </div>
