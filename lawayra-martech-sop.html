@@ -294,6 +294,42 @@
     border: 1px solid rgba(200,149,108,0.2);
     color: var(--accent);
   }
+  /* Platform-based colors for the flow diagram */
+  .flow-node-bl {            /* BookingLayer — yellow */
+    background: rgba(251,191,36,0.1);
+    border: 1px solid rgba(251,191,36,0.25);
+    color: var(--warning);
+  }
+  .flow-node-gads {          /* Google Ads — gold/amber (a different yellow) */
+    background: rgba(200,149,108,0.12);
+    border: 1px solid rgba(200,149,108,0.28);
+    color: var(--accent);
+  }
+  .flow-node-ghl {           /* GoHighLevel — blue */
+    background: rgba(96,165,250,0.1);
+    border: 1px solid rgba(96,165,250,0.25);
+    color: var(--blue);
+  }
+  .flow-node-n8n {           /* n8n — red */
+    background: rgba(248,113,113,0.1);
+    border: 1px solid rgba(248,113,113,0.25);
+    color: var(--danger);
+  }
+  .flow-node-sheet {         /* Sheets & Dashboards — green */
+    background: rgba(74,222,128,0.1);
+    border: 1px solid rgba(74,222,128,0.25);
+    color: var(--success);
+  }
+  .flow-node-discord {       /* Discord — purple */
+    background: rgba(167,139,250,0.1);
+    border: 1px solid rgba(167,139,250,0.25);
+    color: var(--purple);
+  }
+  .flow-node-neutral {       /* Zapier, Apps Script — neutral tool */
+    background: rgba(154,149,144,0.1);
+    border: 1px solid rgba(154,149,144,0.22);
+    color: var(--text-muted);
+  }
   .flow-arrow {
     color: var(--text-dim);
     font-size: 16px;
@@ -580,52 +616,62 @@
 
   <div class="flow-diagram">
     <div class="flow-row">
-      <span class="flow-node flow-node-source">BookingLayer</span>
+      <span class="flow-node flow-node-bl">BookingLayer</span>
       <span class="flow-arrow">&rarr;</span>
-      <span class="flow-node flow-node-tool">Zapier</span>
+      <span class="flow-node flow-node-neutral">Zapier</span>
       <span class="flow-arrow">&rarr;</span>
-      <span class="flow-node flow-node-dest">Sales by Source Dashboard</span>
+      <span class="flow-node flow-node-sheet">Sales by Source Dashboard</span>
       <span style="font-size:12px; color:var(--text-dim); margin-left:4px;">(Raw Bookings tab)</span>
     </div>
     <div class="flow-row">
-      <span class="flow-node flow-node-source">BookingLayer CSV</span>
+      <span class="flow-node flow-node-bl">BookingLayer CSV</span>
       <span class="flow-arrow">&rarr;</span>
-      <span class="flow-node flow-node-tool">n8n (Source Pipeline)</span>
+      <span class="flow-node flow-node-n8n">n8n (Source Pipeline)</span>
       <span class="flow-arrow">&rarr;</span>
-      <span class="flow-node flow-node-dest">Sales by Source Dashboard</span>
+      <span class="flow-node flow-node-sheet">Sales by Source Dashboard</span>
       <span style="font-size:12px; color:var(--text-dim); margin-left:4px;">(Self-Reported Source + Email cols)</span>
     </div>
     <div class="flow-row">
-      <span class="flow-node flow-node-source">Google Ads API</span>
+      <span class="flow-node flow-node-gads">Google Ads API</span>
       <span class="flow-arrow">&rarr;</span>
-      <span class="flow-node flow-node-tool">n8n</span>
+      <span class="flow-node flow-node-n8n">n8n</span>
       <span class="flow-arrow">&rarr;</span>
-      <span class="flow-node flow-node-dest">Marketing Dashboard</span>
+      <span class="flow-node flow-node-sheet">Marketing Dashboard</span>
     </div>
     <div class="flow-row">
-      <span class="flow-node flow-node-source">GHL (Appointments)</span>
+      <span class="flow-node flow-node-ghl">GHL (Appointments)</span>
       <span class="flow-arrow">&rarr;</span>
-      <span class="flow-node flow-node-tool">n8n</span>
+      <span class="flow-node flow-node-n8n">n8n</span>
       <span class="flow-arrow">&rarr;</span>
-      <span class="flow-node flow-node-dest">Sales Dashboard</span>
+      <span class="flow-node flow-node-sheet">Sales Dashboard</span>
     </div>
     <div class="flow-row">
-      <span class="flow-node flow-node-dest">Both Dashboards</span>
+      <span class="flow-node flow-node-sheet">Both Dashboards</span>
       <span class="flow-arrow">&rarr;</span>
-      <span class="flow-node flow-node-tool">n8n (Daily Report)</span>
+      <span class="flow-node flow-node-n8n">n8n (Daily Report)</span>
       <span class="flow-arrow">&rarr;</span>
-      <span class="flow-node flow-node-output">Discord Daily Reports</span>
+      <span class="flow-node flow-node-discord">Discord Daily Reports</span>
     </div>
     <div class="flow-row" style="margin-top:20px; padding-top:14px; border-top:1px solid var(--border);">
-      <span class="flow-node flow-node-source">Google Ads Lead Forms</span>
+      <span class="flow-node flow-node-gads">Google Ads Lead Forms</span>
       <span class="flow-arrow">&rarr;</span>
-      <span class="flow-node flow-node-dest">GG Leads Sheet</span>
+      <span class="flow-node flow-node-sheet">GG Leads Sheet</span>
       <span style="font-size:12px; color:var(--text-dim); margin-left:4px;">(auto, 4,200+ emails)</span>
     </div>
     <div class="flow-row">
-      <span class="flow-node flow-node-tool">Apps Script (nightly)</span>
+      <span class="flow-node flow-node-neutral">Apps Script (nightly)</span>
       <span class="flow-arrow">&rarr;</span>
       <span style="font-size:13px; color:var(--text-muted);">Cross-references GG Leads emails &rarr; overrides Source Category with "Google Ads"</span>
+    </div>
+    <div class="flow-row" style="margin-top:20px; padding-top:14px; border-top:1px solid var(--border); gap:8px;">
+      <span style="font-size:12px; color:var(--text-dim); margin-right:4px;">Color key:</span>
+      <span class="flow-node flow-node-bl">BookingLayer</span>
+      <span class="flow-node flow-node-gads">Google Ads</span>
+      <span class="flow-node flow-node-ghl">GHL</span>
+      <span class="flow-node flow-node-n8n">n8n</span>
+      <span class="flow-node flow-node-sheet">Sheets &amp; Dashboards</span>
+      <span class="flow-node flow-node-discord">Discord</span>
+      <span class="flow-node flow-node-neutral">Other tools</span>
     </div>
   </div>
 </div>
