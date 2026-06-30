@@ -561,7 +561,7 @@
     <span><strong>3</strong> dashboards</span>
     <span><strong>8</strong> automations</span>
     <span><strong>6</strong> platforms</span>
-    <span><strong>19</strong> sections</span>
+    <span><strong>20</strong> sections</span>
     <span>Last updated: June 30, 2026</span>
   </div>
 </div>
@@ -601,17 +601,18 @@
     <a href="#build-funnel-page" class="toc-item"><span class="toc-num">15</span><span class="toc-label">How to Build & Launch a Funnel Page</span></a>
     <a href="#setup-subdomain" class="toc-item"><span class="toc-num">16</span><span class="toc-label">How to Set Up a Subdomain in GHL</span></a>
   </div>
-  <h3 class="toc-part-heading">Part 6 — Email Broadcasts with Drip</h3>
+  <h3 class="toc-part-heading">Part 6 — Email</h3>
   <div class="toc-grid">
     <a href="#email-broadcasts" class="toc-item"><span class="toc-num">17</span><span class="toc-label">How to Send Email Broadcasts with Drip</span></a>
+    <a href="#email-sequence" class="toc-item"><span class="toc-num">18</span><span class="toc-label">How to Draft Emails for the GHL Email Sequence</span></a>
   </div>
   <h3 class="toc-part-heading">Part 7 — GHL Permissions</h3>
   <div class="toc-grid">
-    <a href="#ghl-permissions" class="toc-item"><span class="toc-num">18</span><span class="toc-label">How to Change Permissions in GHL</span></a>
+    <a href="#ghl-permissions" class="toc-item"><span class="toc-num">19</span><span class="toc-label">How to Change Permissions in GHL</span></a>
   </div>
   <h3 class="toc-part-heading">Part 8 — Troubleshooting</h3>
   <div class="toc-grid">
-    <a href="#troubleshooting" class="toc-item"><span class="toc-num">19</span><span class="toc-label">When Something Breaks</span></a>
+    <a href="#troubleshooting" class="toc-item"><span class="toc-num">20</span><span class="toc-label">When Something Breaks</span></a>
   </div>
 
 </div>
@@ -2041,9 +2042,48 @@ fixMarketingDashboardDates()    # Same for Marketing Dashboard (already on daily
   </div>
 </div>
 
-<!-- ==================== SECTION 18: HOW TO CHANGE PERMISSIONS IN GHL ==================== -->
-<div class="section" id="ghl-permissions">
+<!-- ==================== SECTION 18: HOW TO DRAFT EMAILS FOR THE GHL EMAIL SEQUENCE ==================== -->
+<div class="section" id="email-sequence">
   <div class="section-number">Section 18</div>
+  <h2>How to Draft Emails for the GHL Email Sequence</h2>
+  <p class="section-subtitle">This is the <strong>automated daily email sequence</strong> that goes out to the LaWayra list from inside GHL &mdash; separate from the one-off Drip broadcasts in Section 17. Emails are written under <strong>Sam Believ's</strong> voice and signature, drafted with a custom GPT, reviewed, then loaded into the GHL sequence one at a time.</p>
+
+  <div class="info-card">
+    <div class="info-card-header">
+      <span class="info-card-title">Tools &amp; Resources</span>
+    </div>
+    <div class="info-card-body">
+      <p><strong>LW Emails GPT</strong> (drafts the emails): <a href="https://chatgpt.com/g/g-6861c9e8b7f08191aa969b48ce3f1c36-lw-emails" target="_blank">Open the GPT &rarr;</a></p>
+      <p><strong>Copy of LW Emails doc</strong> (master copy of every email written so far): <a href="https://docs.google.com/document/d/13F9A844PJpZIyILbIhCkhjcB-uEhlOb-WI4XztE6ScE/edit" target="_blank">Open the doc &rarr;</a></p>
+      <p><strong>Loom &mdash; how to draft the emails:</strong> <a href="https://www.loom.com/share/1c93b2f667dd41d2b31883c2e2eecfb4" target="_blank">Watch &rarr;</a></p>
+      <p><strong>Loom &mdash; how to add emails to the GHL sequence:</strong> <a href="https://www.loom.com/share/fcb8c3bcdea74b8695d9852c6521f3a8" target="_blank">Watch &rarr;</a></p>
+    </div>
+  </div>
+
+  <h3>Drafting Process</h3>
+
+  <ol class="step-list">
+    <li><strong>Draft in batches with the GPT</strong> &mdash; Use the <a href="https://chatgpt.com/g/g-6861c9e8b7f08191aa969b48ce3f1c36-lw-emails" target="_blank">LW Emails GPT</a> to write roughly 10&ndash;15 emails at a time. Each email is from <strong>Sam Believ</strong>, so match his warm, first-person tone (not the brand's marketing voice).</li>
+    <li><strong>Keep the master doc current</strong> &mdash; After each batch, paste the new emails into the <a href="https://docs.google.com/document/d/13F9A844PJpZIyILbIhCkhjcB-uEhlOb-WI4XztE6ScE/edit" target="_blank">LW Emails doc</a> and re-upload the full running list back into the GPT. This stops it repeating hooks, stories, and quotes it has already used. <em>(Example: if you just wrote emails 46&ndash;55, feed it all of 1&ndash;55.)</em></li>
+    <li><strong>Proofread before upload</strong> &mdash; Watch for the known failure modes below. The GPT is helpful but not trustworthy on names and repetition.</li>
+    <li><strong>Send a batch for review</strong> &mdash; Share the batch with Marcus to check before it goes into GHL. Start with a small batch, then continue once the format is approved.</li>
+    <li><strong>Load into the GHL sequence</strong> &mdash; Follow the <a href="https://www.loom.com/share/fcb8c3bcdea74b8695d9852c6521f3a8" target="_blank">"add emails to GHL sequence" Loom</a> to add each approved email into the workflow, in order.</li>
+    <li><strong>Spot-check in GHL</strong> &mdash; Open the sequence, send yourself a test, and confirm formatting, links, and the unsubscribe footer render correctly before moving to the next batch.</li>
+  </ol>
+
+  <div class="callout">
+    <strong>Quality rules (learned the hard way):</strong>
+    <br>&bull; <strong>Never use real names.</strong> The GPT keeps inserting actual guest or Google-reviewer names &mdash; replace these with <em>"one guest"</em> or <em>"this guest said&hellip;"</em> Manually scrub every batch.
+    <br>&bull; <strong>No invented quotes.</strong> It has fabricated podcast/guest quotes and reused quotes from earlier emails &mdash; verify anything in quotation marks.
+    <br>&bull; <strong>Link the exact podcast episode.</strong> If an email references a podcast episode, link directly to that Spotify episode &mdash; don't make people dig through 130+ episodes.
+    <br>&bull; <strong>Daily cadence is intentional.</strong> Sending daily is best practice here; open rates run 30&ndash;50%. Don't reduce frequency on a hunch.
+    <br>&bull; <strong>Always get a review</strong> before a batch goes live in the sequence.
+  </div>
+</div>
+
+<!-- ==================== SECTION 19: HOW TO CHANGE PERMISSIONS IN GHL ==================== -->
+<div class="section" id="ghl-permissions">
+  <div class="section-number">Section 19</div>
   <h2>How to Change Permissions in GHL</h2>
   <p class="section-subtitle">Walkthrough for managing user roles and permissions inside GHL (adding/removing team members, restricting access to specific areas).</p>
 
@@ -2055,9 +2095,9 @@ fixMarketingDashboardDates()    # Same for Marketing Dashboard (already on daily
   </div>
 </div>
 
-<!-- ==================== SECTION 19: WHEN SOMETHING BREAKS ==================== -->
+<!-- ==================== SECTION 20: WHEN SOMETHING BREAKS ==================== -->
 <div class="section" id="troubleshooting">
-  <div class="section-number">Section 19</div>
+  <div class="section-number">Section 20</div>
   <h2>When Something Breaks</h2>
   <p class="section-subtitle">Common issues and how to fix them. Check the most likely cause first.</p>
 
