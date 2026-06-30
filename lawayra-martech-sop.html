@@ -1463,16 +1463,84 @@
     <strong>Do NOT touch the email records.</strong> All <code>lawayra.com</code> email is connected to the existing MX records in Namecheap. Changing or deleting those will break email. You're only <em>adding</em> a new CNAME for the subdomain &mdash; leave everything else alone.
   </div>
 
-  <h3>Setup Process</h3>
+  <h3>How the pieces fit together (read this first)</h3>
+  <div class="info-card">
+    <div class="info-card-body">
+      <p>A subdomain is just the word in front of <code>lawayra.com</code> &mdash; like the <code>heal</code> in <code>heal.lawayra.com</code>. Setting one up takes <strong>two systems talking to each other</strong>:</p>
+      <p>&bull; <strong>GHL</strong> = where the actual page lives. You tell GHL "I'm going to send people from <code>heal.lawayra.com</code>, get ready for them."</p>
+      <p>&bull; <strong>Namecheap</strong> = the internet's address book for <code>lawayra.com</code>. You add one line (a "CNAME record") that says "when someone types <code>heal.lawayra.com</code>, send them to GHL's servers."</p>
+      <p>That's the whole job: <strong>tell GHL, then tell Namecheap, then have GHL double-check Namecheap.</strong> The steps below are every single click. Don't skip the green checkmark in Part 3 &mdash; that's the #1 thing people forget.</p>
+    </div>
+  </div>
 
+  <h3>Part 1 &mdash; Pick your subdomain name</h3>
   <ol class="step-list">
-    <li><strong>Add CNAME record in Namecheap</strong> &mdash; Log in to Namecheap (use the 2FA extension for the OTP code). Open the <code>lawayra.com</code> domain &rarr; <strong>Advanced DNS</strong>. Add a new <strong>CNAME record</strong> with Host = the subdomain (e.g., <code>community</code>) and Value = <code>sites.ludicrous.cloud</code>. Set TTL to Automatic. <strong>Leave the existing MX/email records untouched.</strong></li>
-    <li><strong>Add domain in GHL</strong> &mdash; Go to <strong>Settings &rarr; Domains</strong> in GHL. Click <strong>Add Domain</strong>. Enter the full subdomain (e.g., <code>heal.lawayra.com</code>). GHL will show you the required CNAME record &mdash; confirm it matches what you just added.</li>
-    <li><strong>Verify the DNS</strong> &mdash; Click <strong>Verify records</strong> in GHL. DNS propagation can take a few minutes to a few hours. If verification fails, wait and try again.</li>
-    <li><strong>Create the funnel in GHL</strong> &mdash; Go to <strong>Sites &rarr; Funnels &rarr; Create New Funnel</strong>. Name it after the offer. Add a new step/page. Use a blank template or add a <strong>Custom Code</strong> element and paste your HTML.</li>
-    <li><strong>Connect domain to funnel</strong> &mdash; In funnel settings, click <strong>Custom Domain</strong>. Select the subdomain you just added (e.g., <code>heal.lawayra.com</code>). Set the page as the default path (<code>/</code>).</li>
-    <li><strong>Test the page</strong> &mdash; Visit the subdomain in your browser (e.g., <code>heal.lawayra.com</code>). Verify the page loads correctly, images render, and CTA buttons link to the right checkout URL.</li>
+    <li><strong>Choose one short word</strong> for the front of the domain &mdash; e.g. <code>heal</code>, <code>community</code>, <code>apply</code>, <code>workshops</code>, <code>call</code>. Use only lowercase letters, no spaces, no symbols.</li>
+    <li><strong>Write down your full subdomain</strong> &mdash; it's your word + <code>.lawayra.com</code>. Example: you pick <code>heal</code> &rarr; your full subdomain is <code>heal.lawayra.com</code>. You'll type this exact thing in both GHL and Namecheap, so keep it consistent.</li>
   </ol>
+
+  <h3>Part 2 &mdash; Tell GHL about the subdomain</h3>
+  <p>Do this part first so GHL is ready and can confirm the record for you.</p>
+  <ol class="step-list">
+    <li><strong>Log in to GHL</strong> &mdash; go to the GHL login (see <a href="#s04">Section 4: Logins</a>) and sign in with <code>admin@lawayra.com</code>. Make sure you're in the <strong>LaWayra</strong> account/location (top-left account name).</li>
+    <li><strong>Open domain settings</strong> &mdash; in the far-left menu click the <strong>Settings</strong> gear (bottom of the sidebar). In the Settings list, click <strong>Domains</strong>.</li>
+    <li><strong>Start adding the domain</strong> &mdash; click the blue <strong>Add Domain</strong> (or <strong>Connect Domain</strong>) button, usually top-right.</li>
+    <li><strong>Type your full subdomain</strong> &mdash; enter exactly what you wrote down in Part 1, e.g. <code>heal.lawayra.com</code> (no <code>https://</code>, no <code>www</code>, no slash). Click <strong>Continue</strong> / <strong>Add</strong>.</li>
+    <li><strong>Read the record GHL shows you</strong> &mdash; GHL now displays a <strong>CNAME record</strong> it wants you to create. It should list a <strong>Host/Name</strong> (your word, e.g. <code>heal</code>) and a <strong>Value/Points to</strong> of <code>sites.ludicrous.cloud</code>. Leave this GHL tab open &mdash; you'll come back to click Verify in Part 4.</li>
+  </ol>
+  <div class="callout">
+    <strong>If GHL shows a different Value than <code>sites.ludicrous.cloud</code></strong> (for example <code>preview.gohighlevel.com</code>), trust what GHL shows on <em>your</em> screen and use that as the Value in Part 3. Our account normally uses <code>sites.ludicrous.cloud</code> because it's white-labeled.
+  </div>
+
+  <h3>Part 3 &mdash; Add the CNAME record in Namecheap (the DNS part)</h3>
+  <p>This is the step that actually connects the address. Go slowly &mdash; it's just a form.</p>
+  <ol class="step-list">
+    <li><strong>Log in to Namecheap</strong> &mdash; go to <a href="https://www.namecheap.com" target="_blank">namecheap.com</a> and click <strong>Sign In</strong> (top-right). Enter the username and password from <a href="#s04">Section 4: Logins</a>.</li>
+    <li><strong>Pass 2FA</strong> &mdash; Namecheap will ask for a 6-digit code. Open the 2FA browser extension (or authenticator app) noted in Section 4, copy the current 6-digit code, paste it, and continue.</li>
+    <li><strong>Open the domain list</strong> &mdash; once logged in, in the left sidebar click <strong>Domain List</strong>. You'll see <code>lawayra.com</code>.</li>
+    <li><strong>Click MANAGE</strong> &mdash; on the <code>lawayra.com</code> row, click the gray <strong>MANAGE</strong> button on the right.</li>
+    <li><strong>Open Advanced DNS</strong> &mdash; along the top you'll see tabs (Domain, Products, Sharing &amp; Transfer, Advanced DNS). Click the <strong>Advanced DNS</strong> tab.</li>
+    <li><strong>Find the Host Records section</strong> &mdash; scroll down to the box titled <strong>HOST RECORDS</strong>. You'll see existing rows here. <strong>Do not edit or delete any of them</strong> &mdash; you're only adding one new row.</li>
+    <li><strong>Click ADD NEW RECORD</strong> &mdash; below the existing rows, click the <strong>ADD NEW RECORD</strong> button. A new blank row appears.</li>
+    <li><strong>Set the Type to CNAME</strong> &mdash; in the new row, the first column is a dropdown (it often defaults to "A Record"). Click it and choose <strong>CNAME Record</strong>.</li>
+    <li><strong>Fill in the Host</strong> &mdash; in the <strong>Host</strong> box type <em>only your word</em>, e.g. <code>heal</code>. <strong>Do NOT</strong> type <code>heal.lawayra.com</code> &mdash; Namecheap adds the <code>.lawayra.com</code> part for you automatically.</li>
+    <li><strong>Fill in the Value</strong> &mdash; in the <strong>Value</strong> (sometimes labeled "Target") box type <code>sites.ludicrous.cloud</code> exactly. No <code>https://</code>, no spaces, no trailing slash, no period at the end. (Use whatever Value GHL showed you in Part 2 if it differed.)</li>
+    <li><strong>Set TTL to Automatic</strong> &mdash; in the <strong>TTL</strong> column, leave it as <strong>Automatic</strong> (or click it and pick Automatic).</li>
+    <li><strong>SAVE the row (don't skip this!)</strong> &mdash; click the small green <strong>checkmark</strong> &check; on the right end of the row. The row stops being editable, which means it saved. If you navigate away without clicking the checkmark, the record is lost.</li>
+    <li><strong>Sanity-check the row</strong> &mdash; it should read: Type = <code>CNAME Record</code>, Host = <code>heal</code> (your word), Value = <code>sites.ludicrous.cloud</code>, TTL = Automatic. Leave every other record exactly as it was.</li>
+  </ol>
+
+  <h3>Part 4 &mdash; Verify the connection in GHL</h3>
+  <ol class="step-list">
+    <li><strong>Go back to the GHL tab</strong> from Part 2 (the one showing the CNAME record).</li>
+    <li><strong>Click Verify</strong> &mdash; click <strong>Verify Records</strong> (or <strong>Verify</strong>). If it turns green / says connected, you're done with DNS. </li>
+    <li><strong>If it fails, wait and retry</strong> &mdash; DNS changes can take anywhere from a few minutes to a few hours to spread across the internet. Wait 15&ndash;30 minutes, then click <strong>Verify</strong> again. As long as the Namecheap row is saved correctly, it will verify eventually. (You can leave and come back later.)</li>
+    <li><strong>SSL is automatic</strong> &mdash; once verified, GHL provisions the security certificate (the padlock / <code>https</code>) on its own. No action needed.</li>
+  </ol>
+
+  <h3>Part 5 &mdash; Point the subdomain at your page</h3>
+  <ol class="step-list">
+    <li><strong>Open your funnel/website</strong> &mdash; in GHL's left menu go to <strong>Sites</strong>, then open the <strong>Funnel</strong> (or Website) that has the page you want to show.</li>
+    <li><strong>Open funnel Settings</strong> &mdash; inside the funnel, click the <strong>Settings</strong> tab.</li>
+    <li><strong>Set the Custom Domain</strong> &mdash; find the <strong>Domain</strong> dropdown and select the subdomain you just connected (e.g. <code>heal.lawayra.com</code>).</li>
+    <li><strong>Set the default path</strong> &mdash; set the page's path to <code>/</code> (just a slash). This makes that page load when someone visits the bare subdomain, with nothing after the <code>.com</code>.</li>
+    <li><strong>Save</strong> &mdash; click <strong>Save</strong>.</li>
+  </ol>
+
+  <h3>Part 6 &mdash; Test it</h3>
+  <ol class="step-list">
+    <li><strong>Visit the subdomain</strong> &mdash; open a new browser tab and type your full subdomain, e.g. <code>heal.lawayra.com</code>.</li>
+    <li><strong>Check the page loads</strong> &mdash; confirm the right page appears, the padlock shows (secure <code>https</code>), images render, and the buttons go to the correct checkout/booking links.</li>
+    <li><strong>Test on your phone too</strong> &mdash; quickly open the same link on a phone to confirm it looks right on mobile.</li>
+  </ol>
+
+  <div class="callout">
+    <strong>Troubleshooting &mdash; if something doesn't work:</strong>
+    <br>&bull; <strong>"Not secure" warning or no page after an hour</strong> &rarr; the CNAME row probably didn't save. Go back to Namecheap &rarr; Advanced DNS and confirm the green checkmark was clicked and the row is there.
+    <br>&bull; <strong>GHL won't verify</strong> &rarr; check the Host is just your word (<code>heal</code>) and NOT the full <code>heal.lawayra.com</code>, and the Value is exactly <code>sites.ludicrous.cloud</code> with no extra spaces.
+    <br>&bull; <strong>Page loads but it's the wrong page</strong> &rarr; revisit Part 5 and make sure the correct page's path is set to <code>/</code>.
+    <br>&bull; <strong>Still stuck after a few hours</strong> &rarr; the <code>workshops</code> subdomain is already set up correctly &mdash; open it in Namecheap as a reference to compare against your new row.
+  </div>
 
   <div class="callout">
     <strong>Important notes:</strong>
