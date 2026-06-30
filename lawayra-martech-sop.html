@@ -1821,7 +1821,9 @@ fixMarketingDashboardDates()    # Same for Marketing Dashboard (already on daily
   <p class="section-subtitle">A simple landing page with a lead-capture form, hosted on a GHL funnel. The flow: build the form in GHL, build the page with Claude Code (with the form embedded), drop the page into a GHL funnel, point a subdomain at it, then tag everyone who applies. It looks more technical than it is &mdash; take it one step at a time.</p>
 
   <div class="callout">
-    <strong>Video walkthrough:</strong> <a href="https://www.loom.com/share/1a4cfd5f909248baa4cdf4b684fc7ef4" target="_blank">Watch the Loom</a> for a screen-share of this entire process.
+    <strong>Video walkthroughs:</strong>
+    <br>&bull; <a href="https://www.loom.com/share/1a4cfd5f909248baa4cdf4b684fc7ef4" target="_blank">Loom &mdash; form-based landing page</a> (build a page with a lead-capture form embedded).
+    <br>&bull; <a href="https://www.loom.com/share/cf3911695cd64c749d0507a8b1a9d678" target="_blank">Loom &mdash; calendar booking page + thank-you page</a> (embed a GHL calendar instead of a form, then add a confirmation page).
   </div>
 
   <div class="callout">
@@ -1850,11 +1852,15 @@ fixMarketingDashboardDates()    # Same for Marketing Dashboard (already on daily
     <li>Click <strong>Copy</strong>. Hold onto this code &mdash; Claude Code needs it in the next step.</li>
   </ol>
 
+  <div class="callout">
+    <strong>Booking a call instead of capturing a lead?</strong> Embed a <strong>GHL calendar</strong> instead of a form. To get the embed code: in GHL go to <strong>Calendars</strong>, open the calendar you want to use (e.g. a shared round-robin like the integration calls calendar), and click <strong>Copy</strong> on its embed code. Hand that to Claude Code in Step 3 exactly the way you'd hand it the form code &mdash; just tell it to embed the calendar on the page.
+  </div>
+
   <h3>Step 3 &mdash; Build the landing page with Claude Code</h3>
   <ol class="step-list">
     <li>Open Claude Code pointed at your <strong>LaWayra project folder</strong> (the one with the brand kit, brand guides, and photos). Claude can see everything in that folder.</li>
     <li>Run <code>/build-landing-page</code> (or just describe what you want). Tell it to dig into the brand kit and build a simple landing page for the offer.</li>
-    <li><strong>Give it the form embed code from Step 2</strong> so it embeds the form into the page.</li>
+    <li><strong>Give it the embed code from Step 2</strong> (the form code, or the calendar code if it's a booking page) so it embeds it into the page.</li>
     <li>Feed it as much context as you can &mdash; offer details, photos, the audience. It will sort through the folder and pull what it needs.</li>
     <li>Review the preview. Iterate with feedback ("make the heading bigger", "swap the hero image"). For layout problems, <strong>send a screenshot</strong> so Claude has visual context.</li>
   </ol>
@@ -1879,8 +1885,13 @@ fixMarketingDashboardDates()    # Same for Marketing Dashboard (already on daily
     <strong>Common layout fix:</strong> GHL wraps custom code in a container with default margins/borders. Ask Claude for full-width CSS overrides. The <code>/build-landing-page</code> skill includes these automatically.
   </div>
 
+  <div class="callout">
+    <strong>Add a thank-you / confirmation page (optional):</strong> To send people to a confirmation page after they book or apply, build a second page the same way &mdash; ask Claude Code to <em>"output a thank-you page in HTML I can paste into GHL,"</em> then add it as another <strong>funnel step</strong> (<strong>Add Step</strong> &rarr; name it e.g. "TY Page" &rarr; <strong>Create from blank</strong> &rarr; drag in the <strong>Code</strong> element &rarr; paste &rarr; <strong>Save</strong>).
+    <br><br><strong>To make a calendar booking redirect there:</strong> In GHL go to <strong>Calendars</strong> &rarr; <strong>Calendar Settings</strong> &rarr; open your calendar &rarr; <strong>Edit</strong> &rarr; <strong>Form Confirmation / Confirmation</strong>. By default it shows a generic confirmation; switch it to <strong>Redirect URL</strong> and point it at your thank-you page. (To put that page on a clean URL, see <a href="#setup-subdomain">Section 17: How to Set Up a Subdomain in GHL</a>.)
+  </div>
+
   <h3>Step 6 &mdash; Connect a domain / subdomain</h3>
-  <p>To put the page on a clean URL (e.g., <code>community.lawayra.com</code> or <code>apply.lawayra.com</code>), point a subdomain at GHL. This is the more technical part &mdash; full walkthrough in <a href="#setup-subdomain">Section 16: How to Set Up a Subdomain in GHL</a>. If GHL shows "Please add a domain in settings to see your funnel live," that's your cue to do this step.</p>
+  <p>To put the page on a clean URL (e.g., <code>community.lawayra.com</code> or <code>apply.lawayra.com</code>), point a subdomain at GHL. This is the more technical part &mdash; full walkthrough in <a href="#setup-subdomain">Section 17: How to Set Up a Subdomain in GHL</a>. If GHL shows "Please add a domain in settings to see your funnel live," that's your cue to do this step.</p>
 
   <h3>Step 7 &mdash; Set up integrations (tag your applicants)</h3>
   <p>Decide where the form data goes. At minimum, <strong>tag every contact who submits the form</strong> so applicants are distinguishable from the rest of the database (which is full of past patients/guests).</p>
@@ -1912,7 +1923,7 @@ fixMarketingDashboardDates()    # Same for Marketing Dashboard (already on daily
   </div>
 </div>
 
-<!-- ==================== SECTION 16: HOW TO SET UP A SUBDOMAIN IN GHL ==================== -->
+<!-- ==================== SECTION 17: HOW TO SET UP A SUBDOMAIN IN GHL ==================== -->
 <div class="section" id="setup-subdomain">
   <div class="section-number">Section 17</div>
   <h2>How to Set Up a Subdomain in GHL</h2>
@@ -2056,7 +2067,7 @@ fixMarketingDashboardDates()    # Same for Marketing Dashboard (already on daily
   </table>
 </div>
 
-<!-- ==================== SECTION 17: HOW TO SEND EMAIL BROADCASTS ==================== -->
+<!-- ==================== SECTION 18: HOW TO SEND EMAIL BROADCASTS ==================== -->
 <div class="section" id="email-broadcasts">
   <div class="section-number">Section 18</div>
   <h2>How to Send Email Broadcasts with Drip</h2>
@@ -2102,7 +2113,7 @@ fixMarketingDashboardDates()    # Same for Marketing Dashboard (already on daily
   </div>
 </div>
 
-<!-- ==================== SECTION 18: HOW TO DRAFT EMAILS FOR THE GHL EMAIL SEQUENCE ==================== -->
+<!-- ==================== SECTION 19: HOW TO DRAFT EMAILS FOR THE GHL EMAIL SEQUENCE ==================== -->
 <div class="section" id="email-sequence">
   <div class="section-number">Section 19</div>
   <h2>How to Draft Emails for the GHL Email Sequence</h2>
@@ -2168,7 +2179,7 @@ fixMarketingDashboardDates()    # Same for Marketing Dashboard (already on daily
   </div>
 </div>
 
-<!-- ==================== SECTION 19: HOW TO CHANGE PERMISSIONS IN GHL ==================== -->
+<!-- ==================== SECTION 20: HOW TO CHANGE PERMISSIONS IN GHL ==================== -->
 <div class="section" id="ghl-permissions">
   <div class="section-number">Section 20</div>
   <h2>How to Change Permissions in GHL</h2>
@@ -2182,7 +2193,7 @@ fixMarketingDashboardDates()    # Same for Marketing Dashboard (already on daily
   </div>
 </div>
 
-<!-- ==================== SECTION 20: WHEN SOMETHING BREAKS ==================== -->
+<!-- ==================== SECTION 21: WHEN SOMETHING BREAKS ==================== -->
 <div class="section" id="troubleshooting">
   <div class="section-number">Section 21</div>
   <h2>When Something Breaks</h2>
