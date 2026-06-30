@@ -570,20 +570,17 @@
 <div class="container">
 <div class="toc">
   <h2>Contents</h2>
-  <h3 class="toc-part-heading">Part 1 — Overview</h3>
+  <h3 class="toc-part-heading">Part 1 — Reference</h3>
   <div class="toc-grid">
-    <a href="#s02" class="toc-item"><span class="toc-num">01</span><span class="toc-label">The Three Dashboards</span></a>
+    <a href="#s04" class="toc-item"><span class="toc-num">01</span><span class="toc-label">Logins</span></a>
+    <a href="#s05" class="toc-item"><span class="toc-num">02</span><span class="toc-label">Platform Access</span></a>
+    <a href="#s06" class="toc-item"><span class="toc-num">03</span><span class="toc-label">Automations</span></a>
+    <a href="#s07" class="toc-item"><span class="toc-num">04</span><span class="toc-label">What's Still Manual</span></a>
+    <a href="#s08" class="toc-item"><span class="toc-num">05</span><span class="toc-label">Technical Reference</span></a>
   </div>
-  <h3 class="toc-part-heading">Part 2 — Reference</h3>
+  <h3 class="toc-part-heading">Part 2 — Data & Dashboards</h3>
   <div class="toc-grid">
-    <a href="#s04" class="toc-item"><span class="toc-num">02</span><span class="toc-label">Logins</span></a>
-    <a href="#s05" class="toc-item"><span class="toc-num">03</span><span class="toc-label">Platform Access</span></a>
-    <a href="#s06" class="toc-item"><span class="toc-num">04</span><span class="toc-label">Automations</span></a>
-    <a href="#s07" class="toc-item"><span class="toc-num">05</span><span class="toc-label">What's Still Manual</span></a>
-    <a href="#s08" class="toc-item"><span class="toc-num">06</span><span class="toc-label">Technical Reference</span></a>
-  </div>
-  <h3 class="toc-part-heading">Part 3 — Data & Dashboards</h3>
-  <div class="toc-grid">
+    <a href="#s02" class="toc-item"><span class="toc-num">06</span><span class="toc-label">The Three Dashboards</span></a>
     <a href="#s01" class="toc-item"><span class="toc-num">07</span><span class="toc-label">How It All Connects</span></a>
     <a href="#s03" class="toc-item"><span class="toc-num">08</span><span class="toc-label">Source Attribution</span></a>
     <a href="#dashboard-playbook" class="toc-item"><span class="toc-num">09</span><span class="toc-label">Dashboard Update Playbook</span></a>
@@ -591,90 +588,37 @@
     <a href="#sales-tab-maintenance" class="toc-item"><span class="toc-num">11</span><span class="toc-label">Sales Tab Weekly Maintenance</span></a>
     <a href="#monthly-commission" class="toc-item"><span class="toc-num">12</span><span class="toc-label">Monthly Commission Calculation</span></a>
   </div>
-  <h3 class="toc-part-heading">Part 4 — AI Appointment Setter</h3>
+  <h3 class="toc-part-heading">Part 3 — AI Appointment Setter</h3>
   <div class="toc-grid">
     <a href="#s09" class="toc-item"><span class="toc-num">13</span><span class="toc-label">AI Appointment Setter Prompt</span></a>
   </div>
-  <h3 class="toc-part-heading">Part 5 — Getting Started with Claude Code Specifically</h3>
+  <h3 class="toc-part-heading">Part 4 — Getting Started with Claude Code Specifically</h3>
   <div class="toc-grid">
     <a href="#setup-claude-code" class="toc-item"><span class="toc-num">14</span><span class="toc-label">How to Set Up Claude Code</span></a>
   </div>
-  <h3 class="toc-part-heading">Part 6 — Launch a Funnel Page</h3>
+  <h3 class="toc-part-heading">Part 5 — Launch a Funnel Page</h3>
   <div class="toc-grid">
     <a href="#build-funnel-page" class="toc-item"><span class="toc-num">15</span><span class="toc-label">How to Build & Launch a Funnel Page</span></a>
     <a href="#setup-subdomain" class="toc-item"><span class="toc-num">16</span><span class="toc-label">How to Set Up a Subdomain in GHL</span></a>
   </div>
-  <h3 class="toc-part-heading">Part 7 — Email Broadcasts</h3>
+  <h3 class="toc-part-heading">Part 6 — Email Broadcasts</h3>
   <div class="toc-grid">
     <a href="#email-broadcasts" class="toc-item"><span class="toc-num">17</span><span class="toc-label">How to Send Email Broadcasts</span></a>
   </div>
-  <h3 class="toc-part-heading">Part 8 — GHL Permissions</h3>
+  <h3 class="toc-part-heading">Part 7 — GHL Permissions</h3>
   <div class="toc-grid">
     <a href="#ghl-permissions" class="toc-item"><span class="toc-num">18</span><span class="toc-label">How to Change Permissions in GHL</span></a>
   </div>
-  <h3 class="toc-part-heading">Part 9 — Troubleshooting</h3>
+  <h3 class="toc-part-heading">Part 8 — Troubleshooting</h3>
   <div class="toc-grid">
     <a href="#troubleshooting" class="toc-item"><span class="toc-num">19</span><span class="toc-label">When Something Breaks</span></a>
   </div>
 
 </div>
 
-<!-- ==================== SECTION 1: THE THREE DASHBOARDS ==================== -->
-<div class="section" id="s02">
-  <div class="section-number">Section 1</div>
-  <h2>The Three Dashboards</h2>
-  <p class="section-subtitle">Each dashboard tracks a different piece of the funnel. Together they give a full picture from ad spend to revenue.</p>
-
-  <div class="callout">
-    <strong>&#11088; Source of Truth:</strong> The team's canonical dashboard is the <a href="https://lw-sales-dashboard.vercel.app/" target="_blank">LW Dashboard (Vercel app)</a>. It reads these same three Google Sheets via an Apps Script web app, so the numbers match &mdash; but it's the cleaner surface for reports and reconciliation. Its nav is split into <strong>All Ads / Google Ads / Facebook Ads / TikTok Ads</strong> plus Sales and Sources. Treat its figures as official; the sheets below are the underlying data.
-  </div>
-
-  <!-- Marketing Dashboard -->
-  <div class="info-card">
-    <div class="info-card-header">
-      <span class="info-card-title">1. LW Marketing Dashboard</span>
-      <span class="tag tag-active">Active</span>
-    </div>
-    <div class="info-card-body">
-      <p><strong>What it tracks:</strong> Paid ad spend, impressions, clicks, reach, leads, booked calls, sales, revenue, and ROAS &mdash; one row per day, across <strong>Google Ads, Facebook/Meta Ads, and TikTok Ads</strong>.</p>
-      <p><strong>Link:</strong> <a href="https://docs.google.com/spreadsheets/d/1du8jYw-EPr3Bvkiq-_sMsA8XNtWH-d81AXS48glVzvc/edit" target="_blank">Open in Google Sheets</a></p>
-      <p><strong>Updates:</strong> Automatically &mdash; Google Ads via n8n (daily ~1:07am UTC), Facebook/Meta via Apps Script <code>pullMetaSpendDaily()</code> (daily ~1am UTC, Meta Graph API). TikTok is loaded from a periodic CSV export (currently paused / historical).</p>
-      <p><strong>Key tabs:</strong> <code>GG Daily</code> (Google raw data), <code>FB Daily</code> (Facebook), <code>TT Daily</code> (TikTok), <code>All Ads Daily</code> (aggregate), Daily Report (Yesterday / WTD / MTD + Pace), <code>GG Weekly</code>, <code>GG Monthly</code>. <em>(The Google data tab was renamed from "Dashboard" &rarr; "GG Daily" on 2026-05-24; trackers renamed to GG Weekly/GG Monthly on 2026-05-25.)</em></p>
-    </div>
-  </div>
-
-  <!-- Sales Dashboard -->
-  <div class="info-card">
-    <div class="info-card-header">
-      <span class="info-card-title">2. LW Sales Dashboard</span>
-      <span class="tag tag-active">Active</span>
-    </div>
-    <div class="info-card-body">
-      <p><strong>What it tracks:</strong> Sales calls (appointments, outcomes, show rates) and actual bookings/revenue &mdash; one row per call on the Dashboard tab.</p>
-      <p><strong>Link:</strong> <a href="https://docs.google.com/spreadsheets/d/1fcBghq6dXp9v_58Lz0b-Fm5iXYlhw4HF00zQUjCSSTU/edit" target="_blank">Open in Google Sheets</a></p>
-      <p><strong>Updates:</strong> Dashboard tab auto-updates via n8n (daily ~1:13am UTC from GHL API, with appendOrUpdate dedup so the same appointment never doubles up). The Sales tab (bookings/revenue) is refreshed via the weekly maintenance procedure in Section 11 (<code>autoPopulateSalesTab</code> + <code>updateSalesOutcomesV4</code>).</p>
-      <p><strong>Key tabs:</strong> Dashboard (calls), Sales (bookings/revenue), Daily Report, Sales Rep Breakdown, Rep Monthly Breakdown, individual rep tabs (Nico, Aliyah, Jacobo, Thomas).</p>
-    </div>
-  </div>
-
-  <!-- Sales by Source Dashboard -->
-  <div class="info-card">
-    <div class="info-card-header">
-      <span class="info-card-title">3. Sales by Source Dashboard</span>
-      <span class="tag tag-active">Active</span>
-    </div>
-    <div class="info-card-body">
-      <p><strong>What it tracks:</strong> Where bookings come from &mdash; source attribution for all BookingLayer bookings. Answers: "Which channels drive revenue?"</p>
-      <p><strong>Link:</strong> <a href="https://docs.google.com/spreadsheets/d/139G-OUoApI5ksdSMXMe_WE8geaw_mZ3Sv8PYvBDsq5w/edit" target="_blank">Open in Google Sheets</a></p>
-      <p><strong>Updates:</strong> Multiple automations &mdash; Zapier (new bookings), n8n (source data + emails), Apps Script (source category classification). See Automations section.</p>
-      <p><strong>Key tabs:</strong> Raw Bookings (main data), Source Mapping, Monthly Dashboard.</p>
-    </div>
-  </div>
-</div>
-
-<!-- ==================== SECTION 2: LOGINS ==================== -->
+<!-- ==================== SECTION 1: LOGINS ==================== -->
 <div class="section" id="s04">
-  <div class="section-number">Section 2</div>
+  <div class="section-number">Section 1</div>
   <h2>Logins</h2>
   <p class="section-subtitle">Credentials for the platforms used across the martech stack. Encrypted &mdash; ask Marcus for the team password.</p>
 
@@ -761,9 +705,9 @@
   </script>
 </div>
 
-<!-- ==================== SECTION 3: PLATFORM ACCESS ==================== -->
+<!-- ==================== SECTION 2: PLATFORM ACCESS ==================== -->
 <div class="section" id="s05">
-  <div class="section-number">Section 3</div>
+  <div class="section-number">Section 2</div>
   <h2>Platform Access</h2>
   <p class="section-subtitle">Where to log in for each system.</p>
 
@@ -803,9 +747,9 @@
   </ul>
 </div>
 
-<!-- ==================== SECTION 4: AUTOMATIONS ==================== -->
+<!-- ==================== SECTION 3: AUTOMATIONS ==================== -->
 <div class="section" id="s06">
-  <div class="section-number">Section 4</div>
+  <div class="section-number">Section 3</div>
   <h2>Automations</h2>
   <p class="section-subtitle">Everything that runs automatically. If it is on this list, you do not need to do it manually.</p>
 
@@ -871,9 +815,9 @@
   </table>
 </div>
 
-<!-- ==================== SECTION 5: WHAT'S STILL MANUAL ==================== -->
+<!-- ==================== SECTION 4: WHAT'S STILL MANUAL ==================== -->
 <div class="section" id="s07">
-  <div class="section-number">Section 5</div>
+  <div class="section-number">Section 4</div>
   <h2>What's Still Manual</h2>
   <p class="section-subtitle">A few things still require a human touch.</p>
 
@@ -886,9 +830,9 @@
   </div>
 </div>
 
-<!-- ==================== SECTION 6: TECHNICAL REFERENCE ==================== -->
+<!-- ==================== SECTION 5: TECHNICAL REFERENCE ==================== -->
 <div class="section" id="s08">
-  <div class="section-number">Section 6</div>
+  <div class="section-number">Section 5</div>
   <h2>Technical Reference</h2>
   <p class="section-subtitle">IDs, workflow details, and credentials for troubleshooting. Click to expand.</p>
 
@@ -1175,6 +1119,59 @@
       </div>
     </div>
   </details>
+</div>
+
+<!-- ==================== SECTION 6: THE THREE DASHBOARDS ==================== -->
+<div class="section" id="s02">
+  <div class="section-number">Section 6</div>
+  <h2>The Three Dashboards</h2>
+  <p class="section-subtitle">Each dashboard tracks a different piece of the funnel. Together they give a full picture from ad spend to revenue.</p>
+
+  <div class="callout">
+    <strong>&#11088; Source of Truth:</strong> The team's canonical dashboard is the <a href="https://lw-sales-dashboard.vercel.app/" target="_blank">LW Dashboard (Vercel app)</a>. It reads these same three Google Sheets via an Apps Script web app, so the numbers match &mdash; but it's the cleaner surface for reports and reconciliation. Its nav is split into <strong>All Ads / Google Ads / Facebook Ads / TikTok Ads</strong> plus Sales and Sources. Treat its figures as official; the sheets below are the underlying data.
+  </div>
+
+  <!-- Marketing Dashboard -->
+  <div class="info-card">
+    <div class="info-card-header">
+      <span class="info-card-title">1. LW Marketing Dashboard</span>
+      <span class="tag tag-active">Active</span>
+    </div>
+    <div class="info-card-body">
+      <p><strong>What it tracks:</strong> Paid ad spend, impressions, clicks, reach, leads, booked calls, sales, revenue, and ROAS &mdash; one row per day, across <strong>Google Ads, Facebook/Meta Ads, and TikTok Ads</strong>.</p>
+      <p><strong>Link:</strong> <a href="https://docs.google.com/spreadsheets/d/1du8jYw-EPr3Bvkiq-_sMsA8XNtWH-d81AXS48glVzvc/edit" target="_blank">Open in Google Sheets</a></p>
+      <p><strong>Updates:</strong> Automatically &mdash; Google Ads via n8n (daily ~1:07am UTC), Facebook/Meta via Apps Script <code>pullMetaSpendDaily()</code> (daily ~1am UTC, Meta Graph API). TikTok is loaded from a periodic CSV export (currently paused / historical).</p>
+      <p><strong>Key tabs:</strong> <code>GG Daily</code> (Google raw data), <code>FB Daily</code> (Facebook), <code>TT Daily</code> (TikTok), <code>All Ads Daily</code> (aggregate), Daily Report (Yesterday / WTD / MTD + Pace), <code>GG Weekly</code>, <code>GG Monthly</code>. <em>(The Google data tab was renamed from "Dashboard" &rarr; "GG Daily" on 2026-05-24; trackers renamed to GG Weekly/GG Monthly on 2026-05-25.)</em></p>
+    </div>
+  </div>
+
+  <!-- Sales Dashboard -->
+  <div class="info-card">
+    <div class="info-card-header">
+      <span class="info-card-title">2. LW Sales Dashboard</span>
+      <span class="tag tag-active">Active</span>
+    </div>
+    <div class="info-card-body">
+      <p><strong>What it tracks:</strong> Sales calls (appointments, outcomes, show rates) and actual bookings/revenue &mdash; one row per call on the Dashboard tab.</p>
+      <p><strong>Link:</strong> <a href="https://docs.google.com/spreadsheets/d/1fcBghq6dXp9v_58Lz0b-Fm5iXYlhw4HF00zQUjCSSTU/edit" target="_blank">Open in Google Sheets</a></p>
+      <p><strong>Updates:</strong> Dashboard tab auto-updates via n8n (daily ~1:13am UTC from GHL API, with appendOrUpdate dedup so the same appointment never doubles up). The Sales tab (bookings/revenue) is refreshed via the weekly maintenance procedure in Section 11 (<code>autoPopulateSalesTab</code> + <code>updateSalesOutcomesV4</code>).</p>
+      <p><strong>Key tabs:</strong> Dashboard (calls), Sales (bookings/revenue), Daily Report, Sales Rep Breakdown, Rep Monthly Breakdown, individual rep tabs (Nico, Aliyah, Jacobo, Thomas).</p>
+    </div>
+  </div>
+
+  <!-- Sales by Source Dashboard -->
+  <div class="info-card">
+    <div class="info-card-header">
+      <span class="info-card-title">3. Sales by Source Dashboard</span>
+      <span class="tag tag-active">Active</span>
+    </div>
+    <div class="info-card-body">
+      <p><strong>What it tracks:</strong> Where bookings come from &mdash; source attribution for all BookingLayer bookings. Answers: "Which channels drive revenue?"</p>
+      <p><strong>Link:</strong> <a href="https://docs.google.com/spreadsheets/d/139G-OUoApI5ksdSMXMe_WE8geaw_mZ3Sv8PYvBDsq5w/edit" target="_blank">Open in Google Sheets</a></p>
+      <p><strong>Updates:</strong> Multiple automations &mdash; Zapier (new bookings), n8n (source data + emails), Apps Script (source category classification). See Automations section.</p>
+      <p><strong>Key tabs:</strong> Raw Bookings (main data), Source Mapping, Monthly Dashboard.</p>
+    </div>
+  </div>
 </div>
 
 <!-- ==================== SECTION 7: HOW IT ALL CONNECTS ==================== -->
@@ -1916,7 +1913,7 @@ fixMarketingDashboardDates()    # Same for Marketing Dashboard (already on daily
   <p>This is the step that actually connects the address. Go slowly &mdash; it's just a form.</p>
   <ol class="step-list">
     <li><strong>Log in to Namecheap</strong> &mdash; go to <a href="https://www.namecheap.com" target="_blank">namecheap.com</a> and click <strong>Sign In</strong> (top-right). Enter the username and password from <a href="#s04">Section 8: Logins</a>.</li>
-    <li><strong>Pass 2FA</strong> &mdash; Namecheap will ask for a 6-digit code. Open the 2FA browser extension (or authenticator app) noted in Section 2, copy the current 6-digit code, paste it, and continue.</li>
+    <li><strong>Pass 2FA</strong> &mdash; Namecheap will ask for a 6-digit code. Open the 2FA browser extension (or authenticator app) noted in Section 1, copy the current 6-digit code, paste it, and continue.</li>
     <li><strong>Open the domain list</strong> &mdash; once logged in, in the left sidebar click <strong>Domain List</strong>. You'll see <code>lawayra.com</code>.</li>
     <li><strong>Click MANAGE</strong> &mdash; on the <code>lawayra.com</code> row, click the gray <strong>MANAGE</strong> button on the right.</li>
     <li><strong>Open Advanced DNS</strong> &mdash; along the top you'll see tabs (Domain, Products, Sharing &amp; Transfer, Advanced DNS). Click the <strong>Advanced DNS</strong> tab.</li>
