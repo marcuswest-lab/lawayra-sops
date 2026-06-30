@@ -595,24 +595,25 @@
   <h3 class="toc-part-heading">Part 4 — Claude Code</h3>
   <div class="toc-grid">
     <a href="#setup-claude-code" class="toc-item"><span class="toc-num">14</span><span class="toc-label">How to Set Up Claude Code</span></a>
+    <a href="#audit-website" class="toc-item"><span class="toc-num">15</span><span class="toc-label">How to Audit a Website with Claude Code</span></a>
   </div>
   <h3 class="toc-part-heading">Part 5 — Launch a Funnel Page</h3>
   <div class="toc-grid">
-    <a href="#build-funnel-page" class="toc-item"><span class="toc-num">15</span><span class="toc-label">How to Build & Launch a Funnel Page</span></a>
-    <a href="#setup-subdomain" class="toc-item"><span class="toc-num">16</span><span class="toc-label">How to Set Up a Subdomain in GHL</span></a>
+    <a href="#build-funnel-page" class="toc-item"><span class="toc-num">16</span><span class="toc-label">How to Build & Launch a Funnel Page</span></a>
+    <a href="#setup-subdomain" class="toc-item"><span class="toc-num">17</span><span class="toc-label">How to Set Up a Subdomain in GHL</span></a>
   </div>
   <h3 class="toc-part-heading">Part 6 — Email</h3>
   <div class="toc-grid">
-    <a href="#email-broadcasts" class="toc-item"><span class="toc-num">17</span><span class="toc-label">How to Send Email Broadcasts with Drip</span></a>
-    <a href="#email-sequence" class="toc-item"><span class="toc-num">18</span><span class="toc-label">How to Draft Emails for the GHL Email Sequence</span></a>
+    <a href="#email-broadcasts" class="toc-item"><span class="toc-num">18</span><span class="toc-label">How to Send Email Broadcasts with Drip</span></a>
+    <a href="#email-sequence" class="toc-item"><span class="toc-num">19</span><span class="toc-label">How to Draft Emails for the GHL Email Sequence</span></a>
   </div>
   <h3 class="toc-part-heading">Part 7 — GHL Permissions</h3>
   <div class="toc-grid">
-    <a href="#ghl-permissions" class="toc-item"><span class="toc-num">19</span><span class="toc-label">How to Change Permissions in GHL</span></a>
+    <a href="#ghl-permissions" class="toc-item"><span class="toc-num">20</span><span class="toc-label">How to Change Permissions in GHL</span></a>
   </div>
   <h3 class="toc-part-heading">Part 8 — Troubleshooting</h3>
   <div class="toc-grid">
-    <a href="#troubleshooting" class="toc-item"><span class="toc-num">20</span><span class="toc-label">When Something Breaks</span></a>
+    <a href="#troubleshooting" class="toc-item"><span class="toc-num">21</span><span class="toc-label">When Something Breaks</span></a>
   </div>
 
 </div>
@@ -1754,9 +1755,68 @@ fixMarketingDashboardDates()    # Same for Marketing Dashboard (already on daily
   </ol>
 </div>
 
-<!-- ==================== SECTION 15: HOW TO BUILD & LAUNCH A FUNNEL PAGE ==================== -->
-<div class="section" id="build-funnel-page">
+<!-- ==================== SECTION 15: HOW TO AUDIT A WEBSITE WITH CLAUDE CODE ==================== -->
+<div class="section" id="audit-website">
   <div class="section-number">Section 15</div>
+  <h2>How to Audit a Website with Claude Code</h2>
+  <p class="section-subtitle">Use Claude Code to give CRO and design feedback on any website or landing page, then turn that feedback into developer-ready instructions you can hand off in a Google Doc. Works for any site you want to improve &mdash; live page, staging site, or competitor.</p>
+
+  <div class="callout">
+    <strong>Video walkthrough:</strong> <a href="https://www.loom.com/share/fe6a8cdbb1534fd68c5de8bb9ca42737" target="_blank">Watch the Loom explainer</a> for a screen-share of this whole process.
+  </div>
+
+  <h3>1. Open Your Project Folder</h3>
+
+  <ol class="step-list">
+    <li><strong>Pull up your project folder in Claude Code</strong> &mdash; Make sure Claude Code is pointed at the right project folder before you start, so it has the context it needs.</li>
+    <li><strong>Grab the URL</strong> of the website or landing page you want audited (a live page, a staging URL, whatever you want to improve).</li>
+  </ol>
+
+  <h3>2. Ask for the Audit</h3>
+
+  <p>Paste the URL and ask Claude Code to audit it for conversion and design. A prompt like this works well:</p>
+
+  <div class="info-card">
+    <div class="info-card-body">
+      <p><em>"I would like you to give me an offer audit of this website. Please check it for CRO and design. [paste URL]"</em></p>
+    </div>
+  </div>
+
+  <ol class="step-list">
+    <li><strong>Allow it to use Google Chrome</strong> &mdash; Claude Code will ask permission to use the Claude Chrome extension so it can browse the site for you. Click <strong>Allow</strong>. It will take over the browser window and start auditing the page.</li>
+    <li><strong>Let it run</strong> &mdash; Give it a few minutes to browse the site and generate its feedback points.</li>
+  </ol>
+
+  <div class="callout">
+    <strong>If the extension disconnects mid-audit:</strong> Claude Code may pause and ask whether to wait for you to reconnect the extension so it can finish the full page. Reconnect it (click on Claude in the Chrome window) and tell it to go ahead and finish the full page.
+  </div>
+
+  <h3>3. Turn the Feedback Into Developer Instructions</h3>
+
+  <p>Once Claude Code has finished and given you its audit points, have it rewrite the feedback as clear, step-by-step instructions your developer can follow.</p>
+
+  <div class="info-card">
+    <div class="info-card-body">
+      <p><em>"Can you write step-by-step instructions for our developer for both desktop and mobile? Please make it very simple to understand."</em></p>
+    </div>
+  </div>
+
+  <div class="callout">
+    <strong>Customize the ask:</strong> Tailor the request however you like &mdash; for example, ask it to keep the wording simple if your developer's first language isn't English, or to split the instructions by desktop vs. mobile.
+  </div>
+
+  <h3>4. Output as HTML and Share</h3>
+
+  <ol class="step-list">
+    <li><strong>Ask Claude Code to output the instructions as an HTML file.</strong></li>
+    <li><strong>Find the HTML file</strong> in your project folder / desktop and open it.</li>
+    <li><strong>Copy-paste it into a Google Doc</strong> &mdash; select all, copy, and paste into a new Google Doc. The formatting carries over, and you now have a clean, shareable document to hand to the developer.</li>
+  </ol>
+</div>
+
+<!-- ==================== SECTION 16: HOW TO BUILD & LAUNCH A FUNNEL PAGE ==================== -->
+<div class="section" id="build-funnel-page">
+  <div class="section-number">Section 16</div>
   <h2>How to Build &amp; Launch a Funnel Page</h2>
   <p class="section-subtitle">A simple landing page with a lead-capture form, hosted on a GHL funnel. The flow: build the form in GHL, build the page with Claude Code (with the form embedded), drop the page into a GHL funnel, point a subdomain at it, then tag everyone who applies. It looks more technical than it is &mdash; take it one step at a time.</p>
 
@@ -1854,7 +1914,7 @@ fixMarketingDashboardDates()    # Same for Marketing Dashboard (already on daily
 
 <!-- ==================== SECTION 16: HOW TO SET UP A SUBDOMAIN IN GHL ==================== -->
 <div class="section" id="setup-subdomain">
-  <div class="section-number">Section 16</div>
+  <div class="section-number">Section 17</div>
   <h2>How to Set Up a Subdomain in GHL</h2>
   <p class="section-subtitle">When you need to host a landing page or funnel on a custom subdomain (e.g., heal.lawayra.com), follow these steps to connect it through DNS and GHL.</p>
 
@@ -1998,7 +2058,7 @@ fixMarketingDashboardDates()    # Same for Marketing Dashboard (already on daily
 
 <!-- ==================== SECTION 17: HOW TO SEND EMAIL BROADCASTS ==================== -->
 <div class="section" id="email-broadcasts">
-  <div class="section-number">Section 17</div>
+  <div class="section-number">Section 18</div>
   <h2>How to Send Email Broadcasts with Drip</h2>
   <p class="section-subtitle">Step-by-step process for sending email broadcasts to the LaWayra subscriber list via GetDrip.</p>
 
@@ -2044,7 +2104,7 @@ fixMarketingDashboardDates()    # Same for Marketing Dashboard (already on daily
 
 <!-- ==================== SECTION 18: HOW TO DRAFT EMAILS FOR THE GHL EMAIL SEQUENCE ==================== -->
 <div class="section" id="email-sequence">
-  <div class="section-number">Section 18</div>
+  <div class="section-number">Section 19</div>
   <h2>How to Draft Emails for the GHL Email Sequence</h2>
   <p class="section-subtitle">This is the <strong>automated daily email sequence</strong> that goes out to the LaWayra list from inside GHL &mdash; separate from the one-off Drip broadcasts in Section 17. Emails are written under <strong>Sam Believ's</strong> voice and signature, drafted with a custom GPT, reviewed, then loaded into the GHL sequence one at a time.</p>
 
@@ -2110,7 +2170,7 @@ fixMarketingDashboardDates()    # Same for Marketing Dashboard (already on daily
 
 <!-- ==================== SECTION 19: HOW TO CHANGE PERMISSIONS IN GHL ==================== -->
 <div class="section" id="ghl-permissions">
-  <div class="section-number">Section 19</div>
+  <div class="section-number">Section 20</div>
   <h2>How to Change Permissions in GHL</h2>
   <p class="section-subtitle">Walkthrough for managing user roles and permissions inside GHL (adding/removing team members, restricting access to specific areas).</p>
 
@@ -2124,7 +2184,7 @@ fixMarketingDashboardDates()    # Same for Marketing Dashboard (already on daily
 
 <!-- ==================== SECTION 20: WHEN SOMETHING BREAKS ==================== -->
 <div class="section" id="troubleshooting">
-  <div class="section-number">Section 20</div>
+  <div class="section-number">Section 21</div>
   <h2>When Something Breaks</h2>
   <p class="section-subtitle">Common issues and how to fix them. Check the most likely cause first.</p>
 
