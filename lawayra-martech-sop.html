@@ -2060,22 +2060,49 @@ fixMarketingDashboardDates()    # Same for Marketing Dashboard (already on daily
     </div>
   </div>
 
-  <h3>Drafting Process</h3>
+  <div class="callout">
+    <strong>How this works at a glance:</strong> The sequence sends <strong>one email per day</strong> to everyone on the list. The goal is to build it out to <strong>~180 emails</strong> total. You draft them in batches of roughly 5&ndash;10 using the GPT, keep one master document of everything written so far, get the batch reviewed, then load each approved email into the live GHL workflow one at a time.
+  </div>
+
+  <h3>Part A &mdash; Drafting the Emails</h3>
 
   <ol class="step-list">
-    <li><strong>Draft in batches with the GPT</strong> &mdash; Use the <a href="https://chatgpt.com/g/g-6861c9e8b7f08191aa969b48ce3f1c36-lw-emails" target="_blank">LW Emails GPT</a> to write roughly 10&ndash;15 emails at a time. Each email is from <strong>Sam Believ</strong>, so match his warm, first-person tone (not the brand's marketing voice).</li>
-    <li><strong>Keep the master doc current</strong> &mdash; After each batch, paste the new emails into the <a href="https://docs.google.com/document/d/13F9A844PJpZIyILbIhCkhjcB-uEhlOb-WI4XztE6ScE/edit" target="_blank">LW Emails doc</a> and re-upload the full running list back into the GPT. This stops it repeating hooks, stories, and quotes it has already used. <em>(Example: if you just wrote emails 46&ndash;55, feed it all of 1&ndash;55.)</em></li>
-    <li><strong>Proofread before upload</strong> &mdash; Watch for the known failure modes below. The GPT is helpful but not trustworthy on names and repetition.</li>
-    <li><strong>Send a batch for review</strong> &mdash; Share the batch with Marcus to check before it goes into GHL. Start with a small batch, then continue once the format is approved.</li>
-    <li><strong>Load into the GHL sequence</strong> &mdash; Follow the <a href="https://www.loom.com/share/fcb8c3bcdea74b8695d9852c6521f3a8" target="_blank">"add emails to GHL sequence" Loom</a> to add each approved email into the workflow, in order.</li>
-    <li><strong>Spot-check in GHL</strong> &mdash; Open the sequence, send yourself a test, and confirm formatting, links, and the unsubscribe footer render correctly before moving to the next batch.</li>
+    <li><strong>Keep one master document of all uploaded emails.</strong> There is a running TextEdit (or Google Doc) file containing every email already written. Each time you draft, you re-feed this whole file to the GPT so it doesn't repeat hooks, stories, or quotes. Save the file with the current date in the name (e.g. <code>LW Emails 1-20-26</code>) so you always know which version is latest.</li>
+    <li><strong>Re-upload the master file to the GPT first.</strong> Open the <a href="https://chatgpt.com/g/g-6861c9e8b7f08191aa969b48ce3f1c36-lw-emails" target="_blank">LW Emails GPT</a> &rarr; <strong>Edit GPT</strong> &rarr; <strong>Configure</strong> &rarr; under Knowledge, remove the old file and upload the latest dated master file. This refreshes what the GPT "knows" has already been sent. Save the GPT.</li>
+    <li><strong>Ask for the next batch by number.</strong> Prompt it explicitly, e.g. <em>"Please write me the next five emails"</em> or <em>"Write emails 41&ndash;45."</em> Working in small numbered batches keeps numbering consistent with the master doc and the GHL sequence.</li>
+    <li><strong>Fact-check every name, quote, and claim.</strong> The GPT <strong>hallucinates</strong> &mdash; it invents guest names, fabricates podcast guests, and reuses quotes. For anything specific, challenge it directly (e.g. <em>"Has Dennis McKenna really been on the podcast?"</em>) and verify before trusting it. When in doubt, cut the detail.</li>
+    <li><strong>Ask it to elaborate where emails feel thin.</strong> If a draft is too short or shallow, prompt it to lengthen and add depth. Keep Sam Believ's warm, first-person voice &mdash; not the brand marketing voice.</li>
+    <li><strong>Paste approved drafts into the master doc and format them.</strong> Add each email to the doc, format the email's title/subject as <strong>Heading 3</strong>, and label them in sequence (Email 41, Email 42&hellip;) so they appear in the document sidebar and stay easy to navigate. Delete any GPT commentary or chatter &mdash; only the clean email body should remain.</li>
+    <li><strong>Mark new drafts as "not uploaded yet."</strong> Keep a clear separator in the doc between emails already loaded into GHL and the fresh batch waiting to go in. This is your bookkeeping so nothing gets uploaded twice or skipped.</li>
+    <li><strong>Send the batch for review.</strong> Share with Marcus before anything goes into GHL. Start small, get the format approved, then continue.</li>
+  </ol>
+
+  <h3>Part B &mdash; Uploading to the GHL Sequence</h3>
+
+  <div class="callout">
+    <strong>&#9888; Be careful &mdash; this workflow is live.</strong> The email sequence is an <strong>active</strong> workflow with real contacts moving through it daily. A mistake here goes out to the whole list. Work slowly and double-check each email before saving.
+  </div>
+
+  <ol class="step-list">
+    <li><strong>Get access.</strong> The GHL invitation arrives from <em>"Lead Connector (no reply)"</em>. Accept it to get into the sub-account.</li>
+    <li><strong>Open the sequence workflow.</strong> In the sub-account go to <strong>Automation</strong> &rarr; open the <strong>"new email subscriber workflow"</strong> folder &rarr; open <strong>"email sequence"</strong> (the first one). This is the active sequence &mdash; confirm you're in the right workflow before editing.</li>
+    <li><strong>Find the last email and duplicate its block.</strong> Scroll to the bottom of the workflow to the final <em>"Wait one day"</em> &rarr; <em>"Send email"</em> pair. Click the <strong>three dots</strong> on the last <em>"Wait one day"</em> step &rarr; <strong>"Copy all actions from here"</strong> &rarr; then <strong>"Paste below."</strong> This clones the wait + email structure so you keep the daily cadence intact.</li>
+    <li><strong>Renumber the new email.</strong> The pasted action will say e.g. <em>"Send email 40."</em> Rename it to the next number (41, 42&hellip;) so it matches your master doc.</li>
+    <li><strong>Set the subject.</strong> Pull the subject line from the <a href="https://docs.google.com/document/d/13F9A844PJpZIyILbIhCkhjcB-uEhlOb-WI4XztE6ScE/edit" target="_blank">Copy of LW Emails doc</a> and paste it in.</li>
+    <li><strong>Paste the body and personalize the greeting.</strong> Paste the email body, then replace the greeting with the dynamic variable for the contact's first name: <code>{{contact.first_name}}</code>. Use the exact variable syntax &mdash; a typo means it renders blank.</li>
+    <li><strong>Match the formatting to email 40.</strong> Set the font to <strong>Verdana, size 16px</strong> so it's consistent with the rest of the sequence.</li>
+    <li><strong>&#9888; Add the unsubscribe link at the very bottom of EVERY email.</strong> This is the most important step. Missing unsubscribe links hurt <strong>email health and land you in spam</strong>. The unsubscribe section sometimes fails to paste or save &mdash; so after adding it, double-check it's actually there before moving on.</li>
+    <li><strong>Save properly.</strong> Click <strong>Save Action</strong>, then <strong>Save</strong> on the workflow. If you don't save, GHL silently reverts your changes &mdash; always confirm the save took.</li>
+    <li><strong>Update your bookkeeping.</strong> Back in the master doc, move the email you just uploaded from the "not uploaded yet" section into the uploaded section and delete the separator. Repeat for the next email.</li>
+    <li><strong>Spot-check.</strong> Send yourself a test and confirm formatting, the first-name variable, links, and the unsubscribe footer all render correctly.</li>
   </ol>
 
   <div class="callout">
     <strong>Quality rules (learned the hard way):</strong>
     <br>&bull; <strong>Never use real names.</strong> The GPT keeps inserting actual guest or Google-reviewer names &mdash; replace these with <em>"one guest"</em> or <em>"this guest said&hellip;"</em> Manually scrub every batch.
-    <br>&bull; <strong>No invented quotes.</strong> It has fabricated podcast/guest quotes and reused quotes from earlier emails &mdash; verify anything in quotation marks.
+    <br>&bull; <strong>No invented quotes or guests.</strong> It fabricates podcast guests and reuses quotes from earlier emails &mdash; verify anything in quotation marks and confirm any named guest actually appeared.
     <br>&bull; <strong>Link the exact podcast episode.</strong> If an email references a podcast episode, link directly to that Spotify episode &mdash; don't make people dig through 130+ episodes.
+    <br>&bull; <strong>Unsubscribe link in every single email.</strong> No exceptions &mdash; it's the difference between landing in the inbox and landing in spam.
     <br>&bull; <strong>Daily cadence is intentional.</strong> Sending daily is best practice here; open rates run 30&ndash;50%. Don't reduce frequency on a hunch.
     <br>&bull; <strong>Always get a review</strong> before a batch goes live in the sequence.
   </div>
