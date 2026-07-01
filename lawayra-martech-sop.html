@@ -335,6 +335,11 @@
     border: 1px solid rgba(154,149,144,0.22);
     color: var(--text-muted);
   }
+  .flow-node-meta {          /* Meta / Facebook Ads — Facebook blue */
+    background: rgba(24,119,242,0.12);
+    border: 1px solid rgba(24,119,242,0.30);
+    color: #4a97ff;
+  }
   .flow-arrow {
     color: var(--text-dim);
     font-size: 16px;
@@ -772,28 +777,22 @@
         <td><span class="tag tag-active">Active</span></td>
       </tr>
       <tr>
-        <td>Google Ads &rarr; Marketing Dashboard</td>
-        <td>n8n workflow <code>Google Ads > LW Marketing Dashboard</code></td>
-        <td>Daily 1:07am</td>
+        <td>Google Ads &rarr; Ads Dashboard (<code>GG Daily</code>)</td>
+        <td>Google Ads Script "Daily &gt; Marketing Dashboard" (runs inside Google Ads account 629-914-3676)</td>
+        <td>Daily</td>
+        <td><span class="tag tag-active">Active</span></td>
+      </tr>
+      <tr>
+        <td>Meta / Facebook Ads &rarr; Ads Dashboard (<code>FB Daily</code>)</td>
+        <td>Apps Script <code>pullMetaSpendDaily()</code> (Meta Graph API)</td>
+        <td>Daily ~1am</td>
         <td><span class="tag tag-active">Active</span></td>
       </tr>
       <tr>
         <td>GHL appointments &rarr; Sales Dashboard</td>
-        <td>n8n workflow <code>GHL > LW Sales Dashboard</code></td>
-        <td>Daily 1:13am</td>
+        <td>n8n workflow <code>GHL > LW Sales Dashboard</code> (main calendar) + <code>GHL FB Calendar > LW Sales Dashboard</code> (FB consult calendar)</td>
+        <td>Daily 1:13am / 1:20am</td>
         <td><span class="tag tag-active">Active</span></td>
-      </tr>
-      <tr>
-        <td>"How did you hear?" &rarr; Self-Reported Source</td>
-        <td>n8n workflow <code>LW Source Data Pipeline</code></td>
-        <td>Hourly (polls Gmail)</td>
-        <td><span class="tag tag-active">Active</span></td>
-      </tr>
-      <tr>
-        <td>Booking emails &rarr; Email column</td>
-        <td>n8n workflow <code>LW Email Data Pipeline</code></td>
-        <td>Hourly (polls Gmail)</td>
-        <td><span class="tag tag-pending">Pending deployment</span></td>
       </tr>
       <tr>
         <td>Source Category override (Google / Facebook / TikTok ad detection)</td>
@@ -825,6 +824,7 @@
 
   <div class="info-card">
     <div class="info-card-body">
+      <p><strong>BookingLayer source data import:</strong> The "How did you hear?" source data is no longer auto-pulled by n8n. You download the BookingLayer report, import it straight into the Sales by Source spreadsheet, then run the Apps Script (<code>syncFromBLExports</code> + <code>updateSourceCategoriesV7</code>) to update the Raw Bookings tab. Full click-by-click steps in Section 10. <em>(The nightly <code>updateSourceCategoriesV7()</code> override still runs automatically, but it only sees fresh data after this import.)</em></p>
       <p><strong>Sales tab amounts:</strong> Bookings with status "deposit_paid" show the deposit amount, not the full price. The full amount needs to be entered manually once the guest has fully paid.</p>
       <p><strong>New source types:</strong> If a guest writes something new that does not exist in the mapping (e.g., "AyaAdvisors"), it needs to be added to the category mapping in the Apps Script.</p>
       <p><strong>GG Leads sheet:</strong> This is auto-populated by Google Ads lead forms. No manual action needed &mdash; listed here for context only.</p>
@@ -852,9 +852,9 @@
         </thead>
         <tbody>
           <tr>
-            <td>LW Marketing Dashboard</td>
+            <td>LW Ads Dashboard <em>(formerly "Marketing Dashboard")</em></td>
             <td><code>1du8jYw-EPr3Bvkiq-_sMsA8XNtWH-d81AXS48glVzvc</code></td>
-            <td>Google Ads KPIs</td>
+            <td>Ad KPIs &mdash; Google (GG Daily), Meta (FB Daily), TikTok (TT Daily), Juan Daily</td>
           </tr>
           <tr>
             <td>LW Sales Dashboard</td>
@@ -901,15 +901,15 @@
         </thead>
         <tbody>
           <tr>
-            <td>Google Ads > LW Marketing Dashboard</td>
-            <td><code>E6K7ts1s0HXYw8JV</code></td>
-            <td>Daily 1:07am</td>
+            <td>GHL > LW Sales Dashboard (main calendar)</td>
+            <td><code>jStC73dYSNXQEuV7</code></td>
+            <td>Daily 1:13am</td>
             <td><span class="tag tag-active">Active</span></td>
           </tr>
           <tr>
-            <td>GHL > LW Sales Dashboard</td>
-            <td><code>jStC73dYSNXQEuV7</code></td>
-            <td>Daily 1:13am</td>
+            <td>GHL FB Calendar > LW Sales Dashboard (FB consult calendar)</td>
+            <td><code>9WfHVRNBS7WKymV3</code></td>
+            <td>Daily 1:20am</td>
             <td><span class="tag tag-active">Active</span></td>
           </tr>
           <tr>
@@ -919,16 +919,16 @@
             <td><span class="tag tag-active">Active</span></td>
           </tr>
           <tr>
-            <td>LW Source Data Pipeline</td>
-            <td><code>fOTmp4CofwDzsLft</code></td>
-            <td>Hourly</td>
-            <td><span class="tag tag-active">Active</span></td>
+            <td>Google Ads > LW Marketing Dashboard</td>
+            <td><code>E6K7ts1s0HXYw8JV</code></td>
+            <td>&mdash;</td>
+            <td><span class="tag tag-pending">Retired &mdash; replaced by Google Ads Script</span></td>
           </tr>
           <tr>
-            <td>LW Email Data Pipeline</td>
-            <td><code>(to import)</code></td>
-            <td>Hourly</td>
-            <td><span class="tag tag-pending">Pending</span></td>
+            <td>LW Source Data Pipeline</td>
+            <td><code>fOTmp4CofwDzsLft</code></td>
+            <td>&mdash;</td>
+            <td><span class="tag tag-pending">Superseded &mdash; source data now imported manually (Section 10)</span></td>
           </tr>
         </tbody>
       </table>
@@ -948,6 +948,11 @@
           </tr>
         </thead>
         <tbody>
+          <tr>
+            <td><code>pullMetaSpendDaily()</code> (Meta/Facebook ad spend &rarr; <code>FB Daily</code>)</td>
+            <td>Ads Dashboard</td>
+            <td>Daily ~1am</td>
+          </tr>
           <tr>
             <td><code>updateSourceCategoriesV7()</code> (source categories &mdash; Google / Facebook / TikTok ad overrides)</td>
             <td>Sales by Source Dashboard</td>
@@ -1136,13 +1141,13 @@
   <!-- Marketing Dashboard -->
   <div class="info-card">
     <div class="info-card-header">
-      <span class="info-card-title">1. LW Marketing Dashboard</span>
+      <span class="info-card-title">1. LW Ads Dashboard</span>
       <span class="tag tag-active">Active</span>
     </div>
     <div class="info-card-body">
       <p><strong>What it tracks:</strong> Paid ad spend, impressions, clicks, reach, leads, booked calls, sales, revenue, and ROAS &mdash; one row per day, across <strong>Google Ads, Facebook/Meta Ads, and TikTok Ads</strong>.</p>
       <p><strong>Link:</strong> <a href="https://docs.google.com/spreadsheets/d/1du8jYw-EPr3Bvkiq-_sMsA8XNtWH-d81AXS48glVzvc/edit" target="_blank">Open in Google Sheets</a></p>
-      <p><strong>Updates:</strong> Automatically &mdash; Google Ads via n8n (daily ~1:07am UTC), Facebook/Meta via Apps Script <code>pullMetaSpendDaily()</code> (daily ~1am UTC, Meta Graph API). TikTok is loaded from a periodic CSV export (currently paused / historical).</p>
+      <p><strong>Updates:</strong> Automatically &mdash; Google Ads via a <strong>Google Ads Script</strong> ("Daily &gt; Marketing Dashboard") that runs inside the Google Ads account (629-914-3676) and writes the <code>GG Daily</code> tab; Facebook/Meta via Apps Script <code>pullMetaSpendDaily()</code> (daily ~1am UTC, Meta Graph API) into <code>FB Daily</code>. TikTok is loaded from a periodic CSV export (currently paused / historical). <em>(The old n8n Google Ads workflow is retired &mdash; ignore it.)</em></p>
       <p><strong>Key tabs:</strong> <code>GG Daily</code> (Google raw data), <code>FB Daily</code> (Facebook), <code>TT Daily</code> (TikTok), <code>All Ads Daily</code> (aggregate), Daily Report (Yesterday / WTD / MTD + Pace), <code>GG Weekly</code>, <code>GG Monthly</code>. <em>(The Google data tab was renamed from "Dashboard" &rarr; "GG Daily" on 2026-05-24; trackers renamed to GG Weekly/GG Monthly on 2026-05-25.)</em></p>
     </div>
   </div>
@@ -1174,6 +1179,24 @@
       <p><strong>Key tabs:</strong> Raw Bookings (main data), Source Mapping, Monthly Dashboard.</p>
     </div>
   </div>
+
+  <!-- Juan's Private Dashboard -->
+  <h3 style="margin-top:32px;">Companion dashboard</h3>
+  <div class="info-card" style="border-left:4px solid #4a97ff;">
+    <div class="info-card-header">
+      <span class="info-card-title">Juan's Private Meta Dashboard</span>
+      <span class="tag tag-active">Active &middot; Private</span>
+    </div>
+    <div class="info-card-body">
+      <p><strong>Who it's for:</strong> Juan Corredor, the volunteer running our Meta ads. It's deliberately scoped so Juan sees <strong>only his own campaign and his own FB consult-call results</strong> &mdash; never overall LaWayra spend, sales, or revenue.</p>
+      <p><strong>Link (share with Juan):</strong> <a href="https://script.google.com/macros/s/AKfycbzL5hZgGHryjPvDzonlKvH-DaTUwhjQ0SHahCJmf7p-XcuQ1gojCr4WnLkSNZTll2lW/exec" target="_blank">Open dashboard</a> &mdash; access is set to "Anyone", so no Google login is needed.</p>
+      <p><strong>What it shows:</strong> KPI cards (all-time headline + MTD sub-row): Spend, Booked Calls, Cost per Booked Call, Sales, CPA, ROAS. Daily / Weekly / Monthly tables, plus a <strong>Sales Calls</strong> tab (FB-tagged calls only) with Show Rate, Live Call Close Rate, and per-call Revenue.</p>
+      <p><strong>Built as:</strong> a standalone Apps Script web app (not Vercel, not one of the three sheets). It reads the <code>Juan Daily</code> tab in the Ads Dashboard plus FB-tagged call rows in the Sales Dashboard, and overlays Sales/Revenue at runtime &mdash; so it physically cannot show any other channel's numbers.</p>
+      <div class="callout" style="margin-top:12px;">
+        <strong>Why Juan's spend differs from the main Facebook Ads dashboard:</strong> Juan's dashboard is scoped to his prospecting campaign ("Book Call") only. The main Ads Dashboard <code>FB Daily</code> tab is the <strong>whole Meta ad account</strong>, which also includes retargeting spend. So the main FB spend (and its CPA/ROAS) will read higher &mdash; that's by design, not a discrepancy. Booked calls, sales, and revenue match on both.
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- ==================== SECTION 7: HOW IT ALL CONNECTS ==================== -->
@@ -1189,22 +1212,33 @@
       <span class="flow-node flow-node-zapier">Zapier</span>
       <span class="flow-arrow">&rarr;</span>
       <span class="flow-node flow-node-sheet">Sales by Source Dashboard</span>
-      <span style="font-size:12px; color:var(--text-dim); margin-left:4px;">(Raw Bookings tab)</span>
+      <span style="font-size:12px; color:var(--text-dim); margin-left:4px;">(Raw Bookings tab &mdash; new-booking skeleton row, real-time)</span>
     </div>
     <div class="flow-row">
       <span class="flow-node flow-node-bl">BookingLayer CSV</span>
       <span class="flow-arrow">&rarr;</span>
-      <span class="flow-node flow-node-n8n">n8n (Source Pipeline)</span>
+      <span class="flow-node flow-node-neutral">Manual download + import</span>
+      <span class="flow-arrow">&rarr;</span>
+      <span class="flow-node flow-node-neutral">Apps Script</span>
       <span class="flow-arrow">&rarr;</span>
       <span class="flow-node flow-node-sheet">Sales by Source Dashboard</span>
-      <span style="font-size:12px; color:var(--text-dim); margin-left:4px;">(Self-Reported Source + Email cols)</span>
+      <span style="font-size:12px; color:var(--text-dim); margin-left:4px;">(Raw Bookings tab &mdash; Source, Status, Email, Amount cols)</span>
     </div>
     <div class="flow-row">
       <span class="flow-node flow-node-gads">Google Ads API</span>
       <span class="flow-arrow">&rarr;</span>
-      <span class="flow-node flow-node-n8n">n8n</span>
+      <span class="flow-node flow-node-neutral">Google Ads Script</span>
       <span class="flow-arrow">&rarr;</span>
-      <span class="flow-node flow-node-sheet">Marketing Dashboard</span>
+      <span class="flow-node flow-node-sheet">Ads Dashboard</span>
+      <span style="font-size:12px; color:var(--text-dim); margin-left:4px;">(GG Daily tab)</span>
+    </div>
+    <div class="flow-row">
+      <span class="flow-node flow-node-meta">Meta / Facebook Ads API</span>
+      <span class="flow-arrow">&rarr;</span>
+      <span class="flow-node flow-node-neutral">Apps Script</span>
+      <span class="flow-arrow">&rarr;</span>
+      <span class="flow-node flow-node-sheet">Ads Dashboard</span>
+      <span style="font-size:12px; color:var(--text-dim); margin-left:4px;">(FB Daily tab)</span>
     </div>
     <div class="flow-row">
       <span class="flow-node flow-node-ghl">GHL (Appointments)</span>
@@ -1212,6 +1246,7 @@
       <span class="flow-node flow-node-n8n">n8n</span>
       <span class="flow-arrow">&rarr;</span>
       <span class="flow-node flow-node-sheet">Sales Dashboard</span>
+      <span style="font-size:12px; color:var(--text-dim); margin-left:4px;">(2 workflows: main calendar + FB consult calendar)</span>
     </div>
     <div class="flow-row">
       <span class="flow-node flow-node-sheet">Both Dashboards</span>
@@ -1229,8 +1264,19 @@
     <div class="flow-row">
       <span class="flow-node flow-node-neutral">Apps Script (nightly)</span>
       <span class="flow-arrow">&rarr;</span>
-      <span style="font-size:13px; color:var(--text-muted);">Cross-references GG Leads emails &rarr; overrides Source Category with "Google Ads"</span>
+      <span style="font-size:13px; color:var(--text-muted);">Cross-references GG Leads emails + FB/TikTok consult-calendar contacts &rarr; overrides Source Category with "Google Ads" / "Facebook Ads" / "TikTok Ads"</span>
     </div>
+  </div>
+
+  <div class="callout" style="margin-top:20px;">
+    <strong>What changed (as of June 2026):</strong>
+    <ul style="margin:8px 0 0; padding-left:20px;">
+      <li>The dashboard was renamed <strong>Marketing Dashboard &rarr; Ads Dashboard</strong>, and now holds more than Google Ads: a <code>GG Daily</code> tab (Google Ads), a <code>FB Daily</code> tab (Meta/Facebook Ads), and a <code>TT Daily</code> tab (TikTok, paused &mdash; historical CSV only).</li>
+      <li><strong>Google Ads &rarr; Ads Dashboard is NOT n8n anymore.</strong> It's a <strong>Google Ads Script</strong> ("Daily &gt; Marketing Dashboard") that lives inside the Google Ads account (629-914-3676) and writes the <code>GG Daily</code> tab. The old n8n workflow <code>E6K7ts1s0HXYw8JV</code> is dead &mdash; ignore it.</li>
+      <li><strong>Meta/Facebook Ads &rarr; Ads Dashboard is Apps Script</strong> (<code>pullMetaSpendDaily</code>, bound to the Ads Dashboard sheet, daily ~1&nbsp;AM via the Meta Graph API). It's Apps Script and not n8n because the n8n Google credential is Forbidden on the Ads Dashboard sheet.</li>
+      <li><strong>The BookingLayer source CSV is no longer an automated n8n email pipeline.</strong> You download the BL CSV report, import it straight into the Sales by Source spreadsheet, then run the Apps Script (<code>syncFromBLExports</code> + <code>updateSourceCategoriesV7</code>) to update the Raw Bookings tab. See Section 10.</li>
+      <li><strong>GHL Appointments &rarr; Sales Dashboard IS still n8n</strong> &mdash; and it's now two workflows: <code>jStC73dYSNXQEuV7</code> (main calendar) and <code>9WfHVRNBS7WKymV3</code> (FB consultation calendar).</li>
+    </ul>
   </div>
 </div>
 
@@ -1309,13 +1355,12 @@
   <p>These run on schedule via <code>server.lawayraserver.com</code>. Check via the <a href="https://server.lawayraserver.com/home/workflows" target="_blank">workflows UI</a>:</p>
   <div class="info-card">
     <ul style="margin:0;">
-      <li><strong>3ztYQF2wJO3cHDi2</strong> &mdash; LW Booking Sync Pipeline (CSV email trigger). BL CSV &rarr; Raw Bookings.</li>
-      <li><strong>fOTmp4CofwDzsLft</strong> &mdash; LW Source Data Pipeline (CSV email trigger). BL "How did you hear?" CSV &rarr; Raw Bookings col I.</li>
       <li><strong>jStC73dYSNXQEuV7</strong> &mdash; GHL &gt; LW Sales Dashboard. Daily 1:13 UTC. GHL opps + appointments &rarr; Sales Dashboard (appendOrUpdate by col N).</li>
+      <li><strong>9WfHVRNBS7WKymV3</strong> &mdash; GHL FB Calendar &gt; LW Sales Dashboard. Daily 1:20 UTC. FB consult-calendar events &rarr; Sales Dashboard (tags Calendar col O = "La Wayra Consultation Call - FB").</li>
       <li><strong>FXxEh8d2nQRZ9sEy</strong> &mdash; LaWayra-Individual-Sales-Sheets. Real-time webhook on pipeline-stage changes.</li>
-      <li><strong>E6K7ts1s0HXYw8JV</strong> &mdash; Google Ads &gt; LW Marketing Dashboard. Daily 1:07 UTC.</li>
       <li><strong>ZfiXuiG20bwPLj42</strong> &mdash; LW Daily Report &gt; Discord. Daily 2:03 UTC.</li>
     </ul>
+    <p style="margin:12px 0 0; font-size:13px; color:var(--text-muted);"><strong>Not n8n (common confusion):</strong> Google Ads &rarr; <code>GG Daily</code> is a Google Ads Script inside account 629-914-3676; Meta &rarr; <code>FB Daily</code> is Apps Script <code>pullMetaSpendDaily()</code>; the BL "How did you hear?" source data is a manual import (Section 10). The old n8n workflows <code>E6K7ts1s0HXYw8JV</code> (Google Ads), <code>3ztYQF2wJO3cHDi2</code> (Booking Sync), and <code>fOTmp4CofwDzsLft</code> (Source Data) are retired/superseded &mdash; ignore them.</p>
   </div>
 
   <h3>Quick reference &mdash; "I just want to..."</h3>
@@ -2224,9 +2269,14 @@ fixMarketingDashboardDates()    # Same for Marketing Dashboard (already on daily
         <td>Run <code>updateSourceCategoriesV7()</code> manually in Apps Script editor.</td>
       </tr>
       <tr>
-        <td>Google Ads data missing from Marketing Dashboard</td>
-        <td>n8n &rarr; check <code>Google Ads > LW Marketing Dashboard</code></td>
-        <td>Re-authenticate Google Ads OAuth2 credential in n8n.</td>
+        <td>Google Ads data missing from Ads Dashboard (<code>GG Daily</code>)</td>
+        <td>Google Ads Script &rarr; account 629-914-3676 &rarr; Tools &rarr; Scripts (Marcus only)</td>
+        <td>Run the "Daily &gt; Marketing Dashboard" script manually; it has a BACKFILL mode for missing dates. Not an n8n workflow.</td>
+      </tr>
+      <tr>
+        <td>Meta/Facebook data missing from Ads Dashboard (<code>FB Daily</code>)</td>
+        <td>Apps Script &rarr; run <code>pullMetaSpendDaily()</code></td>
+        <td>Check the Meta System User token (Script Property <code>META_TOKEN</code>); regenerate via Graph API Explorer if expired.</td>
       </tr>
       <tr>
         <td>GHL appointment data missing</td>
