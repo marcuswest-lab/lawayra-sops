@@ -604,21 +604,22 @@
   </div>
   <h3 class="toc-part-heading">Part 5 — Launch a Funnel Page</h3>
   <div class="toc-grid">
-    <a href="#build-funnel-page" class="toc-item"><span class="toc-num">16</span><span class="toc-label">How to Build & Launch a Funnel Page</span></a>
-    <a href="#setup-subdomain" class="toc-item"><span class="toc-num">17</span><span class="toc-label">How to Set Up a Subdomain in GHL</span></a>
+    <a href="#brand-kit" class="toc-item"><span class="toc-num">16</span><span class="toc-label">Brand Kit for Landing Pages</span></a>
+    <a href="#build-funnel-page" class="toc-item"><span class="toc-num">17</span><span class="toc-label">How to Build & Launch a Funnel Page</span></a>
+    <a href="#setup-subdomain" class="toc-item"><span class="toc-num">18</span><span class="toc-label">How to Set Up a Subdomain in GHL</span></a>
   </div>
   <h3 class="toc-part-heading">Part 6 — Email</h3>
   <div class="toc-grid">
-    <a href="#email-broadcasts" class="toc-item"><span class="toc-num">18</span><span class="toc-label">How to Send Email Broadcasts with Drip</span></a>
-    <a href="#email-sequence" class="toc-item"><span class="toc-num">19</span><span class="toc-label">How to Draft Emails for the GHL Email Sequence</span></a>
+    <a href="#email-broadcasts" class="toc-item"><span class="toc-num">19</span><span class="toc-label">How to Send Email Broadcasts with Drip</span></a>
+    <a href="#email-sequence" class="toc-item"><span class="toc-num">20</span><span class="toc-label">How to Draft Emails for the GHL Email Sequence</span></a>
   </div>
   <h3 class="toc-part-heading">Part 7 — GHL Permissions</h3>
   <div class="toc-grid">
-    <a href="#ghl-permissions" class="toc-item"><span class="toc-num">20</span><span class="toc-label">How to Change Permissions in GHL</span></a>
+    <a href="#ghl-permissions" class="toc-item"><span class="toc-num">21</span><span class="toc-label">How to Change Permissions in GHL</span></a>
   </div>
   <h3 class="toc-part-heading">Part 8 — Troubleshooting</h3>
   <div class="toc-grid">
-    <a href="#troubleshooting" class="toc-item"><span class="toc-num">21</span><span class="toc-label">When Something Breaks</span></a>
+    <a href="#troubleshooting" class="toc-item"><span class="toc-num">22</span><span class="toc-label">When Something Breaks</span></a>
   </div>
 
 </div>
@@ -1859,9 +1860,94 @@ fixMarketingDashboardDates()    # Same for Marketing Dashboard (already on daily
   </ol>
 </div>
 
-<!-- ==================== SECTION 16: HOW TO BUILD & LAUNCH A FUNNEL PAGE ==================== -->
-<div class="section" id="build-funnel-page">
+<!-- ==================== SECTION 16: BRAND KIT FOR LANDING PAGES ==================== -->
+<div class="section" id="brand-kit">
   <div class="section-number">Section 16</div>
+  <h2>Brand Kit for Landing Pages</h2>
+  <p class="section-subtitle">Everything you need to build an on-brand LaWayra landing page: colors, fonts, logos, symbols, textures, and photography. Hand this to Claude Code (or a designer) before building any funnel page so the page matches the brand out of the gate.</p>
+
+  <div class="callout">
+    <strong>Where the files live:</strong> the full asset folder is <code>lawayra-brand-kit/</code> in the Claude Code project (<code>~/Desktop/LW/Claude Code LW/lawayra-brand-kit/</code>) &mdash; logos, symbols, textures, Poppins font files, photography, the color palette JSON, and the master PDF. The specs below are the quick reference; the folder holds the actual assets.
+  </div>
+
+  <h3>Colors</h3>
+  <p><strong>Primary palette</strong> &mdash; backgrounds and structure:</p>
+  <div class="info-card">
+    <table class="data-table">
+      <thead><tr><th>Swatch</th><th>Color</th><th>Hex</th><th>Usage</th></tr></thead>
+      <tbody>
+        <tr><td><span style="display:inline-block;width:26px;height:26px;border-radius:5px;background:#3F4021;border:1px solid rgba(255,255,255,0.15);vertical-align:middle;"></span></td><td>Olive</td><td><code>#3F4021</code></td><td>Dark backgrounds, headings</td></tr>
+        <tr><td><span style="display:inline-block;width:26px;height:26px;border-radius:5px;background:#AEAC92;border:1px solid rgba(255,255,255,0.15);vertical-align:middle;"></span></td><td>Sage</td><td><code>#AEAC92</code></td><td>Subtle accents, secondary text</td></tr>
+        <tr><td><span style="display:inline-block;width:26px;height:26px;border-radius:5px;background:#D6D0B8;border:1px solid rgba(255,255,255,0.15);vertical-align:middle;"></span></td><td>Beige</td><td><code>#D6D0B8</code></td><td>Alternate section backgrounds</td></tr>
+        <tr><td><span style="display:inline-block;width:26px;height:26px;border-radius:5px;background:#FFF7E7;border:1px solid rgba(255,255,255,0.15);vertical-align:middle;"></span></td><td>Cream</td><td><code>#FFF7E7</code></td><td>Primary light backgrounds</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="margin-top:16px;"><strong>Secondary palette</strong> &mdash; CTAs and accents:</p>
+  <div class="info-card">
+    <table class="data-table">
+      <thead><tr><th>Swatch</th><th>Color</th><th>Hex</th><th>Usage</th></tr></thead>
+      <tbody>
+        <tr><td><span style="display:inline-block;width:26px;height:26px;border-radius:5px;background:#E4A017;border:1px solid rgba(255,255,255,0.15);vertical-align:middle;"></span></td><td>Amber</td><td><code>#E4A017</code></td><td>Primary CTA buttons, highlights</td></tr>
+        <tr><td><span style="display:inline-block;width:26px;height:26px;border-radius:5px;background:#B34100;border:1px solid rgba(255,255,255,0.15);vertical-align:middle;"></span></td><td>Burnt Orange</td><td><code>#B34100</code></td><td>Accent, hover states</td></tr>
+        <tr><td><span style="display:inline-block;width:26px;height:26px;border-radius:5px;background:#623E2A;border:1px solid rgba(255,255,255,0.15);vertical-align:middle;"></span></td><td>Brown</td><td><code>#623E2A</code></td><td>Earthy accents, dark body text</td></tr>
+        <tr><td><span style="display:inline-block;width:26px;height:26px;border-radius:5px;background:#2B2728;border:1px solid rgba(255,255,255,0.15);vertical-align:middle;"></span></td><td>Charcoal</td><td><code>#2B2728</code></td><td>Body text, dark elements</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Typography</h3>
+  <div class="info-card">
+    <div class="info-card-body">
+      <p><strong>Primary font:</strong> Poppins (Google Fonts) &mdash; weights Light 300, Regular 400, Medium 500, SemiBold 600, Bold 700, plus Italic. TTF files are in <code>lawayra-brand-kit/fonts/</code>.</p>
+      <p><strong>Script accent:</strong> Twister &mdash; used for tagline accents only, sparingly.</p>
+      <p><strong>Tagline:</strong> <em>"connect. heal. grow."</em> (lowercase, with periods).</p>
+      <p><strong>Headings:</strong> lowercase, Poppins SemiBold / Bold.</p>
+    </div>
+  </div>
+
+  <h3>Landing-page rules of thumb</h3>
+  <div class="info-card">
+    <div class="info-card-body">
+      <p><strong>CTA buttons:</strong> Amber <code>#E4A017</code>, fully rounded (<code>border-radius: 40px</code>), white text.</p>
+      <p><strong>Section background rhythm:</strong> alternate cream &rarr; olive &rarr; beige &rarr; cream down the page.</p>
+      <p><strong>Grain overlays:</strong> use the grain textures as subtle overlays on hero images for the analog feel.</p>
+      <p><strong>Photography style:</strong> warm, natural, analog film look.</p>
+    </div>
+  </div>
+
+  <h3>Ready-to-paste CSS variables</h3>
+  <p>Drop this at the top of any LaWayra landing page as the design token base:</p>
+  <pre style="background:#1a1a1a;border-radius:8px;padding:16px;overflow-x:auto;font-size:13px;line-height:1.6;"><code>:root {
+  /* primary */
+  --olive:#3F4021; --sage:#AEAC92; --beige:#D6D0B8; --cream:#FFF7E7;
+  /* secondary */
+  --amber:#E4A017; --burnt-orange:#B34100; --brown:#623E2A; --charcoal:#2B2728;
+  /* functional */
+  --text-light:#FFFFFF; --text-dark:#623E2A; --bg:#FFF7E7;
+  --overlay:rgba(43,39,40,0.6);
+}
+/* primary CTA */
+.cta { background:var(--amber); color:#fff; border-radius:40px;
+  padding:14px 32px; font-family:'Poppins',sans-serif; font-weight:600; }</code></pre>
+
+  <h3>Asset inventory</h3>
+  <details>
+    <summary>Logos, symbols, textures &amp; photography (in <code>lawayra-brand-kit/</code>)</summary>
+    <div class="details-body">
+      <p><strong>Logos</strong> (<code>/logos/</code>): <code>lawayra-wordmark.png</code>, <code>logo-lockup.png</code>, <code>logo-lockup-raw.png</code>, <code>logo-filled.png</code>, <code>logo-outline.png</code>, <code>logo-marks.png</code>. Color lockups: <code>lockup-olive</code>, <code>lockup-sage</code>, <code>lockup-cream</code>, <code>lockup-amber</code>, <code>lockup-burnt-orange</code>.</p>
+      <p><strong>Symbols</strong> (<code>/symbols/</code>): geometric jaguar, snake, mountains, flower of life, ayahuasca flower, sacred geometry, decorative icons.</p>
+      <p><strong>Textures</strong> (<code>/textures/</code>): <code>analog-film-grain.png</code>, <code>analog-film-grain-light.png</code>, <code>vector-grain.png</code>, <code>textile-imprint-grain.png</code>.</p>
+      <p><strong>Photography</strong> (<code>/photography/</code>): mountain views, jungle paths, ferns, tropical leaves, golden sunset, ceremony, founders + team shots, Sam Believ.</p>
+      <p><strong>Fonts</strong> (<code>/fonts/</code>): Poppins Light / Regular / Medium / SemiBold / Bold / Italic (TTF).</p>
+      <p><strong>Full brand guide:</strong> <code>LaWayra Final Brand Guides .pdf</code> &mdash; the complete visual identity system.</p>
+    </div>
+  </details>
+</div>
+
+<!-- ==================== SECTION 17: HOW TO BUILD & LAUNCH A FUNNEL PAGE ==================== -->
+<div class="section" id="build-funnel-page">
+  <div class="section-number">Section 17</div>
   <h2>How to Build &amp; Launch a Funnel Page</h2>
   <p class="section-subtitle">A simple landing page with a lead-capture form, hosted on a GHL funnel. The flow: build the form in GHL, build the page with Claude Code (with the form embedded), drop the page into a GHL funnel, point a subdomain at it, then tag everyone who applies. It looks more technical than it is &mdash; take it one step at a time.</p>
 
@@ -1932,11 +2018,11 @@ fixMarketingDashboardDates()    # Same for Marketing Dashboard (already on daily
 
   <div class="callout">
     <strong>Add a thank-you / confirmation page (optional):</strong> To send people to a confirmation page after they book or apply, build a second page the same way &mdash; ask Claude Code to <em>"output a thank-you page in HTML I can paste into GHL,"</em> then add it as another <strong>funnel step</strong> (<strong>Add Step</strong> &rarr; name it e.g. "TY Page" &rarr; <strong>Create from blank</strong> &rarr; drag in the <strong>Code</strong> element &rarr; paste &rarr; <strong>Save</strong>).
-    <br><br><strong>To make a calendar booking redirect there:</strong> In GHL go to <strong>Calendars</strong> &rarr; <strong>Calendar Settings</strong> &rarr; open your calendar &rarr; <strong>Edit</strong> &rarr; <strong>Form Confirmation / Confirmation</strong>. By default it shows a generic confirmation; switch it to <strong>Redirect URL</strong> and point it at your thank-you page. (To put that page on a clean URL, see <a href="#setup-subdomain">Section 17: How to Set Up a Subdomain in GHL</a>.)
+    <br><br><strong>To make a calendar booking redirect there:</strong> In GHL go to <strong>Calendars</strong> &rarr; <strong>Calendar Settings</strong> &rarr; open your calendar &rarr; <strong>Edit</strong> &rarr; <strong>Form Confirmation / Confirmation</strong>. By default it shows a generic confirmation; switch it to <strong>Redirect URL</strong> and point it at your thank-you page. (To put that page on a clean URL, see <a href="#setup-subdomain">Section 18: How to Set Up a Subdomain in GHL</a>.)
   </div>
 
   <h3>Step 6 &mdash; Connect a domain / subdomain</h3>
-  <p>To put the page on a clean URL (e.g., <code>community.lawayra.com</code> or <code>apply.lawayra.com</code>), point a subdomain at GHL. This is the more technical part &mdash; full walkthrough in <a href="#setup-subdomain">Section 17: How to Set Up a Subdomain in GHL</a>. If GHL shows "Please add a domain in settings to see your funnel live," that's your cue to do this step.</p>
+  <p>To put the page on a clean URL (e.g., <code>community.lawayra.com</code> or <code>apply.lawayra.com</code>), point a subdomain at GHL. This is the more technical part &mdash; full walkthrough in <a href="#setup-subdomain">Section 18: How to Set Up a Subdomain in GHL</a>. If GHL shows "Please add a domain in settings to see your funnel live," that's your cue to do this step.</p>
 
   <h3>Step 7 &mdash; Set up integrations (tag your applicants)</h3>
   <p>Decide where the form data goes. At minimum, <strong>tag every contact who submits the form</strong> so applicants are distinguishable from the rest of the database (which is full of past patients/guests).</p>
@@ -1970,7 +2056,7 @@ fixMarketingDashboardDates()    # Same for Marketing Dashboard (already on daily
 
 <!-- ==================== SECTION 17: HOW TO SET UP A SUBDOMAIN IN GHL ==================== -->
 <div class="section" id="setup-subdomain">
-  <div class="section-number">Section 17</div>
+  <div class="section-number">Section 18</div>
   <h2>How to Set Up a Subdomain in GHL</h2>
   <p class="section-subtitle">When you need to host a landing page or funnel on a custom subdomain (e.g., heal.lawayra.com), follow these steps to connect it through DNS and GHL.</p>
 
@@ -2114,7 +2200,7 @@ fixMarketingDashboardDates()    # Same for Marketing Dashboard (already on daily
 
 <!-- ==================== SECTION 18: HOW TO SEND EMAIL BROADCASTS ==================== -->
 <div class="section" id="email-broadcasts">
-  <div class="section-number">Section 18</div>
+  <div class="section-number">Section 19</div>
   <h2>How to Send Email Broadcasts with Drip</h2>
   <p class="section-subtitle">Step-by-step process for sending email broadcasts to the LaWayra subscriber list via GetDrip.</p>
 
@@ -2160,9 +2246,9 @@ fixMarketingDashboardDates()    # Same for Marketing Dashboard (already on daily
 
 <!-- ==================== SECTION 19: HOW TO DRAFT EMAILS FOR THE GHL EMAIL SEQUENCE ==================== -->
 <div class="section" id="email-sequence">
-  <div class="section-number">Section 19</div>
+  <div class="section-number">Section 20</div>
   <h2>How to Draft Emails for the GHL Email Sequence</h2>
-  <p class="section-subtitle">This is the <strong>automated daily email sequence</strong> that goes out to the LaWayra list from inside GHL &mdash; separate from the one-off Drip broadcasts in Section 17. Emails are written under <strong>Sam Believ's</strong> voice and signature, drafted with a custom GPT, reviewed, then loaded into the GHL sequence one at a time.</p>
+  <p class="section-subtitle">This is the <strong>automated daily email sequence</strong> that goes out to the LaWayra list from inside GHL &mdash; separate from the one-off Drip broadcasts in Section 19. Emails are written under <strong>Sam Believ's</strong> voice and signature, drafted with a custom GPT, reviewed, then loaded into the GHL sequence one at a time.</p>
 
   <div class="info-card">
     <div class="info-card-header">
@@ -2226,7 +2312,7 @@ fixMarketingDashboardDates()    # Same for Marketing Dashboard (already on daily
 
 <!-- ==================== SECTION 20: HOW TO CHANGE PERMISSIONS IN GHL ==================== -->
 <div class="section" id="ghl-permissions">
-  <div class="section-number">Section 20</div>
+  <div class="section-number">Section 21</div>
   <h2>How to Change Permissions in GHL</h2>
   <p class="section-subtitle">Walkthrough for managing user roles and permissions inside GHL (adding/removing team members, restricting access to specific areas).</p>
 
@@ -2240,7 +2326,7 @@ fixMarketingDashboardDates()    # Same for Marketing Dashboard (already on daily
 
 <!-- ==================== SECTION 21: WHEN SOMETHING BREAKS ==================== -->
 <div class="section" id="troubleshooting">
-  <div class="section-number">Section 21</div>
+  <div class="section-number">Section 22</div>
   <h2>When Something Breaks</h2>
   <p class="section-subtitle">Common issues and how to fix them. Check the most likely cause first.</p>
 
