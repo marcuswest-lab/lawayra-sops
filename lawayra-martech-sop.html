@@ -591,7 +591,7 @@
     <a href="#dashboard-playbook" class="toc-item"><span class="toc-num">09</span><span class="toc-label">Dashboard Update Playbook</span></a>
     <a href="#sales-by-source" class="toc-item"><span class="toc-num">10</span><span class="toc-label">Sales by Source Sync</span></a>
     <a href="#sales-tab-maintenance" class="toc-item"><span class="toc-num">11</span><span class="toc-label">Sales Tab Weekly Maintenance</span></a>
-    <a href="#monthly-commission" class="toc-item"><span class="toc-num">12</span><span class="toc-label">Monthly Commission Calculation</span></a>
+    <a href="#monthly-commission" class="toc-item"><span class="toc-num">12</span><span class="toc-label">Media Buyer &amp; Rep Commissions</span></a>
   </div>
   <h3 class="toc-part-heading">Part 3 — AI Appointment Setter</h3>
   <div class="toc-grid">
@@ -1206,7 +1206,10 @@
     </div>
     <div class="info-card-body">
       <p><strong>Who it's for:</strong> Juan Corredor, the volunteer running our Meta ads. It's deliberately scoped so Juan sees <strong>only his own campaign and his own FB consult-call results</strong> &mdash; never overall LaWayra spend, sales, or revenue.</p>
-      <p><strong>Link (share with Juan):</strong> <a href="https://script.google.com/macros/s/AKfycbzL5hZgGHryjPvDzonlKvH-DaTUwhjQ0SHahCJmf7p-XcuQ1gojCr4WnLkSNZTll2lW/exec" target="_blank">Open dashboard</a> &mdash; access is set to "Anyone", so no Google login is needed.</p>
+      <p><strong>Link (share with Juan):</strong> <a href="https://script.google.com/macros/s/AKfycbzL5hZgGHryjPvDzonlKvH-DaTUwhjQ0SHahCJmf7p-XcuQ1gojCr4WnLkSNZTll2lW/exec" target="_blank">https://script.google.com/macros/s/AKfycbzL5hZgGHryjPvDzonlKvH-DaTUwhjQ0SHahCJmf7p-XcuQ1gojCr4WnLkSNZTll2lW/exec</a> &mdash; access is set to "Anyone", so no Google login is needed.</p>
+      <div class="callout" style="margin-top:12px;">
+        <strong>Always share the exact link above &mdash; never a copy from your browser bar.</strong> When you open the dashboard while signed into Google, the URL rewrites to an account-scoped form with <code>/u/2/</code> (or <code>/u/1/</code>, etc.) in it: <code>script.google.com/macros/<strong>u/2/</strong>s/AKfycb…/exec</code>. That index points to <em>your</em> 3rd signed-in account. When Juan opens a <code>/u/2/</code> link, his browser maps index 2 to a different account and he hits a login wall or a blank page &mdash; which is exactly why the dashboard "stopped working" for him. The correct link has <strong>no <code>/u/N/</code> segment</strong> &mdash; it goes straight from <code>/macros/s/</code> to the token.
+      </div>
       <p><strong>What it shows:</strong> KPI cards (all-time headline + MTD sub-row): Spend, Booked Calls, Cost per Booked Call, Sales, CPA, ROAS. Daily / Weekly / Monthly tables, plus a <strong>Sales Calls</strong> tab (FB-tagged calls only) with Show Rate, Live Call Close Rate, and per-call Revenue.</p>
       <p><strong>Built as:</strong> a standalone Apps Script web app (not Vercel, not one of the three sheets). It reads the <code>Juan Daily</code> tab in the Ads Dashboard plus FB-tagged call rows in the Sales Dashboard, and overlays Sales/Revenue at runtime &mdash; so it physically cannot show any other channel's numbers.</p>
       <div class="callout" style="margin-top:12px;">
@@ -1650,14 +1653,101 @@
 <!-- ==================== SECTION 12: MONTHLY COMMISSION CALCULATION ==================== -->
 <div class="section" id="monthly-commission">
   <div class="section-number">Section 12</div>
-  <h2>Monthly Commission Calculation</h2>
-  <p class="section-subtitle">Run on the first business day of each month, before payroll. Cross-references BookingLayer paid bookings against the lead sheets and Sales Dashboard so every rep gets credited for the deals they actually closed &mdash; including direct-purchase rep deals that don't go through GHL.</p>
+  <h2>Media Buyer &amp; Rep Commissions</h2>
+  <p class="section-subtitle">Run once a month, before payroll. There are <strong>two different commissions</strong> &mdash; don't mix them up. Start with Part A.</p>
 
-  <div class="callout" style="border-color: var(--danger, #b34100);">
-    <strong>Why this matters:</strong> If a Sale row has the wrong rep, a different rep gets paid. If a Sale row has no rep when it should, the actual rep doesn't get paid at all. Both are bad. The weekly Sales by Source sync (Section 5) prepares the data; this monthly process verifies and finalizes commissions.
+  <div class="callout">
+    <strong>Two commissions, two different people:</strong>
+    <br>&bull; <strong>Media buyer commission (Part A)</strong> &mdash; paid to the person who <em>ran the ads that generated the lead</em>. Google Ads &rarr; <strong>Andrew</strong>. Facebook/Meta &rarr; <strong>Juan</strong>. TikTok / in-house &rarr; <strong>Marcus</strong>.
+    <br>&bull; <strong>Sales rep commission (Part B)</strong> &mdash; paid to the person who <em>closed the call</em>. Nico, Aliyah, Jacobo, or Thomas.
+    <br>One booking can pay both (e.g. Juan's ad made the lead, Nico closed it). They're calculated separately.
   </div>
 
-  <h3>Inputs</h3>
+  <!-- ---------- PART A: MEDIA BUYER ---------- -->
+  <h3 style="margin-top:32px;">Part A &mdash; Media Buyer Commissions <span style="font-weight:400; color:#777;">(start here)</span></h3>
+  <p>This is the simple monthly process. Claude Code does the matching for you &mdash; you just download two files and paste one message. <strong>You do not need to be technical.</strong></p>
+
+  <div class="info-card">
+    <div class="info-card-header">
+      <span class="info-card-title">Watch first &mdash; full walkthrough</span>
+    </div>
+    <div class="info-card-body">
+      <p><strong>Loom:</strong> <a href="https://www.loom.com/share/72bec0ede537409dbc886f21538307f3" target="_blank" rel="noopener">Watch the walkthrough &rarr;</a></p>
+    </div>
+  </div>
+
+  <ol class="step-list">
+    <li><strong>Download the month's paid bookings from BookingLayer.</strong>
+      <ul>
+        <li>Go to <a href="https://app.bookinglayer.io" target="_blank" rel="noopener">BookingLayer</a> &rarr; <strong>Bookings</strong>.</li>
+        <li>Filter <strong>Status</strong> = <code>Deposit Paid</code> and <code>Paid</code>.</li>
+        <li>Filter <strong>Created on</strong> = first to last day of the month (e.g. <code>June 1 &ndash; June 30</code>).</li>
+        <li>Click the <strong>Download</strong> button &rarr; <strong>CSV</strong> &rarr; save it to your LaWayra folder.</li>
+      </ul>
+      <div class="callout" style="margin-top:8px;"><strong>Note:</strong> This export does <strong>not</strong> include Facebook/Meta bookings &mdash; those live in Juan's dashboard, which we cross-check in Step 4.</div>
+    </li>
+    <li><strong>Download the Leads sheet.</strong> Open the <a href="https://docs.google.com/spreadsheets/d/1PKOKpTg9o6HgV41Fvwag8aId5PAnr4qH5AwxmVL2jBg" target="_blank" rel="noopener">LEADS sheet</a> &rarr; <strong>File &rarr; Download &rarr; Microsoft Excel (.xlsx)</strong> &rarr; save it to the same folder.</li>
+    <li><strong>Ask Claude Code to calculate it.</strong> Open Claude Code in your LaWayra folder and paste:
+      <div style="background:#f4f2ea; border-left:3px solid var(--accent,#8a7a3f); padding:12px 14px; border-radius:4px; margin:8px 0; font-style:italic;">"I just downloaded the BookingLayer sales for June and the leads Google Sheet as an Excel file. Help me calculate the media buyer commissions. There should be a skill file with the rules for when the leads were generated and which media buyer gets credit. Also cross-check it with Juan's dashboard."</div>
+      Claude uses the <strong>lead-attribution skill</strong> (the rules for who gets credit) plus Juan's dashboard and returns a table: each booking, its channel, and the media buyer.
+    </li>
+    <li><strong>Double-check with the Sales by Source dashboard.</strong> These are people's commissions &mdash; always verify. First refresh the dashboard, then hand it to Claude:
+      <ul>
+        <li>BookingLayer &rarr; <strong>Reports</strong> &rarr; <strong>"How did you hear about us?"</strong> &rarr; <strong>Generate</strong> &rarr; download <strong>CSV</strong> &rarr; save to folder.</li>
+        <li>In the <a href="https://docs.google.com/spreadsheets/d/139G-OUoApI5ksdSMXMe_WE8geaw_mZ3Sv8PYvBDsq5w" target="_blank" rel="noopener">Sales by Source sheet</a>, open the <strong>"How did you hear? BL"</strong> tab &rarr; <strong>File &rarr; Import &rarr; Upload</strong> &rarr; drag in the CSV &rarr; choose <strong>Replace current sheet</strong> &rarr; <strong>Import</strong>.</li>
+        <li><strong>Extensions &rarr; Apps Script.</strong> You'll see two scripts labeled <strong>#1</strong> and <strong>#2</strong>. Don't touch the code &mdash; just click <strong>Run</strong> on <strong>#1</strong>, wait, then <strong>Run #2</strong>. (#1 fills the source category; #2 fills in the correct ad attributions &mdash; #2 is the source of truth for ads.)</li>
+        <li>Then <strong>File &rarr; Download &rarr; Excel</strong>, save to folder, and tell Claude: <em>"I also downloaded the Sales by Source dashboard &mdash; use it to double-check the sales sources."</em></li>
+      </ul>
+    </li>
+    <li><strong>Remove pendings and $0 rows.</strong> Only <code>Paid</code> / <code>Deposit Paid</code> bookings with a real dollar amount count. Delete any <strong>Pending</strong> rows and any <strong>$0</strong> rows (comps / backoffice test bookings) before finalizing &mdash; otherwise the count is inflated. If you clean the sheet, re-download it and ask Claude to re-check.</li>
+    <li><strong>Confirm the final list.</strong> Google Ads bookings are confirmed from the lead sheet &rarr; credited to the current Google buyer (Andrew). Facebook/Meta bookings &rarr; cross-checked against Juan's dashboard &rarr; credited to Juan. Claude gives you the finalized table: which bookings, which media buyer, and the total value.</li>
+  </ol>
+
+  <h4>Who gets credit (attribution rules)</h4>
+  <div class="callout"><strong>Credit goes by the LEAD-CREATE date</strong> (when the person first became a lead), <strong>not</strong> the booking date. The skill file applies these automatically:</div>
+  <table class="data-table">
+    <thead>
+      <tr><th>Channel</th><th>Lead-create date</th><th>Media buyer</th></tr>
+    </thead>
+    <tbody>
+      <tr><td rowspan="5">Google Ads</td><td>before Sep 17, 2024</td><td>Marcus</td></tr>
+      <tr><td>Sep 17, 2024 &ndash; May 7, 2025</td><td>Hafsa</td></tr>
+      <tr><td>May 7, 2025 &ndash; Oct 13, 2025</td><td>Ida</td></tr>
+      <tr><td>Oct 13 &ndash; Oct 27, 2025</td><td>Marcus</td></tr>
+      <tr><td><strong>Oct 27, 2025 &rarr; now</strong></td><td><strong>Andrew</strong></td></tr>
+      <tr><td>Facebook / Meta</td><td>any (verify in Juan's dashboard)</td><td><strong>Juan</strong></td></tr>
+      <tr><td>TikTok / other in-house</td><td>any</td><td>Marcus</td></tr>
+    </tbody>
+  </table>
+
+  <h4>Example result &mdash; June 2026</h4>
+  <table class="data-table">
+    <thead>
+      <tr><th>Booking</th><th>Channel</th><th>Amount</th><th>Media Buyer</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>William Straughan</td><td>Google Ads</td><td>$3,195.00</td><td>Andrew</td></tr>
+      <tr><td>Oliver Hix</td><td>Google Ads</td><td>$995.00</td><td>Andrew</td></tr>
+      <tr><td>Daniel Weaver</td><td>Facebook Ads</td><td>$1,767.10</td><td>Juan</td></tr>
+      <tr><td>Michael La Masters</td><td>Facebook Ads</td><td>$1,585.00</td><td>Juan</td></tr>
+      <tr><td>Matt Stuhl</td><td>Facebook Ads</td><td>$2,710.10</td><td>Juan</td></tr>
+    </tbody>
+  </table>
+  <p style="margin-top:6px;">Totals: <strong>Andrew = 2 bookings</strong>, <strong>Juan = 3 bookings</strong>. Everything else that month was organic / word-of-mouth / rep-direct &mdash; no media buyer commission.</p>
+
+  <div class="callout" style="border-color: var(--danger, #b34100);">
+    <strong>Last step &mdash; apply the rate:</strong> Multiply each media buyer's total by their agreed commission percentage (per their individual agreement). <strong>If you don't know the rate or whether it's on cash collected vs. total booking value, ask Marcus before paying.</strong>
+  </div>
+
+  <!-- ---------- PART B: SALES REP ---------- -->
+  <h3 style="margin-top:40px;">Part B &mdash; Sales Rep Commissions</h3>
+  <p>Paid to the rep who closed the call (Nico, Aliyah, Jacobo, Thomas). This one is more hands-on because it depends on the Sales Dashboard being accurate.</p>
+
+  <div class="callout" style="border-color: var(--danger, #b34100);">
+    <strong>Why this matters:</strong> If a Sale row has the wrong rep, a different rep gets paid. If a Sale row has no rep when it should, the actual rep doesn't get paid at all. The weekly Sales by Source sync (Section 10) prepares the data; this verifies and finalizes it.
+  </div>
+
+  <h4>Inputs</h4>
   <table class="data-table">
     <thead>
       <tr><th>Source</th><th>What it provides</th></tr>
@@ -1670,7 +1760,7 @@
     </tbody>
   </table>
 
-  <h3>Process</h3>
+  <h4>Process</h4>
   <ol class="step-list">
     <li><strong>Run the weekly sync first</strong> &mdash; If you haven't run <code>runWeeklySync()</code> recently (Section 5), do it now. Commission accuracy depends on Source Category and Booking Source being current.</li>
     <li><strong>Pull BL bookings for the month</strong> &mdash; Open BL &rarr; Reports &rarr; Bookings &rarr; filter to <code>Status = paid OR deposit_paid</code> AND the target month &rarr; export xlsx.</li>
@@ -1687,7 +1777,7 @@
     <li><strong>Sanity check against Marketing Dashboard</strong> &mdash; Sales (col N) and Revenue (col P) per day should equal the count/sum of paid Raw Bookings where Source Category = "Google Ads". If Marketing Dashboard MTD Sales is materially less than the GG Ads count in Raw Bookings, re-run <code>backfillMarketingDashboardV7()</code>.</li>
   </ol>
 
-  <h3>What the cross-references catch</h3>
+  <h4>What the cross-references catch</h4>
   <table class="data-table">
     <thead>
       <tr><th>Edge case</th><th>Caught by</th></tr>
@@ -1699,7 +1789,7 @@
     </tbody>
   </table>
 
-  <h3>Quick run order (every month)</h3>
+  <h4>Quick run order (every month, technical)</h4>
   <pre style="background: #1a1a1a; color: #eaeaea; padding: 16px; border-radius: 4px; font-size: 12px; overflow-x: auto;">
 runWeeklySync()                 # Section 5 &mdash; backfill from BL exports
 updateSalesOutcomesV4()         # Push to Sales Dashboard, insert direct-purchase rep rows
