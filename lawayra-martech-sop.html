@@ -1216,6 +1216,15 @@
   <h2>The Three Dashboards</h2>
   <p class="section-subtitle">Each dashboard tracks a different piece of the funnel. Together they give a full picture from ad spend to revenue.</p>
 
+  <div class="info-card" style="margin:16px 0;">
+    <h3 style="margin-top:0;">&#9654; Video Walkthrough &mdash; Part 1: Overview + Sales by Source Dashboard</h3>
+    <p style="color:var(--text-muted); font-size:13px; margin-top:0;">The high-level model: how Booking Layer, Google Sheets, Facebook Ads, GHL &amp; Discord connect via the three connectors (Zapier, n8n, Apps Scripts / Google Ads Scripts); why Booking Layer is forced onto Zapier (no open API on the current plan); the two Zaps (New Booking + Booking Updated, both filtered to <em>status contains paid</em>); and the manual "How did you hear?" CSV import + the two Apps Scripts that finish the Sales by Source sync. <em>(This is Part 1 of the handoff series &mdash; one part per dashboard. Also embedded in the "Start Here &mdash; Video Walkthroughs" section at the top.)</em></p>
+    <div style="position:relative; padding-bottom:56.25%; height:0; border-radius:8px; overflow:hidden; margin:12px 0;">
+      <iframe src="https://www.loom.com/embed/6dda260c7eae458eacf27ab83a5d0714" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position:absolute; top:0; left:0; width:100%; height:100%;"></iframe>
+    </div>
+    <p style="font-size:13px; margin:0;"><a href="https://www.loom.com/share/6dda260c7eae458eacf27ab83a5d0714" target="_blank">Open in Loom &#8599;</a></p>
+  </div>
+
   <div class="callout">
     <strong>&#11088; Source of Truth:</strong> The team's canonical dashboard is the <a href="https://lw-sales-dashboard.vercel.app/" target="_blank">LW Dashboard (Vercel app)</a>. It reads these same three Google Sheets via an Apps Script web app, so the numbers match &mdash; but it's the cleaner surface for reports and reconciliation. Its nav is split into <strong>All Ads / Google Ads / Facebook Ads / TikTok Ads</strong> plus Sales and Sources. Treat its figures as official; the sheets below are the underlying data.
   </div>
