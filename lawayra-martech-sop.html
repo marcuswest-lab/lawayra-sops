@@ -1249,6 +1249,7 @@
   <p class="section-subtitle">A high-level view of how booking data, ad spend, and sales calls flow through our systems and end up on dashboards and Discord.</p>
 
   <div class="flow-diagram">
+    <div style="font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:1.2px; color:var(--amber); margin:0 0 12px;">Sales by Source Dashboard</div>
     <div class="flow-row">
       <span class="flow-node flow-node-bl">BookingLayer</span>
       <span class="flow-arrow">&rarr;</span>
@@ -1267,6 +1268,8 @@
       <span class="flow-node flow-node-sheet">Sales by Source Dashboard</span>
       <span style="font-size:12px; color:var(--text-dim); margin-left:4px;">(Raw Bookings tab &mdash; Source, Status, Email, Amount cols)</span>
     </div>
+
+    <div style="font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:1.2px; color:var(--amber); margin:28px 0 12px; padding-top:18px; border-top:1px solid var(--border);">Sales Dashboard</div>
     <div class="flow-row">
       <span class="flow-node flow-node-ghl">GHL (Appointments)</span>
       <span class="flow-arrow">&rarr;</span>
@@ -1275,6 +1278,8 @@
       <span class="flow-node flow-node-sheet">Sales Dashboard</span>
       <span style="font-size:12px; color:var(--text-dim); margin-left:4px;">(2 workflows: main calendar + FB consult calendar)</span>
     </div>
+
+    <div style="font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:1.2px; color:var(--amber); margin:28px 0 12px; padding-top:18px; border-top:1px solid var(--border);">Ads Dashboard</div>
     <div class="flow-row">
       <span class="flow-node flow-node-gads">Google Ads API</span>
       <span class="flow-arrow">&rarr;</span>
@@ -1307,6 +1312,7 @@
       <span class="flow-node flow-node-sheet">Ads Dashboard</span>
       <span style="font-size:12px; color:var(--text-dim); margin-left:4px;">(Sales + Revenue &mdash; GG/FB Daily cols N &amp; P, from paid Raw Bookings filtered by Source Category)</span>
     </div>
+    <div style="font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:1.2px; color:var(--amber); margin:28px 0 12px; padding-top:18px; border-top:1px solid var(--border);">Other Workflows</div>
     <div class="flow-row">
       <span class="flow-node flow-node-sheet">Sales &amp; Ads Dashboards</span>
       <span class="flow-arrow">&rarr;</span>
@@ -1314,7 +1320,7 @@
       <span class="flow-arrow">&rarr;</span>
       <span class="flow-node flow-node-discord">Discord Daily Reports</span>
     </div>
-    <div class="flow-row" style="margin-top:20px; padding-top:14px; border-top:1px solid var(--border);">
+    <div class="flow-row" style="margin-top:14px;">
       <span class="flow-node flow-node-ghl">GHL Form (embedded on GHL page)</span>
       <span class="flow-arrow">&rarr;</span>
       <span class="flow-node flow-node-zapier">Zapier (Catch Hook)</span>
