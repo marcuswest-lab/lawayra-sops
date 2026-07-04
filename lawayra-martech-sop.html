@@ -894,7 +894,7 @@
       <p><strong>BookingLayer source data import:</strong> The "How did you hear?" source data is no longer auto-pulled by n8n. You download the BookingLayer report, import it straight into the Sales by Source spreadsheet, then run the Apps Script (<code>syncFromBLExports</code> + <code>updateSourceCategoriesV7</code>) to update the Raw Bookings tab. Full click-by-click steps in Section 10. <em>(The nightly <code>updateSourceCategoriesV7()</code> override still runs automatically, but it only sees fresh data after this import.)</em></p>
       <p><strong>Sales tab amounts:</strong> Bookings with status "deposit_paid" show the deposit amount, not the full price. The full amount needs to be entered manually once the guest has fully paid.</p>
       <p><strong>New source types:</strong> If a guest writes something new that does not exist in the mapping (e.g., "AyaAdvisors"), it needs to be added to the category mapping in the Apps Script.</p>
-      <p><strong>GG Leads sheet:</strong> This is auto-populated by Google Ads lead forms. No manual action needed &mdash; listed here for context only.</p>
+      <p><strong>GG Leads sheet:</strong> This is auto-populated from Google Ads lead-form submissions <strong>via Zapier</strong> (Zap 336113433) &mdash; not a direct Google Ads export. No manual action needed &mdash; listed here for context only.</p>
     </div>
   </div>
 </div>
@@ -1356,8 +1356,10 @@
     <div class="flow-row" style="margin-top:20px; padding-top:14px; border-top:1px solid var(--border);">
       <span class="flow-node flow-node-gads">Google Ads Lead Forms</span>
       <span class="flow-arrow">&rarr;</span>
+      <span class="flow-node flow-node-zapier">Zapier</span>
+      <span class="flow-arrow">&rarr;</span>
       <span class="flow-node flow-node-sheet">GG Leads Sheet</span>
-      <span style="font-size:12px; color:var(--text-dim); margin-left:4px;">(auto, 4,200+ emails)</span>
+      <span style="font-size:12px; color:var(--text-dim); margin-left:4px;">(auto, 4,200+ emails &mdash; Zap 336113433)</span>
     </div>
     <div class="flow-row">
       <span class="flow-node flow-node-neutral">Apps Script (nightly)</span>
