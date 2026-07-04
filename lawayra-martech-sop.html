@@ -575,10 +575,6 @@
 <div class="container">
 <div class="toc">
   <h2>Contents</h2>
-  <h3 class="toc-part-heading">Start Here — Video Walkthroughs</h3>
-  <div class="toc-grid">
-    <a href="#video-walkthroughs" class="toc-item"><span class="toc-num">&#9654;</span><span class="toc-label">Dashboard Video Walkthroughs</span></a>
-  </div>
   <h3 class="toc-part-heading">Part 1 — Reference</h3>
   <div class="toc-grid">
     <a href="#s04" class="toc-item"><span class="toc-num">01</span><span class="toc-label">Logins</span></a>
@@ -626,48 +622,6 @@
     <a href="#troubleshooting" class="toc-item"><span class="toc-num">22</span><span class="toc-label">When Something Breaks</span></a>
   </div>
 
-</div>
-
-<!-- ==================== VIDEO WALKTHROUGHS ==================== -->
-<div class="section" id="video-walkthroughs">
-  <div class="section-number">Start Here</div>
-  <h2>Dashboard Video Walkthroughs</h2>
-  <p>Screen-recorded walkthroughs of how data moves between the apps and how each dashboard &amp; report is generated. Recorded as a handoff series &mdash; one part per dashboard. Watch these first for the mental model, then use the written sections below for the click-by-click detail.</p>
-
-  <div class="info-card" style="margin:16px 0;">
-    <h3 style="margin-top:0;">Part 1 &mdash; Overview + Sales by Source Dashboard</h3>
-    <p style="color:var(--text-muted); font-size:13px; margin-top:0;">The high-level model: how Booking Layer, Google Sheets, Facebook Ads, GHL &amp; Discord connect via the three connectors (Zapier, n8n, Apps Scripts / Google Ads Scripts); why Booking Layer is forced onto Zapier (no open API on the current plan); the two Zaps (New Booking + Booking Updated, both filtered to <em>status contains paid</em>); and the manual "How did you hear?" CSV import + the two Apps Scripts (1: fill guest names, 2: update source categories) that finish the Sales by Source sync.</p>
-    <div style="position:relative; padding-bottom:56.25%; height:0; border-radius:8px; overflow:hidden; margin:12px 0;">
-      <iframe src="https://www.loom.com/embed/6dda260c7eae458eacf27ab83a5d0714" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position:absolute; top:0; left:0; width:100%; height:100%;"></iframe>
-    </div>
-    <p style="font-size:13px; margin:0;"><a href="https://www.loom.com/share/6dda260c7eae458eacf27ab83a5d0714" target="_blank">Open in Loom &#8599;</a></p>
-    <details style="margin-top:12px;">
-      <summary style="cursor:pointer; font-weight:600;">Transcript</summary>
-      <div style="font-size:13px; color:var(--text-muted); white-space:pre-wrap; margin-top:8px; line-height:1.6;">00:00 Alright, so what I want to do here is just go through each of these processes, just so they're fully understood, of how we transfer data from one app to the other, and how we generate the dashboards, and how we generate the reports.
-00:15 So let me go step by step here, and I want to go through a couple of high-level principles. So one of the principles is how do these apps connect. So we have Booking Layer, we have Google Sheets, we have Facebook Ads, we have GHL, and Discord. So those are the main apps. And we have these connectors, which are called Zapier, n8n, and then Apps Scripts, or Google Ads Scripts (it's kind of like an Apps Script). But I'm going to explain exactly what each of those are, and how they work.
-00:46 So going step-by-step: Booking Layer is where we have all the bookings for the retreat, and basically what we want to do is populate three different dashboards. We have three main dashboards. One is the Sales by Source dashboard. Then we have the Ads dashboard, which tracks all the ad numbers for each platform. And we also have the Sales dashboard.
-01:12 Each of these I've set up so that they update automatically. Sometimes every once in a while it'll break, so you kind of have to know how to troubleshoot it, but the idea &mdash; and it's been working pretty well so far &mdash; is that they update automatically, except for the Sales by Source dashboard, where there's a bit of manual work involved, which I'll show you.
-01:43 So the idea, once again: the first thing is we want to take sales from Booking Layer &mdash; whenever someone books a retreat &mdash; and send it to this Sales by Source dashboard.
-01:58 Let me talk about one thing first. These three Google Sheets feed into the Vercel dashboard. You can see each of these tabs: one called Sales by Source, another called Ads, another called Sales Team. Each of these tabs corresponds to each of these Google Sheets. It's pulling the data from each sheet and pushing it into this dashboard, so it's easier to navigate and look at.
-02:48 So the Sales by Source dashboard &mdash; what is that doing? Basically it's telling us the sales, where they're coming from, the amounts of the sales, and how many bookings overall. The reason I created it is because I wanted to be able to see exactly where people are coming from &mdash; where they heard about us.
-03:13 If we go into Booking Layer, it does house that information, but we need a way to automatically send it to the sheet, which sends to this dashboard. The way that's done is through Zapier. Zapier and n8n are third-party integration platforms &mdash; they connect apps together. Zapier, in this case, is connecting Booking Layer and the Sales by Source Google Sheet.
-04:06 There's a reason we're using Zapier for this one instead of n8n. n8n is cheaper &mdash; super cheap, because we got a self-hosted server (we hired someone to build out a private server). We only pay about $7 a month, a fixed rate. Zapier is much more expensive &mdash; closer to $50&ndash;$100 a month, and if you're using more tasks it can be in the hundreds.
-05:04 So why are we using Zapier at all? Because Booking Layer, on the plan we have, doesn't allow us an open API. They only allow us to use their Zapier webhook. If we wanted to use n8n or a general API, we'd need to pay a higher subscription. So for Booking Layer we're forced to use Zapier.
-05:45 Let me show you what it looks like to connect Booking Layer into the Sales by Source dashboard. We built out some Zaps. I have two of them. One: anytime we get a paid booking from Booking Layer, we send it through a filter &mdash; if the status contains "paid" (there are two paid statuses: paid and deposit_paid) &mdash; then we send it to the Google Sheet (the Sales by Source dashboard) and it fills in all this information automatically.
-06:44 I have two because when a booking first comes in, sometimes it's a pending status, but then it gets updated. The first Zap only fires on a new booking &mdash; so if they later pay and the status updates from pending to paid, it wouldn't fire. That's why I created the second one: anytime a booking is updated, it checks again if the status contains paid, and picks it up. So that first flow is Booking Layer &rarr; Sales by Source dashboard: it adds a new row with the basic booking info.
-08:09 The second thing: how do we update these categories? Out of the box it doesn't do it automatically. Another limitation with our Booking Layer plan is that it doesn't send the full payload &mdash; it only sends the basic variables (guest name, email, booking reference), not the self-reported source, which is a custom field we created in Booking Layer.
-08:56 The way I get that info is I have to pull it manually &mdash; the second flow. I go to Reports in Booking Layer, I have a saved report ("How did you hear about us?"), I generate it as a CSV, download it, then go to the "How did you hear" tab, File &rarr; Import &rarr; Upload, and choose "Replace current sheet" (NOT replace spreadsheet &mdash; that overwrites everything).
-10:22 Then you run the Apps Scripts. Go to Extensions &rarr; Apps Script. I have them labeled 1 and 2. Run #1 first &mdash; it fills in the guest name in the Raw Bookings when the name is missing (pulling data from the import to fill in some of the data).
-11:06 Then run #2, "update source category." This one makes sure the ads attributions are accurate &mdash; it cross-checks with GHL (the appointment data) and with the lead sheet, so the ads entries specifically have the right sources. After it runs (execution completed), the Sales by Source dashboard is fully up to date.</div>
-    </details>
-  </div>
-
-  <div class="info-card" style="margin:16px 0; opacity:0.55;">
-    <h3 style="margin:0;">Part 2 &mdash; Ads Dashboard <span style="font-weight:400; font-size:13px; color:var(--text-muted);">(coming soon)</span></h3>
-  </div>
-  <div class="info-card" style="margin:16px 0; opacity:0.55;">
-    <h3 style="margin:0;">Part 3 &mdash; Sales Dashboard <span style="font-weight:400; font-size:13px; color:var(--text-muted);">(coming soon)</span></h3>
-  </div>
 </div>
 
 <!-- ==================== SECTION 1: LOGINS ==================== -->
@@ -1220,15 +1174,6 @@
   <h2>The Three Dashboards</h2>
   <p class="section-subtitle">Each dashboard tracks a different piece of the funnel. Together they give a full picture from ad spend to revenue.</p>
 
-  <div class="info-card" style="margin:16px 0;">
-    <h3 style="margin-top:0;">&#9654; Video Walkthrough &mdash; Part 1: Overview + Sales by Source Dashboard</h3>
-    <p style="color:var(--text-muted); font-size:13px; margin-top:0;">The high-level model: how Booking Layer, Google Sheets, Facebook Ads, GHL &amp; Discord connect via the three connectors (Zapier, n8n, Apps Scripts / Google Ads Scripts); why Booking Layer is forced onto Zapier (no open API on the current plan); the two Zaps (New Booking + Booking Updated, both filtered to <em>status contains paid</em>); and the manual "How did you hear?" CSV import + the two Apps Scripts that finish the Sales by Source sync. <em>(This is Part 1 of the handoff series &mdash; one part per dashboard. Also embedded in the "Start Here &mdash; Video Walkthroughs" section at the top.)</em></p>
-    <div style="position:relative; padding-bottom:56.25%; height:0; border-radius:8px; overflow:hidden; margin:12px 0;">
-      <iframe src="https://www.loom.com/embed/6dda260c7eae458eacf27ab83a5d0714" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position:absolute; top:0; left:0; width:100%; height:100%;"></iframe>
-    </div>
-    <p style="font-size:13px; margin:0;"><a href="https://www.loom.com/share/6dda260c7eae458eacf27ab83a5d0714" target="_blank">Open in Loom &#8599;</a></p>
-  </div>
-
   <div class="callout">
     <strong>&#11088; Source of Truth:</strong> The team's canonical dashboard is the <a href="https://lw-sales-dashboard.vercel.app/" target="_blank">LW Dashboard (Vercel app)</a>. It reads these same three Google Sheets via an Apps Script web app, so the numbers match &mdash; but it's the cleaner surface for reports and reconciliation. Its nav is split into <strong>All Ads / Google Ads / Facebook Ads / TikTok Ads</strong> plus Sales and Sources. Treat its figures as official; the sheets below are the underlying data.
   </div>
@@ -1377,6 +1322,34 @@
       <li><strong>The BookingLayer source CSV is no longer an automated n8n email pipeline.</strong> You download the BL CSV report, import it straight into the Sales by Source spreadsheet, then run the Apps Script (<code>syncFromBLExports</code> + <code>updateSourceCategoriesV7</code>) to update the Raw Bookings tab. See Section 10.</li>
       <li><strong>GHL Appointments &rarr; Sales Dashboard IS still n8n</strong> &mdash; and it's now two workflows: <code>jStC73dYSNXQEuV7</code> (main calendar) and <code>9WfHVRNBS7WKymV3</code> (FB consultation calendar).</li>
     </ul>
+  </div>
+
+  <div class="info-card" style="margin:24px 0 0;">
+    <h3 style="margin-top:0;">&#9654; Video Walkthrough &mdash; Part 1: Overview + Sales by Source Dashboard</h3>
+    <p style="color:var(--text-muted); font-size:13px; margin-top:0;">A screen-share of exactly the flow above: how Booking Layer, Google Sheets, Facebook Ads, GHL &amp; Discord connect via the three connectors (Zapier, n8n, Apps Scripts / Google Ads Scripts); why Booking Layer is forced onto Zapier (no open API on the current plan); the two Zaps (New Booking + Booking Updated, both filtered to <em>status contains paid</em>); and the manual "How did you hear?" CSV import + the two Apps Scripts that finish the Sales by Source sync. <em>(Part 1 of the handoff series &mdash; one part per dashboard.)</em></p>
+    <div style="position:relative; padding-bottom:56.25%; height:0; border-radius:8px; overflow:hidden; margin:12px 0;">
+      <iframe src="https://www.loom.com/embed/6dda260c7eae458eacf27ab83a5d0714" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position:absolute; top:0; left:0; width:100%; height:100%;"></iframe>
+    </div>
+    <p style="font-size:13px; margin:0;"><a href="https://www.loom.com/share/6dda260c7eae458eacf27ab83a5d0714" target="_blank">Open in Loom &#8599;</a></p>
+    <details style="margin-top:12px;">
+      <summary style="cursor:pointer; font-weight:600;">Transcript</summary>
+      <div style="font-size:13px; color:var(--text-muted); white-space:pre-wrap; margin-top:8px; line-height:1.6;">00:00 Alright, so what I want to do here is just go through each of these processes, just so they're fully understood, of how we transfer data from one app to the other, and how we generate the dashboards, and how we generate the reports.
+00:15 So let me go step by step here, and I want to go through a couple of high-level principles. So one of the principles is how do these apps connect. So we have Booking Layer, we have Google Sheets, we have Facebook Ads, we have GHL, and Discord. So those are the main apps. And we have these connectors, which are called Zapier, n8n, and then Apps Scripts, or Google Ads Scripts (it's kind of like an Apps Script). But I'm going to explain exactly what each of those are, and how they work.
+00:46 So going step-by-step: Booking Layer is where we have all the bookings for the retreat, and basically what we want to do is populate three different dashboards. We have three main dashboards. One is the Sales by Source dashboard. Then we have the Ads dashboard, which tracks all the ad numbers for each platform. And we also have the Sales dashboard.
+01:12 Each of these I've set up so that they update automatically. Sometimes every once in a while it'll break, so you kind of have to know how to troubleshoot it, but the idea &mdash; and it's been working pretty well so far &mdash; is that they update automatically, except for the Sales by Source dashboard, where there's a bit of manual work involved, which I'll show you.
+01:43 So the idea, once again: the first thing is we want to take sales from Booking Layer &mdash; whenever someone books a retreat &mdash; and send it to this Sales by Source dashboard.
+01:58 Let me talk about one thing first. These three Google Sheets feed into the Vercel dashboard. You can see each of these tabs: one called Sales by Source, another called Ads, another called Sales Team. Each of these tabs corresponds to each of these Google Sheets. It's pulling the data from each sheet and pushing it into this dashboard, so it's easier to navigate and look at.
+02:48 So the Sales by Source dashboard &mdash; what is that doing? Basically it's telling us the sales, where they're coming from, the amounts of the sales, and how many bookings overall. The reason I created it is because I wanted to be able to see exactly where people are coming from &mdash; where they heard about us.
+03:13 If we go into Booking Layer, it does house that information, but we need a way to automatically send it to the sheet, which sends to this dashboard. The way that's done is through Zapier. Zapier and n8n are third-party integration platforms &mdash; they connect apps together. Zapier, in this case, is connecting Booking Layer and the Sales by Source Google Sheet.
+04:06 There's a reason we're using Zapier for this one instead of n8n. n8n is cheaper &mdash; super cheap, because we got a self-hosted server (we hired someone to build out a private server). We only pay about $7 a month, a fixed rate. Zapier is much more expensive &mdash; closer to $50&ndash;$100 a month, and if you're using more tasks it can be in the hundreds.
+05:04 So why are we using Zapier at all? Because Booking Layer, on the plan we have, doesn't allow us an open API. They only allow us to use their Zapier webhook. If we wanted to use n8n or a general API, we'd need to pay a higher subscription. So for Booking Layer we're forced to use Zapier.
+05:45 Let me show you what it looks like to connect Booking Layer into the Sales by Source dashboard. We built out some Zaps. I have two of them. One: anytime we get a paid booking from Booking Layer, we send it through a filter &mdash; if the status contains "paid" (there are two paid statuses: paid and deposit_paid) &mdash; then we send it to the Google Sheet (the Sales by Source dashboard) and it fills in all this information automatically.
+06:44 I have two because when a booking first comes in, sometimes it's a pending status, but then it gets updated. The first Zap only fires on a new booking &mdash; so if they later pay and the status updates from pending to paid, it wouldn't fire. That's why I created the second one: anytime a booking is updated, it checks again if the status contains paid, and picks it up. So that first flow is Booking Layer &rarr; Sales by Source dashboard: it adds a new row with the basic booking info.
+08:09 The second thing: how do we update these categories? Out of the box it doesn't do it automatically. Another limitation with our Booking Layer plan is that it doesn't send the full payload &mdash; it only sends the basic variables (guest name, email, booking reference), not the self-reported source, which is a custom field we created in Booking Layer.
+08:56 The way I get that info is I have to pull it manually &mdash; the second flow. I go to Reports in Booking Layer, I have a saved report ("How did you hear about us?"), I generate it as a CSV, download it, then go to the "How did you hear" tab, File &rarr; Import &rarr; Upload, and choose "Replace current sheet" (NOT replace spreadsheet &mdash; that overwrites everything).
+10:22 Then you run the Apps Scripts. Go to Extensions &rarr; Apps Script. I have them labeled 1 and 2. Run #1 first &mdash; it fills in the guest name in the Raw Bookings when the name is missing (pulling data from the import to fill in some of the data).
+11:06 Then run #2, "update source category." This one makes sure the ads attributions are accurate &mdash; it cross-checks with GHL (the appointment data) and with the lead sheet, so the ads entries specifically have the right sources. After it runs (execution completed), the Sales by Source dashboard is fully up to date.</div>
+    </details>
   </div>
 </div>
 
