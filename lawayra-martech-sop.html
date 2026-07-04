@@ -848,7 +848,7 @@
       <p><strong>BookingLayer source data import:</strong> The "How did you hear?" source data is no longer auto-pulled by n8n. You download the BookingLayer report, import it straight into the Sales by Source spreadsheet, then run the Apps Script (<code>syncFromBLExports</code> + <code>updateSourceCategoriesV7</code>) to update the Raw Bookings tab. Full click-by-click steps in Section 10. <em>(The nightly <code>updateSourceCategoriesV7()</code> override still runs automatically, but it only sees fresh data after this import.)</em></p>
       <p><strong>Sales tab amounts:</strong> Bookings with status "deposit_paid" show the deposit amount, not the full price. The full amount needs to be entered manually once the guest has fully paid.</p>
       <p><strong>New source types:</strong> If a guest writes something new that does not exist in the mapping (e.g., "AyaAdvisors"), it needs to be added to the category mapping in the Apps Script.</p>
-      <p><strong>GG Leads sheet:</strong> This is auto-populated from Google Ads lead-form submissions <strong>via Zapier</strong> (Zap 336113433) &mdash; not a direct Google Ads export. No manual action needed &mdash; listed here for context only.</p>
+      <p><strong>GG Leads sheet:</strong> This is auto-populated from a <strong>GHL form embedded on a GHL landing page</strong> (where Google Ads traffic lands) <strong>via Zapier</strong> (Zap 336113433) &mdash; not a Google Ads native lead form and not a direct Google Ads export. No manual action needed &mdash; listed here for context only.</p>
     </div>
   </div>
 </div>
@@ -1315,7 +1315,7 @@
       <span class="flow-node flow-node-discord">Discord Daily Reports</span>
     </div>
     <div class="flow-row" style="margin-top:20px; padding-top:14px; border-top:1px solid var(--border);">
-      <span class="flow-node flow-node-gads">Google Ads Lead Forms</span>
+      <span class="flow-node flow-node-ghl">GHL Form (embedded on GHL page)</span>
       <span class="flow-arrow">&rarr;</span>
       <span class="flow-node flow-node-zapier">Zapier</span>
       <span class="flow-arrow">&rarr;</span>
@@ -1379,7 +1379,7 @@
     <li>Guest books on <strong>BookingLayer</strong> and is asked "How did you hear about us?"</li>
     <li>BookingLayer sends a <strong>daily CSV</strong> with their answers to admin@lawayra.com. An n8n workflow parses it and fills the <strong>Self-Reported Source</strong> column (col I).</li>
     <li>A separate BookingLayer report sends guest emails. Another n8n workflow parses it and fills the <strong>Email</strong> column (col F).</li>
-    <li>A <strong>nightly Apps Script</strong> cross-references each guest's email against the <strong>GG Leads sheet</strong> (4,200+ Google Ads lead form emails).</li>
+    <li>A <strong>nightly Apps Script</strong> cross-references each guest's email against the <strong>GG Leads sheet</strong> (4,200+ emails captured from the GHL form on the Google Ads landing page, via Zapier).</li>
     <li>If the email matches a Google Ads lead &rarr; <strong>Source Category = "Google Ads"</strong> (overrides whatever they self-reported).</li>
     <li>If the guest matches a <strong>Facebook/Meta</strong> ad lead &mdash; by email or name, via the GHL "La Wayra Consultation Call - FB" calendar contacts &mdash; &rarr; <strong>Source Category = "Facebook Ads"</strong>. TikTok ad leads map to "TikTok Ads".</li>
     <li>If the email does not match any paid-ad lead and they said "Google Search" &rarr; <strong>Source Category = "Organic Search/SEO"</strong>.</li>

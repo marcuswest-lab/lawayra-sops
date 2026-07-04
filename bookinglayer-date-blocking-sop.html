@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>SOP — Blocking Retreat Dates on Airbnb &amp; Booking.com</title>
+<style>
+  body { font-family: Arial, Helvetica, sans-serif; max-width: 800px; margin: 40px auto; padding: 20px; color: #222; line-height: 1.6; }
+  h1 { font-size: 26px; border-bottom: 3px solid #2563eb; padding-bottom: 8px; color: #1e3a8a; }
+  h2 { font-size: 20px; margin-top: 32px; color: #1e3a8a; }
+  h3 { font-size: 16px; margin-top: 22px; color: #334155; }
+  ol, ul { padding-left: 24px; }
+  li { margin-bottom: 6px; }
+  .callout { background: #fef3c7; border-left: 4px solid #f59e0b; padding: 12px 16px; margin: 16px 0; border-radius: 4px; }
+  .callout-warn { background: #fee2e2; border-left-color: #dc2626; }
+  .callout-info { background: #dbeafe; border-left-color: #2563eb; }
+  .callout-ok { background: #d1fae5; border-left-color: #10b981; }
+  code { background: #f1f5f9; padding: 2px 6px; border-radius: 3px; font-family: 'Courier New', monospace; font-size: 13px; }
+  table { border-collapse: collapse; width: 100%; margin: 16px 0; }
+  th, td { border: 1px solid #cbd5e1; padding: 8px 12px; text-align: left; font-size: 14px; vertical-align: top; }
+  th { background: #f1f5f9; font-weight: 600; }
+  .meta { color: #64748b; font-size: 13px; }
+</style>
+</head>
+<body>
+
+<h1>SOP — Blocking Retreat Dates on Airbnb &amp; Booking.com</h1>
+<p class="meta">Use this every time a retreat is scheduled, so OTA guests cannot book accommodations during the retreat dates.</p>
+
+<div class="callout callout-info">
+  <strong>What this SOP does:</strong> Creates an <em>Availability Rule</em> in BookingLayer's Channex inventory that closes out specific dates on Airbnb and Booking.com — without affecting BookingLayer's internal calendar. Retreat guests can still be booked directly. OTA guests cannot book those dates.
+</div>
+
+<h2>When to use this</h2>
+<ul>
+  <li>A retreat is scheduled and you want to take cabins/dorms off Airbnb + Booking.com</li>
+  <li>A private group buyout where the venue is reserved but no OTA bookings should come in</li>
+  <li>Maintenance dates where rooms exist in BookingLayer but should not be sold via OTAs</li>
+</ul>
+
+<h2>Step-by-Step</h2>
+
+<h3>Step 1 — Open the Availability Rules screen</h3>
+<ol>
+  <li>Log into BookingLayer: <a href="https://app.bookinglayer.io/">app.bookinglayer.io</a></li>
+  <li>Left sidebar → <strong>Settings</strong> → <strong>Integrations</strong> (or navigate via the Channex link).</li>
+  <li>Open <strong>Channex</strong>.</li>
+  <li>Click on the location <strong>"LaWayra"</strong> → click <strong>Inventory</strong>.</li>
+  <li>Look for the <strong>"Availability Rules"</strong> section / tab.</li>
+</ol>
+
+<h3>Step 2 — Create a new rule</h3>
+<ol>
+  <li>Click <strong>"Create"</strong> (or the + button).</li>
+  <li>A pop-up appears titled <strong>"Create Availability Rule"</strong>.</li>
+</ol>
+
+<h3>Step 3 — Fill in the rule</h3>
+<table>
+  <thead>
+    <tr><th>Field</th><th>What to put</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Title</strong></td>
+      <td>Name the rule so you can find it later. Example: <code>Retreat — June 10-17 cohort</code> or <code>Sarah's August Retreat</code></td>
+    </tr>
+    <tr>
+      <td><strong>Affected Dates</strong></td>
+      <td>
+        Start date = first night of the retreat<br>
+        End date = <strong>last night</strong> of the retreat (NOT checkout day)<br>
+        Example: Retreat runs June 10 → June 17 (guests check out the 17th). Set dates: <strong>June 10 → June 16</strong>.
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Days of week</strong></td>
+      <td>Leave ALL days checked (Mo, Tu, We, Th, Fr, Sa, Su). The block should cover every day in the range.</td>
+    </tr>
+    <tr>
+      <td><strong>Type</strong></td>
+      <td><strong>Close Out</strong></td>
+    </tr>
+    <tr>
+      <td><strong>Affected Channels</strong></td>
+      <td>
+        Check both:<br>
+        ☑ BookingCom - Lawayra Ayahuasca Retreat<br>
+        ☑ LaWayra Airbnb Channel<br>
+        (Or click <strong>"Select All Items"</strong> for both)
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Affected Room Types</strong></td>
+      <td>
+        Check all 4 room types if the full venue is reserved:<br>
+        ☑ Bed in 6-Bed Female Dormitory Room<br>
+        ☑ Private Cabin - 6<br>
+        ☑ Single Bed in 10-Bed Dormitory Room<br>
+        ☑ Twin Room with Mountain View<br>
+        <br>
+        Or uncheck rooms that ARE still available during the retreat (rare).
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Step 4 — Save</h3>
+<ol>
+  <li>Click the blue <strong>"Save"</strong> button at the bottom.</li>
+  <li>The rule appears in the Availability Rules list.</li>
+</ol>
+
+<h3>Step 5 — Verify the block reached the OTAs</h3>
+<p>Wait <strong>5–10 minutes</strong>, then check:</p>
+<ol>
+  <li><strong>Booking.com:</strong> Open the Booking.com extranet → Calendar &amp; Pricing → the retreat dates should now show as <strong>"Closed"</strong> / unavailable.</li>
+  <li><strong>Airbnb:</strong> Open the Airbnb host calendar for each listing → retreat dates should show as <strong>blocked</strong> (gray, not pink/green).</li>
+</ol>
+
+<div class="callout callout-ok">
+  <strong>If both OTAs show the dates as blocked:</strong> done. Retreat guests can be booked into rooms directly in BookingLayer, and no OTA tourists can claim those dates.
+</div>
+
+<div class="callout callout-warn">
+  <strong>If the OTAs still show dates as available after 15 minutes:</strong> the rule didn't push. Check BookingLayer → Integrations → Channex → activity log. Try editing the rule and saving again. If still broken, escalate.
+</div>
+
+<h2>How to REMOVE a block</h2>
+
+<p>If a retreat is cancelled or the dates change:</p>
+
+<ol>
+  <li>Open BookingLayer → Channex → Inventory → Availability Rules.</li>
+  <li>Find the rule by title.</li>
+  <li>Either:
+    <ul>
+      <li><strong>Edit</strong> the rule (change dates, channels, or rooms), then Save.</li>
+      <li><strong>Delete</strong> the rule (use the Trash icon).</li>
+    </ul>
+  </li>
+  <li>Wait 5–10 minutes. The OTAs will reopen those dates automatically.</li>
+</ol>
+
+<h2>Important Rules</h2>
+
+<ul>
+  <li>✅ <strong>Always block in BookingLayer's Availability Rules.</strong> Never edit Airbnb or Booking.com calendars directly — Channex will overwrite manual blocks on the next sync.</li>
+  <li>✅ <strong>Create the rule as soon as a retreat is confirmed</strong> — don't wait until the week of. The longer the buffer, the safer.</li>
+  <li>✅ <strong>One rule per retreat.</strong> Naming convention: <code>Retreat — [Month Day-Day] [cohort name]</code>. Makes it easy to find and remove later.</li>
+  <li>❌ <strong>Do NOT use this for individual room blocks.</strong> If only 1 cabin needs to be off-market for maintenance, use BookingLayer Planning → "Out of Service" booking instead. Availability Rules are for full-venue or multi-room blocks.</li>
+  <li>❌ <strong>Do NOT check "Close Out" on the wrong dates.</strong> Double-check the date range before saving — guests already booked won't be cancelled, but new direct-BookingLayer bookings will also be blocked on those days.</li>
+</ul>
+
+<h2>Quick Reference</h2>
+
+<table>
+  <thead>
+    <tr><th>Situation</th><th>What to do</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>New retreat confirmed</td>
+      <td>Create Availability Rule with retreat dates + all rooms + both channels</td>
+    </tr>
+    <tr>
+      <td>Retreat date moved by one day</td>
+      <td>Edit the existing rule, update dates, save</td>
+    </tr>
+    <tr>
+      <td>Retreat cancelled</td>
+      <td>Delete the rule</td>
+    </tr>
+    <tr>
+      <td>Only Private Cabins are reserved; dorms still open</td>
+      <td>Create rule with dates + uncheck dormitory room types</td>
+    </tr>
+    <tr>
+      <td>Need to block just one cabin for maintenance</td>
+      <td>Use BookingLayer Planning → Out of Service booking (NOT Availability Rule)</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="callout">
+  <strong>Golden rule:</strong> When a retreat is scheduled, create the Availability Rule first. Then book the retreat guests into BookingLayer normally. The two systems stay separate but the OTAs stay closed.
+</div>
+
+</body>
+</html>
