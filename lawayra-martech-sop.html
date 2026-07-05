@@ -613,13 +613,14 @@
   <div class="toc-grid">
     <a href="#s09" class="toc-item"><span class="toc-num">20</span><span class="toc-label">AI Appointment Setter Prompt</span></a>
   </div>
-  <h3 class="toc-part-heading">Part 7 — GHL Permissions</h3>
+  <h3 class="toc-part-heading">Part 7 — GHL Admin</h3>
   <div class="toc-grid">
     <a href="#ghl-permissions" class="toc-item"><span class="toc-num">21</span><span class="toc-label">How to Change Permissions in GHL</span></a>
+    <a href="#ghl-calendars" class="toc-item"><span class="toc-num">22</span><span class="toc-label">How to Create Calendars in GHL</span></a>
   </div>
   <h3 class="toc-part-heading">Part 8 — Troubleshooting</h3>
   <div class="toc-grid">
-    <a href="#troubleshooting" class="toc-item"><span class="toc-num">22</span><span class="toc-label">When Something Breaks</span></a>
+    <a href="#troubleshooting" class="toc-item"><span class="toc-num">23</span><span class="toc-label">When Something Breaks</span></a>
   </div>
 
 </div>
@@ -2608,9 +2609,175 @@ fixMarketingDashboardDates()    # Same for Marketing Dashboard (already on daily
   </div>
 </div>
 
-<!-- ==================== SECTION 22: WHEN SOMETHING BREAKS ==================== -->
-<div class="section" id="troubleshooting">
+<!-- ==================== SECTION 22: HOW TO CREATE CALENDARS IN GHL ==================== -->
+<div class="section" id="ghl-calendars">
   <div class="section-number">Section 22</div>
+  <h2>How to Create Calendars in GHL</h2>
+  <p class="section-subtitle">How to create a booking calendar from scratch in <strong>Calendar Settings</strong>, configure it correctly, and know which settings actually matter for the sales/follow-up process and for ad tracking.</p>
+
+  <div class="info-card">
+    <div class="info-card-body">
+      <p><strong>Video walkthrough:</strong> <a href="https://www.loom.com/share/94638748d3c84a3fb2cda410921644b1" target="_blank" rel="noopener">Watch Loom &rarr;</a></p>
+      <div style="position:relative; padding-bottom:56.25%; height:0; border-radius:8px; overflow:hidden; margin:12px 0;">
+        <iframe src="https://www.loom.com/embed/94638748d3c84a3fb2cda410921644b1" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position:absolute; top:0; left:0; width:100%; height:100%;"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <strong>The two settings that matter most:</strong>
+    <br>&bull; <strong>Confirmation page &rarr; Redirect URL</strong> to a thank-you page &mdash; required for <strong>ad conversion tracking</strong>.
+    <br>&bull; <strong>Notifications &amp; Policies</strong> &mdash; controls which emails/SMS/in-app messages go to the <em>contact</em> vs. the <em>assigned user</em>. This is the backbone of the follow-up process.
+  </div>
+
+  <h3>1. Where to Create a Calendar</h3>
+  <ol class="step-list">
+    <li>Inside the sub-account, go to the <strong>Calendar</strong> section.</li>
+    <li>Go to <strong>Calendar Settings</strong> &mdash; <strong>&#9888; not</strong> the "New" button on the main Calendar view.</li>
+    <li>You'll land on the <strong>Calendars</strong> tab, which lists every existing calendar.</li>
+    <li>Click <strong>New Calendar</strong>.</li>
+  </ol>
+
+  <h3>2. Choose the Calendar Type</h3>
+  <table class="data-table">
+    <thead>
+      <tr><th>Type</th><th>When to use</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Personal Booking</strong></td><td>One-on-one meeting for a <strong>single</strong> team member. Most common.</td></tr>
+      <tr><td><strong>Round Robin</strong></td><td><strong>Distributes</strong> bookings across <strong>multiple</strong> team members. Most common.</td></tr>
+      <tr><td><strong>Class Booking</strong></td><td>Many people book the <strong>same</strong> event/time &mdash; e.g. a workshop or webinar with a shared link.</td></tr>
+      <tr><td><strong>Collective Booking</strong></td><td>Rarely used &mdash; not covered here.</td></tr>
+    </tbody>
+  </table>
+  <p style="margin-top:8px;">Default: it's almost always <strong>Personal Booking</strong> or <strong>Round Robin</strong>.</p>
+
+  <h3>3. Basic Setup (Round Robin example)</h3>
+  <ol class="step-list">
+    <li><strong>Name</strong> the calendar (e.g. "Test").</li>
+    <li><strong>Select team members</strong> (e.g. Aaliyah, Kevin, Media, yourself).</li>
+    <li>A <strong>URL</strong> is auto-generated from the name &mdash; change it or leave it.</li>
+    <li>Select the <strong>meeting/media category</strong>.</li>
+    <li>Set the <strong>duration</strong>.</li>
+    <li><strong>Each team member sets their own booking availability hours.</strong></li>
+  </ol>
+  <p>Then click <strong>Advanced Settings</strong> to configure everything below.</p>
+
+  <h3>4. Advanced Settings &mdash; General</h3>
+  <ol class="step-list">
+    <li><strong>Logo</strong> (optional) &mdash; appears above the calendar at the top of the booking widget. Nice-to-have for polish.</li>
+    <li><strong>Calendar Name</strong> &mdash; shows at the top of the booking widget.</li>
+    <li><strong>Description</strong> &mdash; shows below the name.</li>
+    <li><strong>Group</strong> &mdash; basically a <strong>folder</strong> for organizing calendars (e.g. "Integration Calls," "Sales," "Consultation Calls"). Not used much, but available.</li>
+    <li><strong>Meeting Invite Title</strong> &mdash; the title shown under the contact's name on the invite. Type custom text, or use a <strong>dynamic tag</strong> to auto-fill data.</li>
+  </ol>
+  <div class="callout">
+    <strong>Dynamic tags &mdash; important nuance:</strong> The <strong>Meeting Invite Title</strong> tags pull from <strong>account-level</strong> settings (account info), <em>not</em> the contact. Elsewhere you can choose the tag source: <strong>contact</strong>, <strong>appointment data</strong>, or the <strong>account</strong> itself.
+  </div>
+
+  <h3>5. Staff &amp; Location</h3>
+  <ol class="step-list">
+    <li>Set <strong>who is on the calendar</strong> &mdash; add or remove team members here.</li>
+    <li><strong>Priority level:</strong> if two members are both free for a slot, the <strong>high-priority</strong> person gets booked first.</li>
+    <li><strong>Meeting Location:</strong> Zoom (must be connected first), Google Meet, or Custom (e.g. type "Phone Call").</li>
+  </ol>
+
+  <h3>6. Routing &amp; Reassignment Rules</h3>
+  <div class="callout">
+    <strong>&#9888; Important for sales teams.</strong> These reschedule/reassignment rules decide whether a prospect stays with their rep or re-enters the round robin. Set them deliberately.
+  </div>
+  <ol class="step-list">
+    <li><strong>Contact Routing Preference (on reschedule):</strong> default for Round Robin sends reschedules <strong>back into the round robin</strong> (may reassign to a different person). Alternative &mdash; <strong>keep the same appointment owner</strong>.</li>
+    <li><strong>New Appointment Preference &mdash; "Always book with a contact's assigned user":</strong> if a contact already has an assigned user (e.g. a prospect assigned to Aaliyah), <strong>every new appointment auto-books onto that user's calendar</strong>. Keeps a prospect with their rep.</li>
+  </ol>
+
+  <h3>7. Availability</h3>
+  <p>Edit <strong>calendar availability</strong> directly, or <strong>bulk edit</strong> each member's availability. Everyone's availability is visible in this section.</p>
+
+  <h3>8. Booking Rules</h3>
+  <table class="data-table">
+    <thead>
+      <tr><th>Setting</th><th>What it does</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Meeting Interval</strong></td><td>How often slots are shown / how far apart they are. 30-min &rarr; 8:00, 8:30, 9:00. 1-hour &rarr; 8:00, 9:00, 10:00.</td></tr>
+      <tr><td><strong>Pre-buffer time</strong></td><td>Buffer padding before a meeting.</td></tr>
+      <tr><td><strong>Max Bookings Per Day</strong></td><td>Caps how many meetings <strong>of this calendar</strong> can be booked per day. Hit the cap (e.g. 5) &rarr; no more bookings that day.</td></tr>
+      <tr><td><strong>Max Bookings Per Slot (per user)</strong></td><td>How many meetings a user can take in the <strong>same time slot</strong>. <strong>Keep at 1</strong> for our purposes.</td></tr>
+    </tbody>
+  </table>
+  <div class="callout">
+    <strong>Double-booking (Max Per Slot = 2+):</strong> some sales teams do this when <strong>show rates are low</strong> &mdash; 2 contacts in the same slot doubles the odds someone shows. Generally <strong>leave at 1</strong> unless there's a specific reason.
+  </div>
+
+  <h3>9. Forms &amp; Confirmation Page (Advanced)</h3>
+  <ol class="step-list">
+    <li><strong>Forms:</strong> attach and configure the booking form.</li>
+    <li><strong>Autofill for known contacts:</strong> if the contact already exists in GHL, their name/email/phone pre-populate (they can still edit).</li>
+    <li><strong>Consent checkbox:</strong> almost always best practice to include consent on the form.</li>
+    <li><strong>Guests:</strong> allow adding guests / let attendees invite guests.</li>
+    <li><strong>Confirmation Page:</strong> default confirmation message, <strong>or</strong> a <strong>Redirect URL</strong> to a specific page.</li>
+  </ol>
+  <div class="callout">
+    <strong>&#9888; Redirect URL is important for ads.</strong> For paid traffic we typically redirect to a <strong>thank-you page</strong> &mdash; both for UX and because it's needed for <strong>conversion tracking</strong>.
+  </div>
+
+  <h3>10. Payments, Notifications &amp; Policies, Additional Settings</h3>
+  <ol class="step-list">
+    <li><strong>Payments:</strong> collect payment on booking (if needed).</li>
+    <li><strong>Additional Settings:</strong> assign contacts to the calendar's team members on booking; skip assigning if the contact <strong>already</strong> has an assigned user; allow rescheduling / cancellation; third-party calendar settings; <strong>Widget Appearance</strong> (how the calendar looks when embedded on a page).</li>
+  </ol>
+
+  <h3>11. Notifications &amp; Reminders (drives the follow-up process)</h3>
+  <p>Path: <strong>Advanced Settings &rarr; Notifications and Policies.</strong> Each booking event has its own configurable notifications &mdash; <strong>Email, In-App (GHL), SMS, WhatsApp</strong>.</p>
+  <div class="callout">
+    <strong>Key concept &mdash; Assigned User vs. Contact:</strong>
+    <br>&bull; <strong>Assigned User</strong> = <strong>our team / the salesperson</strong> (the company side).
+    <br>&bull; <strong>Contact</strong> = <strong>the person booking / the prospect</strong>.
+    <br>Example (sales calendar): assigned user = the sales rep; contact = the prospect booking the call.
+  </div>
+  <table class="data-table">
+    <thead>
+      <tr><th>Event</th><th>Typical setup (from the walkthrough)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Appointment booked (unconfirmed)</strong></td><td>Email/in-app to the <strong>assigned user</strong> (sales team). Currently <strong>not</strong> sent to the contact.</td></tr>
+      <tr><td><strong>Confirmed appointment</strong></td><td>Confirmation <strong>email to the contact</strong> (from a set sending address) <strong>and</strong> an email to the <strong>assigned user</strong> (e.g. "New Levira consultation call" with the contact's name).</td></tr>
+      <tr><td><strong>Cancellation</strong></td><td>Cancellation notifications &mdash; configurable.</td></tr>
+      <tr><td><strong>Reschedule</strong></td><td>Reschedule notifications (email + in-app).</td></tr>
+      <tr><td><strong>Reminders</strong></td><td>Set trigger timing (e.g. <strong>24 hours</strong> before). Add multiple reminders if needed.</td></tr>
+    </tbody>
+  </table>
+  <p style="margin-top:8px;">Reminders can also be built inside <strong>workflows</strong>, but this section handles them <strong>within the calendar itself</strong>.</p>
+
+  <h3>12. Sharing the Calendar</h3>
+  <p>Open <strong>Share Calendar</strong> for the link options:</p>
+  <table class="data-table">
+    <thead>
+      <tr><th>Option</th><th>Behavior</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Scheduling Link</strong></td><td>The <strong>named</strong> link. You can rename the slug &mdash; but if you change it, any place using the old link (e.g. an email) <strong>breaks</strong>.</td></tr>
+      <tr><td><strong>Permanent Link</strong></td><td>A uniquely generated URL that <strong>never changes</strong>. Use anywhere the link must not break. Both links reach the same calendar.</td></tr>
+      <tr><td><strong>One-Time Link</strong></td><td>Works <strong>once</strong> &mdash; expires as soon as the person uses it.</td></tr>
+      <tr><td><strong>Embed Code</strong></td><td>An <strong>iframe</strong> to embed the calendar on a website page.</td></tr>
+    </tbody>
+  </table>
+  <div class="callout">
+    <strong>Rule of thumb:</strong> if a link lives somewhere long-lived (email, website, ad), use the <strong>Permanent Link</strong> so it can't break. Also visible here: <strong>Calendar ID</strong> and <strong>Calendar Name</strong>.
+  </div>
+
+  <h3>13. Viewing Bookings (main Calendar view)</h3>
+  <ol class="step-list">
+    <li><strong>Calendars view:</strong> pull up a specific calendar to see scheduled calls.</li>
+    <li><strong>Meeting Color:</strong> change the color a calendar shows as in the calendar view.</li>
+    <li><strong>Appointment List View:</strong> see all upcoming events and which calendar each belongs to (includes canceled). <strong>Date Added</strong> = the date the person <strong>booked</strong> &mdash; important for <strong>ad tracking</strong>. Use <strong>Customize List</strong> to change columns, or build a <strong>Smart List</strong> for your own filtered view.</li>
+  </ol>
+</div>
+
+<!-- ==================== SECTION 23: WHEN SOMETHING BREAKS ==================== -->
+<div class="section" id="troubleshooting">
+  <div class="section-number">Section 23</div>
   <h2>When Something Breaks</h2>
   <p class="section-subtitle">Common issues and how to fix them. Check the most likely cause first.</p>
 
