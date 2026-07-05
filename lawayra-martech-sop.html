@@ -624,9 +624,13 @@
   <div class="toc-grid">
     <a href="#bookinglayer" class="toc-item"><span class="toc-num">25</span><span class="toc-label">How to Use BookingLayer (Backoffice)</span></a>
   </div>
-  <h3 class="toc-part-heading">Part 9 — Troubleshooting</h3>
+  <h3 class="toc-part-heading">Part 9 — Integrations & Workflows</h3>
   <div class="toc-grid">
-    <a href="#troubleshooting" class="toc-item"><span class="toc-num">26</span><span class="toc-label">When Something Breaks</span></a>
+    <a href="#workflows-integrations" class="toc-item"><span class="toc-num">26</span><span class="toc-label">GHL Workflows, Zapier & n8n</span></a>
+  </div>
+  <h3 class="toc-part-heading">Part 10 — Troubleshooting</h3>
+  <div class="toc-grid">
+    <a href="#troubleshooting" class="toc-item"><span class="toc-num">27</span><span class="toc-label">When Something Breaks</span></a>
   </div>
 
 </div>
@@ -2938,9 +2942,93 @@ fixMarketingDashboardDates()    # Same for Marketing Dashboard (already on daily
   </div>
 </div>
 
-<!-- ==================== SECTION 25: WHEN SOMETHING BREAKS ==================== -->
-<div class="section" id="troubleshooting">
+<!-- ==================== SECTION 26: INTEGRATIONS & WORKFLOWS ==================== -->
+<div class="section" id="workflows-integrations">
   <div class="section-number">Section 26</div>
+  <h2>GHL Workflows, Zapier &amp; n8n (Integrations 101)</h2>
+  <p class="section-subtitle">A high-level tour of where automations live and how they connect. We build workflows in <strong>three</strong> places: <strong>GHL Automation</strong> (native workflows), <strong>Zapier</strong>, and <strong>n8n</strong>. This section explains what each is for, how a workflow actually fires end-to-end, and when to reach for which tool.</p>
+
+  <div class="info-card">
+    <div class="info-card-body">
+      <p><strong>Video walkthrough:</strong> <a href="https://www.loom.com/share/4c58ac08f9554cdfb97f727eb454453c" target="_blank" rel="noopener">Watch Loom &rarr;</a></p>
+      <div style="position:relative; padding-bottom:56.25%; height:0; border-radius:8px; overflow:hidden; margin:12px 0;">
+        <iframe src="https://www.loom.com/embed/4c58ac08f9554cdfb97f727eb454453c" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position:absolute; top:0; left:0; width:100%; height:100%;"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <strong>&#11088; Prerequisite: set up Claude Code first.</strong> Before you build anything here, go through <a href="#setup-claude-code">Section 13 &mdash; How to Set Up Claude Code</a>. That training connects Claude Code to <strong>GHL</strong> and to <strong>n8n</strong> (via MCP), which is what lets it see inside those tools and build workflows for you &mdash; often in seconds.
+  </div>
+
+  <h3>1. GHL Workflows (native automation)</h3>
+  <ol class="step-list">
+    <li>In the sub-account, go to <strong>Automation &rarr; Workflows &rarr; All Workflows</strong>. This is where the native GHL automations live (e.g. the ones built for Loira).</li>
+    <li>Notable ones: the <strong>Sales AI / AI Appointment Setter</strong> (the back-and-forth with prospects &mdash; complex, lots of branches; see <a href="#s09">Section 21 &mdash; AI Appointment Setter</a>), and the <strong>Email Sequence</strong> (see <a href="#email-sequence">Section 20</a>). The email sequence was split-tested Path A vs Path B; <strong>100% now goes to Path B</strong> (the winner).</li>
+    <li><strong>Triggers:</strong> most workflows are enrolled by a <strong>tag being added</strong> &mdash; adding the tag is what drops a contact into the workflow.</li>
+    <li><strong>Builder:</strong> open a workflow and add steps. Under <strong>Settings</strong> you control the send window (time of day), <strong>allow re-entry</strong>, <strong>allow multiple opportunities</strong>, who you send <strong>from</strong>, and the <strong>send number</strong>.</li>
+    <li><strong>Enrollment History</strong> shows who's gone through and where they are; <strong>Execution Logs</strong> show when each step ran (useful for debugging errors).</li>
+  </ol>
+
+  <h3>2. How a workflow fires end-to-end (the simplest example)</h3>
+  <p>The clearest one to learn from is the <strong>"Book Call" GHL form</strong> on the Google Ads site. Here's the full chain:</p>
+  <ol class="step-list">
+    <li>Someone <strong>submits the form</strong> on the site &rarr; the <strong>"Form Submitted"</strong> trigger enrolls them in the workflow.</li>
+    <li>The workflow fires a <strong>Webhook action</strong> pointing at a <strong>Zapier catch hook</strong> URL.</li>
+    <li>In <strong>Zapier</strong>, that Zap fans the contact out to: a <strong>Google Sheet</strong> (all form data), <strong>Discord</strong> (a "new Google lead" message in the lead-notifications channel), <strong>Drip</strong> (the ESP / email tool), and <strong>back into GHL</strong> as a new contact record.</li>
+  </ol>
+  <div class="callout">
+    <strong>How the webhook link is made:</strong> create a <strong>Catch Hook</strong> in Zapier &rarr; copy its URL &rarr; in GHL add a <strong>Webhook action</strong> and paste that URL &rarr; save the action &rarr; save the workflow. That's the whole handshake &mdash; it's all about creating the action and pointing it at the right URL.
+  </div>
+
+  <h3>3. Creating a new GHL workflow</h3>
+  <ul>
+    <li><strong>Create Workflow</strong> &rarr; build from scratch, or use <strong>"Start with AI."</strong> If you use the AI builder, <strong>double-check what it produces.</strong></li>
+    <li>Better option: ask <strong>Claude Code</strong>. With it connected to GHL (see prerequisite above), it can see your GHL and help build/debug the workflow for you.</li>
+  </ul>
+
+  <h3>4. Pipelines</h3>
+  <p>Under <strong>Opportunities &rarr; Pipelines</strong> we track deals. There's a pipeline for the <strong>AI setter</strong> and a separate <strong>Sales pipeline</strong> for the sales team (sale / no sale). The automations that move deals through these are already set up.</p>
+
+  <h3>5. Zapier vs. n8n &mdash; when to use which</h3>
+  <p>Beyond GHL's native workflows, we run integrations in <strong>Zapier</strong> and <strong>n8n</strong> (self-hosted). We started in Zapier and are migrating toward n8n.</p>
+  <table class="data-table">
+    <thead>
+      <tr><th></th><th>Zapier</th><th>n8n (self-hosted)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Cost</strong></td><td>Pay <strong>per task</strong> &mdash; ~$100/mo</td><td><strong>~$7/mo</strong> for the whole server, unlimited tasks</td></tr>
+      <tr><td><strong>Ease</strong></td><td>Easier, more beginner-friendly, more polished</td><td>More flexible but a more complex format</td></tr>
+      <tr><td><strong>Claude Code</strong></td><td>Works</td><td>Claude Code is <strong>very</strong> fast with n8n &mdash; can build a workflow in seconds once the MCP/integration is connected</td></tr>
+    </tbody>
+  </table>
+  <p style="margin-top:12px;"><strong>Default:</strong> build new automations in <strong>n8n</strong> &mdash; it's cheaper and Claude Code sets it up fast. Reach for Zapier when you specifically need it (see the exceptions below).</p>
+
+  <h3>6. What's running in n8n</h3>
+  <ul>
+    <li>The <strong>AI appointment-setting agent</strong>.</li>
+    <li>An integration that pushes <strong>GHL opportunities into the per-rep sales Google Sheets</strong> (still in use). <strong>Adding a new rep = add a new node here</strong> &mdash; or just ask Claude Code to build it out.</li>
+    <li>A <strong>Reddit lead-gen &rarr; Discord</strong> workflow (built by Madhu).</li>
+    <li>A content-generation workflow for Loira (WIP, handed to Kevin).</li>
+  </ul>
+
+  <h3>7. What still <em>requires</em> Zapier</h3>
+  <ol class="step-list">
+    <li><strong>BookingLayer:</strong> on our current plan there's <strong>no open API</strong>, so we can't receive BookingLayer data into n8n &mdash; any BookingLayer integration <strong>must</strong> go through Zapier (unless we upgrade the plan). See <a href="#bookinglayer">Section 25 &mdash; BookingLayer</a>.</li>
+    <li><strong>Conversion events back to ad accounts</strong> (Facebook / Google): Zapier is simply more <strong>reliable</strong> for firing conversions. Example: a new paid booking in BookingLayer &rarr; fire a <strong>Meta Purchase</strong> (or Google) conversion event so the algorithm can optimize toward more buyers.</li>
+  </ol>
+  <div class="callout">
+    <strong>Adding a new conversion event:</strong> the media buyer must first <strong>create the event in the ad account</strong>. Then create a new Zap: pick the trigger app/action (e.g. "new contact in Drip") &rarr; action = send the offline conversion / lead back to Meta or Google &rarr; choose the event. The infrastructure/skeleton is already set up; ask Claude Code if you get stuck on a new one.
+  </div>
+
+  <div class="callout">
+    <strong>Bottom line:</strong> almost every automation lives in one of three places &mdash; <strong>GHL Automation</strong>, <strong>Zapier</strong>, or <strong>n8n</strong>. Default to <strong>n8n</strong> for new builds (cheap + Claude Code is fast), keep <strong>Zapier</strong> for BookingLayer and ad-account conversion events, and use <strong>GHL workflows</strong> for anything triggered inside GHL (tags, forms, appointments).
+  </div>
+</div>
+
+<!-- ==================== SECTION 27: WHEN SOMETHING BREAKS ==================== -->
+<div class="section" id="troubleshooting">
+  <div class="section-number">Section 27</div>
   <h2>When Something Breaks</h2>
   <p class="section-subtitle">Common issues and how to fix them. Check the most likely cause first.</p>
 
