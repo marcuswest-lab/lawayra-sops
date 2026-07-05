@@ -619,9 +619,13 @@
     <a href="#ghl-calendars" class="toc-item"><span class="toc-num">22</span><span class="toc-label">How to Create Calendars in GHL</span></a>
     <a href="#ghl-support" class="toc-item"><span class="toc-num">23</span><span class="toc-label">How to Use GHL Support</span></a>
   </div>
-  <h3 class="toc-part-heading">Part 8 — Troubleshooting</h3>
+  <h3 class="toc-part-heading">Part 8 — BookingLayer</h3>
   <div class="toc-grid">
-    <a href="#troubleshooting" class="toc-item"><span class="toc-num">24</span><span class="toc-label">When Something Breaks</span></a>
+    <a href="#bookinglayer" class="toc-item"><span class="toc-num">24</span><span class="toc-label">How to Use BookingLayer (Backoffice)</span></a>
+  </div>
+  <h3 class="toc-part-heading">Part 9 — Troubleshooting</h3>
+  <div class="toc-grid">
+    <a href="#troubleshooting" class="toc-item"><span class="toc-num">25</span><span class="toc-label">When Something Breaks</span></a>
   </div>
 
 </div>
@@ -2823,9 +2827,99 @@ fixMarketingDashboardDates()    # Same for Marketing Dashboard (already on daily
   </div>
 </div>
 
-<!-- ==================== SECTION 24: WHEN SOMETHING BREAKS ==================== -->
-<div class="section" id="troubleshooting">
+<!-- ==================== SECTION 24: HOW TO USE BOOKINGLAYER ==================== -->
+<div class="section" id="bookinglayer">
   <div class="section-number">Section 24</div>
+  <h2>How to Use BookingLayer (Backoffice)</h2>
+  <p class="section-subtitle">BookingLayer is our <strong>source of truth for actual retreat bookings</strong>. This is a tour of the Backoffice &mdash; how to pull paid bookings, build reports, create coupons and products, wire things into the booking engine, and manage the Booking.com / Airbnb channel connections. It's not super complex &mdash; a lot of it you learn by poking around (or by asking Claude Code, see the tip below).</p>
+
+  <div class="info-card">
+    <div class="info-card-body">
+      <p><strong>Video walkthrough:</strong> <a href="https://www.loom.com/share/2092aa0caab9465db83725981da18ad8" target="_blank" rel="noopener">Watch Loom &rarr;</a></p>
+      <div style="position:relative; padding-bottom:56.25%; height:0; border-radius:8px; overflow:hidden; margin:12px 0;">
+        <iframe src="https://www.loom.com/embed/2092aa0caab9465db83725981da18ad8" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position:absolute; top:0; left:0; width:100%; height:100%;"></iframe>
+      </div>
+      <p><strong>Log in:</strong> <a href="https://app.bookinglayer.io/login" target="_blank" rel="noopener">app.bookinglayer.io/login</a>. If you don't have an account, request one from Marcus.</p>
+    </div>
+  </div>
+
+  <div class="callout">
+    <strong>&#11088; Use Claude Code to learn BookingLayer.</strong> Marcus's main trick: ask Claude Code to <em>"look at the BookingLayer documentation and tell me how to &lt;do X&gt;"</em> (e.g. create an affiliate coupon, a new product, or map a channel). It's faster and more comprehensive than BookingLayer's own support, and it's how most of the setup below was figured out. With the Claude browser extension installed it can even drive the screen for you. See <a href="#setup-claude-code">Section 13 &mdash; How to Set Up Claude Code</a>.
+  </div>
+
+  <h3>1. Bookings &mdash; the Source of Truth</h3>
+  <ol class="step-list">
+    <li>Go to <strong>Bookings &rarr; Bookings</strong> to see everyone who has booked.</li>
+    <li><strong>&#9888; For real bookings, filter by Status = "Deposit Paid" + "Paid."</strong> This paid/deposit-paid filter is the source of truth for people who have actually booked and paid for a retreat.</li>
+    <li><strong>Date range:</strong> <strong>Add Filters &rarr; Created On</strong> &rarr; either "last 30 days" or a specific <strong>From &rarr; To</strong> range.</li>
+    <li><strong>Search</strong> for a specific booking by name.</li>
+    <li>Save your own <strong>preset</strong> with whatever combination of filters (status, date, etc.) you use most.</li>
+  </ol>
+
+  <h3>2. Reports</h3>
+  <ol class="step-list">
+    <li>Go to <strong>Reports &rarr; Reports</strong>. Click <strong>Create New</strong> for a fresh report (or open an existing one).</li>
+    <li>Set the <strong>title</strong>, then <strong>select the columns</strong> you want (lots of fields available depending on the report).</li>
+    <li>Example that gets heavy use &mdash; the <strong>"How did you hear about us?"</strong> report. Columns: <em>Created At, Reference (booking ID), How did you hear about us, Email, Full Name.</em> (That question was added later, so older bookings are blank.)</li>
+    <li><strong>Export:</strong> click <strong>Generate Now</strong> to download the report as <strong>CSV or Excel</strong>. You can also <strong>Duplicate</strong> a report or add more columns.</li>
+  </ol>
+
+  <h3>3. Dashboard (bookings per month)</h3>
+  <p>There's a <strong>Dashboard</strong> with bookings-per-month, but by default it <strong>counts unpaid bookings too</strong>, so filter it for <strong>paid only</strong> before trusting the numbers (e.g. June = 32 paid). Marcus doesn't rely on this much &mdash; the Bookings tab with the paid filter is more reliable.</p>
+
+  <h3>4. Coupons &amp; Discounts</h3>
+  <ol class="step-list">
+    <li>Go to <strong>Coupons &rarr; Create Coupon Code</strong>.</li>
+    <li><strong>Activate</strong> the coupon, optionally set <strong>Max Redeems</strong>, and choose <strong>Fixed Amount</strong> or <strong>Percentage</strong>.</li>
+    <li><strong>Conditions:</strong> activation date window, a check-in month limit (early-bird cases), min/max persons, minimum duration, minimum booking value, plus Advanced options.</li>
+  </ol>
+
+  <h3>5. Inventory &amp; Products (incl. Packages / Events)</h3>
+  <p>A <strong>product</strong> is the umbrella term for anything you sell. Under <strong>Inventory</strong> you can add a type:</p>
+  <table class="data-table">
+    <thead>
+      <tr><th>Product type</th><th>Use</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Accommodation</strong></td><td>Room types.</td></tr>
+      <tr><td><strong>Packages</strong></td><td>Retreat/event products (this is what we use for retreats like Bridget's Yoga Retreat).</td></tr>
+      <tr><td><strong>Activities / Services / Transfers / Items / Standard Product</strong></td><td>Other sellable components.</td></tr>
+    </tbody>
+  </table>
+  <ol class="step-list" style="margin-top:12px;">
+    <li>To create a retreat/event: <strong>Inventory &rarr; Packages</strong>. Easiest is to <strong>duplicate</strong> an existing package, then edit the description.</li>
+    <li>Set <strong>fixed or variable duration</strong>, and <strong>block out dates</strong> if needed.</li>
+    <li>Creating the package doesn't make it visible &mdash; you still have to add it to the booking engine (next step).</li>
+  </ol>
+
+  <h3>6. Booking Engine (make a product visible + thank-you page)</h3>
+  <ol class="step-list">
+    <li>Go to <strong>Sales &rarr; Booking Engine</strong>.</li>
+    <li><strong>Layout &rarr; Add Widget &rarr; Add Product</strong>, then find your package and add it to make it visible. (The current engine shows <strong>4-day, 7-day, 11-day, 14-day</strong>.)</li>
+    <li>You can also edit the <strong>Thank You page</strong> people are routed to after booking here.</li>
+  </ol>
+
+  <h3>7. Support</h3>
+  <p>Top-right <strong>Support</strong> lets you <strong>submit a ticket</strong> or start a <strong>chat</strong>. Honestly, Claude is usually faster and more comprehensive (see the tip above) &mdash; use BookingLayer support if you specifically want their team.</p>
+
+  <h3>8. Integrations (Zapier &rarr; dashboards)</h3>
+  <p>Under <strong>Integrations</strong>, a <strong>Zapier</strong> integration sends every booking to Zapier, which feeds the <strong>Sales by Source</strong> data and ultimately the Vercel dashboard. See <a href="#sales-by-source">Section 10 &mdash; Sales by Source Sync</a> for how that pipeline is used.</p>
+
+  <h3>9. ChannX &mdash; Booking.com &amp; Airbnb</h3>
+  <ol class="step-list">
+    <li><strong>Settings &rarr; ChannX &rarr; Channels</strong> is where BookingLayer connects to <strong>Booking.com</strong> and <strong>Airbnb</strong> (Hostelworld is also available; we only use those two).</li>
+    <li>Click <strong>Edit</strong> on a channel to manage the <strong>mapping</strong> of our listings to each platform. This mapping (BookingLayer &harr; Airbnb, and &harr; Booking.com) was set up with Claude Code's help.</li>
+    <li>ChannX also shows <strong>Inventory</strong> (what's blocked/available + prices), <strong>Bookings</strong>, <strong>Properties</strong>, and the <strong>Room Types</strong> that are connected to Booking.com and Airbnb.</li>
+  </ol>
+
+  <div class="callout">
+    <strong>Bottom line:</strong> BookingLayer rewards playing around with it &mdash; learn it on the job as tasks come up, and lean on Claude Code for the how-to. The Bookings tab (paid filter) and Reports are what you'll touch most often.
+  </div>
+</div>
+
+<!-- ==================== SECTION 25: WHEN SOMETHING BREAKS ==================== -->
+<div class="section" id="troubleshooting">
+  <div class="section-number">Section 25</div>
   <h2>When Something Breaks</h2>
   <p class="section-subtitle">Common issues and how to fix them. Check the most likely cause first.</p>
 
