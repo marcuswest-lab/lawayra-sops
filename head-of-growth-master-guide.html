@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LaWayra — Head of Growth: Master Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --olive:#3F4021; --sage:#AEAC92; --beige:#D6D0B8; --cream:#FFF7E7;
+    --amber:#E4A017; --burnt:#B34100; --brown:#623E2A; --charcoal:#2B2728;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; font-family:'Poppins',-apple-system,BlinkMacSystemFont,sans-serif;
+    color:var(--charcoal); background:var(--cream); line-height:1.65;
+    font-weight:300; font-size:16px;
+  }
+  .wrap{max-width:920px; margin:0 auto; padding:0 24px 80px;}
+
+  /* Header */
+  header{
+    background:var(--olive); color:var(--cream);
+    padding:56px 24px 48px; margin-bottom:0; text-align:center;
+    border-bottom:6px solid var(--amber);
+  }
+  header .inner{max-width:920px; margin:0 auto;}
+  header .eyebrow{
+    text-transform:uppercase; letter-spacing:.28em; font-size:.72rem;
+    color:var(--amber); font-weight:600; margin:0 0 14px;
+  }
+  header h1{
+    font-size:2.5rem; font-weight:700; margin:0 0 16px; line-height:1.15;
+    color:#fff;
+  }
+  header p.sub{
+    font-size:1.02rem; font-weight:300; color:var(--beige);
+    max-width:680px; margin:0 auto;
+  }
+
+  /* Transition banner */
+  .transition{
+    background:var(--brown); color:var(--cream);
+    border-left:6px solid var(--amber);
+    padding:18px 26px; margin:36px 0 8px; border-radius:8px;
+    font-size:.98rem;
+  }
+  .transition strong{color:var(--amber); font-weight:600;}
+
+  /* Sections */
+  section{margin-top:48px;}
+  h2{
+    font-size:1.5rem; font-weight:600; color:var(--olive);
+    margin:0 0 4px; padding-bottom:12px;
+    border-bottom:2px solid var(--sage);
+    display:flex; align-items:baseline; gap:12px;
+  }
+  h2 .num{
+    color:var(--amber); font-weight:700; font-size:1.15rem;
+    font-variant-numeric:tabular-nums;
+  }
+  h3{
+    font-size:1.12rem; font-weight:600; color:var(--burnt);
+    margin:28px 0 10px;
+  }
+  p{margin:14px 0;}
+  a{color:var(--burnt); text-decoration:none; border-bottom:1px solid var(--sage); word-break:break-word;}
+  a:hover{color:var(--amber); border-bottom-color:var(--amber);}
+
+  ul{margin:12px 0; padding-left:22px;}
+  li{margin:8px 0;}
+  li::marker{color:var(--amber);}
+  strong{font-weight:600; color:var(--olive);}
+
+  .lead{font-size:1.05rem;}
+
+  /* Flow chip line */
+  .flow{
+    background:#fff; border:1px solid var(--beige); border-radius:10px;
+    padding:14px 18px; font-weight:500; color:var(--brown);
+    display:inline-block; margin:6px 0;
+  }
+
+  /* Org map */
+  .orgtop{
+    background:var(--olive); color:#fff; font-weight:600;
+    padding:16px 22px; border-radius:10px 10px 0 0;
+    border-left:6px solid var(--amber); font-size:1.05rem;
+    letter-spacing:.01em;
+  }
+  .orgtop .arrow{color:var(--amber);}
+  .orggroups{
+    display:grid; gap:16px; margin-top:16px;
+    grid-template-columns:1fr;
+  }
+  @media(min-width:720px){.orggroups{grid-template-columns:1fr 1fr;}}
+  .orggroup{
+    background:#fff; border:1px solid var(--beige);
+    border-left:6px solid var(--sage); border-radius:10px;
+    padding:16px 20px 8px;
+  }
+  .orggroup.sales{border-left-color:var(--amber);}
+  .ogh{
+    font-size:.78rem; font-weight:600; text-transform:uppercase;
+    letter-spacing:.1em; color:var(--olive); margin-bottom:10px;
+    padding-bottom:8px; border-bottom:1px solid var(--beige);
+  }
+  .ogh small{
+    text-transform:none; letter-spacing:0; color:var(--sage);
+    font-weight:400; font-size:.82rem;
+  }
+  .ogrow{
+    display:flex; flex-wrap:wrap; justify-content:space-between;
+    gap:4px 16px; padding:7px 0; border-bottom:1px dotted var(--beige);
+  }
+  .ogrow:last-child{border-bottom:none;}
+  .ogrole{font-weight:600; color:var(--brown);}
+  .ogwho{color:var(--charcoal); text-align:right;}
+  .ogwho .lead-owner{color:var(--olive); font-weight:600;}
+
+  .note{
+    font-size:.9rem; color:var(--brown); font-style:italic;
+    background:var(--beige); padding:12px 18px; border-radius:8px; margin-top:16px;
+  }
+
+  /* Tables */
+  table{
+    width:100%; border-collapse:collapse; margin:16px 0;
+    background:#fff; border-radius:10px; overflow:hidden;
+    box-shadow:0 1px 3px rgba(43,39,40,.08); font-size:.92rem;
+  }
+  th{
+    background:var(--olive); color:var(--cream); text-align:left;
+    padding:11px 16px; font-weight:600; font-size:.82rem;
+    text-transform:uppercase; letter-spacing:.05em;
+  }
+  td{padding:11px 16px; border-top:1px solid var(--beige); vertical-align:top;}
+  tr:nth-child(even) td{background:#FBF6E6;}
+  td:first-child{font-weight:500; color:var(--brown); white-space:nowrap;}
+  table.links td:first-child{white-space:normal; width:42%;}
+
+  /* Cadence cards */
+  .cadence{display:grid; grid-template-columns:1fr; gap:18px; margin-top:20px;}
+  @media(min-width:720px){.cadence{grid-template-columns:1fr 1fr 1fr;}}
+  .card{
+    background:#fff; border:1px solid var(--beige); border-radius:12px;
+    padding:20px 22px; border-top:5px solid var(--amber);
+  }
+  .card h4{
+    margin:0 0 10px; font-size:1rem; font-weight:600; color:var(--olive);
+    text-transform:uppercase; letter-spacing:.08em;
+  }
+  .card ul{padding-left:18px; font-size:.88rem;}
+  .card li{margin:7px 0;}
+
+  .star{color:var(--amber);}
+
+  .bottomline{
+    margin-top:52px; background:var(--olive); color:var(--cream);
+    padding:26px 30px; border-radius:12px; font-size:1rem;
+    border-left:6px solid var(--amber);
+  }
+  .bottomline strong{color:var(--amber);}
+
+  code{
+    background:var(--beige); padding:1px 6px; border-radius:4px;
+    font-size:.85em; color:var(--brown);
+  }
+  footer{
+    text-align:center; margin-top:56px; color:var(--sage);
+    font-size:.8rem; letter-spacing:.05em;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="inner">
+    <p class="eyebrow">LaWayra Retreat · Internal</p>
+    <h1>Head of Growth — Master Guide</h1>
+    <p class="sub">The single reference for the Head of Growth role — what it is, who it oversees, everything it's responsible for running, and every SOP, dashboard, and link needed to run it.</p>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="transition">
+    <strong>Transition:</strong> Currently held by <strong>Marcus</strong>, transitioning to <strong>Aliyah in August 2026</strong>. Aliyah already runs the <strong>Head of Sales</strong> function, so the net-new surface for her is the <strong>marketing / growth</strong> side and the higher-level oversight that ties marketing and sales together.
+  </div>
+
+  <section>
+    <h2><span class="num">1</span> What the Role Is</h2>
+    <p class="lead">The <strong>Head of Growth</strong> owns the entire revenue engine — bringing prospects in (cold traffic), nurturing them (warm traffic), and converting them (sales) — and is accountable for the numbers at every step:</p>
+    <p><span class="flow">spend → leads → booked calls → shows → closes → paid retreats</span></p>
+    <p>…plus the attribution, reporting, and tech that measures all of it. It sits above two halves usually treated as separate jobs:</p>
+    <ul>
+      <li><strong>Marketing</strong> — paid ads, SEO, email, community, organic social, mar tech / dashboards.</li>
+      <li><strong>Sales</strong> — the closing team (reps, calendar management, show/close rates, rep commissions).</li>
+    </ul>
+    <p>The role also coordinates a web of people (media buyers, sales reps, coaches, VAs, dev/SEO contractors) and keeps the leadership team informed via the weekly report.</p>
+  </section>
+
+  <section>
+    <h2><span class="num">2</span> Org Map — Who the Role Oversees</h2>
+<div class="orgtop">Head of Growth: Marcus <span class="arrow">→</span> Aliyah (Aug 2026)</div>
+    <div class="orggroups">
+
+      <div class="orggroup">
+        <div class="ogh">Cold Traffic <small>new prospects</small></div>
+        <div class="ogrow"><span class="ogrole">Google Ads media buyer</span><span class="ogwho"><span class="lead-owner">Andrew</span></span></div>
+        <div class="ogrow"><span class="ogrole">Facebook Ads media buyer</span><span class="ogwho"><span class="lead-owner">Andrew</span> (+ Juan's own Book-a-Call campaign)</span></div>
+        <div class="ogrow"><span class="ogrole">SEO</span><span class="ogwho"><span class="lead-owner">Gabor</span></span></div>
+        <div class="ogrow"><span class="ogrole">Reddit</span><span class="ogwho">Aliyah / Jacobo</span></div>
+        <div class="ogrow"><span class="ogrole">B2B prospecting</span><span class="ogwho"><span class="lead-owner">Kevin</span></span></div>
+      </div>
+
+      <div class="orggroup sales">
+        <div class="ogh">Sales <small>Head of Sales: Aliyah</small></div>
+        <div class="ogrow"><span class="ogrole">Reps</span><span class="ogwho">Aliyah, Jacobo, Nico, Thomas</span></div>
+      </div>
+
+      <div class="orggroup">
+        <div class="ogh">Warm / Nurture <small>organic</small></div>
+        <div class="ogrow"><span class="ogrole">Community (Circle)</span><span class="ogwho">PM Aliyah · Leaders Aliyah/Monica/Ashley · Saul (tech) · Juli (admin)</span></div>
+        <div class="ogrow"><span class="ogrole">Integration / Coaching</span><span class="ogwho">PM Aliyah &amp; Sarah · Coaches Aliyah/Monica/Ashley</span></div>
+        <div class="ogrow"><span class="ogrole">Email</span><span class="ogwho">Marcus (→ Aliyah/Saul)</span></div>
+        <div class="ogrow"><span class="ogrole">Organic Social / Content</span><span class="ogwho">Manager Sarah · Volunteer creators</span></div>
+      </div>
+
+      <div class="orggroup">
+        <div class="ogh">Mar Tech</div>
+        <div class="ogrow"><span class="ogrole">Tech PM</span><span class="ogwho">(open)</span></div>
+        <div class="ogrow"><span class="ogrole">Tech team</span><span class="ogwho">Saul / Jacobo (formerly Madhu)</span></div>
+      </div>
+
+      <div class="orggroup">
+        <div class="ogh">Contractors</div>
+        <div class="ogrow"><span class="ogrole">Web Developer</span><span class="ogwho"><span class="lead-owner">Fahad</span></span></div>
+        <div class="ogrow"><span class="ogrole">SEO</span><span class="ogwho"><span class="lead-owner">Gabor</span></span></div>
+      </div>
+
+    </div>
+    <p class="note">Sam owns his own projects — documentary, podcast, book, public speaking. Sarah is GM + volunteer onboarding/outreach. Those sit alongside, not under, Growth.</p>
+  </section>
+
+  <section>
+    <h2><span class="num">3</span> Responsibilities by Area</h2>
+
+    <h3>A. Cold Traffic (Acquisition)</h3>
+    <ul>
+      <li><strong>Google Ads</strong> — the primary paid channel and most qualified lead source. Oversee media buyer (Andrew); watch spend / leads / CPL / bookings; protect the account from compliance rejections (a real risk for ayahuasca advertisers — the compliant site is a key competitive edge). 2025: ~$52.8K spend → ~$196.7K revenue, 3.72 ROAS.</li>
+      <li><strong>Facebook / Meta Ads</strong> — Andrew + Juan's own campaign. Own the Meta Pixel + CAPI events; keep <a href="https://script.google.com/macros/s/AKfycbzL5hZgGHryjPvDzonlKvH-DaTUwhjQ0SHahCJmf7p-XcuQ1gojCr4WnLkSNZTll2lW/exec?v=5">Juan's private dashboard</a> current.</li>
+      <li><strong>SEO</strong> — the single biggest cold channel (~50% of guests come from Google search). Gabor owns execution; the role owns the outcome. <strong>Watch item:</strong> SEO declined sharply through 2025 (peaked ~300 clicks/day in June, fell to ~100) — the main driver of the year's marketing dip.</li>
+      <li><strong>Reddit</strong> — a growing lead source, historically under-worked. Aliyah/Jacobo.</li>
+      <li><strong>B2B prospecting</strong> — Kevin.</li>
+      <li><strong>Media-buyer attribution</strong> — every lead attributed to the correct buyer by <strong>lead-create date</strong> (Marcus → Hafsa → Ida → Marcus → Andrew for Google; Juan/Marcus for Meta). Drives their commissions.</li>
+    </ul>
+
+    <h3>B. Sales (Head of Sales function — Aliyah already owns this)</h3>
+    <p>Pulled from the Head of Sales SOP, this is the closing side the Growth role is accountable for:</p>
+    <ul>
+      <li><strong>Track rep performance</strong> — #1 responsibility: stay on top of <strong>show rate</strong> and <strong>close rate</strong> for every rep, at all times, so we hit monthly sales targets. Team benchmark: <strong>30%+ live-call close rate, 50%+ show rate.</strong></li>
+      <li><strong>Calendar management</strong> — fill top reps first; new reps part-time; don't onboard new reps until the current roster's calendars are full.</li>
+      <li><strong>Onboard / train reps</strong> — set performance expectations upfront (volunteer, but ads cost money → profitability matters), capture availability + timezone, run ongoing trainings.</li>
+      <li><strong>Rep support</strong> — first point of contact for rep questions; escalate tech/GHL to the technologist, urgent deal-closing approvals to Sam.</li>
+      <li><strong>Team management</strong> — monthly team meeting + 1-on-1s.</li>
+      <li><strong>Audit the AI SMS setter daily</strong> — quick check that the AI SDR inbox isn't doing anything weird.</li>
+      <li>Current reps: <strong>Aliyah, Jacobo, Nico, Thomas.</strong></li>
+    </ul>
+
+    <h3>C. Warm Traffic / Nurture</h3>
+    <ul>
+      <li><strong>Community (Circle)</strong> — systematize posting, virtual workshops, in-person events/chapters. Aliyah PM; Monica/Ashley leaders; Saul tech; Juli admin.</li>
+      <li><strong>Integration / Coaching</strong> — the free post-retreat integration-call funnel (Aliyah &amp; Sarah PM; Aliyah/Monica/Ashley coach).</li>
+      <li><strong>Email</strong> — 40-email welcome sequence live (30–50% opens, ~1.5% clicks, ~98% deliverability). Roadmap: 180-day evergreen sequence, community/pre-retreat/post-retreat sequences, sales sequences (promos, abandoned-call, pre/post-call, post-purchase). Currently Marcus → transitioning to Aliyah/Saul.</li>
+      <li><strong>Organic Social / Content</strong> — 5-pillar Instagram strategy + the Content Machine production pipeline (carousels, Reels, cross-platform, Stories) with review-before-publish. Sarah manages; volunteers create. (Note: Meta banned old IG/FB group over ayahuasca compliance — organic social is more trust-signal than lead-gen.)</li>
+    </ul>
+
+    <h3>D. Mar Tech, Attribution &amp; Reporting</h3>
+    <p>The technical backbone — arguably the most complex part of the role:</p>
+    <ul>
+      <li><strong>Three dashboards</strong> — <a href="https://docs.google.com/spreadsheets/d/1fcBghq6dXp9v_58Lz0b-Fm5iXYlhw4HF00zQUjCSSTU/edit">Sales Dashboard</a> (per-call), <a href="https://docs.google.com/spreadsheets/d/1du8jYw-EPr3Bvkiq-_sMsA8XNtWH-d81AXS48glVzvc/edit">Ads / Marketing Dashboard</a> (per-day per-channel), <a href="https://docs.google.com/spreadsheets/d/139G-OUoApI5ksdSMXMe_WE8geaw_mZ3Sv8PYvBDsq5w/edit">Sales by Source — Raw Bookings</a> (per-booking source attribution).</li>
+      <li><strong><a href="https://lw-sales-dashboard.vercel.app/">Vercel Dashboard</a></strong> (<code>lw-sales-dashboard.vercel.app</code>) — <span class="star">★</span> the team's <strong>Source of Truth</strong> for reporting/reconciliation.</li>
+      <li><strong>Automations</strong> — n8n workflows (Booking Sync, GHL→Sales, Source Data, Daily Report→Discord, Google Ads→Marketing), Zapier (BL→Sheets), BookingLayer scheduled CSVs, Apps Scripts (source categorization, date fixes, tracker rebuilds, live sales/revenue attribution), GHL (CRM/calendars), Discord daily reports.</li>
+      <li><strong>Technologist support</strong> — Saul/Jacobo handle hands-on GHL/tech setup; the role directs it.</li>
+    </ul>
+
+    <h3>E. Strategy, Reporting &amp; Commissions</h3>
+    <ul>
+      <li><strong>Weekly leadership report</strong> — the recurring exec report (fixed section order, mines WhatsApp + MTD numbers).</li>
+      <li><strong>Two monthly commission runs</strong> — (1) <strong>media-buyer</strong> commissions by lead-create date; (2) <strong>sales-rep</strong> commissions by close. Both in Martech SOP §12 (Part A / Part B).</li>
+      <li><strong>Strategic projects</strong> — funnels/CRO, landing pages, pixel/CAPI, app/membership model, B2B, Airbnb/cabin rentals, website health (the new site hurt organic conversions — live watch item).</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="num">4</span> The Ongoing Work</h2>
+    <div class="cadence">
+      <div class="card">
+        <h4>Daily</h4>
+        <ul>
+          <li><strong>Ads (GG/FB):</strong> spend, calls, sales + revenue updated.</li>
+          <li><strong>Sales by Source:</strong> all new bookings present, sources populated.</li>
+          <li><strong>Sales Dashboard:</strong> calls for both regular + FB calendars, outcomes, sales + revenue accurate.</li>
+          <li><strong>Rep performance:</strong> glance at Discord sales reports — on pace for the month?</li>
+          <li><strong>AI SMS setter:</strong> quick inbox audit.</li>
+          <li>Watch for failure modes: FB/GG "row burial," Ads Script not firing, expired credentials.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>Weekly</h4>
+        <ul>
+          <li><strong>Weekly leadership report</strong> (Community → Integration → Paid Ads → Sales → Mar Tech → Reddit → Email → Website → B2B → SEO → Organic Social → Podcast → Airbnb → App/Membership).</li>
+          <li><strong>Sales by Source sync</strong> — paste 2 fresh BL exports, run sync + source-category scripts.</li>
+          <li><strong>Sales tab maintenance</strong> (human-in-the-loop).</li>
+          <li><strong>Content</strong> review/approval; keep cadence.</li>
+          <li><strong>Calendar/roster check</strong> with sales team.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>Monthly</h4>
+        <ul>
+          <li><strong>Media-buyer commissions</strong> — BL export → lead-attribution → check Juan's dash + Sales-by-Source → drop pending/$0 → pay by buyer.</li>
+          <li><strong>Sales-rep commissions</strong> — sum Sales Dashboard revenue by rep, apply %.</li>
+          <li><strong>Rebuild Rep Monthly Breakdown</strong> at month start (not on a trigger).</li>
+          <li><strong>Team:</strong> monthly sales meeting + 1-on-1s.</li>
+          <li>Sanity-check Marketing MTD vs. Google-Ads paid bookings.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="num">5</span> Systems &amp; Access</h2>
+    <table>
+      <thead><tr><th>System</th><th>Purpose</th></tr></thead>
+      <tbody>
+        <tr><td>Google Ads (629-914-3676)</td><td>Spend/leads + daily Marketing Dashboard Script</td></tr>
+        <tr><td>Meta Ads + Pixel/CAPI</td><td>Facebook campaigns, conversion tracking</td></tr>
+        <tr><td>Google Sheets</td><td>Data layer behind every dashboard (Marketing, Sales, Sales by Source, GG Leads)</td></tr>
+        <tr><td><a href="https://lw-sales-dashboard.vercel.app/">Vercel Dashboard</a></td><td><span class="star">★</span> Source of Truth</td></tr>
+        <tr><td><a href="https://server.lawayraserver.com/home/workflows">n8n</a></td><td>Sync/report automations</td></tr>
+        <tr><td><a href="https://zapier.com/editor/356749217/published/">Zapier</a></td><td>BookingLayer → Sheets</td></tr>
+        <tr><td><a href="https://app.bookinglayer.io">BookingLayer</a></td><td>Bookings + "How did you hear?" source data</td></tr>
+        <tr><td><a href="https://app.gohighlevel.com">GoHighLevel (GHL)</a></td><td>CRM, calendars, appointment outcomes, AI SMS setter</td></tr>
+        <tr><td><a href="https://lawayra-family.circle.so/feed">Circle</a></td><td>Community platform</td></tr>
+        <tr><td>Discord</td><td>Automated daily marketing + sales reports</td></tr>
+        <tr><td>Upload-Post + Content Machine</td><td>Social content production/scheduling</td></tr>
+      </tbody>
+    </table>
+    <p class="note">All logins on <code>admin@lawayra.com</code>; passwords in the team password manager (never shared in this doc). Canonical logins/automations cheat sheet = the Martech SOP.</p>
+  </section>
+
+  <section>
+    <h2><span class="num">6</span> Resource Directory — Every Link</h2>
+
+    <h3>SOPs (how to do the work)</h3>
+    <table class="links">
+      <thead><tr><th>SOP</th><th>Link</th></tr></thead>
+      <tbody>
+        <tr><td>Mar Tech SOP (canonical)</td><td><a href="https://marcuswest-lab.github.io/lawayra-sops/lawayra-martech-sop.html">Open</a></td></tr>
+        <tr><td>Mar Tech SOP (old, archived)</td><td><a href="https://docs.google.com/document/d/1QRYCNmiEnAS4E0VWRSzMhNRR0EPoAXizuu0hzwwzDfo/edit">Open</a></td></tr>
+        <tr><td>Community SOP</td><td><a href="https://marcuswest-lab.github.io/lawayra-sops/lawayra-community-sops.html">Open</a></td></tr>
+        <tr><td>Content SOP</td><td><a href="https://marcuswest-lab.github.io/lawayra-content-strategy/">Open</a></td></tr>
+        <tr><td>Google Media Buyer SOP</td><td><a href="https://docs.google.com/document/d/1eI7ELV3Y8NWBOK0LqEZ-8US-QuHtqGSxVwBh94qvPpo/edit">Open</a></td></tr>
+        <tr><td>Head of Sales — Roles &amp; Responsibilities</td><td><a href="https://docs.google.com/document/d/11-qI94ikm7MGJRTxqZsdM0nSVSQHqoU6GMZPjmS0HGM/edit">Open</a></td></tr>
+        <tr><td>Sales Rep SOP</td><td><a href="https://docs.google.com/document/d/1xJTsHfawFyFr6Fjb2GTEMwmlpuCyICnhVCHxngNbjH4/edit">Open</a></td></tr>
+        <tr><td>Email Welcome Sequence (40 emails)</td><td><a href="https://docs.google.com/document/d/199h47lPuh0o-f7RIaTzPIO_sWZ2u7pGfb_e-9wI7U6A/edit">Open</a></td></tr>
+        <tr><td>Set up a new sales rep in GHL (Loom)</td><td><a href="https://www.loom.com/share/798f9a323fcf48b1b1745800fe9f791e">Watch</a></td></tr>
+        <tr><td>Media-buyer commission process (Loom)</td><td><a href="https://www.loom.com/share/72bec0ede537409dbc886f21538307f3">Watch</a></td></tr>
+      </tbody>
+    </table>
+
+    <h3>Planning, Org &amp; Updates</h3>
+    <table class="links">
+      <thead><tr><th>Doc</th><th>Link</th></tr></thead>
+      <tbody>
+        <tr><td>Marketing &amp; Sales Dept — Org Chart + SOPs + Meeting Notes (hub)</td><td><a href="https://docs.google.com/document/d/1JiMPulkpl_fieE0HWkthMY2ch_2_wYlbaHGM5_W5Vdg/edit">Open</a></td></tr>
+        <tr><td>Marketing Project Management Calendar</td><td><a href="https://docs.google.com/spreadsheets/d/1svirDMQDzjRx_EAP6zmuPCK4V88lr02mNS4JFla4YDw/edit">Open</a></td></tr>
+        <tr><td>Marketing &amp; Sales Updates (weekly log)</td><td><a href="https://docs.google.com/document/d/1ruQMif1-kbtRaCa7DH9nQGo6QHymdl55DCMjRmjU4w0/edit">Open</a></td></tr>
+      </tbody>
+    </table>
+
+    <h3>Meeting Notes (running context)</h3>
+    <table class="links">
+      <thead><tr><th>Notes</th><th>Link</th></tr></thead>
+      <tbody>
+        <tr><td>Marketing &amp; Sales Annual Reports (2024–2025 Summary)</td><td><a href="https://docs.google.com/document/d/1aobr8XltrJp1DAYrXjSqJhLsvMEykTK25sykSiNZ3fo/edit">Open</a></td></tr>
+        <tr><td>Paid Ads &amp; Sales Meeting Notes</td><td><a href="https://docs.google.com/document/d/1MynYexZJ0TC2DDuJkzJtdrTtD2RF3V6wu-aAEV8W-ws/edit">Open</a></td></tr>
+        <tr><td>Mar Tech Meeting Notes</td><td><a href="https://docs.google.com/document/d/1zpHeNkYuRoSTtVvCIjkn66tmMZas1URS808xoZrPsOA/edit">Open</a></td></tr>
+        <tr><td>SEO Meeting Notes</td><td><a href="https://docs.google.com/document/d/1uUq46Jh0n9INAhiALMMecTPvgaq-DKvN6wgYIaFBC9k/edit">Open</a></td></tr>
+        <tr><td>Circle Community Meeting Notes</td><td><a href="https://docs.google.com/document/d/1jFJb4s9NixnpTTqOghpjGQ6BJm-UnueLefz6SmB104s/edit">Open</a></td></tr>
+      </tbody>
+    </table>
+
+    <h3>Dashboards &amp; Reporting</h3>
+    <table class="links">
+      <thead><tr><th>Dashboard</th><th>Link</th></tr></thead>
+      <tbody>
+        <tr><td><span class="star">★</span> Marketing/Sales Dashboard — Vercel (Source of Truth)</td><td><a href="https://lw-sales-dashboard.vercel.app/">Open</a></td></tr>
+        <tr><td>Juan's Meta Ads Dashboard</td><td><a href="https://script.google.com/macros/s/AKfycbzL5hZgGHryjPvDzonlKvH-DaTUwhjQ0SHahCJmf7p-XcuQ1gojCr4WnLkSNZTll2lW/exec?v=5">Open</a></td></tr>
+        <tr><td>Sales Dashboard (sheet)</td><td><a href="https://docs.google.com/spreadsheets/d/1fcBghq6dXp9v_58Lz0b-Fm5iXYlhw4HF00zQUjCSSTU/edit">Open</a></td></tr>
+        <tr><td>Ads / Marketing Dashboard (sheet)</td><td><a href="https://docs.google.com/spreadsheets/d/1du8jYw-EPr3Bvkiq-_sMsA8XNtWH-d81AXS48glVzvc/edit">Open</a></td></tr>
+        <tr><td>Sales by Source — Raw Bookings (sheet)</td><td><a href="https://docs.google.com/spreadsheets/d/139G-OUoApI5ksdSMXMe_WE8geaw_mZ3Sv8PYvBDsq5w/edit">Open</a></td></tr>
+        <tr><td>GG Leads (Google Ads lead emails)</td><td><a href="https://docs.google.com/spreadsheets/d/1PKOKpTg9o6HgV41Fvwag8aId5PAnr4qH5AwxmVL2jBg/edit">Open</a></td></tr>
+        <tr><td>Old Sales Tracking Sheet (read-only ref)</td><td><a href="https://docs.google.com/spreadsheets/d/16fy6Fpq7Z6P3yv3JN0YzmxlT204gnrfThu8KcC13gnY/edit">Open</a></td></tr>
+      </tbody>
+    </table>
+
+    <h3>Tools &amp; Platforms (logins)</h3>
+    <table class="links">
+      <thead><tr><th>Platform</th><th>Link</th></tr></thead>
+      <tbody>
+        <tr><td>n8n (automations)</td><td><a href="https://server.lawayraserver.com/home/workflows">Open</a></td></tr>
+        <tr><td>Zapier (BL → Sheets Zap)</td><td><a href="https://zapier.com/editor/356749217/published/">Open</a></td></tr>
+        <tr><td>BookingLayer</td><td><a href="https://app.bookinglayer.io">Open</a></td></tr>
+        <tr><td>GoHighLevel (CRM/calendars/AI SMS)</td><td><a href="https://app.gohighlevel.com">Open</a></td></tr>
+        <tr><td>Circle (community)</td><td><a href="https://lawayra-family.circle.so/feed">Open</a></td></tr>
+        <tr><td>Website</td><td><a href="https://ayahuascaincolombia.com">Open</a></td></tr>
+        <tr><td>Instagram</td><td><a href="https://instagram.com/lawayra_retreat">Open</a></td></tr>
+      </tbody>
+    </table>
+
+    <h3>BookingLayer Scheduled Reports (feed the source pipeline)</h3>
+    <ul>
+      <li>"How did you hear?": <a href="https://app.bookinglayer.io/reports_v2/edit/019ca9d3-8267-72dd-87c9-a8be89b7095d">Open report</a></li>
+      <li>Email/Person export: <a href="https://app.bookinglayer.io/reports_v2/edit/019d83e7-9b53-730a-b26a-f1f8b890fbe5">Open report</a></li>
+    </ul>
+
+    <h3>Discord (daily automated reports)</h3>
+    <ul>
+      <li>Sales-team Discord server (daily sales reports): <a href="https://discord.gg/yctYJzP5NM">Join</a></li>
+      <li><code>#gg-marketing-tracking</code> — daily Google Ads / marketing report</li>
+      <li><code>#sales-tracking</code> — daily sales-call report</li>
+    </ul>
+
+    <h3>Internal Repo Docs (deeper reference)</h3>
+    <p><code>CLAUDE.md</code> · <code>DASHBOARDS_MASTER.md</code> · <code>SALES_TRACKING_SYSTEM.md</code> · <code>SALES_DASHBOARD_README.md</code> · <code>SALES_BY_SOURCE_RUNBOOK.md</code></p>
+  </section>
+
+  <div class="bottomline">
+    <strong>Bottom line:</strong> the Head of Growth owns the number — making sure spend turns into leads, leads into booked calls, calls into closed retreats — and that every step is measured, attributed, reported, and staffed. Aliyah already runs the closing half; stepping into Growth means also owning the acquisition, nurture, and mar-tech halves that feed it.
+  </div>
+
+  <footer>LaWayra Retreat · Head of Growth Master Guide · connect. heal. grow.</footer>
+
+</div>
+</body>
+</html>
