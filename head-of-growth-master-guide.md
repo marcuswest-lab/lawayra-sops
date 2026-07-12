@@ -175,11 +175,11 @@ All logins on `admin@lawayra.com`; passwords in the team password manager. Canon
 |---|---|
 | Marketing & Sales Dept — Org Chart + SOPs + Meeting Notes (hub) | https://docs.google.com/document/d/1JiMPulkpl_fieE0HWkthMY2ch_2_wYlbaHGM5_W5Vdg/edit |
 | Marketing Project Management Calendar | https://docs.google.com/spreadsheets/d/1svirDMQDzjRx_EAP6zmuPCK4V88lr02mNS4JFla4YDw/edit |
-| Marketing & Sales Updates (weekly log) | https://docs.google.com/document/d/1ruQMif1-kbtRaCa7DH9nQGo6QHymdl55DCMjRmjU4w0/edit |
 
 ### Meeting Notes (running context)
 | Notes | Link |
 |---|---|
+| **Weekly Marketing & Sales Meeting Notes** (dated weekly reports — recording + action items) | https://docs.google.com/document/d/1ruQMif1-kbtRaCa7DH9nQGo6QHymdl55DCMjRmjU4w0/edit |
 | Marketing & Sales Annual Reports (2024–2025 Summary) | https://docs.google.com/document/d/1aobr8XltrJp1DAYrXjSqJhLsvMEykTK25sykSiNZ3fo/edit |
 | Paid Ads & Sales Meeting Notes | https://docs.google.com/document/d/1MynYexZJ0TC2DDuJkzJtdrTtD2RF3V6wu-aAEV8W-ws/edit |
 | Mar Tech Meeting Notes | https://docs.google.com/document/d/1zpHeNkYuRoSTtVvCIjkn66tmMZas1URS808xoZrPsOA/edit |
