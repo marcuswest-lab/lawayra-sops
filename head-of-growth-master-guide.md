@@ -8,7 +8,7 @@
 
 ## 1. What the Role Is
 
-The **Head of Growth** owns the entire revenue engine — bringing prospects in (cold traffic), nurturing them (warm traffic), and converting them (sales) — and is accountable for the numbers at every step: **spend → leads → booked calls → shows → closes → paid retreats**, plus the attribution, reporting, and tech that measures all of it.
+The **Head of Growth** owns one number: **more retreat bookings.** Every channel that brings a guest to La Wayra rolls up to this role — paid ads, SEO, Reddit, word-of-mouth, community, and referrals — along with the sales team that converts them and the mar-tech that measures it all. The paid funnel is the most measurable slice (**spend → leads → booked calls → shows → closes → paid retreats**), but the mandate is broader than paid: grow bookings and revenue from *every* source, and be accountable for the numbers at each step along the way.
 
 It sits above two halves that are usually treated as separate jobs:
 
@@ -209,4 +209,4 @@ All logins on `admin@lawayra.com`; passwords in the team password manager. Canon
 
 ---
 
-*Bottom line: the Head of Growth owns the number — making sure spend turns into leads, leads into booked calls, calls into closed retreats — and that every step is measured, attributed, reported, and staffed. Aliyah already runs the closing half; stepping into Growth means also owning the acquisition, nurture, and mar-tech halves that feed it.*
+*Bottom line: the Head of Growth owns one number — **retreat bookings** — across every channel that produces them, paid and organic alike. That means turning demand into booked calls and booked calls into closed retreats, and making sure every step is measured, attributed, reported, and staffed. Aliyah already runs the closing half; stepping into Growth means also owning the acquisition, nurture, and mar-tech halves that feed it.*
