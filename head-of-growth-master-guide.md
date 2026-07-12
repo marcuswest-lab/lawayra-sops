@@ -26,7 +26,7 @@ Head of Growth: Marcus → Aliyah (Aug 2026)
 │
 ├── COLD TRAFFIC (new prospects)
 │   ├── Google Ads media buyer ......... Andrew
-│   ├── Meta / Facebook Ads ............ Andrew (+ Juan's own Book-a-Call campaign)
+│   ├── Meta / Facebook Ads ............ Andrew
 │   ├── SEO ............................ Gabor
 │   ├── Reddit ......................... Aliyah / Jacobo
 │   └── B2B / Corporate Marketing ...... Kevin
@@ -63,7 +63,7 @@ Head of Growth: Marcus → Aliyah (Aug 2026)
 
 ### A. Cold Traffic (Acquisition)
 - **Google Ads** — the primary paid channel and most qualified lead source. Oversee media buyer (Andrew); watch spend / leads / CPL / bookings; protect the account from compliance rejections (a real risk for ayahuasca advertisers — the compliant site is a key competitive edge). 2025: ~$52.8K spend → ~$196.7K revenue, 3.72 ROAS.
-- **Facebook / Meta Ads** — Andrew + Juan's own campaign. Own the Meta Pixel + CAPI events; keep Juan's private dashboard current.
+- **Facebook / Meta Ads** — Andrew. Own the Meta Pixel + CAPI events; keep Juan's private dashboard current.
 - **SEO** — the single biggest cold channel (~50% of guests come from Google search). Gabor owns execution; the role owns the outcome. **Watch item:** SEO declined sharply through 2025 (peaked ~300 clicks/day in June, fell to ~100) — the main driver of the year's marketing dip.
 - **Reddit** — a growing lead source, historically under-worked. Aliyah/Jacobo.
 - **B2B / Corporate Marketing** — corporate wellness / group-retreat prospecting. Kevin.
