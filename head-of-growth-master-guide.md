@@ -26,17 +26,17 @@ Head of Growth: Marcus → Aliyah (Aug 2026)
 │
 ├── COLD TRAFFIC (new prospects)
 │   ├── Google Ads media buyer ......... Andrew
-│   ├── Facebook Ads media buyer ....... Andrew (+ Juan's own Book-a-Call campaign)
+│   ├── Meta / Facebook Ads ............ Andrew (+ Juan's own Book-a-Call campaign)
 │   ├── SEO ............................ Gabor
 │   ├── Reddit ......................... Aliyah / Jacobo
-│   └── B2B prospecting ................ Kevin
+│   └── B2B / Corporate Marketing ...... Kevin
 │
 ├── SALES  (Head of Sales: Aliyah)
 │   └── Reps: Aliyah, Jacobo, Nico, Thomas
 │
 ├── WARM / NURTURE (organic)
 │   ├── Community (Circle) ............. PM Aliyah · Leaders Aliyah/Monica/Ashley · Saul (tech) · Juli (admin)
-│   ├── Integration / Coaching ........ PM Aliyah & Sarah · Coaches Aliyah/Monica/Ashley
+│   ├── Integration Follow-Up .......... PM Aliyah & Sarah · Coaches Aliyah/Monica/Ashley
 │   ├── Email .......................... Marcus (→ Aliyah/Saul)
 │   └── Organic Social / Content ...... Manager Sarah · Volunteer creators
 │
@@ -44,12 +44,18 @@ Head of Growth: Marcus → Aliyah (Aug 2026)
 │   ├── Tech PM ........................ (open)
 │   └── Tech team ..................... Saul / Jacobo (formerly Madhu)
 │
+├── PRODUCTS & EXPANSION
+│   ├── Website / CRO .................. Fahad (dev)
+│   ├── Podcast ........................ Sam
+│   ├── Airbnb / Cabin Rentals ........ (property lodging revenue)
+│   └── App / Membership Model ........ (recurring-revenue initiative)
+│
 └── CONTRACTORS
     ├── Web Developer .................. Fahad
     └── SEO ............................ Gabor
 ```
 
-*(Sam owns his own projects — documentary, podcast, book, public speaking. Sarah is GM + volunteer onboarding/outreach. Those sit alongside, not under, Growth.)*
+*(Sam owns his own projects — documentary, podcast, book, public speaking — but the podcast is tracked as a growth surface in the weekly report. Sarah is GM + volunteer onboarding/outreach. Those sit alongside, not under, Growth.)*
 
 ---
 
@@ -60,7 +66,7 @@ Head of Growth: Marcus → Aliyah (Aug 2026)
 - **Facebook / Meta Ads** — Andrew + Juan's own campaign. Own the Meta Pixel + CAPI events; keep Juan's private dashboard current.
 - **SEO** — the single biggest cold channel (~50% of guests come from Google search). Gabor owns execution; the role owns the outcome. **Watch item:** SEO declined sharply through 2025 (peaked ~300 clicks/day in June, fell to ~100) — the main driver of the year's marketing dip.
 - **Reddit** — a growing lead source, historically under-worked. Aliyah/Jacobo.
-- **B2B prospecting** — Kevin.
+- **B2B / Corporate Marketing** — corporate wellness / group-retreat prospecting. Kevin.
 - **Media-buyer attribution** — every lead attributed to the correct buyer by **lead-create date** (Marcus → Hafsa → Ida → Marcus → Andrew for Google; Juan/Marcus for Meta). Drives their commissions.
 
 ### B. Sales (Head of Sales function — Aliyah already owns this)
@@ -75,7 +81,7 @@ Pulled from the Head of Sales SOP, this is the closing side the Growth role is a
 
 ### C. Warm Traffic / Nurture
 - **Community (Circle)** — systematize posting, virtual workshops, in-person events/chapters. Aliyah PM; Monica/Ashley leaders; Saul tech; Juli admin.
-- **Integration / Coaching** — the free post-retreat integration-call funnel (Aliyah & Sarah PM; Aliyah/Monica/Ashley coach).
+- **Integration Follow-Up Program** — the free post-retreat integration-call funnel (Aliyah & Sarah PM; Aliyah/Monica/Ashley coach). A key rebooking + word-of-mouth driver.
 - **Email** — 40-email welcome sequence live (30–50% opens, ~1.5% clicks, ~98% deliverability). Roadmap: 180-day evergreen sequence, community/pre-retreat/post-retreat sequences, sales sequences (promos, abandoned-call, pre/post-call, post-purchase). Currently Marcus → transitioning to Aliyah/Saul.
 - **Organic Social / Content** — 5-pillar Instagram strategy + the Content Machine production pipeline (carousels, Reels, cross-platform, Stories) with review-before-publish. Sarah manages; volunteers create. (Note: Meta banned old IG/FB group over ayahuasca compliance — organic social is more trust-signal than lead-gen.)
 
@@ -86,10 +92,17 @@ The technical backbone — arguably the most complex part of the role:
 - **Automations** — n8n workflows (Booking Sync, GHL→Sales, Source Data, Daily Report→Discord, Google Ads→Marketing), Zapier (BL→Sheets), BookingLayer scheduled CSVs, Apps Scripts (source categorization, date fixes, tracker rebuilds, live sales/revenue attribution), GHL (CRM/calendars), Discord daily reports.
 - **Technologist support** — Saul/Jacobo handle hands-on GHL/tech setup; the role directs it.
 
-### E. Strategy, Reporting & Commissions
+### E. Website, Products & Expansion
+Revenue surfaces beyond the core ad-and-sales funnel — each is tracked as its own section in the weekly report:
+- **Website / CRO** — own site health, conversion rate, and landing pages (Fahad executes dev). **Watch item:** the new site (Mar 2026) hurt organic conversions — a live issue tied to the SEO dip.
+- **Podcast** — Sam owns production; the role tracks it as a top-of-funnel brand/authority channel and reports on it.
+- **Airbnb / Cabin Rentals** — on-property lodging as an ancillary revenue stream and top-of-funnel touchpoint.
+- **App / Membership Model** — the recurring-revenue initiative (community/membership productization). Longer-horizon, lower priority than the core funnel.
+
+### F. Strategy, Reporting & Commissions
 - **Weekly leadership report** — the recurring exec report (fixed section order, mines WhatsApp + MTD numbers).
 - **Two monthly commission runs** — (1) **media-buyer** commissions by lead-create date; (2) **sales-rep** commissions by close. Both in Martech SOP §12 (Part A / Part B).
-- **Strategic projects** — funnels/CRO, landing pages, pixel/CAPI, app/membership model, B2B, Airbnb/cabin rentals, website health (the new site hurt organic conversions — live watch item).
+- **Funnels / CRO / pixel** — landing pages, pixel/CAPI, and conversion optimization across channels.
 
 ---
 
