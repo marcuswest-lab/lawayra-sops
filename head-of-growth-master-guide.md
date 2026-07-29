@@ -190,7 +190,7 @@ All logins on `admin@lawayra.com`; passwords in the team password manager. Canon
 | Dashboard | Link |
 |---|---|
 | ⭐ Marketing/Sales Dashboard — Vercel (Source of Truth) | https://lw-sales-dashboard.vercel.app/ |
-| Juan's Meta Ads Dashboard | https://script.google.com/macros/s/AKfycbzL5hZgGHryjPvDzonlKvH-DaTUwhjQ0SHahCJmf7p-XcuQ1gojCr4WnLkSNZTll2lW/exec?v=5 |
+| Juan's Meta Ads Dashboard | https://script.google.com/macros/s/AKfycbyL8-ghGhE9gLAzR0MWdaRqerp_Slf7tobyJjpnZPnC32feVqjNvTgJEe32xBtVyR-e/exec |
 | Sales Dashboard (sheet) | https://docs.google.com/spreadsheets/d/1fcBghq6dXp9v_58Lz0b-Fm5iXYlhw4HF00zQUjCSSTU/edit |
 | Ads / Marketing Dashboard (sheet) | https://docs.google.com/spreadsheets/d/1du8jYw-EPr3Bvkiq-_sMsA8XNtWH-d81AXS48glVzvc/edit |
 | Sales by Source — Raw Bookings (sheet) | https://docs.google.com/spreadsheets/d/139G-OUoApI5ksdSMXMe_WE8geaw_mZ3Sv8PYvBDsq5w/edit |
