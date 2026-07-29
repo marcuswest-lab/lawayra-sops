@@ -751,6 +751,10 @@
       <span class="platform-detail"><a href="https://docs.google.com/spreadsheets/d/139G-OUoApI5ksdSMXMe_WE8geaw_mZ3Sv8PYvBDsq5w/edit" target="_blank">Open in Google Sheets</a></span>
     </li>
     <li>
+      <span class="platform-name">LEADS (GG Leads) (sheet)</span>
+      <span class="platform-detail"><a href="https://docs.google.com/spreadsheets/d/1PKOKpTg9o6HgV41Fvwag8aId5PAnr4qH5AwxmVL2jBg/edit" target="_blank">Open in Google Sheets</a></span>
+    </li>
+    <li>
       <span class="platform-name">Google Sheets / Looker Studio</span>
       <span class="platform-detail">admin@lawayra.com</span>
     </li>
@@ -1163,6 +1167,39 @@
           <tr><td>N</td><td>Notes</td><td></td></tr>
           <tr style="background: rgba(228,160,23,0.08);"><td><strong>O</strong></td><td><strong>Status</strong></td><td>paid / deposit_paid / pending / draft. Only paid + deposit_paid count for revenue.</td></tr>
           <tr style="background: rgba(228,160,23,0.08);"><td><strong>P</strong></td><td><strong>Booking Source</strong></td><td>BL "Source" field &mdash; rep name (Sarah, Nico, Aliyah, Jacobo, Thomas) or "Booking engine" / frontoffice / partner / backoffice / connect. Filled by Zapier Updated Booking Zap + <code>syncFromBLExports</code>.</td></tr>
+        </tbody>
+      </table>
+
+      <h4 style="margin-top: 24px; margin-bottom: 8px;">LEADS (GG Leads) &mdash; <code>1PKOKpTg9o6HgV41Fvwag8aId5PAnr4qH5AwxmVL2jBg</code></h4>
+      <p>The paid-ads lead list. Populated automatically via <strong>Zapier</strong> (lead-form submissions routed in &mdash; likely <a href="https://zapier.com/editor/336113433/published/336113433/fields" target="_blank">Zap 336113433</a>), not a manual export. Row 1 = headers. Row 2+ = one row per lead. <strong>Email (col H) is the key column</strong> &mdash; <code>update-source-category-v5.gs</code> matches a booker's email against this list to tag the booking Source Category = "Google Ads" (the GG Leads email override), regardless of what the guest self-reported.</p>
+      <table class="data-table">
+        <thead>
+          <tr><th>Col</th><th>Header</th><th>Notes</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>A</td><td>First Name</td><td></td></tr>
+          <tr><td>B</td><td>Last Name</td><td></td></tr>
+          <tr><td>C</td><td>Who Contacted</td><td>Rep who reached out</td></tr>
+          <tr><td>D</td><td>Last Contacted</td><td>Date</td></tr>
+          <tr><td>E</td><td>Contact Medium</td><td></td></tr>
+          <tr><td>F</td><td>Notes</td><td>Free text</td></tr>
+          <tr><td>G</td><td>Response Received?</td><td></td></tr>
+          <tr style="background: rgba(228,160,23,0.08);"><td><strong>H</strong></td><td><strong>Email</strong></td><td><strong>Key column &mdash; matched against Raw Bookings col F for the GG Leads override.</strong></td></tr>
+          <tr><td>I</td><td>Phone Number</td><td></td></tr>
+          <tr><td>J</td><td>WhatsApp Number</td><td></td></tr>
+          <tr><td>K</td><td>Country</td><td></td></tr>
+          <tr><td>L</td><td>Ayahuasca before?</td><td>Lead-form answer</td></tr>
+          <tr><td>M</td><td>Prescription medication?</td><td>Lead-form answer</td></tr>
+          <tr><td>N</td><td>Health Issues?</td><td>Lead-form answer</td></tr>
+          <tr><td>O</td><td>Travel to Colombia?</td><td>Lead-form answer</td></tr>
+          <tr><td>P</td><td>Intention</td><td>Lead-form answer</td></tr>
+          <tr><td>Q</td><td>Age</td><td></td></tr>
+          <tr><td>R</td><td>Campaign</td><td>Ad campaign name</td></tr>
+          <tr><td>S</td><td>Ad Set</td><td></td></tr>
+          <tr><td>T</td><td>Ad</td><td></td></tr>
+          <tr><td>U</td><td>Time Created</td><td>Lead capture timestamp</td></tr>
+          <tr><td>V</td><td>Source</td><td>e.g., "FB Ads" &mdash; the paid channel the lead came from</td></tr>
+          <tr><td>W</td><td>Tags</td><td></td></tr>
         </tbody>
       </table>
 
