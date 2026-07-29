@@ -63,7 +63,7 @@ Head of Growth: Marcus → Aliyah (Aug 2026)
 
 ### A. Cold Traffic (Acquisition)
 - **Google Ads** — the primary paid channel and most qualified lead source. Oversee media buyer (Andrew); watch spend / leads / CPL / bookings; protect the account from compliance rejections (a real risk for ayahuasca advertisers — the compliant site is a key competitive edge). 2025: ~$52.8K spend → ~$196.7K revenue, 3.72 ROAS.
-- **Facebook / Meta Ads** — Andrew. Own the Meta Pixel + CAPI events; keep Juan's private dashboard current.
+- **Facebook / Meta Ads** — Andrew. Own the Meta Pixel + CAPI events; keep the private Meta Ads dashboard current.
 - **SEO** — the single biggest cold channel (~50% of guests come from Google search). Gabor owns execution; the role owns the outcome. **Watch item:** SEO declined sharply through 2025 (peaked ~300 clicks/day in June, fell to ~100) — the main driver of the year's marketing dip.
 - **Reddit** — a growing lead source, historically under-worked. Aliyah/Jacobo.
 - **B2B / Corporate Marketing** — corporate wellness / group-retreat prospecting. Kevin.
@@ -124,7 +124,7 @@ Revenue surfaces beyond the core ad-and-sales funnel — each is tracked as its 
 - **Calendar/roster check** with the sales team.
 
 ### Monthly
-- **Media-buyer commissions** — BL export → lead-attribution cross-reference → check Juan's dashboard (FB) + Sales-by-Source → drop pending/$0 → pay by buyer.
+- **Media-buyer commissions** — BL export → lead-attribution cross-reference → check the Meta Ads dashboard (FB) + Sales-by-Source → drop pending/$0 → pay by buyer.
 - **Sales-rep commissions** — sum Sales Dashboard revenue by rep, apply each rep's %.
 - **Rebuild the Rep Monthly Breakdown** tab at the start of each month (not on a trigger — it lags if skipped).
 - **Team:** monthly sales meeting + 1-on-1s.
@@ -190,7 +190,7 @@ All logins on `admin@lawayra.com`; passwords in the team password manager. Canon
 | Dashboard | Link |
 |---|---|
 | ⭐ Marketing/Sales Dashboard — Vercel (Source of Truth) | https://lw-sales-dashboard.vercel.app/ |
-| Juan's Meta Ads Dashboard | https://script.google.com/macros/s/AKfycbyL8-ghGhE9gLAzR0MWdaRqerp_Slf7tobyJjpnZPnC32feVqjNvTgJEe32xBtVyR-e/exec |
+| Meta Ads Dashboard (private, media-buyer scoped) | https://script.google.com/macros/s/AKfycbyL8-ghGhE9gLAzR0MWdaRqerp_Slf7tobyJjpnZPnC32feVqjNvTgJEe32xBtVyR-e/exec |
 | Sales Dashboard (sheet) | https://docs.google.com/spreadsheets/d/1fcBghq6dXp9v_58Lz0b-Fm5iXYlhw4HF00zQUjCSSTU/edit |
 | Ads / Marketing Dashboard (sheet) | https://docs.google.com/spreadsheets/d/1du8jYw-EPr3Bvkiq-_sMsA8XNtWH-d81AXS48glVzvc/edit |
 | Sales by Source — Raw Bookings (sheet) | https://docs.google.com/spreadsheets/d/139G-OUoApI5ksdSMXMe_WE8geaw_mZ3Sv8PYvBDsq5w/edit |

@@ -1439,23 +1439,23 @@
     </div>
   </div>
 
-  <!-- Juan's Private Dashboard -->
+  <!-- Private Meta Ads Dashboard -->
   <h3 style="margin-top:32px;">Companion dashboard</h3>
   <div class="info-card" style="border-left:4px solid #4a97ff;">
     <div class="info-card-header">
-      <span class="info-card-title">Juan's Private Meta Dashboard</span>
+      <span class="info-card-title">Private Meta Ads Dashboard</span>
       <span class="tag tag-active">Active &middot; Private</span>
     </div>
     <div class="info-card-body">
-      <p><strong>Who it's for:</strong> Juan Corredor, the volunteer running our Meta ads. It's deliberately scoped so Juan sees <strong>only his own campaign and his own FB consult-call results</strong> &mdash; never overall LaWayra spend, sales, or revenue.</p>
-      <p><strong>Link (share with Juan):</strong> <a href="https://script.google.com/macros/s/AKfycbyL8-ghGhE9gLAzR0MWdaRqerp_Slf7tobyJjpnZPnC32feVqjNvTgJEe32xBtVyR-e/exec" target="_blank">https://script.google.com/macros/s/AKfycbyL8-ghGhE9gLAzR0MWdaRqerp_Slf7tobyJjpnZPnC32feVqjNvTgJEe32xBtVyR-e/exec</a> &mdash; access is set to "Anyone", so no Google login is needed.</p>
+      <p><strong>Who it's for:</strong> whoever is running our Meta ads (media buyer). It's deliberately scoped so they see <strong>only the Meta campaign and its FB consult-call results</strong> &mdash; never overall LaWayra spend, sales, or revenue.</p>
+      <p><strong>Link (share with the media buyer):</strong> <a href="https://script.google.com/macros/s/AKfycbyL8-ghGhE9gLAzR0MWdaRqerp_Slf7tobyJjpnZPnC32feVqjNvTgJEe32xBtVyR-e/exec" target="_blank">https://script.google.com/macros/s/AKfycbyL8-ghGhE9gLAzR0MWdaRqerp_Slf7tobyJjpnZPnC32feVqjNvTgJEe32xBtVyR-e/exec</a> &mdash; access is set to "Anyone", so no Google login is needed.</p>
       <div class="callout" style="margin-top:12px;">
-        <strong>Always share the exact link above &mdash; never a copy from your browser bar.</strong> When you open the dashboard while signed into Google, the URL rewrites to an account-scoped form with <code>/u/2/</code> (or <code>/u/1/</code>, etc.) in it: <code>script.google.com/macros/<strong>u/2/</strong>s/AKfycb…/exec</code>. That index points to <em>your</em> 3rd signed-in account. When Juan opens a <code>/u/2/</code> link, his browser maps index 2 to a different account and he hits a login wall or a blank page &mdash; which is exactly why the dashboard "stopped working" for him. The correct link has <strong>no <code>/u/N/</code> segment</strong> &mdash; it goes straight from <code>/macros/s/</code> to the token.
+        <strong>Always share the exact link above &mdash; never a copy from your browser bar.</strong> When you open the dashboard while signed into Google, the URL rewrites to an account-scoped form with <code>/u/2/</code> (or <code>/u/1/</code>, etc.) in it: <code>script.google.com/macros/<strong>u/2/</strong>s/AKfycb…/exec</code>. That index points to <em>your</em> 3rd signed-in account. When someone else opens a <code>/u/2/</code> link, their browser maps index 2 to a different account and they hit a login wall or a blank page &mdash; a common reason the dashboard appears to "stop working." The correct link has <strong>no <code>/u/N/</code> segment</strong> &mdash; it goes straight from <code>/macros/s/</code> to the token.
       </div>
       <p><strong>What it shows:</strong> KPI cards (all-time headline + MTD sub-row): Spend, Booked Calls, Cost per Booked Call, Sales, CPA, ROAS. Daily / Weekly / Monthly tables, plus a <strong>Sales Calls</strong> tab (FB-tagged calls only) with Show Rate, Live Call Close Rate, and per-call Revenue.</p>
       <p><strong>Built as:</strong> a standalone Apps Script web app (not Vercel, not one of the three sheets). It reads the <code>Juan Daily</code> tab in the Ads Dashboard plus FB-tagged call rows in the Sales Dashboard, and overlays Sales/Revenue at runtime &mdash; so it physically cannot show any other channel's numbers.</p>
       <div class="callout" style="margin-top:12px;">
-        <strong>Why Juan's spend differs from the main Facebook Ads dashboard:</strong> Juan's dashboard is scoped to his prospecting campaign ("Book Call") only. The main Ads Dashboard <code>FB Daily</code> tab is the <strong>whole Meta ad account</strong>, which also includes retargeting spend. So the main FB spend (and its CPA/ROAS) will read higher &mdash; that's by design, not a discrepancy. Booked calls, sales, and revenue match on both.
+        <strong>Why this dashboard's spend differs from the main Facebook Ads dashboard:</strong> this dashboard is scoped to the prospecting campaign ("Book Call") only. The main Ads Dashboard <code>FB Daily</code> tab is the <strong>whole Meta ad account</strong>, which also includes retargeting spend. So the main FB spend (and its CPA/ROAS) will read higher &mdash; that's by design, not a discrepancy. Booked calls, sales, and revenue match on both.
       </div>
     </div>
   </div>
@@ -2029,12 +2029,12 @@
         <li>Filter <strong>Created on</strong> = first to last day of the month (e.g. <code>June 1 &ndash; June 30</code>).</li>
         <li>Click the <strong>Download</strong> button &rarr; <strong>CSV</strong> &rarr; save it to your LaWayra folder.</li>
       </ul>
-      <div class="callout" style="margin-top:8px;"><strong>Note:</strong> This export does <strong>not</strong> include Facebook/Meta bookings &mdash; those live in Juan's dashboard, which we cross-check in Step 4.</div>
+      <div class="callout" style="margin-top:8px;"><strong>Note:</strong> This export does <strong>not</strong> include Facebook/Meta bookings &mdash; those live in the Meta Ads dashboard, which we cross-check in Step 4.</div>
     </li>
     <li><strong>Download the Leads sheet.</strong> Open the <a href="https://docs.google.com/spreadsheets/d/1PKOKpTg9o6HgV41Fvwag8aId5PAnr4qH5AwxmVL2jBg" target="_blank" rel="noopener">LEADS sheet</a> &rarr; <strong>File &rarr; Download &rarr; Microsoft Excel (.xlsx)</strong> &rarr; save it to the same folder.</li>
     <li><strong>Ask Claude Code to calculate it.</strong> Open Claude Code in your LaWayra folder and paste the message below (swap in the current month):
-      <div style="background:#f4f2ea; border:1px solid #e0dcc9; border-radius:6px; padding:14px 16px; margin:10px 0; font-family:'SF Mono',Menlo,Consolas,monospace; font-size:13px; line-height:1.6; color:#3a3a2e; white-space:pre-wrap;">I just downloaded the BookingLayer sales for June and the leads Google Sheet as an Excel file. Help me calculate the media buyer commissions. There should be a skill file with the rules for when the leads were generated and which media buyer gets credit. Also cross-check it with Juan's dashboard.</div>
-      Claude uses the <strong>lead-attribution skill</strong> (the rules for who gets credit) plus Juan's dashboard and returns a table: each booking, its channel, and the media buyer.
+      <div style="background:#f4f2ea; border:1px solid #e0dcc9; border-radius:6px; padding:14px 16px; margin:10px 0; font-family:'SF Mono',Menlo,Consolas,monospace; font-size:13px; line-height:1.6; color:#3a3a2e; white-space:pre-wrap;">I just downloaded the BookingLayer sales for June and the leads Google Sheet as an Excel file. Help me calculate the media buyer commissions. There should be a skill file with the rules for when the leads were generated and which media buyer gets credit. Also cross-check it with the Meta Ads dashboard.</div>
+      Claude uses the <strong>lead-attribution skill</strong> (the rules for who gets credit) plus the Meta Ads dashboard and returns a table: each booking, its channel, and the media buyer.
     </li>
     <li><strong>Double-check with the Sales by Source dashboard.</strong> These are people's commissions &mdash; always verify. First refresh the dashboard, then hand it to Claude:
       <ul>
@@ -2045,7 +2045,7 @@
       </ul>
     </li>
     <li><strong>Remove pendings and $0 rows.</strong> Only <code>Paid</code> / <code>Deposit Paid</code> bookings with a real dollar amount count. Delete any <strong>Pending</strong> rows and any <strong>$0</strong> rows (comps / backoffice test bookings) before finalizing &mdash; otherwise the count is inflated. If you clean the sheet, re-download it and ask Claude to re-check.</li>
-    <li><strong>Confirm the final list.</strong> Google Ads bookings are confirmed from the lead sheet &rarr; credited to the current Google buyer (Andrew). Facebook/Meta bookings &rarr; cross-checked against Juan's dashboard &rarr; credited to Juan. Claude gives you the finalized table: which bookings, which media buyer, and the total value.</li>
+    <li><strong>Confirm the final list.</strong> Google Ads bookings are confirmed from the lead sheet &rarr; credited to the current Google buyer (Andrew). Facebook/Meta bookings &rarr; cross-checked against the Meta Ads dashboard &rarr; credited to the Meta media buyer. Claude gives you the finalized table: which bookings, which media buyer, and the total value.</li>
   </ol>
 
   <h4>Who gets credit (attribution rules)</h4>
@@ -2060,7 +2060,7 @@
       <tr><td>May 7, 2025 &ndash; Oct 13, 2025</td><td>Ida</td></tr>
       <tr><td>Oct 13 &ndash; Oct 27, 2025</td><td>Marcus</td></tr>
       <tr><td><strong>Oct 27, 2025 &rarr; now</strong></td><td><strong>Andrew</strong></td></tr>
-      <tr><td rowspan="3">Facebook / Meta <span style="color:#777;">(go by <em>which dashboard</em>, not date &mdash; Marcus &amp; Juan ran campaigns at the same time)</span></td><td><strong>Shows in Juan's dashboard</strong></td><td><strong>Juan</strong></td></tr>
+      <tr><td rowspan="3">Facebook / Meta <span style="color:#777;">(go by <em>which dashboard</em>, not date &mdash; Marcus &amp; Juan ran campaigns at the same time)</span></td><td><strong>Shows in the Meta Ads dashboard</strong></td><td><strong>Meta media buyer</strong></td></tr>
       <tr><td>Any other Meta / Facebook (so far)</td><td>Marcus</td></tr>
       <tr><td>Future relaunch (after handoff to Andrew)</td><td>Andrew</td></tr>
       <tr><td>TikTok / other in-house</td><td>any</td><td>Marcus</td></tr>
